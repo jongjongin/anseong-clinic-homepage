@@ -108,7 +108,6 @@ export default function EventsCarousel() {
                 <p className="mt-5 flex-1 text-base leading-8 text-slate-600">{event.description}</p>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <a
-                    href="#consult"
                     href={eventsSectionContent.consultationHref}
                     className="rounded-full bg-slate-900 px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-slate-800"
                   >
