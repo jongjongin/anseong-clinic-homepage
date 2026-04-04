@@ -1,4 +1,5 @@
 import { heroContent } from "@/components/home/content";
+import Reveal from "@/components/home/reveal";
 
 export default function HeroSection() {
   return (
@@ -7,7 +8,7 @@ export default function HeroSection() {
       className="overflow-hidden border-b border-slate-200 bg-[radial-gradient(circle_at_top_left,#eef6f5_0%,#f8fbfb_28%,#ffffff_58%)]"
     >
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-28">
-        <div className="max-w-3xl">
+        <Reveal className="max-w-3xl">
           <p className="text-sm font-semibold tracking-[0.16em] text-teal-700 uppercase">
             {heroContent.eyebrow}
           </p>
@@ -47,9 +48,9 @@ export default function HeroSection() {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
 
-        <div className="relative">
+        <Reveal className="relative" delayMs={120}>
           <div className="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-[0_20px_80px_rgba(15,23,42,0.06)] sm:p-7">
             <div className="rounded-[1.5rem] border border-slate-100 bg-[#fbfcfc] p-5 sm:p-7">
               <div className="flex items-center justify-between border-b border-slate-200 pb-4">
@@ -89,7 +90,7 @@ export default function HeroSection() {
               회복의 속도까지 함께 봅니다.
             </p>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
