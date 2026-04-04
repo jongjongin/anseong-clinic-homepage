@@ -15,13 +15,13 @@ export default function SectionTitle({
 
   return (
     <div className={`max-w-3xl ${alignmentClass}`}>
-      <p className="text-sm font-semibold tracking-[0.14em] text-teal-700 uppercase">
+      <p className="text-sm font-semibold tracking-[0.18em] text-teal-700 uppercase">
         {eyebrow}
       </p>
-      <h2 className="mt-4 text-2xl font-bold leading-tight text-slate-900 sm:text-3xl lg:text-4xl">
+      <h2 className="mt-4 text-[2rem] font-bold leading-tight text-slate-900 sm:text-[2.35rem] lg:text-[2.8rem]">
         {title}
       </h2>
-      <p className="mt-4 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8">
+      <p className="mt-5 text-base leading-8 text-slate-600 sm:text-lg">
         {description}
       </p>
     </div>

@@ -3,24 +3,27 @@ import { eventsSectionContent } from "@/components/home/content";
 
 export default function EventsSection() {
   return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+    <section id="events" className="bg-white">
+      <div className="mx-auto max-w-6xl px-4 py-18 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
         <SectionTitle
           eyebrow={eventsSectionContent.eyebrow}
           title={eventsSectionContent.title}
           description={eventsSectionContent.description}
         />
 
-        <div className="mt-10 grid gap-4 lg:grid-cols-2">
+        <div className="mt-12 grid gap-5 lg:grid-cols-3">
           {eventsSectionContent.items.map((event) => (
             <article
               key={event.title}
-              className="rounded-3xl border border-slate-200 bg-slate-50 p-6 sm:p-7"
+              className="flex h-full flex-col rounded-[2rem] border border-slate-200 bg-[#fbfcfc] p-6 sm:p-8"
             >
-              <p className="text-sm font-semibold text-teal-700">{event.period}</p>
-              <h3 className="mt-3 text-xl font-bold text-slate-900 sm:text-2xl">{event.title}</h3>
-              <p className="mt-4 text-[15px] leading-7 text-slate-600 sm:text-base">{event.description}</p>
-              <a href="#" className="mt-6 inline-flex text-sm font-semibold text-sky-700">
+              <p className="text-sm font-semibold tracking-[0.1em] text-teal-700 uppercase">
+                {event.category}
+              </p>
+              <h3 className="mt-5 text-2xl font-bold leading-tight text-slate-900">{event.title}</h3>
+              <p className="mt-3 text-sm font-semibold text-slate-400">{event.period}</p>
+              <p className="mt-5 flex-1 text-base leading-8 text-slate-600">{event.description}</p>
+              <a href="#" className="mt-8 inline-flex text-sm font-semibold text-slate-900">
                 {eventsSectionContent.buttonLabel}
               </a>
             </article>
