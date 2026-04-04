@@ -172,7 +172,7 @@ export const ctaSectionContent = {
   eyebrow: "Consultation",
   title: ["지금 불편한 증상이 있다면", "전화 상담부터 편하게 시작해 보세요"],
   description:
-    "척추관절, 교통사고, 약침추나, 소아성장, 다이어트, 여성질환 등 어떤 진료가 필요한지 고민될 때 먼저 전화로 편하게 문의하실 수 있습니다.",
+    "척추관절, 교통사고, 약침추나, 소아성장, 다이어트, 여성질환 등 어떤 진료가 필요한지 고민될 때 먼저 전화로 편하게 문의해 주세요.",
   phoneButton: "전화 상담하기",
   kakaoButton: "상담 예약하기",
   phoneNumber: "031-8057-0750",
