@@ -24,7 +24,7 @@ export default function Home() {
         <IntroSection />
         <GallerySection />
         <Suspense fallback={null}>
-          <BlogSection />
+          <BlogSection limit={4} />
         </Suspense>
         <DepartmentsSection />
         <DoctorsSection />
