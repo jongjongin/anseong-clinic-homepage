@@ -23,9 +23,17 @@ export default function EventsSection() {
               <h3 className="mt-5 text-2xl font-bold leading-tight text-slate-900">{event.title}</h3>
               <p className="mt-3 text-sm font-semibold text-slate-400">{event.period}</p>
               <p className="mt-5 flex-1 text-base leading-8 text-slate-600">{event.description}</p>
-              <a href="#" className="mt-8 inline-flex text-sm font-semibold text-slate-900">
-                {eventsSectionContent.buttonLabel}
-              </a>
+              <div className="mt-8 flex flex-col gap-3">
+                <a
+                  href="#consult"
+                  className="rounded-full bg-slate-900 px-5 py-3 text-center text-sm font-semibold text-white"
+                >
+                  이벤트 상담하기
+                </a>
+                <a href="#" className="inline-flex text-sm font-semibold text-slate-900">
+                  {eventsSectionContent.buttonLabel}
+                </a>
+              </div>
             </article>
           ))}
         </div>

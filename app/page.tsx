@@ -7,6 +7,7 @@ import {
   Header,
   HeroSection,
   InfoSection,
+  IntroSection,
 } from "@/components/home";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
+        <IntroSection />
         <DepartmentsSection />
         <DoctorsSection />
         <EventsSection />

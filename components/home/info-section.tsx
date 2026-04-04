@@ -26,6 +26,11 @@ export default function InfoSection() {
               ))}
             </div>
 
+            <div className="mt-6 rounded-[1.25rem] bg-slate-50 px-5 py-4 text-sm leading-7 text-slate-600">
+              <p>평일 점심시간 13:00 ~ 14:00</p>
+              <p>토·일·공휴일은 점심시간 없이 운영합니다.</p>
+            </div>
+
             <div className="mt-8 rounded-[1.5rem] bg-slate-50 p-5">
               <p className="text-sm font-semibold tracking-[0.12em] text-slate-400 uppercase">
                 방문 안내

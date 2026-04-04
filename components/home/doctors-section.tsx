@@ -11,38 +11,19 @@ export default function DoctorsSection() {
           description={doctorsSectionContent.description}
         />
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-2">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {doctorsSectionContent.items.map((doctor) => (
             <article
               key={doctor.name}
-              className="rounded-[2rem] border border-slate-200 bg-white p-6 sm:p-8"
+              className="rounded-[2rem] border border-slate-200 bg-white p-6 text-center sm:p-8"
             >
-              <div className="grid gap-6 sm:grid-cols-[132px_1fr] sm:items-start">
-                <div className="flex h-28 w-28 items-center justify-center rounded-[1.75rem] bg-[linear-gradient(180deg,#eef4f3_0%,#dbe8e6_100%)] text-sm font-semibold text-slate-600 sm:h-32 sm:w-32">
-                  {doctorsSectionContent.eyebrow}
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-slate-900 sm:text-[1.9rem]">{doctor.name}</h3>
-                  <p className="mt-2 text-sm font-semibold tracking-[0.08em] text-teal-700 uppercase">
-                    {doctor.role}
-                  </p>
-                  <p className="mt-5 text-base leading-8 text-slate-600">{doctor.description}</p>
-                </div>
+              <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-[1.5rem] bg-[linear-gradient(180deg,#eef4f3_0%,#dbe8e6_100%)] text-sm font-semibold text-slate-600 sm:h-28 sm:w-28">
+                원장
               </div>
-
-              <div className="mt-8 border-t border-slate-200 pt-6">
-                <p className="text-sm font-semibold tracking-[0.12em] text-slate-400 uppercase">
-                  주요 이력
-                </p>
-                <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-600 sm:text-base">
-                  {doctor.credentials.map((item) => (
-                    <li key={item} className="flex gap-3">
-                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <p className="mt-6 text-sm font-semibold tracking-[0.08em] text-teal-700 uppercase">
+                {doctor.role}
+              </p>
+              <h3 className="mt-3 text-2xl font-bold text-slate-900">{doctor.name}</h3>
             </article>
           ))}
         </div>

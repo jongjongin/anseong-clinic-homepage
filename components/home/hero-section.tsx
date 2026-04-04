@@ -24,13 +24,13 @@ export default function HeroSection() {
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a
-              href="#hours"
+              href="#consult"
               className="rounded-full bg-slate-900 px-6 py-4 text-center text-base font-semibold text-white transition-colors hover:bg-slate-800"
             >
               {heroContent.primaryButton}
             </a>
             <a
-              href="#departments"
+              href={`tel:${heroContent.contactNumber}`}
               className="rounded-full border border-slate-300 bg-white px-6 py-4 text-center text-base font-semibold text-slate-700 transition-colors hover:border-slate-500 hover:text-slate-900"
             >
               {heroContent.secondaryButton}

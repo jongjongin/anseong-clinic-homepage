@@ -8,12 +8,12 @@ export const headerMenuItems = [
 ];
 
 export const heroContent = {
-  eyebrow: "365일 진료, 지역과 함께하는 안성경희365한의원",
-  title: ["단순한 통증 완화가 아니라", "생활이 편해질 때까지", "치료합니다"],
+  eyebrow: "365일 당신의 건강을 책임지는 안성경희365한의원",
+  title: ["단순한 통증 완화가 아니라", "생활이 편해질 때까지", "치료합니다."],
   description:
-    "안성경희365한의원은 통증이 잠시 줄어드는 데서 멈추지 않고, 환자분의 일상과 움직임이 실제로 편해질 때까지 치료의 방향을 함께 고민합니다.",
-  primaryButton: "진료정보 확인",
-  secondaryButton: "진료과목 보기",
+    "현재의 통증만 줄이는 데 그치지 않고, 생활 속에서 더 편하게 움직이고 일할 수 있을 때까지 치료 방향을 함께 고민합니다.",
+  primaryButton: "상담 예약하기",
+  secondaryButton: "전화 상담하기",
   noticeTitle: "안성경희365 진료 원칙",
   highlights: [
     "365일 진료로 평일과 주말에도 진료 연결이 가능합니다.",
@@ -21,12 +21,21 @@ export const heroContent = {
     "현재 증상뿐 아니라 생활 습관과 회복 이후의 편안함까지 고려합니다.",
   ],
   contactLabel: "대표 상담",
-  contactNumber: "031-000-0000",
-  contactDescription: "전화 상담이 가능하며, 처음 방문 전 증상을 간단히 말씀해주시면 보다 편하게 안내해드립니다.",
+  contactNumber: "031-8057-0750",
+  contactDescription: "전화 상담이 가능하며, 증상을 먼저 말씀해주시면 진료 흐름을 보다 편하게 안내해드립니다.",
   stats: [
     { label: "365일 진료", value: "매일 운영" },
     { label: "평일 진료", value: "09-20" },
     { label: "주말 진료", value: "09-15" },
+  ],
+};
+
+export const introSectionContent = {
+  eyebrow: "Hospital Introduction",
+  paragraphs: [
+    "안성경희365한의원은 환자의 현재 통증뿐 아니라 생활 속 불편함까지 함께 고려하여 치료합니다.",
+    "불필요한 치료는 줄이고, 필요한 치료는 충분히 진행하는 것을 원칙으로 합니다.",
+    "365일 진료와 야간진료 운영으로 필요할 때 언제든 찾을 수 있는 한의원을 지향합니다.",
   ],
 };
 
@@ -73,6 +82,12 @@ export const departmentsSectionContent = {
       description:
         "생리통, 냉증, 피로감 등 여성에게 반복적으로 나타나는 불편을 몸 전체의 흐름과 함께 살펴 치료합니다.",
     },
+    {
+      title: "미용",
+      summary: "피부 상태에 맞춘 맞춤 시술을 진행합니다.",
+      description:
+        "현재 피부 상태와 고민을 충분히 확인한 뒤, 무리하지 않는 방향으로 필요한 맞춤 관리를 안내합니다.",
+    },
   ],
 };
 
@@ -80,29 +95,23 @@ export const doctorsSectionContent = {
   eyebrow: "Medical Team",
   title: "환자의 생활까지 고려한 치료를 지향합니다",
   description:
-    "불필요한 치료는 줄이고 필요한 치료는 충분히 진행한다는 원칙 아래, 현재 증상뿐 아니라 환자의 일상과 회복 이후의 편안함까지 함께 고려합니다.",
+    "환자의 상태만 보는 것이 아니라 생활 속에서 겪는 불편함까지 함께 고려하여 치료 방향을 설정합니다. 빠르게 끝내는 치료보다 확실하게 좋아지는 치료를 목표로 합니다.",
   items: [
     {
-      name: "대표원장 홍길동",
-      role: "생활을 고려한 통증·재활 진료",
-      description:
-        "현재 아픈 부위만 보는 것이 아니라, 환자분이 어떤 생활을 하고 있고 무엇이 가장 불편한지를 함께 확인하며 꼭 필요한 치료를 충분히 진행하는 진료를 지향합니다.",
-      credentials: [
-        "경희대학교 한의과대학 졸업",
-        "한방재활의학과 임상 과정 수료",
-        "척추신경추나의학회 정회원",
-      ],
+      name: "윤종인",
+      role: "원장",
     },
     {
-      name: "원장 김하늘",
-      role: "맞춤형 통증·균형 진료",
-      description:
-        "불필요하게 과한 치료는 줄이고, 꼭 필요한 진료는 충분히 설명하고 진행하면서 생활 속 불편이 실제로 줄어들 수 있는 방향을 함께 찾습니다.",
-      credentials: [
-        "경희대학교 한의과대학 졸업",
-        "근골격 통증 관리 과정 수료",
-        "대한한의학회 정회원",
-      ],
+      name: "우예지",
+      role: "원장",
+    },
+    {
+      name: "박은지",
+      role: "원장",
+    },
+    {
+      name: "강유",
+      role: "원장",
     },
   ],
 };
@@ -115,22 +124,22 @@ export const eventsSectionContent = {
   buttonLabel: "자세히 보기",
   items: [
     {
-      category: "EVENT 01",
-      title: "다이어트 프로그램 이벤트",
+      category: "MAY EVENT",
+      title: "5월 가정의 달 이벤트 진행 중",
       period: "진행 중",
-      description: "체형과 생활 패턴을 고려한 다이어트 프로그램 상담을 보다 편하게 시작할 수 있도록 이벤트 구성을 준비했습니다.",
+      description: "건강을 챙겨야 할 시기, 가족과 함께 시작하는 관리. 상담을 통해 맞춤 프로그램을 안내드립니다.",
     },
     {
-      category: "EVENT 02",
-      title: "총명공진단 이벤트",
-      period: "진행 중",
-      description: "집중력과 체력 관리가 필요한 분들을 위한 총명공진단 관련 이벤트 안내를 확인하실 수 있습니다.",
+      category: "PROGRAM",
+      title: "다이어트 프로그램 상담",
+      period: "상시 상담 가능",
+      description: "체질과 생활 패턴을 고려한 감량 프로그램 상담을 통해 보다 알맞은 관리 방향을 안내드립니다.",
     },
     {
-      category: "NOTICE",
-      title: "전화 상담 안내",
-      period: "상시 가능",
-      description: "진료과목, 내원 전 준비, 운영 시간 등 간단한 문의는 전화로 먼저 상담받으실 수 있습니다.",
+      category: "PROGRAM",
+      title: "총명공진단 상담",
+      period: "상시 상담 가능",
+      description: "건강관리와 집중력 케어가 필요한 분들을 위해 총명공진단 관련 상담 안내를 제공합니다.",
     },
   ],
 };
@@ -144,9 +153,9 @@ export const infoSectionContent = {
   locationTitle: "오시는 길",
   mapLabel: "MAP PLACEHOLDER",
   mapDescription: "추후 네이버 지도 또는 카카오 지도를 연동할 수 있는 자리입니다.",
-  address: "경기도 안성시 예시로 123, 3층",
-  parking: "건물 내 주차 또는 인근 제휴 주차장 이용 가능",
-  contact: "031-000-0000",
+  address: "경기도 안성시 남파로 103 203호, 204호 (구 영천냉면 자리)",
+  parking: "주차 가능",
+  contact: "031-8057-0750",
   guidance: [
     "365일 진료로 평일과 주말에도 진료 연결이 가능합니다.",
     "전화 상담이 가능하여 내원 전 기본 안내를 먼저 받으실 수 있습니다.",
@@ -154,7 +163,7 @@ export const infoSectionContent = {
   hours: [
     { day: "365일 진료", time: "매일 운영" },
     { day: "평일", time: "09:00 - 20:00" },
-    { day: "주말", time: "09:00 - 15:00" },
+    { day: "토·일·공휴일", time: "09:00 - 15:00" },
     { day: "전화 상담", time: "가능" },
   ],
 };
@@ -165,16 +174,16 @@ export const ctaSectionContent = {
   description:
     "척추관절, 교통사고, 약침추나, 소아성장, 다이어트, 여성질환 등 어떤 진료가 필요한지 고민될 때 먼저 전화로 편하게 문의하실 수 있습니다.",
   phoneButton: "전화 상담하기",
-  kakaoButton: "카카오 문의",
-  phoneNumber: "031-000-0000",
+  kakaoButton: "상담 예약하기",
+  phoneNumber: "031-8057-0750",
 };
 
 export const footerContent = {
   clinicName: "안성경희365한의원",
   notice:
     "본 사이트의 모든 콘텐츠는 안내 목적이며, 실제 진료 내용과 운영 시간은 병원 사정에 따라 달라질 수 있습니다.",
-  phone: "대표번호 031-000-0000",
-  address: "경기도 안성시 예시로 123, 3층",
-  business: "대표자 홍길동 | 사업자등록번호 000-00-00000",
+  phone: "대표번호 031-8057-0750",
+  address: "경기도 안성시 남파로 103 203호, 204호",
+  business: "사업자등록번호 775-18-02238 | 안성경희365한의원 윤종인",
   links: ["개인정보처리방침", "이용약관", "비급여 안내"],
 };
