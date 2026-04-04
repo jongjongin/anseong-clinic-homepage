@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { headerMenuItems } from "@/components/home/content";
 import LogoWordmark from "@/components/home/logo-wordmark";
 
@@ -18,11 +19,17 @@ export default function Header() {
         </div>
 
         <nav className="hidden items-center gap-7 text-sm font-medium text-slate-600 lg:flex">
-          {headerMenuItems.map((item) => (
-            <a key={item.label} href={item.href} className="transition-colors hover:text-sky-700">
-              {item.label}
-            </a>
-          ))}
+          {headerMenuItems.map((item) =>
+            item.href.startsWith("/") ? (
+              <Link key={item.label} href={item.href} className="transition-colors hover:text-sky-700">
+                {item.label}
+              </Link>
+            ) : (
+              <a key={item.label} href={item.href} className="transition-colors hover:text-sky-700">
+                {item.label}
+              </a>
+            ),
+          )}
         </nav>
 
         <a

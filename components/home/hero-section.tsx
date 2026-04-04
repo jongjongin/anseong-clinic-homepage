@@ -33,7 +33,7 @@ export default function HeroSection() {
             </a>
             <a
               href={heroContent.phoneHref}
-              className="rounded-full border border-slate-950 bg-slate-950 px-6 py-4 text-center text-base font-semibold text-white shadow-[0_12px_24px_rgba(15,23,42,0.14)] transition-colors hover:bg-slate-800"
+              className="rounded-full border border-slate-300 bg-white px-6 py-4 text-center text-base font-semibold text-slate-950 shadow-[0_12px_24px_rgba(15,23,42,0.08)] transition-colors hover:border-slate-900"
             >
               {heroContent.secondaryButton}
             </a>

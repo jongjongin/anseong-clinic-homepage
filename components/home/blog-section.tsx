@@ -9,10 +9,19 @@ const fallbackImages = [
   "/assets/people/people-2.jpg",
 ];
 
-export default async function BlogSection() {
-  const posts = await getNaverBlogPosts();
+type BlogSectionProps = {
+  limit?: number;
+  showArchiveLink?: boolean;
+};
 
-  if (posts.length === 0) {
+export default async function BlogSection({
+  limit,
+  showArchiveLink = true,
+}: BlogSectionProps = {}) {
+  const posts = await getNaverBlogPosts();
+  const visiblePosts = typeof limit === "number" ? posts.slice(0, limit) : posts;
+
+  if (visiblePosts.length === 0) {
     return null;
   }
 
@@ -27,8 +36,8 @@ export default async function BlogSection() {
           />
         </Reveal>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {posts.map((post, index) => (
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
+          {visiblePosts.map((post, index) => (
             <Reveal key={post.link} delayMs={index * 50}>
               <Link href={post.link} target="_blank" rel="noreferrer" className="block">
                 <article className="interactive-card overflow-hidden rounded-[2rem] border border-slate-200 bg-white">
@@ -56,6 +65,17 @@ export default async function BlogSection() {
             </Reveal>
           ))}
         </div>
+
+        {showArchiveLink ? (
+          <div className="mt-8 flex justify-center">
+            <Link
+              href="/blog"
+              className="rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
+            >
+              블로그 글 더 보기
+            </Link>
+          </div>
+        ) : null}
       </div>
     </section>
   );

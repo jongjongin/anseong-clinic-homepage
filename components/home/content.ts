@@ -2,6 +2,7 @@ export const headerMenuItems = [
   { label: "병원 소개", href: "#hero" },
   { label: "진료 과목", href: "#departments" },
   { label: "의료진", href: "#doctors" },
+  { label: "블로그", href: "/blog" },
   { label: "이벤트", href: "#events" },
   { label: "진료후기", href: "#reviews" },
   { label: "비대면진료", href: "#telemedicine" },
@@ -210,6 +211,7 @@ export const eventsSectionContent = {
   description:
     "실제 병원 홈페이지처럼 현재 진행 중인 이벤트와 안내를 간단하고 분명하게 확인할 수 있도록 정리했습니다.",
   buttonLabel: "자세히 보기",
+  allEventsLabel: "블로그 글 더 보기",
   consultationHref: "http://pf.kakao.com/_RWgxnG/chat",
   items: [
     {
