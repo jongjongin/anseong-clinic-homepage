@@ -3,6 +3,8 @@ export const headerMenuItems = [
   { label: "진료 과목", href: "#departments" },
   { label: "의료진", href: "#doctors" },
   { label: "이벤트", href: "#events" },
+  { label: "진료후기", href: "#reviews" },
+  { label: "비대면진료", href: "#telemedicine" },
   { label: "오시는 길", href: "#hours" },
   { label: "상담 문의", href: "#consult" },
 ];
@@ -14,6 +16,8 @@ export const heroContent = {
     "현재의 통증만 줄이는 데 그치지 않고, 생활 속에서 더 편하게 움직이고 일할 수 있을 때까지 치료 방향을 함께 고민합니다.",
   primaryButton: "상담 예약하기",
   secondaryButton: "전화 상담하기",
+  reservationHref: "http://pf.kakao.com/_RWgxnG/chat",
+  phoneHref: "tel:031-8057-0750",
   noticeTitle: "안성경희365 진료 원칙",
   highlights: [
     "365일 진료로 평일과 주말에도 진료 연결이 가능합니다.",
@@ -104,11 +108,22 @@ export const doctorsSectionContent = {
       image: "/assets/doctors/yoon-jongin.png",
       summary: "통증·재활 중심 진료",
       credentials: [
+        "비룡초등학교 졸업",
+        "안청중학교 졸업",
+        "공주 한일고등학교 졸업",
         "경희대학교 한의과대학 학사",
+        "오산 황제한의원 진료원장",
+        "남원시보건소 한의과장",
+        "남원 주천보건지소 한의과장",
+        "전 안산 백비한방병원",
+        "백의한방병원 과장",
+        "병점경희한의원 진료원장",
         "홍콩침례대학 임상과정 수료",
         "북경중의학대학 임상과정 수료",
         "광저우중의학대학 임상과정 수료",
+        "대한한의학회 회원",
         "척추신경추나의학회 정회원",
+        "미국 의사인증 진흥협회 ARDMS, APCA",
         "근골격계 초음파 인증의 RMSK 취득",
       ],
     },
@@ -118,9 +133,15 @@ export const doctorsSectionContent = {
       image: "/assets/doctors/woo-yeji.png",
       summary: "부인과·생활균형 진료",
       credentials: [
+        "공주사대부고 졸업",
         "경희대학교 한의과대학 학사",
+        "사랑인한의원 원장",
+        "언제나365한의원 원장",
+        "청담한의원 원장",
+        "안성경희365한의원 원장",
         "북경중의학대학 임상과정 수료",
         "광저우중의학대학 임상과정 수료",
+        "대한한의학회 회원",
         "대한한방부인과학회 정회원",
         "척추신경추나의학회 정회원",
       ],
@@ -133,9 +154,17 @@ export const doctorsSectionContent = {
       credentials: [
         "경희대학교 한의과대학 졸업",
         "(전) 청주 자생한방병원 병동의",
+        "(전) 현대경희한의원 원장",
+        "(전) 인성한의원 원장",
+        "(현) 안성경희365한의원 원장",
         "북경중의학 대학 임상과정 수료",
+        "광저우중의학 대학 임상과정 수료",
         "대만중국의약대학 임상과정 수료",
+        "경희의료원 임상과정 수료",
+        "강동경희대병원 임상과정 수료",
+        "미국 의사인증 진흥협회 ARDMS, APCA",
         "근골격계 초음파 인증의 RMSK 취득",
+        "대한한의학회 정회원",
       ],
     },
     {
@@ -145,10 +174,15 @@ export const doctorsSectionContent = {
       summary: "근골격·연구 기반 진료",
       credentials: [
         "경희대학교 한의과대학 졸업",
+        "경희대학교 한의학과 의료봉사 동아리 청록회 주말봉사부장",
+        "MPS 연구회 정회원",
+        "MPS 표면해부학 겨울캠프 수료",
+        "경희김한겸한의원 임상실습 수료",
         "경희의료원 임상과정 수료",
         "강동경희대병원 임상과정 수료",
-        "MPS 연구회 정회원",
+        "최인원 EFT 센터 EFT Level 1 수료",
         "SCIE 논문 제1저자",
+        "Natural Products as New Approaches for Treating Bladder Cancer 논문 제1저자",
       ],
     },
   ],
@@ -176,6 +210,7 @@ export const eventsSectionContent = {
   description:
     "실제 병원 홈페이지처럼 현재 진행 중인 이벤트와 안내를 간단하고 분명하게 확인할 수 있도록 정리했습니다.",
   buttonLabel: "자세히 보기",
+  consultationHref: "http://pf.kakao.com/_RWgxnG/chat",
   items: [
     {
       category: "MAY EVENT",
@@ -205,11 +240,13 @@ export const infoSectionContent = {
     "365일 진료, 평일과 주말 운영 시간, 전화 상담 가능 여부처럼 실제 방문 전에 가장 먼저 확인하는 정보를 분명하게 보여주도록 구성했습니다.",
   hoursTitle: "진료정보",
   locationTitle: "오시는 길",
-  mapLabel: "MAP PLACEHOLDER",
-  mapDescription: "추후 네이버 지도 또는 카카오 지도를 연동할 수 있는 자리입니다.",
+  mapLabel: "지도 바로가기",
+  mapDescription: "네이버지도와 카카오맵에서 병원 위치를 바로 확인하실 수 있습니다.",
   address: "경기도 안성시 남파로 103 203호, 204호 (구 영천냉면 자리)",
   parking: "주차 가능",
   contact: "031-8057-0750",
+  naverMapUrl: "https://naver.me/xzxmqtNK",
+  kakaoMapUrl: "https://place.map.kakao.com/247448692",
   guidance: [
     "365일 진료로 평일과 주말에도 진료 연결이 가능합니다.",
     "전화 상담이 가능하여 내원 전 기본 안내를 먼저 받으실 수 있습니다.",
@@ -230,6 +267,7 @@ export const ctaSectionContent = {
   phoneButton: "전화 상담하기",
   kakaoButton: "상담 예약하기",
   phoneNumber: "031-8057-0750",
+  kakaoChatUrl: "http://pf.kakao.com/_RWgxnG/chat",
 };
 
 export const footerContent = {
@@ -239,5 +277,47 @@ export const footerContent = {
   phone: "대표번호 031-8057-0750",
   address: "경기도 안성시 남파로 103 203호, 204호",
   business: "사업자등록번호 775-18-02238 | 안성경희365한의원 윤종인",
-  links: ["개인정보처리방침", "이용약관", "비급여 안내"],
+  links: [
+    { label: "개인정보처리방침", href: "/privacy-policy" },
+    { label: "이용약관", href: "/terms" },
+    { label: "카카오 상담", href: "http://pf.kakao.com/_RWgxnG/chat" },
+  ],
+};
+
+export const reviewsSectionContent = {
+  eyebrow: "Patient Review",
+  title: "진료후기는 로그인 후 확인할 수 있도록 준비 중입니다",
+  description:
+    "메디스트림 사이트처럼 실제 후기는 보호된 영역으로 운영할 예정이며, 현재는 구성만 먼저 반영했습니다.",
+  cards: [
+    {
+      title: "척추·관절 진료 후기",
+      excerpt: "오랜 허리 통증으로 일상생활이 힘들었는데, 현재 상태와 생활 습관까지 함께 설명해주셔서 안심이 됐습니다.",
+    },
+    {
+      title: "교통사고 후유증 후기",
+      excerpt: "사고 이후 계속되던 두통과 어깨 통증이 줄어드는 과정이 체계적으로 안내되어 좋았습니다.",
+    },
+    {
+      title: "다이어트 프로그램 후기",
+      excerpt: "무리한 감량보다 몸 상태에 맞는 방향으로 설명해주셔서 꾸준히 관리하기 좋았습니다.",
+    },
+  ],
+  loginNotice: "로그인 기능 연동 후 실제 후기 전체를 확인할 수 있습니다.",
+};
+
+export const telemedicineSectionContent = {
+  eyebrow: "Remote Care",
+  title: "비대면진료 안내를 위한 영역을 미리 준비했습니다",
+  description:
+    "나중에 결제 페이지와 연동할 수 있도록, 비대면진료의 흐름과 안내 내용을 먼저 정리했습니다.",
+  items: [
+    "전화 또는 카카오 상담으로 먼저 진료 가능 여부를 안내합니다.",
+    "예약 확정 후 비대면진료 절차와 준비사항을 개별 안내합니다.",
+    "향후 결제 페이지 및 신청 폼과 연동할 수 있도록 구조를 분리해 두었습니다.",
+  ],
+  primaryButton: "비대면진료 상담하기",
+  primaryHref: "http://pf.kakao.com/_RWgxnG/chat",
+  secondaryButton: "전화 문의하기",
+  secondaryHref: "tel:031-8057-0750",
 };

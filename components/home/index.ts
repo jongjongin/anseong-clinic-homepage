@@ -5,6 +5,8 @@ export { default as GallerySection } from "@/components/home/gallery-section";
 export { default as DepartmentsSection } from "@/components/home/departments-section";
 export { default as DoctorsSection } from "@/components/home/doctors-section";
 export { default as EventsSection } from "@/components/home/events-section";
+export { default as ReviewsSection } from "@/components/home/reviews-section";
+export { default as TelemedicineSection } from "@/components/home/telemedicine-section";
 export { default as InfoSection } from "@/components/home/info-section";
 export { default as CtaSection } from "@/components/home/cta-section";
 export { default as Footer } from "@/components/home/footer";

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { footerContent } from "@/components/home/content";
 import Reveal from "@/components/home/reveal";
 
@@ -27,9 +28,15 @@ export default function Footer() {
 
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-400">
               {footerContent.links.map((link) => (
-                <a key={link} href="#" className="transition-colors hover:text-white">
-                  {link}
-                </a>
+                link.href.startsWith("/") ? (
+                  <Link key={link.label} href={link.href} className="transition-colors hover:text-white">
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a key={link.label} href={link.href} className="transition-colors hover:text-white">
+                    {link.label}
+                  </a>
+                )
               ))}
             </div>
           </div>

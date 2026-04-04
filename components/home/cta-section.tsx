@@ -29,8 +29,8 @@ export default function CtaSection() {
                 {ctaSectionContent.phoneButton}
               </a>
               <a
-                href="#"
-                className="rounded-full border border-white/25 px-6 py-4 text-center text-base font-semibold text-white transition-colors duration-300 hover:border-white/50"
+                href={ctaSectionContent.kakaoChatUrl}
+                className="rounded-full bg-teal-500 px-6 py-4 text-center text-base font-semibold text-white transition-colors duration-300 hover:bg-teal-400"
               >
                 {ctaSectionContent.kakaoButton}
               </a>

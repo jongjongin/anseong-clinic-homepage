@@ -60,6 +60,20 @@ export default function InfoSection() {
                     {infoSectionContent.mapLabel}
                   </p>
                   <p className="mt-3 text-base leading-7 text-slate-600">{infoSectionContent.mapDescription}</p>
+                  <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
+                    <a
+                      href={infoSectionContent.naverMapUrl}
+                      className="rounded-full bg-slate-900 px-5 py-3 text-center text-sm font-semibold text-white"
+                    >
+                      네이버지도 보기
+                    </a>
+                    <a
+                      href={infoSectionContent.kakaoMapUrl}
+                      className="rounded-full border border-slate-300 bg-white px-5 py-3 text-center text-sm font-semibold text-slate-900"
+                    >
+                      카카오맵 보기
+                    </a>
+                  </div>
                 </div>
               </div>
               <div className="mt-6 grid gap-4 rounded-[1.5rem] bg-slate-50 p-5 text-base leading-7 text-slate-600 sm:grid-cols-2">

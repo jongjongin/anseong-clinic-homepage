@@ -109,6 +109,7 @@ export default function EventsCarousel() {
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <a
                     href="#consult"
+                    href={eventsSectionContent.consultationHref}
                     className="rounded-full bg-slate-900 px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-slate-800"
                   >
                     이벤트 상담하기
