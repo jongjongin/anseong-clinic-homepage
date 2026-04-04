@@ -28,6 +28,7 @@ export const heroContent = {
     { label: "평일 진료", value: "09-20" },
     { label: "주말 진료", value: "09-15" },
   ],
+  visualImage: "/assets/people/people-1.jpg",
 };
 
 export const introSectionContent = {
@@ -100,19 +101,72 @@ export const doctorsSectionContent = {
     {
       name: "윤종인",
       role: "원장",
+      image: "/assets/doctors/yoon-jongin.png",
+      summary: "통증·재활 중심 진료",
+      credentials: [
+        "경희대학교 한의과대학 학사",
+        "홍콩침례대학 임상과정 수료",
+        "북경중의학대학 임상과정 수료",
+        "광저우중의학대학 임상과정 수료",
+        "척추신경추나의학회 정회원",
+        "근골격계 초음파 인증의 RMSK 취득",
+      ],
     },
     {
       name: "우예지",
       role: "원장",
+      image: "/assets/doctors/woo-yeji.png",
+      summary: "부인과·생활균형 진료",
+      credentials: [
+        "경희대학교 한의과대학 학사",
+        "북경중의학대학 임상과정 수료",
+        "광저우중의학대학 임상과정 수료",
+        "대한한방부인과학회 정회원",
+        "척추신경추나의학회 정회원",
+      ],
     },
     {
       name: "박은지",
       role: "원장",
+      image: "/assets/doctors/park-eunji.png",
+      summary: "통증·한방병원 임상 진료",
+      credentials: [
+        "경희대학교 한의과대학 졸업",
+        "(전) 청주 자생한방병원 병동의",
+        "북경중의학 대학 임상과정 수료",
+        "대만중국의약대학 임상과정 수료",
+        "근골격계 초음파 인증의 RMSK 취득",
+      ],
     },
     {
       name: "강유",
       role: "원장",
+      image: "/assets/doctors/kang-yu.png",
+      summary: "근골격·연구 기반 진료",
+      credentials: [
+        "경희대학교 한의과대학 졸업",
+        "경희의료원 임상과정 수료",
+        "강동경희대병원 임상과정 수료",
+        "MPS 연구회 정회원",
+        "SCIE 논문 제1저자",
+      ],
     },
+  ],
+};
+
+export const gallerySectionContent = {
+  eyebrow: "Clinic View",
+  title: "편안함과 신뢰감을 느낄 수 있는 공간과 사람들",
+  description:
+    "실제 내부 사진과 병원 분위기 이미지를 함께 배치해 처음 방문하는 분도 병원의 인상을 미리 확인할 수 있도록 구성합니다.",
+  interiorImages: [
+    { src: "/assets/interior/interior-1.jpg", alt: "안성경희365한의원 내부 전경 1" },
+    { src: "/assets/interior/interior-2.jpg", alt: "안성경희365한의원 내부 전경 2" },
+    { src: "/assets/interior/interior-3.jpg", alt: "안성경희365한의원 내부 전경 3" },
+  ],
+  peopleImages: [
+    { src: "/assets/people/people-1.jpg", alt: "안성경희365한의원 분위기 이미지 1" },
+    { src: "/assets/people/people-2.jpg", alt: "안성경희365한의원 분위기 이미지 2" },
   ],
 };
 

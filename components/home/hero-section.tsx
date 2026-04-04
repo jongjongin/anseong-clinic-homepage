@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { heroContent } from "@/components/home/content";
 import Reveal from "@/components/home/reveal";
 
@@ -52,6 +53,15 @@ export default function HeroSection() {
 
         <Reveal className="relative" delayMs={120}>
           <div className="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-[0_20px_80px_rgba(15,23,42,0.06)] sm:p-7">
+            <div className="relative mb-5 min-h-[240px] overflow-hidden rounded-[1.5rem] border border-slate-100 bg-slate-50">
+              <Image
+                src={heroContent.visualImage}
+                alt="안성경희365한의원 대표 이미지"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+            </div>
             <div className="rounded-[1.5rem] border border-slate-100 bg-[#fbfcfc] p-5 sm:p-7">
               <div className="flex items-center justify-between border-b border-slate-200 pb-4">
                 <p className="text-sm font-semibold text-teal-700">{heroContent.noticeTitle}</p>

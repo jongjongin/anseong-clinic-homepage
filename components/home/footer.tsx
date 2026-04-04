@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { footerContent } from "@/components/home/content";
 import Reveal from "@/components/home/reveal";
 
@@ -11,7 +12,12 @@ export default function Footer() {
           </div>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="pt-8">
-              <p className="text-lg font-bold text-white">{footerContent.clinicName}</p>
+              <div className="flex items-center gap-3">
+                <div className="relative h-12 w-12 overflow-hidden rounded-full border border-white/10 bg-white">
+                  <Image src="/assets/logo/logo.png" alt="안성경희365한의원 로고" fill className="object-contain p-1.5" sizes="48px" />
+                </div>
+                <p className="text-lg font-bold text-white">{footerContent.clinicName}</p>
+              </div>
               <div className="mt-4 space-y-2 text-sm leading-6 text-slate-400">
                 <p>{footerContent.phone}</p>
                 <p>{footerContent.address}</p>

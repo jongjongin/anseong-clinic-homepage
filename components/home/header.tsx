@@ -1,14 +1,20 @@
+import Image from "next/image";
 import { headerMenuItems } from "@/components/home/content";
 
 export default function Header() {
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-        <div>
-          <p className="text-[11px] font-semibold tracking-[0.22em] text-teal-700 uppercase sm:text-xs">
-            Anseong Clinic
-          </p>
-          <p className="mt-1 text-base font-bold text-slate-900 sm:text-xl">안성경희365한의원</p>
+        <div className="flex items-center gap-3">
+          <div className="relative h-11 w-11 overflow-hidden rounded-full border border-slate-200 bg-white">
+            <Image src="/assets/logo/logo.png" alt="안성경희365한의원 로고" fill className="object-contain p-1.5" sizes="44px" />
+          </div>
+          <div>
+            <p className="text-[11px] font-semibold tracking-[0.22em] text-teal-700 uppercase sm:text-xs">
+              Anseong Clinic
+            </p>
+            <p className="mt-1 text-base font-bold text-slate-900 sm:text-xl">안성경희365한의원</p>
+          </div>
         </div>
 
         <nav className="hidden items-center gap-7 text-sm font-medium text-slate-600 lg:flex">

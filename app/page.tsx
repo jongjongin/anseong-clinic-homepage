@@ -4,6 +4,7 @@ import {
   DoctorsSection,
   EventsSection,
   Footer,
+  GallerySection,
   Header,
   HeroSection,
   InfoSection,
@@ -17,6 +18,7 @@ export default function Home() {
       <main>
         <HeroSection />
         <IntroSection />
+        <GallerySection />
         <DepartmentsSection />
         <DoctorsSection />
         <EventsSection />
