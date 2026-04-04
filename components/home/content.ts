@@ -243,7 +243,7 @@ export const infoSectionContent = {
   mapLabel: "지도 바로가기",
   mapDescription: "네이버지도와 카카오맵에서 병원 위치를 바로 확인하실 수 있습니다.",
   address: "경기도 안성시 남파로 103 203호, 204호 (구 영천냉면 자리)",
-  parking: "주차 가능",
+  parking: "CU편의점을 끼고 돌면 좌측 지상주차장, 우측 지하주차장 모두 이용 가능합니다.",
   contact: "031-8057-0750",
   naverMapUrl: "https://naver.me/xzxmqtNK",
   kakaoMapUrl: "https://place.map.kakao.com/247448692",
@@ -288,7 +288,7 @@ export const reviewsSectionContent = {
   eyebrow: "Patient Review",
   title: "진료후기는 로그인 후 확인할 수 있도록 준비 중입니다",
   description:
-    "메디스트림 사이트처럼 실제 후기는 보호된 영역으로 운영할 예정이며, 현재는 구성만 먼저 반영했습니다.",
+    "실제 후기는 보호된 영역으로 운영할 예정이며, 현재는 구조와 화면만 먼저 반영했습니다.",
   cards: [
     {
       title: "척추·관절 진료 후기",
