@@ -2,6 +2,7 @@ export { default as Header } from "@/components/home/header";
 export { default as HeroSection } from "@/components/home/hero-section";
 export { default as IntroSection } from "@/components/home/intro-section";
 export { default as GallerySection } from "@/components/home/gallery-section";
+export { default as BlogSection } from "@/components/home/blog-section";
 export { default as DepartmentsSection } from "@/components/home/departments-section";
 export { default as DoctorsSection } from "@/components/home/doctors-section";
 export { default as EventsSection } from "@/components/home/events-section";

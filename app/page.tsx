@@ -1,4 +1,6 @@
+import { Suspense } from "react";
 import {
+  BlogSection,
   CtaSection,
   DepartmentsSection,
   DoctorsSection,
@@ -21,6 +23,9 @@ export default function Home() {
         <HeroSection />
         <IntroSection />
         <GallerySection />
+        <Suspense fallback={null}>
+          <BlogSection />
+        </Suspense>
         <DepartmentsSection />
         <DoctorsSection />
         <EventsSection />
