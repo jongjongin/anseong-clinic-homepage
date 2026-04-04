@@ -15,6 +15,15 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-YHLX7HXLFV" />
+        <Script id="google-analytics-gtag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-YHLX7HXLFV');
+          `}
+        </Script>
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
