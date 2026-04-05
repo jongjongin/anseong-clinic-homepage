@@ -30,7 +30,8 @@ export default function TelemedicineSection() {
             <div className="mt-8 flex flex-col gap-3 lg:mt-0">
               <a
                 href={telemedicineSectionContent.primaryHref}
-                className="rounded-full bg-slate-900 px-6 py-4 text-center text-base font-semibold text-white transition-colors hover:bg-slate-800"
+                className="rounded-full bg-slate-900 px-6 py-4 text-center text-base font-semibold !text-white transition-colors hover:bg-slate-800"
+                style={{ color: "#ffffff" }}
               >
                 {telemedicineSectionContent.primaryButton}
               </a>

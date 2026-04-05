@@ -70,7 +70,8 @@ export default async function BlogSection({
           <div className="mt-8 flex justify-center">
             <Link
               href="/blog"
-              className="rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
+              className="rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold !text-white transition-colors hover:bg-slate-800"
+              style={{ color: "#ffffff" }}
             >
               블로그 글 더 보기
             </Link>

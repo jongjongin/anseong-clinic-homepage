@@ -29,6 +29,7 @@ export default function MobileContactBar() {
             key={action.label}
             href={action.href}
             className={`flex min-h-13 items-center justify-center rounded-2xl px-3 py-3 text-sm font-semibold ${action.className}`}
+            style={{ color: action.label === "오시는길" ? "#020617" : "#ffffff" }}
           >
             {action.label}
           </a>

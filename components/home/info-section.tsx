@@ -63,7 +63,8 @@ export default function InfoSection() {
                   <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
                     <a
                       href={infoSectionContent.naverMapUrl}
-                      className="rounded-full bg-slate-950 px-5 py-3 text-center text-sm font-semibold text-white shadow-[0_12px_24px_rgba(15,23,42,0.16)]"
+                      className="rounded-full bg-slate-950 px-5 py-3 text-center text-sm font-semibold !text-white shadow-[0_12px_24px_rgba(15,23,42,0.16)]"
+                      style={{ color: "#ffffff" }}
                     >
                       네이버지도 보기
                     </a>

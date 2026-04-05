@@ -24,13 +24,15 @@ export default function CtaSection() {
             <div className="mt-8 flex flex-col gap-3 lg:mt-0 lg:min-w-[260px]">
               <a
                 href={`tel:${ctaSectionContent.phoneNumber}`}
-                className="rounded-full bg-white px-6 py-4 text-center text-base font-semibold text-slate-950 shadow-[0_12px_24px_rgba(255,255,255,0.12)] transition-transform duration-300 hover:scale-[1.01]"
+                className="rounded-full bg-white px-6 py-4 text-center text-base font-semibold !text-slate-950 shadow-[0_12px_24px_rgba(255,255,255,0.12)] transition-transform duration-300 hover:scale-[1.01]"
+                style={{ color: "#020617" }}
               >
                 {ctaSectionContent.phoneButton}
               </a>
               <a
                 href={ctaSectionContent.kakaoChatUrl}
-                className="rounded-full border border-slate-700 bg-slate-950 px-6 py-4 text-center text-base font-semibold text-white shadow-[0_12px_24px_rgba(15,23,42,0.22)] transition-colors duration-300 hover:bg-slate-800"
+                className="rounded-full border border-slate-700 bg-slate-950 px-6 py-4 text-center text-base font-semibold !text-white shadow-[0_12px_24px_rgba(15,23,42,0.22)] transition-colors duration-300 hover:bg-slate-800"
+                style={{ color: "#ffffff" }}
               >
                 {ctaSectionContent.kakaoButton}
               </a>
