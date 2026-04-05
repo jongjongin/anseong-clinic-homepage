@@ -29,7 +29,9 @@ export default function HeroSection() {
                   {heroContent.eyebrow}
                 </span>
                 <h1 className="mt-6 max-w-3xl text-[2.35rem] font-bold leading-[1.15] text-white sm:text-5xl lg:text-[4.1rem]">
-                  365일 당신의 건강을 책임지는
+                  365일 당신의
+                  <br />
+                  건강을 책임지는
                   <br />
                   안성경희365한의원
                 </h1>
@@ -78,7 +80,7 @@ export default function HeroSection() {
 
           <Reveal className="relative" delayMs={120}>
             <div className="rounded-[2.1rem] border border-slate-200 bg-white p-5 shadow-[0_20px_80px_rgba(15,23,42,0.06)] sm:p-7">
-              <div className="relative mb-5 min-h-[280px] overflow-hidden rounded-[1.6rem] border border-slate-100 bg-slate-50 sm:min-h-[340px]">
+              <div className="relative min-h-[430px] overflow-hidden rounded-[1.8rem] border border-slate-100 bg-slate-50 sm:min-h-[540px]">
                 <Image
                   src={heroContent.visualImage}
                   alt="안성경희365한의원 대표 이미지"
@@ -93,32 +95,6 @@ export default function HeroSection() {
                   <p className="mt-2 text-base font-semibold leading-7 text-slate-900">
                     편하게 내원할 수 있도록 진료시간과 상담 흐름을 한 화면에서 확인할 수 있게 구성했습니다.
                   </p>
-                </div>
-              </div>
-              <div className="rounded-[1.6rem] border border-slate-100 bg-[#fbfcfc] p-5 sm:p-7">
-                <div className="flex items-center justify-between border-b border-slate-200 pb-4">
-                  <p className="text-sm font-semibold text-teal-700">{heroContent.noticeTitle}</p>
-                  <span className="rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700">
-                    365 Clinic
-                  </span>
-                </div>
-                <div className="mt-6 space-y-3">
-                  {heroContent.highlights.map((item, index) => (
-                    <div
-                      key={item}
-                      className="grid grid-cols-[40px_1fr] items-start gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-4"
-                    >
-                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-sm font-semibold text-white">
-                        {index + 1}
-                      </span>
-                      <p className="pt-1 text-sm leading-6 text-slate-700">{item}</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-6 rounded-[1.5rem] border border-slate-200 bg-slate-50 px-5 py-6">
-                  <p className="text-sm font-semibold text-teal-700">{heroContent.contactLabel}</p>
-                  <p className="mt-2 text-2xl font-bold tracking-tight text-slate-900">{heroContent.contactNumber}</p>
-                  <p className="mt-3 text-sm leading-6 text-slate-600">{heroContent.contactDescription}</p>
                 </div>
               </div>
             </div>

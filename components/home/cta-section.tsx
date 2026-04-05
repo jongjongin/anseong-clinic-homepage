@@ -31,8 +31,8 @@ export default function CtaSection() {
               </a>
               <a
                 href={ctaSectionContent.kakaoChatUrl}
-                className="rounded-full border border-slate-700 bg-slate-950 px-6 py-4 text-center text-base font-semibold !text-white shadow-[0_12px_24px_rgba(15,23,42,0.22)] transition-colors duration-300 hover:bg-slate-800"
-                style={{ color: "#ffffff" }}
+                className="rounded-full border border-[#E2C400] bg-[#FEE500] px-6 py-4 text-center text-base font-semibold !text-slate-950 shadow-[0_12px_24px_rgba(254,229,0,0.24)] transition-colors duration-300 hover:bg-[#F7DE00]"
+                style={{ color: "#191919" }}
               >
                 {ctaSectionContent.kakaoButton}
               </a>

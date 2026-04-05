@@ -204,9 +204,9 @@ export const doctorsSectionContent = {
 
 export const gallerySectionContent = {
   eyebrow: "Clinic View",
-  title: "처음 방문하시는 분도 병원의 분위기를 미리 확인하실 수 있습니다",
+  title: "밝고 편안한 진료 공간을 미리 둘러보실 수 있습니다",
   description:
-    "내부 공간과 병원 분위기를 미리 보실 수 있도록 실제 사진을 함께 정리했습니다.",
+    "대기 공간부터 진료실 분위기까지 미리 확인하실 수 있도록 실제 병원 사진을 정리했습니다.",
   interiorImages: [
     { src: "/assets/interior/interior-1.jpg", alt: "안성경희365한의원 내부 전경 1" },
     { src: "/assets/interior/interior-2.jpg", alt: "안성경희365한의원 내부 전경 2" },
@@ -232,18 +232,6 @@ export const eventsSectionContent = {
       title: "5월 가정의 달 이벤트 진행 중",
       period: "진행 중",
       description: "건강을 챙겨야 할 시기, 가족과 함께 시작하는 관리. 상담을 통해 맞춤 프로그램을 안내드립니다.",
-    },
-    {
-      category: "PROGRAM",
-      title: "다이어트 프로그램 상담",
-      period: "상시 상담 가능",
-      description: "체질과 생활 패턴을 고려한 감량 프로그램 상담을 통해 보다 알맞은 관리 방향을 안내드립니다.",
-    },
-    {
-      category: "PROGRAM",
-      title: "총명공진단 상담",
-      period: "상시 상담 가능",
-      description: "건강관리와 집중력 케어가 필요한 분들을 위해 총명공진단 관련 상담 안내를 제공합니다.",
     },
   ],
 };

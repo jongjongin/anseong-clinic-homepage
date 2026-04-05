@@ -10,6 +10,10 @@ export default function EventsCarousel() {
   const total = eventsSectionContent.items.length;
 
   useEffect(() => {
+    if (total <= 1) {
+      return;
+    }
+
     const timer = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % total);
     }, 5200);
@@ -50,40 +54,42 @@ export default function EventsCarousel() {
 
   return (
     <div className="mt-12">
-      <div className="flex items-center justify-between gap-4">
-        <div className="flex gap-2">
-          {eventsSectionContent.items.map((event, index) => (
-            <button
-              key={event.title}
-              type="button"
-              aria-label={`${index + 1}번 이벤트 보기`}
-              onClick={() => setActiveIndex(index)}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                activeIndex === index ? "w-8 bg-slate-900" : "w-2.5 bg-slate-300"
-              }`}
-            />
-          ))}
-        </div>
+      {total > 1 ? (
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex gap-2">
+            {eventsSectionContent.items.map((event, index) => (
+              <button
+                key={event.title}
+                type="button"
+                aria-label={`${index + 1}번 이벤트 보기`}
+                onClick={() => setActiveIndex(index)}
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  activeIndex === index ? "w-8 bg-slate-900" : "w-2.5 bg-slate-300"
+                }`}
+              />
+            ))}
+          </div>
 
-        <div className="flex gap-2">
-          <button
-            type="button"
-            onClick={goToPrevious}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition-all duration-300 hover:border-slate-900 hover:text-slate-900"
-            aria-label="이전 이벤트"
-          >
-            ←
-          </button>
-          <button
-            type="button"
-            onClick={goToNext}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition-all duration-300 hover:border-slate-900 hover:text-slate-900"
-            aria-label="다음 이벤트"
-          >
-            →
-          </button>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={goToPrevious}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition-all duration-300 hover:border-slate-900 hover:text-slate-900"
+              aria-label="이전 이벤트"
+            >
+              ←
+            </button>
+            <button
+              type="button"
+              onClick={goToNext}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition-all duration-300 hover:border-slate-900 hover:text-slate-900"
+              aria-label="다음 이벤트"
+            >
+              →
+            </button>
+          </div>
         </div>
-      </div>
+      ) : null}
 
       <div
         className="mt-6 overflow-hidden"
@@ -109,8 +115,8 @@ export default function EventsCarousel() {
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <a
                     href={eventsSectionContent.consultationHref}
-                    className="rounded-full bg-slate-900 px-5 py-3 text-center text-sm font-semibold !text-white transition-colors hover:bg-slate-800"
-                    style={{ color: "#ffffff" }}
+                    className="rounded-full border border-[#E2C400] bg-[#FEE500] px-5 py-3 text-center text-sm font-semibold !text-slate-950 transition-colors hover:bg-[#F7DE00]"
+                    style={{ color: "#191919" }}
                   >
                     이벤트 상담하기
                   </a>
