@@ -1,5 +1,6 @@
 export { default as Header } from "@/components/home/header";
 export { default as HeroSection } from "@/components/home/hero-section";
+export { default as MobileContactBar } from "@/components/home/mobile-contact-bar";
 export { default as IntroSection } from "@/components/home/intro-section";
 export { default as GallerySection } from "@/components/home/gallery-section";
 export { default as BlogSection } from "@/components/home/blog-section";

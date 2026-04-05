@@ -11,6 +11,7 @@ import {
   HeroSection,
   InfoSection,
   IntroSection,
+  MobileContactBar,
   ReviewsSection,
   TelemedicineSection,
 } from "@/components/home";
@@ -35,6 +36,7 @@ export default function Home() {
         <CtaSection />
       </main>
       <Footer />
+      <MobileContactBar />
     </div>
   );
 }
