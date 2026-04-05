@@ -4,8 +4,8 @@ export const headerMenuItems = [
   { label: "의료진", href: "#doctors" },
   { label: "블로그", href: "/blog" },
   { label: "이벤트", href: "#events" },
-  { label: "진료후기", href: "#reviews" },
-  { label: "비대면진료", href: "#telemedicine" },
+  { label: "진료후기", href: "#reviews", disabled: true, note: "준비중" },
+  { label: "비대면진료", href: "#telemedicine", disabled: true, note: "준비중" },
   { label: "오시는 길", href: "#hours" },
   { label: "상담 문의", href: "#consult" },
 ];
@@ -291,6 +291,7 @@ export const reviewsSectionContent = {
   title: "진료후기는 로그인 후 확인할 수 있도록 준비 중입니다",
   description:
     "실제 후기는 보호된 영역으로 운영할 예정이며, 현재는 구조와 화면만 먼저 반영했습니다.",
+  statusBadge: "로그인 기능 준비 예정",
   cards: [
     {
       title: "척추·관절 진료 후기",
@@ -305,21 +306,23 @@ export const reviewsSectionContent = {
       excerpt: "무리한 감량보다 몸 상태에 맞는 방향으로 설명해주셔서 꾸준히 관리하기 좋았습니다.",
     },
   ],
-  loginNotice: "로그인 기능 연동 후 실제 후기 전체를 확인할 수 있습니다.",
+  loginNotice:
+    "로그인 기능 연동 후 실제 후기 전체를 확인할 수 있습니다. 현재는 오픈 전 화면으로만 준비되어 있습니다.",
 };
 
 export const telemedicineSectionContent = {
   eyebrow: "Remote Care",
-  title: "비대면진료 안내를 위한 영역을 미리 준비했습니다",
+  title: "비대면진료는 카카오톡 문의와 전화 상담 중심으로 준비 중입니다",
   description:
-    "나중에 결제 페이지와 연동할 수 있도록, 비대면진료의 흐름과 안내 내용을 먼저 정리해 두었습니다.",
+    "현재는 오픈 전 단계로, 카카오톡 문의와 전화 상담을 통해 진료 가능 여부와 진행 흐름을 먼저 안내드릴 예정입니다.",
+  statusBadge: "비대면진료 준비 예정",
   items: [
-    "전화 또는 카카오 상담으로 먼저 진료 가능 여부를 안내합니다.",
-    "예약 확정 후 비대면진료 절차와 준비사항을 개별 안내합니다.",
-    "향후 결제 페이지 및 신청 폼과 연동할 수 있도록 구조를 분리해 두었습니다.",
+    "카카오톡 문의로 현재 증상과 상담 가능 여부를 먼저 안내합니다.",
+    "전화 상담으로 필요한 진료 흐름과 준비사항을 함께 설명드립니다.",
+    "추후 비대면 예약과 결제 페이지를 순차적으로 연결할 예정입니다.",
   ],
-  primaryButton: "비대면진료 상담하기",
+  primaryButton: "카카오톡 문의하기",
   primaryHref: "http://pf.kakao.com/_RWgxnG/chat",
-  secondaryButton: "전화 문의하기",
+  secondaryButton: "전화 상담하기",
   secondaryHref: "tel:031-8057-0750",
 };

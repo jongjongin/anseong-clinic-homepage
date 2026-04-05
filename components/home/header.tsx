@@ -32,7 +32,15 @@ export default function Header() {
 
         <nav className="hidden items-center gap-5 text-[15px] font-medium text-slate-600 lg:flex xl:gap-7">
           {headerMenuItems.map((item) =>
-            getMenuHref(item.href).startsWith("/") ? (
+            item.disabled ? (
+              <span
+                key={item.label}
+                className="flex cursor-default items-center gap-1 whitespace-nowrap break-keep text-slate-400"
+              >
+                <span>{item.label}</span>
+                <span className="text-[11px] font-semibold text-slate-300">{item.note}</span>
+              </span>
+            ) : getMenuHref(item.href).startsWith("/") ? (
               <Link
                 key={item.label}
                 href={getMenuHref(item.href)}
@@ -80,7 +88,15 @@ export default function Header() {
         <div className="border-t border-slate-200 bg-white px-4 py-4 lg:hidden">
           <nav className="flex flex-col gap-2">
             {headerMenuItems.map((item) =>
-              getMenuHref(item.href).startsWith("/") ? (
+              item.disabled ? (
+                <div
+                  key={item.label}
+                  className="flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium text-slate-400"
+                >
+                  <span>{item.label}</span>
+                  <span className="text-xs font-semibold text-slate-300">{item.note}</span>
+                </div>
+              ) : getMenuHref(item.href).startsWith("/") ? (
                 <Link
                   key={item.label}
                   href={getMenuHref(item.href)}

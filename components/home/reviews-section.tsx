@@ -7,17 +7,22 @@ export default function ReviewsSection() {
     <section id="reviews" className="bg-white">
       <div className="mx-auto max-w-6xl px-4 py-18 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
         <Reveal>
-          <SectionTitle
-            eyebrow={reviewsSectionContent.eyebrow}
-            title={reviewsSectionContent.title}
-            description={reviewsSectionContent.description}
-          />
+          <div className="flex flex-col gap-4">
+            <SectionTitle
+              eyebrow={reviewsSectionContent.eyebrow}
+              title={reviewsSectionContent.title}
+              description={reviewsSectionContent.description}
+            />
+            <div className="inline-flex w-fit rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-500">
+              {reviewsSectionContent.statusBadge}
+            </div>
+          </div>
         </Reveal>
 
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
           {reviewsSectionContent.cards.map((card, index) => (
             <Reveal key={card.title} delayMs={index * 60}>
-              <article className="interactive-card overflow-hidden rounded-[2rem] border border-slate-200 bg-[#fbfcfc] p-6 sm:p-8">
+              <article className="overflow-hidden rounded-[2rem] border border-slate-200 bg-[#fbfcfc] p-6 opacity-90 sm:p-8">
                 <p className="text-sm font-semibold tracking-[0.1em] text-teal-700 uppercase">
                   Review
                 </p>
