@@ -1,4 +1,11 @@
-export const headerMenuItems = [
+export type HeaderMenuItem = {
+  label: string;
+  href: string;
+  disabled?: boolean;
+  note?: string;
+};
+
+export const headerMenuItems: HeaderMenuItem[] = [
   { label: "병원 소개", href: "#hero" },
   { label: "진료 과목", href: "#departments" },
   { label: "의료진", href: "#doctors" },
