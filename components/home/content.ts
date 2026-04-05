@@ -4,7 +4,7 @@ export const headerMenuItems = [
   { label: "의료진", href: "#doctors" },
   { label: "블로그", href: "/blog" },
   { label: "이벤트", href: "#events" },
-  { label: "진료후기", href: "#reviews", disabled: true, note: "준비중" },
+  { label: "진료후기", href: "/reviews" },
   { label: "비대면진료", href: "#telemedicine" },
   { label: "오시는 길", href: "#hours" },
   { label: "상담 문의", href: "#consult" },
@@ -289,10 +289,16 @@ export const footerContent = {
 
 export const reviewsSectionContent = {
   eyebrow: "Patient Review",
-  title: "진료후기는 로그인 후 확인할 수 있도록 준비 중입니다",
+  title: "진료후기는 네이버 로그인 후 확인하실 수 있도록 준비하고 있습니다",
   description:
-    "실제 후기는 보호된 영역으로 운영할 예정이며, 현재는 구조와 화면만 먼저 반영했습니다.",
-  statusBadge: "로그인 기능 준비 예정",
+    "후기 열람은 로그인 후 가능한 구조로 운영할 예정이며, 현재는 로그인 전 안내 화면을 먼저 반영해 두었습니다.",
+  statusBadge: "후기 보기 전용 로그인",
+  loginTitle: "네이버 로그인 후 실제 진료후기를 확인하실 수 있습니다",
+  loginDescription:
+    "진료후기 페이지는 회원가입이 아니라 후기 열람을 위한 로그인 구조로 준비 중입니다. 로그인 후 후기 목록과 상세 내용을 확인하실 수 있게 구성할 예정입니다.",
+  loginButton: "네이버 로그인 후 후기 보기",
+  loginHelp:
+    "검수용 화면에서는 네이버 로그인 버튼과 로그인 후 후기 열람 화면이 함께 보일 수 있도록 정리해두는 것이 좋습니다.",
   cards: [
     {
       title: "척추·관절 진료 후기",
@@ -308,7 +314,7 @@ export const reviewsSectionContent = {
     },
   ],
   loginNotice:
-    "로그인 기능 연동 후 실제 후기 전체를 확인할 수 있습니다. 현재는 오픈 전 화면으로만 준비되어 있습니다.",
+    "로그인 후 후기만 열람하는 방식으로 운영할 예정이며, 상담이나 예약과는 별도로 분리해 관리합니다.",
 };
 
 export const telemedicineSectionContent = {

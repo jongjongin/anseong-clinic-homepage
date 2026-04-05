@@ -38,8 +38,21 @@ export default function ReviewsSection() {
         </div>
 
         <Reveal delayMs={120}>
-          <div className="mt-8 rounded-[1.5rem] border border-dashed border-slate-300 bg-slate-50 px-6 py-5 text-sm leading-7 text-slate-600">
-            {reviewsSectionContent.loginNotice}
+          <div className="mt-8 rounded-[1.8rem] border border-slate-200 bg-slate-50 px-6 py-6 sm:px-7">
+            <p className="text-sm font-semibold text-teal-700">{reviewsSectionContent.loginTitle}</p>
+            <p className="mt-3 text-sm leading-7 text-slate-600">
+              {reviewsSectionContent.loginDescription}
+            </p>
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href="/reviews"
+                className="inline-flex rounded-full border border-[#1ec800] bg-[#03c75a] px-6 py-3 text-center text-sm font-semibold !text-white transition-colors hover:bg-[#02b351]"
+                style={{ color: "#ffffff" }}
+              >
+                {reviewsSectionContent.loginButton}
+              </a>
+              <p className="text-sm leading-6 text-slate-500">{reviewsSectionContent.loginNotice}</p>
+            </div>
           </div>
         </Reveal>
       </div>
