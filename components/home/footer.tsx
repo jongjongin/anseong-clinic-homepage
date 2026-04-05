@@ -17,7 +17,15 @@ export default function Footer() {
                 <div className="relative h-12 w-12 overflow-hidden rounded-full border border-white/10 bg-white">
                   <Image src="/assets/logo/logo.png" alt="안성경희365한의원 로고" fill className="object-contain p-1.5" sizes="48px" />
                 </div>
-                <p className="text-lg font-bold text-white">{footerContent.clinicName}</p>
+                <div className="relative h-11 w-[220px]">
+                  <Image
+                    src="/assets/logo/logo-wordmark.png"
+                    alt="안성경희365한의원 로고"
+                    fill
+                    className="object-contain object-left brightness-[3.5]"
+                    sizes="220px"
+                  />
+                </div>
               </div>
               <div className="mt-4 space-y-2 text-sm leading-6 text-slate-400">
                 <p>{footerContent.phone}</p>
