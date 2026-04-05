@@ -1,11 +1,12 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { doctorsSectionContent } from "@/components/home/content";
 
 export default function DoctorsCarousel() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const scrollByCard = (direction: "prev" | "next") => {
     const container = containerRef.current;
@@ -20,6 +21,58 @@ export default function DoctorsCarousel() {
       behavior: "smooth",
     });
   };
+
+  const scrollToCard = (index: number) => {
+    const container = containerRef.current;
+
+    if (!container) {
+      return;
+    }
+
+    const card = container.children.item(index) as HTMLElement | null;
+
+    if (!card) {
+      return;
+    }
+
+    container.scrollTo({
+      left: card.offsetLeft,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    const container = containerRef.current;
+
+    if (!container) {
+      return;
+    }
+
+    const updateActiveIndex = () => {
+      const containerCenter = container.scrollLeft + container.clientWidth / 2;
+      const cards = Array.from(container.children) as HTMLElement[];
+
+      let closestIndex = 0;
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      cards.forEach((card, index) => {
+        const cardCenter = card.offsetLeft + card.clientWidth / 2;
+        const distance = Math.abs(cardCenter - containerCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      setActiveIndex(closestIndex);
+    };
+
+    updateActiveIndex();
+    container.addEventListener("scroll", updateActiveIndex, { passive: true });
+
+    return () => container.removeEventListener("scroll", updateActiveIndex);
+  }, []);
 
   return (
     <div className="mt-12">
@@ -81,6 +134,20 @@ export default function DoctorsCarousel() {
               </ul>
             </div>
           </article>
+        ))}
+      </div>
+
+      <div className="mt-6 flex items-center justify-center gap-2">
+        {doctorsSectionContent.items.map((doctor, index) => (
+          <button
+            key={doctor.name}
+            type="button"
+            onClick={() => scrollToCard(index)}
+            aria-label={`${doctor.name} 원장 보기`}
+            className={`h-2.5 rounded-full transition-all ${
+              activeIndex === index ? "w-8 bg-slate-900" : "w-2.5 bg-slate-300"
+            }`}
+          />
         ))}
       </div>
     </div>

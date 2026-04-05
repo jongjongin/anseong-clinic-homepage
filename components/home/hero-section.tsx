@@ -53,21 +53,18 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              <div className="relative z-10 mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-                {[
-                  { label: "365일 진료", value: "매일 운영" },
-                  { label: "평일", value: "09-20" },
-                  { label: "토·일·공휴일", value: "09-15" },
-                  { label: "대표번호", value: "031-8057-0750" },
-                ].map((item) => (
+              <div className="relative z-10 mt-8 grid gap-3 lg:grid-cols-3">
+                {heroContent.stats.map((item) => (
                   <div
                     key={item.label}
-                    className="rounded-[1.4rem] border border-white/16 bg-white/10 px-4 py-4 backdrop-blur-sm"
+                    className="rounded-[1.4rem] border border-white/16 bg-white/10 px-4 py-4 backdrop-blur-sm sm:px-5 sm:py-5"
                   >
                     <p className="text-xs font-semibold tracking-[0.12em] text-white/70 uppercase">
                       {item.label}
                     </p>
-                    <p className="mt-2 text-lg font-bold text-white sm:text-xl">{item.value}</p>
+                    <p className="mt-2 whitespace-pre-line text-base leading-7 font-bold text-white sm:text-lg">
+                      {item.value}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -113,23 +110,12 @@ export default function HeroSection() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-6 rounded-[1.5rem] bg-slate-900 px-5 py-6 text-white">
-                  <p className="text-sm text-white/70">{heroContent.contactLabel}</p>
-                  <p className="mt-2 text-3xl font-bold tracking-tight">{heroContent.contactNumber}</p>
-                  <p className="mt-3 text-sm leading-6 text-white/80">{heroContent.contactDescription}</p>
+                <div className="mt-6 rounded-[1.5rem] border border-slate-200 bg-slate-50 px-5 py-6">
+                  <p className="text-sm font-semibold text-teal-700">{heroContent.contactLabel}</p>
+                  <p className="mt-2 text-2xl font-bold tracking-tight text-slate-900">{heroContent.contactNumber}</p>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">{heroContent.contactDescription}</p>
                 </div>
               </div>
-            </div>
-
-            <div className="absolute -bottom-5 left-5 hidden rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-[0_14px_40px_rgba(15,23,42,0.08)] lg:block">
-              <p className="text-xs font-semibold tracking-[0.12em] text-slate-400 uppercase">
-                Recovery Note
-              </p>
-              <p className="mt-2 text-sm leading-6 text-slate-600">
-                증상 설명이 어려워도
-                <br />
-                편하게 상담부터 시작하실 수 있습니다.
-              </p>
             </div>
           </Reveal>
         </div>

@@ -5,7 +5,7 @@ export const headerMenuItems = [
   { label: "블로그", href: "/blog" },
   { label: "이벤트", href: "#events" },
   { label: "진료후기", href: "#reviews", disabled: true, note: "준비중" },
-  { label: "비대면진료", href: "#telemedicine", disabled: true, note: "준비중" },
+  { label: "비대면진료", href: "#telemedicine" },
   { label: "오시는 길", href: "#hours" },
   { label: "상담 문의", href: "#consult" },
 ];
@@ -19,19 +19,29 @@ export const heroContent = {
   secondaryButton: "전화 상담하기",
   reservationHref: "http://pf.kakao.com/_RWgxnG/chat",
   phoneHref: "tel:031-8057-0750",
-  noticeTitle: "안성경희365 진료 원칙",
+  noticeTitle: "처음 오시는 분 안내",
   highlights: [
-    "365일 진료로 평일과 주말에도 진료 연결이 가능합니다.",
-    "척추관절 통증과 교통사고 후유증을 중심으로 생활 불편을 함께 살핍니다.",
-    "현재 증상뿐 아니라 생활 습관과 회복 이후의 편안함까지 고려합니다.",
+    "증상이 정확히 설명되지 않아도 현재 불편한 점부터 편하게 말씀해 주세요.",
+    "어떤 진료가 필요한지 상담과 진료 흐름을 먼저 차분히 안내해드립니다.",
+    "통증 완화뿐 아니라 일상에서 더 편해질 수 있는 방향까지 함께 살핍니다.",
   ],
-  contactLabel: "대표 상담",
-  contactNumber: "031-8057-0750",
-  contactDescription: "전화 상담이 가능하며, 증상을 먼저 말씀해주시면 진료 흐름을 보다 편하게 안내해드립니다.",
+  contactLabel: "내원 전 안내",
+  contactNumber: "처음 방문도 편하게",
+  contactDescription:
+    "처음 내원하시는 분도 증상과 불편한 점을 말씀해 주시면 접수부터 상담 흐름까지 이해하기 쉽게 안내해드립니다.",
   stats: [
-    { label: "365일 진료", value: "매일 운영" },
-    { label: "평일 진료", value: "09-20" },
-    { label: "주말 진료", value: "09-15" },
+    {
+      label: "365일 진료",
+      value: "(설 전날, 당일, 추석전날, 당일 제외)",
+    },
+    {
+      label: "평일",
+      value: "오전 9시 - 오후 8시\n(점심시간 1시 - 2시)",
+    },
+    {
+      label: "토·일·공휴일",
+      value: "오전 9시 - 오후 3시\n(점심시간 없음)",
+    },
   ],
   visualImage: "/assets/people/people-1.jpg",
 };
@@ -39,17 +49,17 @@ export const heroContent = {
 export const introSectionContent = {
   eyebrow: "Hospital Introduction",
   paragraphs: [
-    "안성경희365한의원은 환자의 현재 통증뿐 아니라 생활 속 불편함까지 함께 고려하여 치료합니다.",
-    "불필요한 치료는 줄이고, 필요한 치료는 충분히 진행하는 것을 원칙으로 합니다.",
-    "365일 진료와 야간진료 운영으로 필요할 때 언제든 찾을 수 있는 한의원을 지향합니다.",
+    "안성경희365한의원은 아픈 부위만 보는 것이 아니라 일상에서 어떤 점이 불편한지 함께 듣고 치료 방향을 정합니다.",
+    "불필요한 치료는 줄이고, 꼭 필요한 치료는 충분히 설명드린 뒤 진행하는 것을 원칙으로 합니다.",
+    "평일 저녁과 주말에도 내원하실 수 있도록 365일 진료 체계로 운영하고 있습니다.",
   ],
 };
 
 export const departmentsSectionContent = {
   eyebrow: "Medical Service",
-  title: "필요한 진료를 한눈에 찾을 수 있도록 정리했습니다",
+  title: "불편한 증상에 맞춰 필요한 진료를 쉽게 찾으실 수 있습니다",
   description:
-    "척추관절부터 여성질환까지 주요 진료과목을 바로 확인할 수 있도록 구성했습니다. 복잡한 설명보다 방문자가 먼저 이해하기 쉬운 흐름을 우선했습니다.",
+    "목, 허리, 어깨 같은 통증부터 교통사고 후유증, 성장, 다이어트, 여성질환까지 현재 증상에 맞춰 진료 방향을 살펴보실 수 있도록 정리했습니다.",
   badge: "집중 진료",
   items: [
     {
@@ -101,7 +111,7 @@ export const doctorsSectionContent = {
   eyebrow: "Medical Team",
   title: "환자의 생활까지 고려한 치료를 지향합니다",
   description:
-    "환자의 상태만 보는 것이 아니라 생활 속에서 겪는 불편함까지 함께 고려하여 치료 방향을 설정합니다. 빠르게 끝내는 치료보다 확실하게 좋아지는 치료를 목표로 합니다.",
+    "현재 통증만 줄이는 데 그치지 않고, 일상생활에서 더 편하게 움직이고 회복할 수 있도록 치료 방향을 함께 고민합니다.",
   items: [
     {
       name: "윤종인",
@@ -191,9 +201,9 @@ export const doctorsSectionContent = {
 
 export const gallerySectionContent = {
   eyebrow: "Clinic View",
-  title: "편안함과 신뢰감을 느낄 수 있는 공간과 사람들",
+  title: "처음 방문하시는 분도 병원의 분위기를 미리 확인하실 수 있습니다",
   description:
-    "실제 내부 사진과 병원 분위기 이미지를 함께 배치해 처음 방문하는 분도 병원의 인상을 미리 확인할 수 있도록 구성합니다.",
+    "내부 공간과 병원 분위기를 미리 보실 수 있도록 실제 사진을 함께 정리했습니다.",
   interiorImages: [
     { src: "/assets/interior/interior-1.jpg", alt: "안성경희365한의원 내부 전경 1" },
     { src: "/assets/interior/interior-2.jpg", alt: "안성경희365한의원 내부 전경 2" },
@@ -207,9 +217,9 @@ export const gallerySectionContent = {
 
 export const eventsSectionContent = {
   eyebrow: "Clinic News",
-  title: "이벤트와 안내 소식을 한눈에 확인할 수 있습니다",
+  title: "현재 진행 중인 상담 안내와 이벤트를 확인해 보세요",
   description:
-    "실제 병원 홈페이지처럼 현재 진행 중인 이벤트와 안내를 간단하고 분명하게 확인할 수 있도록 정리했습니다.",
+    "내원 전 참고하실 수 있도록 현재 진행 중인 이벤트와 상담 가능 프로그램을 한눈에 보기 쉽게 정리했습니다.",
   buttonLabel: "자세히 보기",
   allEventsLabel: "블로그 글 더 보기",
   consultationHref: "http://pf.kakao.com/_RWgxnG/chat",
@@ -237,9 +247,9 @@ export const eventsSectionContent = {
 
 export const infoSectionContent = {
   eyebrow: "Visit Information",
-  title: "방문 전 필요한 진료정보를 쉽게 확인할 수 있게 정리했습니다",
+  title: "내원 전에 꼭 필요한 진료시간과 위치 안내를 확인해 주세요",
   description:
-    "365일 진료, 평일과 주말 운영 시간, 전화 상담 가능 여부처럼 실제 방문 전에 가장 먼저 확인하는 정보를 분명하게 보여주도록 구성했습니다.",
+    "진료시간, 위치, 주차, 지도 확인처럼 방문 전에 가장 많이 찾으시는 내용을 한 곳에 모아두었습니다.",
   hoursTitle: "진료정보",
   locationTitle: "오시는 길",
   mapLabel: "지도 바로가기",
@@ -265,7 +275,7 @@ export const ctaSectionContent = {
   eyebrow: "Consultation",
   title: ["지금 불편한 증상이 있다면", "전화 상담부터 편하게 시작해 보세요"],
   description:
-    "척추관절, 교통사고, 약침추나, 소아성장, 다이어트, 여성질환 등 어떤 진료가 필요한지 고민될 때 먼저 전화로 편하게 문의해 주세요.",
+    "어떤 진료를 받아야 할지 고민되신다면 먼저 전화나 카카오톡으로 문의해 주세요. 현재 불편한 증상에 맞춰 내원 방향을 안내해드립니다.",
   phoneButton: "전화 상담하기",
   kakaoButton: "상담 예약하기",
   phoneNumber: "031-8057-0750",
@@ -275,7 +285,7 @@ export const ctaSectionContent = {
 export const footerContent = {
   clinicName: "안성경희365한의원",
   notice:
-    "본 사이트의 모든 콘텐츠는 안내 목적이며, 실제 진료 내용과 운영 시간은 병원 사정에 따라 달라질 수 있습니다.",
+    "홈페이지 안내 내용은 참고용이며, 실제 진료 일정과 세부 운영 내용은 병원 사정에 따라 달라질 수 있습니다.",
   phone: "대표번호 031-8057-0750",
   address: "경기도 안성시 남파로 103 203호, 204호",
   business: "사업자등록번호 775-18-02238 | 안성경희365한의원 윤종인",
@@ -312,14 +322,13 @@ export const reviewsSectionContent = {
 
 export const telemedicineSectionContent = {
   eyebrow: "Remote Care",
-  title: "비대면진료는 카카오톡 문의와 전화 상담 중심으로 준비 중입니다",
+  title: "비대면진료는 카카오톡 문의와 전화 상담으로 안내해드립니다",
   description:
-    "현재는 오픈 전 단계로, 카카오톡 문의와 전화 상담을 통해 진료 가능 여부와 진행 흐름을 먼저 안내드릴 예정입니다.",
-  statusBadge: "비대면진료 준비 예정",
+    "비대면진료가 필요한 경우 먼저 카카오톡이나 전화로 문의해 주시면 현재 증상과 상담 가능 여부를 확인한 뒤 진행 흐름을 안내해드립니다.",
   items: [
-    "카카오톡 문의로 현재 증상과 상담 가능 여부를 먼저 안내합니다.",
-    "전화 상담으로 필요한 진료 흐름과 준비사항을 함께 설명드립니다.",
-    "추후 비대면 예약과 결제 페이지를 순차적으로 연결할 예정입니다.",
+    "카카오톡 문의로 현재 증상과 비대면 상담 가능 여부를 먼저 확인하실 수 있습니다.",
+    "전화 상담을 통해 필요한 준비사항과 진료 흐름을 안내해드립니다.",
+    "상담 후 필요한 경우 비대면진료 절차를 순서대로 도와드립니다.",
   ],
   primaryButton: "카카오톡 문의하기",
   primaryHref: "http://pf.kakao.com/_RWgxnG/chat",
