@@ -39,7 +39,7 @@ export default function HeroSection() {
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <a
                     href={heroContent.reservationHref}
-                    className="rounded-full bg-white px-6 py-4 text-center text-base font-semibold text-slate-950 shadow-[0_12px_24px_rgba(255,255,255,0.18)] transition-colors hover:bg-slate-100"
+                    className="rounded-full bg-slate-950 px-6 py-4 text-center text-base font-semibold text-white shadow-[0_12px_24px_rgba(15,23,42,0.28)] transition-colors hover:bg-slate-800"
                   >
                     {heroContent.primaryButton}
                   </a>

@@ -30,7 +30,7 @@ export default function CtaSection() {
               </a>
               <a
                 href={ctaSectionContent.kakaoChatUrl}
-                className="rounded-full border border-teal-300 bg-teal-500 px-6 py-4 text-center text-base font-semibold text-white shadow-[0_12px_24px_rgba(20,184,166,0.18)] transition-colors duration-300 hover:bg-teal-400"
+                className="rounded-full border border-slate-700 bg-slate-950 px-6 py-4 text-center text-base font-semibold text-white shadow-[0_12px_24px_rgba(15,23,42,0.22)] transition-colors duration-300 hover:bg-slate-800"
               >
                 {ctaSectionContent.kakaoButton}
               </a>
