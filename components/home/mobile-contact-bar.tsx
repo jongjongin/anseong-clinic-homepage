@@ -11,7 +11,11 @@ const mobileActions = [
   {
     label: "상담예약",
     href: heroContent.reservationHref,
+<<<<<<< HEAD
     className: "bg-slate-950 text-white",
+=======
+    className: "bg-teal-600 text-white",
+>>>>>>> 01e4c514271976f40799c55ad93d3bac282df869
   },
   {
     label: "오시는길",
