@@ -14,13 +14,13 @@ export default function Footer() {
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="pt-8">
               <div className="flex items-center">
-                <div className="relative h-11 w-[220px] sm:h-12 sm:w-[250px]">
+                <div className="relative h-12 w-[250px] sm:h-14 sm:w-[290px]">
                   <Image
                     src="/assets/logo/logo-wordmark.png"
                     alt="안성경희365한의원 로고"
                     fill
-                    className="object-contain object-left brightness-[3.5]"
-                    sizes="220px"
+                    className="object-contain object-left"
+                    sizes="290px"
                   />
                 </div>
               </div>
