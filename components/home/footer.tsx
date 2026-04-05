@@ -13,11 +13,8 @@ export default function Footer() {
           </div>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="pt-8">
-              <div className="flex items-center gap-3">
-                <div className="relative h-12 w-12 overflow-hidden rounded-full border border-white/10 bg-white">
-                  <Image src="/assets/logo/logo.png" alt="안성경희365한의원 로고" fill className="object-contain p-1.5" sizes="48px" />
-                </div>
-                <div className="relative h-11 w-[220px]">
+              <div className="flex items-center">
+                <div className="relative h-11 w-[220px] sm:h-12 sm:w-[250px]">
                   <Image
                     src="/assets/logo/logo-wordmark.png"
                     alt="안성경희365한의원 로고"
