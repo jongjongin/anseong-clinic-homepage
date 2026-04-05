@@ -1,4 +1,5 @@
 import { ctaSectionContent } from "@/components/home/content";
+import ConsultationRequestForm from "@/components/home/consultation-request-form";
 import Reveal from "@/components/home/reveal";
 
 export default function CtaSection() {
@@ -6,7 +7,7 @@ export default function CtaSection() {
     <section id="consult" className="bg-white">
       <div className="mx-auto max-w-6xl px-4 py-18 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
         <Reveal>
-          <div className="rounded-[2.25rem] border border-slate-200 bg-slate-900 px-6 py-10 text-white sm:px-8 sm:py-12 lg:flex lg:items-center lg:justify-between lg:gap-10">
+          <div className="rounded-[2.25rem] border border-slate-200 bg-slate-900 px-6 py-10 text-white sm:px-8 sm:py-12 lg:flex lg:items-start lg:justify-between lg:gap-10">
             <div className="max-w-2xl">
               <p className="text-sm font-semibold tracking-[0.18em] uppercase text-white/65">
                 {ctaSectionContent.eyebrow}
@@ -19,24 +20,25 @@ export default function CtaSection() {
               <p className="mt-5 text-base leading-8 text-white/78 sm:text-lg">
                 {ctaSectionContent.description}
               </p>
+              <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-[1.5rem] border border-white/10 bg-white/8 px-5 py-5">
+                  <p className="text-sm font-semibold text-white/70">상담 방법</p>
+                  <p className="mt-2 text-lg font-bold text-white">카카오톡 / 전화 상담</p>
+                  <p className="mt-2 text-sm leading-6 text-white/75">
+                    이름과 전화번호를 남기신 뒤 카카오톡 상담으로 이어서 문의하실 수 있습니다.
+                  </p>
+                </div>
+                <div className="rounded-[1.5rem] border border-white/10 bg-white/8 px-5 py-5">
+                  <p className="text-sm font-semibold text-white/70">대표번호</p>
+                  <p className="mt-2 text-lg font-bold text-white">{ctaSectionContent.phoneNumber}</p>
+                  <p className="mt-2 text-sm leading-6 text-white/75">
+                    증상이 복잡해도 먼저 연락 주시면 내원 전 상담 흐름을 안내해드립니다.
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <div className="mt-8 flex flex-col gap-3 lg:mt-0 lg:min-w-[260px]">
-              <a
-                href={`tel:${ctaSectionContent.phoneNumber}`}
-                className="rounded-full bg-white px-6 py-4 text-center text-base font-semibold !text-slate-950 shadow-[0_12px_24px_rgba(255,255,255,0.12)] transition-transform duration-300 hover:scale-[1.01]"
-                style={{ color: "#020617" }}
-              >
-                {ctaSectionContent.phoneButton}
-              </a>
-              <a
-                href={ctaSectionContent.kakaoChatUrl}
-                className="rounded-full border border-[#E2C400] bg-[#FEE500] px-6 py-4 text-center text-base font-semibold !text-slate-950 shadow-[0_12px_24px_rgba(254,229,0,0.24)] transition-colors duration-300 hover:bg-[#F7DE00]"
-                style={{ color: "#191919" }}
-              >
-                {ctaSectionContent.kakaoButton}
-              </a>
-            </div>
+            <ConsultationRequestForm />
           </div>
         </Reveal>
       </div>
