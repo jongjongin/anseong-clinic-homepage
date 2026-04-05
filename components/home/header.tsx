@@ -2,10 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-<<<<<<< HEAD
 import { useState } from "react";
-=======
->>>>>>> 01e4c514271976f40799c55ad93d3bac282df869
 import { headerMenuItems } from "@/components/home/content";
 import LogoWordmark from "@/components/home/logo-wordmark";
 
