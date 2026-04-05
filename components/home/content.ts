@@ -32,15 +32,18 @@ export const heroContent = {
   stats: [
     {
       label: "365일 진료",
-      value: "(설 전날, 당일, 추석전날, 당일 제외)",
+      value: "365일 운영",
+      note: "설 전날, 당일 / 추석 전날, 당일 휴무",
     },
     {
       label: "평일",
-      value: "오전 9시 - 오후 8시\n(점심시간 1시 - 2시)",
+      value: "오전 9시 - 오후 8시",
+      note: "점심시간 오후 1시 - 2시",
     },
     {
       label: "토·일·공휴일",
-      value: "오전 9시 - 오후 3시\n(점심시간 없음)",
+      value: "오전 9시 - 오후 3시",
+      note: "점심시간 없음",
     },
   ],
   visualImage: "/assets/people/people-1.jpg",

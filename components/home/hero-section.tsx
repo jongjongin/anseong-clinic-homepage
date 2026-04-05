@@ -62,9 +62,14 @@ export default function HeroSection() {
                     <p className="text-xs font-semibold tracking-[0.12em] text-white/70 uppercase">
                       {item.label}
                     </p>
-                    <p className="mt-2 whitespace-pre-line text-base leading-7 font-bold text-white sm:text-lg">
+                    <p className="mt-2 text-lg leading-8 font-bold text-white sm:text-[1.45rem]">
                       {item.value}
                     </p>
+                    {"note" in item ? (
+                      <p className="mt-2 text-xs leading-5 text-white/70 sm:text-sm">
+                        {item.note}
+                      </p>
+                    ) : null}
                   </div>
                 ))}
               </div>
