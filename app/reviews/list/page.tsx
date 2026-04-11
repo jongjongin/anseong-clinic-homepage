@@ -4,7 +4,7 @@ import { reviewsSectionContent } from "@/components/home/content";
 
 export const metadata: Metadata = {
   title: "로그인 후 진료후기 | 안성경희365한의원",
-  description: "네이버 로그인 후 진료후기 열람 예시 화면",
+  description: "로그인 후 진료후기 열람 예시 화면",
 };
 
 export default function ReviewsListPage() {
@@ -16,14 +16,14 @@ export default function ReviewsListPage() {
             Reviews Opened
           </p>
           <h1 className="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">
-            네이버 로그인 후 실제 진료후기 열람 화면 예시
+            로그인 후 실제 진료후기 열람 화면 예시
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600">
-            네이버 로그인 완료 후에는 블러 처리 없이 후기 제목과 내용을 확인할 수 있는 구조로 운영할 예정입니다.
+            로그인 완료 후에는 블러 처리 없이 후기 제목과 내용을 확인할 수 있는 구조로 운영할 예정입니다.
           </p>
 
           <div className="mt-6 rounded-[1.6rem] border border-emerald-200 bg-emerald-50 px-5 py-4 text-sm leading-6 text-emerald-700">
-            네이버 로그인 완료: 김그린님이 로그인한 상태로 후기 열람이 가능합니다.
+            로그인 완료: 김그린님이 로그인한 상태로 후기 열람이 가능합니다.
           </div>
         </section>
 
@@ -50,10 +50,10 @@ export default function ReviewsListPage() {
             로그인 안내 화면 보기
           </Link>
           <Link
-            href="/reviews/member-info"
+            href="/login"
             className="inline-flex rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 transition-colors hover:border-slate-800"
           >
-            회원정보 확인 화면 보기
+            로그인 화면 보기
           </Link>
         </div>
       </div>

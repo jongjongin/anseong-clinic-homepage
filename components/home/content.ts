@@ -296,16 +296,16 @@ export const footerContent = {
 
 export const reviewsSectionContent = {
   eyebrow: "Patient Review",
-  title: "진료후기는 네이버 로그인 후 확인하실 수 있도록 준비하고 있습니다",
+  title: "진료후기는 로그인 후 확인하실 수 있도록 준비하고 있습니다",
   description:
     "후기 열람은 로그인 후 가능한 구조로 운영할 예정이며, 현재는 로그인 전 안내 화면을 먼저 반영해 두었습니다.",
   statusBadge: "후기 보기 전용 로그인",
-  loginTitle: "네이버 로그인 후 실제 진료후기를 확인하실 수 있습니다",
+  loginTitle: "로그인 후 실제 진료후기를 확인하실 수 있습니다",
   loginDescription:
     "진료후기 페이지는 회원가입이 아니라 후기 열람을 위한 로그인 구조로 준비 중입니다. 로그인 후 후기 목록과 상세 내용을 확인하실 수 있게 구성할 예정입니다.",
-  loginButton: "네이버 로그인 후 후기 보기",
+  loginButton: "로그인 후 후기 보기",
   loginHelp:
-    "검수용 화면에서는 네이버 로그인 버튼과 로그인 후 후기 열람 화면이 함께 보일 수 있도록 정리해두는 것이 좋습니다.",
+    "로그인 페이지와 로그인 후 후기 열람 화면이 연결되도록 단계별로 구성하면 이해하기 쉽습니다.",
   cards: [
     {
       title: "척추·관절 진료 후기",
