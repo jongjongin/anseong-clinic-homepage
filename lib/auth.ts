@@ -1,9 +1,9 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
 
-const SESSION_COOKIE_NAME = "clinic_session";
+export const SESSION_COOKIE_NAME = "clinic_session";
 
-const getAuthConfig = () => ({
+export const getAuthConfig = () => ({
   email: process.env.AUTH_EMAIL ?? "admin@anseong365.com",
   password: process.env.AUTH_PASSWORD ?? "Anseong365!2026",
   secret:
@@ -13,8 +13,16 @@ const getAuthConfig = () => ({
 const createSignature = (email: string, secret: string) =>
   createHmac("sha256", secret).update(email).digest("hex");
 
-const createSessionValue = (email: string, secret: string) =>
+export const createSessionValue = (email: string, secret: string) =>
   `${email}.${createSignature(email, secret)}`;
+
+export const getSessionCookieOptions = () => ({
+  httpOnly: true,
+  maxAge: 60 * 60 * 24 * 7,
+  path: "/",
+  sameSite: "lax" as const,
+  secure: process.env.NODE_ENV === "production",
+});
 
 const verifySessionValue = (value: string, secret: string) => {
   const [email, signature] = value.split(".");
