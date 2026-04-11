@@ -24,10 +24,10 @@ export default function ReviewsPage() {
 
           <div className="mt-8 rounded-[1.7rem] border border-slate-200 bg-slate-50 p-6 sm:p-7">
             <p className="text-sm font-semibold text-slate-800">
-              후기 열람은 네이버 로그인 후 이용하실 수 있습니다.
+              후기 열람은 로그인 후 이용하실 수 있습니다.
             </p>
             <p className="mt-3 text-sm leading-7 text-slate-600">
-              회원가입 없이 네이버 로그인으로 본인 확인 후 후기를 보실 수 있도록 구성할 예정입니다.
+              병원에서 관리하는 이메일과 비밀번호로 로그인한 뒤 후기를 보실 수 있도록 구성합니다.
             </p>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link

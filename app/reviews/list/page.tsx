@@ -1,13 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { logoutAction } from "@/app/login/actions";
 import { reviewsSectionContent } from "@/components/home/content";
+import { getCurrentUser } from "@/lib/auth";
 
 export const metadata: Metadata = {
   title: "로그인 후 진료후기 | 안성경희365한의원",
   description: "로그인 후 진료후기 열람 예시 화면",
 };
 
-export default function ReviewsListPage() {
+export default async function ReviewsListPage() {
+  const user = await getCurrentUser();
+
+  if (!user) {
+    redirect("/login");
+  }
+
   return (
     <main className="min-h-screen bg-[#fcfcfb] px-4 py-14 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl space-y-8">
@@ -23,7 +32,7 @@ export default function ReviewsListPage() {
           </p>
 
           <div className="mt-6 rounded-[1.6rem] border border-emerald-200 bg-emerald-50 px-5 py-4 text-sm leading-6 text-emerald-700">
-            로그인 완료: 김그린님이 로그인한 상태로 후기 열람이 가능합니다.
+            로그인 완료: {user.email} 계정으로 후기 열람이 가능합니다.
           </div>
         </section>
 
@@ -43,6 +52,14 @@ export default function ReviewsListPage() {
         </section>
 
         <div className="flex flex-col gap-3 sm:flex-row">
+          <form action={logoutAction}>
+            <button
+              type="submit"
+              className="inline-flex rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 transition-colors hover:border-slate-800"
+            >
+              로그아웃
+            </button>
+          </form>
           <Link
             href="/reviews"
             className="inline-flex rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 transition-colors hover:border-slate-800"

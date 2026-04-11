@@ -1,12 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import LoginForm from "@/components/auth/login-form";
+import { getCurrentUser } from "@/lib/auth";
 
 export const metadata: Metadata = {
   title: "로그인 | 안성경희365한의원",
   description: "안성경희365한의원 로그인",
 };
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const user = await getCurrentUser();
+
+  if (user) {
+    redirect("/reviews/list");
+  }
+
   return (
     <main className="min-h-screen bg-[#fcfcfb] px-4 py-14 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[0.95fr_1.05fr]">
@@ -16,43 +25,13 @@ export default function LoginPage() {
             진료후기 확인을 위한 로그인
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600">
-            앞으로는 병원에서 관리하는 이메일과 비밀번호로 로그인한 뒤 진료후기를 확인할 수 있도록 만들 예정입니다.
+            병원에서 관리하는 이메일과 비밀번호로 로그인한 뒤 진료후기를 확인할 수 있도록 구성합니다.
           </p>
 
-          <form className="mt-8 space-y-4">
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-800" htmlFor="login-email">
-                이메일
-              </label>
-              <input
-                id="login-email"
-                type="email"
-                placeholder="이메일을 입력해 주세요"
-                className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 outline-none"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-800" htmlFor="login-password">
-                비밀번호
-              </label>
-              <input
-                id="login-password"
-                type="password"
-                placeholder="비밀번호를 입력해 주세요"
-                className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 outline-none"
-              />
-            </div>
-
-            <button
-              type="button"
-              className="w-full rounded-full bg-slate-950 px-6 py-4 text-base font-semibold text-white"
-            >
-              로그인
-            </button>
-          </form>
+          <LoginForm />
 
           <p className="mt-4 text-sm leading-6 text-slate-500">
-            현재는 로그인 화면과 흐름을 먼저 만드는 단계입니다. 다음 단계에서 실제 비밀번호 확인과 로그인 유지 기능을 연결합니다.
+            지금은 가장 단순한 1개 계정 로그인 방식부터 시작합니다. 나중에 계정 추가나 비밀번호 변경 기능으로 확장할 수 있습니다.
           </p>
         </section>
 
