@@ -33,6 +33,13 @@ export default async function LoginPage() {
           <p className="mt-4 text-sm leading-6 text-slate-500">
             지금은 가장 단순한 1개 계정 로그인 방식부터 시작합니다. 나중에 계정 추가나 비밀번호 변경 기능으로 확장할 수 있습니다.
           </p>
+          <div className="mt-5 rounded-[1.5rem] border border-amber-200 bg-amber-50 px-5 py-4 text-sm leading-7 text-amber-800">
+            테스트 로그인 계정
+            <br />
+            이메일: admin@anseong365.com
+            <br />
+            비밀번호: Anseong365!2026
+          </div>
         </section>
 
         <section className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.05)] sm:p-10">

@@ -5,8 +5,9 @@ const SESSION_COOKIE_NAME = "clinic_session";
 
 const getAuthConfig = () => ({
   email: process.env.AUTH_EMAIL ?? "admin@anseong365.com",
-  password: process.env.AUTH_PASSWORD ?? "anseong365!",
-  secret: process.env.AUTH_SECRET ?? "anseong-clinic-secret",
+  password: process.env.AUTH_PASSWORD ?? "Anseong365!2026",
+  secret:
+    process.env.AUTH_SECRET ?? "e16427f8e56b3bda7e68d3ce50a863ac338ecd729ec6e3e309e13ef5a839eab5",
 });
 
 const createSignature = (email: string, secret: string) =>
