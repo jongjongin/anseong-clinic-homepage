@@ -8,12 +8,12 @@ export default function ConsultationRequestForm() {
         카카오톡 상담과 전화 상담 중 편한 방법으로 바로 문의하실 수 있습니다.
       </p>
 
-      <div className="mt-5 space-y-3">
+      <div className="mt-6 flex flex-col gap-3">
         <a
           href={ctaSectionContent.kakaoChatUrl}
           target="_blank"
           rel="noreferrer"
-          className="w-full rounded-full border border-[#E2C400] bg-[#FEE500] px-6 py-4 text-base font-semibold text-slate-950 transition-colors hover:bg-[#F7DE00]"
+          className="block w-full rounded-full border border-[#E2C400] bg-[#FEE500] px-6 py-4 text-center text-base font-semibold text-slate-950 transition-colors hover:bg-[#F7DE00]"
         >
           카카오톡 상담하기
         </a>

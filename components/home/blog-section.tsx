@@ -31,8 +31,8 @@ export default async function BlogSection({
         <Reveal>
           <SectionTitle
             eyebrow="Blog Story"
-            title="병원 소식과 건강 정보를 블로그에서 함께 전합니다"
-            description="네이버 블로그의 최신 글을 홈페이지에서도 바로 볼 수 있게 연결했습니다."
+            title="병원 소식과 건강 정보를 블로그에서 함께 확인하실 수 있습니다"
+            description="내원 전 참고하실 수 있는 병원 소식과 건강 정보를 최신 글로 편하게 살펴보실 수 있습니다."
           />
         </Reveal>
 

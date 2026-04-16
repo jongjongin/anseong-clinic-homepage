@@ -69,7 +69,7 @@ export const departmentsSectionContent = {
   eyebrow: "Medical Service",
   title: "불편한 증상에 맞춰 필요한 진료를 쉽게 찾으실 수 있습니다",
   description:
-    "목, 허리, 어깨 같은 통증부터 교통사고 후유증, 성장, 다이어트, 여성질환까지 현재 증상에 맞춰 진료 방향을 살펴보실 수 있도록 정리했습니다.",
+    "목, 허리, 어깨 같은 통증부터 교통사고 후유증, 성장, 다이어트, 여성질환까지 현재 불편한 증상에 맞는 진료를 편하게 살펴보실 수 있습니다.",
   badge: "집중 진료",
   items: [
     {
@@ -213,7 +213,7 @@ export const gallerySectionContent = {
   eyebrow: "Clinic View",
   title: "밝고 편안한 진료 공간을 미리 둘러보실 수 있습니다",
   description:
-    "대기 공간부터 진료실 분위기까지 미리 확인하실 수 있도록 실제 병원 사진을 정리했습니다.",
+    "대기 공간부터 진료실 분위기까지, 처음 방문하시기 전에 병원 내부를 미리 확인해 보실 수 있습니다.",
   interiorImages: [
     { src: "/assets/interior/interior-1.jpg", alt: "안성경희365한의원 내부 전경 1" },
     { src: "/assets/interior/interior-2.jpg", alt: "안성경희365한의원 내부 전경 2" },
@@ -229,7 +229,7 @@ export const eventsSectionContent = {
   eyebrow: "Clinic News",
   title: "현재 진행 중인 상담 안내와 이벤트를 확인해 보세요",
   description:
-    "내원 전 참고하실 수 있도록 현재 진행 중인 이벤트와 상담 가능 프로그램을 한눈에 보기 쉽게 정리했습니다.",
+    "내원 전에 참고하실 수 있도록 현재 진행 중인 이벤트와 안내를 한눈에 보기 쉽게 모아두었습니다.",
   buttonLabel: "자세히 보기",
   allEventsLabel: "블로그 글 더 보기",
   consultationHref: "http://pf.kakao.com/_RWgxnG/chat",
@@ -249,7 +249,7 @@ export const infoSectionContent = {
   eyebrow: "Visit Information",
   title: "내원 전에 꼭 필요한 진료시간과 위치 안내를 확인해 주세요",
   description:
-    "진료시간, 위치, 주차, 지도 확인처럼 방문 전에 가장 많이 찾으시는 내용을 한 곳에 모아두었습니다.",
+    "진료시간, 위치, 주차처럼 방문 전에 가장 많이 확인하시는 내용을 한곳에서 편하게 보실 수 있습니다.",
   hoursTitle: "진료정보",
   locationTitle: "오시는 길",
   mapLabel: "지도 바로가기",
@@ -277,12 +277,12 @@ export const ctaSectionContent = {
   eyebrow: "Consultation",
   title: ["현재 불편한 증상이 있다면", "카카오톡 또는 전화로 먼저 상담해 보세요"],
   description:
-    "어떤 진료가 필요한지 아직 헷갈리셔도 괜찮습니다. 현재 불편한 증상과 내원 전 궁금한 점을 카카오톡이나 전화로 먼저 편하게 문의해 주세요.",
+    "어떤 진료가 필요한지 아직 헷갈리셔도 괜찮습니다. 현재 불편한 증상과 내원 전 궁금한 점을 카카오톡이나 전화로 편하게 문의해 주세요.",
   summaryTitle: "상담은 이렇게 진행됩니다",
   summaryItems: [
     "현재 증상과 불편한 점을 먼저 말씀해 주세요.",
     "카카오톡 또는 전화로 내원 방향을 안내해드립니다.",
-    "진료시간, 위치, 예약 관련 문의도 함께 도와드립니다.",
+    "진료시간, 위치, 예약 관련 문의도 함께 안내해드립니다.",
   ],
   phoneButton: "전화 상담하기",
   kakaoButton: "상담 예약하기",
