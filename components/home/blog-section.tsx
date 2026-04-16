@@ -30,9 +30,9 @@ export default async function BlogSection({
       <div className="mx-auto max-w-6xl px-4 py-18 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
         <Reveal>
           <SectionTitle
-            eyebrow="Blog Story"
-            title="병원 소식과 건강 정보를 블로그에서 함께 확인하실 수 있습니다"
-            description="내원 전 참고하실 수 있는 병원 소식과 건강 정보를 최신 글로 편하게 살펴보실 수 있습니다."
+            eyebrow="블로그 소식"
+            title="한의원 블로그의 최신 글을 바로 확인해보세요"
+            description="병원 소식과 건강 정보를 블로그 최신 글로 편하게 살펴보실 수 있습니다."
           />
         </Reveal>
 

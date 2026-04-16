@@ -57,7 +57,7 @@ export const heroContent = {
 };
 
 export const introSectionContent = {
-  eyebrow: "Hospital Introduction",
+  eyebrow: "한의원 소개",
   paragraphs: [
     "안성경희365한의원은 아픈 부위만 보는 것이 아니라 일상에서 어떤 점이 불편한지 함께 듣고 치료 방향을 정합니다.",
     "불필요한 치료는 줄이고, 꼭 필요한 치료는 충분히 설명드린 뒤 진행하는 것을 원칙으로 합니다.",
@@ -66,7 +66,7 @@ export const introSectionContent = {
 };
 
 export const departmentsSectionContent = {
-  eyebrow: "Medical Service",
+  eyebrow: "진료 안내",
   title: "불편한 증상에 맞춰 필요한 진료를 쉽게 찾으실 수 있습니다",
   description:
     "목, 허리, 어깨 같은 통증부터 교통사고 후유증, 성장, 다이어트, 여성질환까지 현재 불편한 증상에 맞는 진료를 편하게 살펴보실 수 있습니다.",
@@ -118,7 +118,7 @@ export const departmentsSectionContent = {
 };
 
 export const doctorsSectionContent = {
-  eyebrow: "Medical Team",
+  eyebrow: "의료진 소개",
   title: "환자의 생활까지 고려한 치료를 지향합니다",
   description:
     "현재 통증만 줄이는 데 그치지 않고, 일상생활에서 더 편하게 움직이고 회복할 수 있도록 치료 방향을 함께 고민합니다.",
@@ -210,7 +210,7 @@ export const doctorsSectionContent = {
 };
 
 export const gallerySectionContent = {
-  eyebrow: "Clinic View",
+  eyebrow: "한의원 둘러보기",
   title: "밝고 편안한 진료 공간을 미리 둘러보실 수 있습니다",
   description:
     "대기 공간부터 진료실 분위기까지, 처음 방문하시기 전에 병원 내부를 미리 확인해 보실 수 있습니다.",
@@ -226,7 +226,7 @@ export const gallerySectionContent = {
 };
 
 export const eventsSectionContent = {
-  eyebrow: "Clinic News",
+  eyebrow: "병원 소식",
   title: "현재 진행 중인 상담 안내와 이벤트를 확인해 보세요",
   description:
     "내원 전에 참고하실 수 있도록 현재 진행 중인 이벤트와 안내를 한눈에 보기 쉽게 모아두었습니다.",
@@ -246,7 +246,7 @@ export const eventsSectionContent = {
 };
 
 export const infoSectionContent = {
-  eyebrow: "Visit Information",
+  eyebrow: "내원 안내",
   title: "내원 전에 꼭 필요한 진료시간과 위치 안내를 확인해 주세요",
   description:
     "진료시간, 위치, 주차처럼 방문 전에 가장 많이 확인하시는 내용을 한곳에서 편하게 보실 수 있습니다.",
@@ -274,7 +274,7 @@ export const infoSectionContent = {
 };
 
 export const ctaSectionContent = {
-  eyebrow: "Consultation",
+  eyebrow: "상담 안내",
   title: ["현재 불편한 증상이 있다면", "카카오톡 또는 전화로 먼저 상담해 보세요"],
   description:
     "어떤 진료가 필요한지 아직 헷갈리셔도 괜찮습니다. 현재 불편한 증상과 내원 전 궁금한 점을 카카오톡이나 전화로 편하게 문의해 주세요.",
@@ -305,7 +305,7 @@ export const footerContent = {
 };
 
 export const reviewsSectionContent = {
-  eyebrow: "Patient Review",
+  eyebrow: "진료후기",
   title: "진료후기는 로그인 후 확인하실 수 있도록 준비하고 있습니다",
   description:
     "후기 열람은 로그인 후 가능한 구조로 운영할 예정이며, 현재는 로그인 전 안내 화면을 먼저 반영해 두었습니다.",
@@ -335,7 +335,7 @@ export const reviewsSectionContent = {
 };
 
 export const telemedicineSectionContent = {
-  eyebrow: "Remote Care",
+  eyebrow: "비대면진료",
   title: "비대면진료는 카카오톡 문의와 전화 상담으로 안내해드립니다",
   description:
     "비대면진료가 필요한 경우 먼저 카카오톡이나 전화로 문의해 주시면 현재 증상과 상담 가능 여부를 확인한 뒤 진행 흐름을 안내해드립니다.",

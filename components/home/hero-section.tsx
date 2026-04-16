@@ -47,7 +47,7 @@ export default function HeroSection() {
                 {heroContent.eyebrow}
               </span>
               <div className="hidden rounded-full border border-white/18 bg-white/10 px-4 py-2 text-sm font-medium text-white/80 backdrop-blur-sm md:block">
-                Premium 365 Clinic
+                365일 진료 안내
               </div>
             </div>
 
