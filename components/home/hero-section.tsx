@@ -13,11 +13,11 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="overflow-hidden border-b border-slate-200 bg-[linear-gradient(180deg,#edf6f4_0%,#f7fbfb_24%,#ffffff_100%)]"
+      className="relative overflow-hidden bg-slate-950"
     >
-      <div className="mx-auto max-w-[1560px] px-3 py-3 sm:px-5 sm:py-5 lg:px-8 lg:py-7">
-        <Reveal className="flex">
-          <div className="relative flex min-h-[calc(100svh-5.5rem)] w-full flex-col justify-between overflow-hidden rounded-[2rem] border border-white/35 bg-slate-950 p-5 text-white shadow-[0_24px_90px_rgba(15,23,42,0.18)] sm:min-h-[calc(100svh-6.5rem)] sm:rounded-[2.3rem] sm:p-8 lg:min-h-[calc(100svh-7.5rem)] lg:p-10">
+      <Reveal className="flex">
+        <div className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden px-4 pb-8 pt-24 text-white sm:px-6 sm:pb-10 sm:pt-28 lg:px-10 lg:pb-12 lg:pt-32">
+          <div className="mx-auto flex h-full w-full max-w-[1560px] flex-1 flex-col justify-between">
             <div className="absolute inset-0">
               {hasHeroVideo ? (
                 <video
@@ -51,32 +51,34 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <div className="relative z-10 max-w-4xl">
-              <h1 className="text-[2.45rem] font-bold leading-[1.02] tracking-[-0.04em] text-white sm:text-[4.4rem] lg:max-w-5xl lg:text-[6.4rem]">
-                365일 당신의
-                <br />
-                건강을 책임지는
-                <br />
-                안성경희365한의원
-              </h1>
-              <p className="mt-5 max-w-2xl text-sm leading-7 text-white/84 sm:mt-6 sm:text-lg sm:leading-8">
-                단순한 통증 완화가 아니라 생활이 편해질 때까지 치료합니다.
-              </p>
+            <div className="relative z-10 flex flex-1 items-end">
+              <div className="max-w-4xl">
+                <h1 className="text-[2.6rem] font-bold leading-[1.02] tracking-[-0.05em] text-white sm:text-[4.6rem] lg:max-w-5xl lg:text-[6.8rem] xl:text-[7.4rem]">
+                  365일 당신의
+                  <br />
+                  건강을 책임지는
+                  <br />
+                  안성경희365한의원
+                </h1>
+                <p className="mt-5 max-w-2xl text-sm leading-7 text-white/84 sm:mt-6 sm:text-lg sm:leading-8">
+                  단순한 통증 완화가 아니라 생활이 편해질 때까지 치료합니다.
+                </p>
 
-              <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row">
-                <a
-                  href={heroContent.reservationHref}
-                  className="rounded-full border border-[#E2C400] bg-[#FEE500] px-6 py-4 text-center text-base font-semibold text-slate-950 shadow-[0_12px_24px_rgba(254,229,0,0.24)] transition-colors hover:bg-[#F7DE00]"
-                  style={{ color: "#191919" }}
-                >
-                  {heroContent.primaryButton}
-                </a>
-                <a
-                  href={heroContent.phoneHref}
-                  className="rounded-full border border-white/28 bg-white/10 px-6 py-4 text-center text-base font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/15"
-                >
-                  {heroContent.secondaryButton}
-                </a>
+                <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row">
+                  <a
+                    href={heroContent.reservationHref}
+                    className="rounded-full border border-[#E2C400] bg-[#FEE500] px-6 py-4 text-center text-base font-semibold text-slate-950 shadow-[0_12px_24px_rgba(254,229,0,0.24)] transition-colors hover:bg-[#F7DE00]"
+                    style={{ color: "#191919" }}
+                  >
+                    {heroContent.primaryButton}
+                  </a>
+                  <a
+                    href={heroContent.phoneHref}
+                    className="rounded-full border border-white/28 bg-white/10 px-6 py-4 text-center text-base font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/15"
+                  >
+                    {heroContent.secondaryButton}
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -101,8 +103,8 @@ export default function HeroSection() {
               ))}
             </div>
           </div>
-        </Reveal>
-      </div>
+        </div>
+      </Reveal>
     </section>
   );
 }
