@@ -4,6 +4,21 @@ import EventsCarousel from "@/components/home/events-carousel";
 import Reveal from "@/components/home/reveal";
 
 export default function EventsSection() {
+  const visibleItems = eventsSectionContent.items.filter((event) => {
+    if (!event.endDate) {
+      return true;
+    }
+
+    const today = new Date();
+    const endDate = new Date(`${event.endDate}T23:59:59`);
+
+    return today <= endDate;
+  });
+
+  if (visibleItems.length === 0) {
+    return null;
+  }
+
   return (
     <section id="events" className="bg-white">
       <div className="mx-auto max-w-6xl px-4 py-18 sm:px-6 sm:py-24 lg:px-8 lg:py-28">

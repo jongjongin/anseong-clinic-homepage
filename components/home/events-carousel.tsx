@@ -4,10 +4,24 @@ import { useEffect, useRef, useState } from "react";
 import { eventsSectionContent } from "@/components/home/content";
 
 export default function EventsCarousel() {
+  const visibleItems = eventsSectionContent.items.filter((event) => {
+    if (!event.endDate) {
+      return true;
+    }
+
+    const today = new Date();
+    const endDate = new Date(`${event.endDate}T23:59:59`);
+
+    return today <= endDate;
+  });
   const [activeIndex, setActiveIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
-  const total = eventsSectionContent.items.length;
+  const total = visibleItems.length;
+
+  if (total === 0) {
+    return null;
+  }
 
   useEffect(() => {
     if (total <= 1) {
@@ -57,7 +71,7 @@ export default function EventsCarousel() {
       {total > 1 ? (
         <div className="flex items-center justify-between gap-4">
           <div className="flex gap-2">
-            {eventsSectionContent.items.map((event, index) => (
+            {visibleItems.map((event, index) => (
               <button
                 key={event.title}
                 type="button"
@@ -101,7 +115,7 @@ export default function EventsCarousel() {
           className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
-          {eventsSectionContent.items.map((event) => (
+          {visibleItems.map((event) => (
             <div key={event.title} className="w-full shrink-0">
               <article className="interactive-card flex h-full min-h-[360px] flex-col rounded-[2rem] border border-slate-200 bg-[#fbfcfc] p-6 sm:p-8">
                 <p className="text-sm font-semibold tracking-[0.1em] text-teal-700 uppercase">
@@ -121,7 +135,7 @@ export default function EventsCarousel() {
                     이벤트 상담하기
                   </a>
                   <a
-                    href="#"
+                    href={event.detailUrl ?? "#"}
                     className="rounded-full border border-slate-300 px-5 py-3 text-center text-sm font-semibold text-slate-800 transition-colors hover:border-slate-800"
                   >
                     {eventsSectionContent.buttonLabel}

@@ -44,7 +44,7 @@ export default function ConsultationRequestForm() {
         상담 신청
       </p>
       <p className="mt-3 text-sm leading-6 text-white/80">
-        이름과 전화번호를 남겨 주시면 카카오톡 상담으로 이어서 문의하실 수 있습니다.
+        이름과 전화번호를 남겨 주시면 상담 내용을 복사한 뒤 카카오톡 상담으로 바로 이어서 문의하실 수 있습니다.
       </p>
 
       <form className="mt-5 space-y-3" onSubmit={handleSubmit}>
@@ -82,14 +82,14 @@ export default function ConsultationRequestForm() {
 
         <div className="space-y-2">
           <label className="text-sm font-medium text-white" htmlFor="consult-note">
-            상담 내용
+            간단한 상담 메모
           </label>
           <textarea
             id="consult-note"
             name="note"
             value={note}
             onChange={(event) => setNote(event.target.value)}
-            placeholder="불편한 증상이나 상담 내용을 간단히 적어 주세요"
+            placeholder="불편한 증상이나 문의 내용을 간단히 적어 주세요"
             className="min-h-[120px] w-full rounded-2xl border border-white/14 bg-white px-4 py-3 text-base text-slate-950 outline-none transition focus:border-[#FEE500]"
           />
         </div>
@@ -110,7 +110,7 @@ export default function ConsultationRequestForm() {
       </form>
 
       <p className="mt-4 text-xs leading-5 text-white/70">
-        제출 시 입력 내용이 복사되고 카카오톡 상담창으로 연결됩니다.
+        제출하면 입력 내용이 복사되고 카카오톡 상담창이 새 창으로 열립니다.
       </p>
       {message ? <p className="mt-3 text-sm font-medium text-[#FEE500]">{message}</p> : null}
     </div>

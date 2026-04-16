@@ -63,8 +63,8 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <a
             href={getMenuHref("#consult")}
-            className="hidden shrink-0 rounded-full border border-slate-950 bg-slate-950 px-4 py-3 text-sm font-semibold !text-white transition-colors hover:bg-slate-800 sm:px-5 lg:inline-flex"
-            style={{ color: "#ffffff" }}
+            className="hidden shrink-0 rounded-full border border-[#E2C400] bg-[#FEE500] px-4 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-[#F7DE00] sm:px-5 lg:inline-flex"
+            style={{ color: "#191919" }}
           >
             상담 예약
           </a>
@@ -119,8 +119,8 @@ export default function Header() {
             <a
               href={getMenuHref("#consult")}
               onClick={() => setIsMenuOpen(false)}
-              className="mt-2 rounded-2xl bg-slate-950 px-4 py-3 text-center text-sm font-semibold !text-white"
-              style={{ color: "#ffffff" }}
+              className="mt-2 rounded-2xl border border-[#E2C400] bg-[#FEE500] px-4 py-3 text-center text-sm font-semibold text-slate-950"
+              style={{ color: "#191919" }}
             >
               상담 예약하기
             </a>

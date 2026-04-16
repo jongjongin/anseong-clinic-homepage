@@ -20,20 +20,18 @@ export default function CtaSection() {
               <p className="mt-5 text-base leading-8 text-white/78 sm:text-lg">
                 {ctaSectionContent.description}
               </p>
-              <div className="mt-8 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-[1.5rem] border border-white/10 bg-white/8 px-5 py-5">
-                  <p className="text-sm font-semibold text-white/70">상담 방법</p>
-                  <p className="mt-2 text-lg font-bold text-white">카카오톡 / 전화 상담</p>
-                  <p className="mt-2 text-sm leading-6 text-white/75">
-                    이름과 전화번호를 남기신 뒤 카카오톡 상담으로 이어서 문의하실 수 있습니다.
-                  </p>
-                </div>
-                <div className="rounded-[1.5rem] border border-white/10 bg-white/8 px-5 py-5">
-                  <p className="text-sm font-semibold text-white/70">대표번호</p>
-                  <p className="mt-2 text-lg font-bold text-white">{ctaSectionContent.phoneNumber}</p>
-                  <p className="mt-2 text-sm leading-6 text-white/75">
-                    증상이 복잡해도 먼저 연락 주시면 내원 전 상담 흐름을 안내해드립니다.
-                  </p>
+              <div className="mt-8 rounded-[1.6rem] border border-white/10 bg-white/8 p-5">
+                <p className="text-sm font-semibold text-white/70">{ctaSectionContent.summaryTitle}</p>
+                <ul className="mt-4 space-y-3 text-sm leading-6 text-white/80">
+                  {ctaSectionContent.summaryItems.map((item) => (
+                    <li key={item} className="flex gap-3">
+                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#FEE500]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-5 rounded-[1.2rem] bg-white/8 px-4 py-4 text-sm leading-6 text-white/78">
+                  대표번호 {ctaSectionContent.phoneNumber}
                 </div>
               </div>
             </div>

@@ -54,28 +54,29 @@ export default function InfoSection() {
           <Reveal delayMs={110}>
             <article className="interactive-card rounded-[2rem] border border-slate-200 bg-white p-6 sm:p-8">
               <h3 className="text-2xl font-bold text-slate-900">{infoSectionContent.locationTitle}</h3>
-              <div className="mt-6 flex min-h-[260px] items-center justify-center rounded-[1.75rem] border border-slate-200 bg-[linear-gradient(180deg,#f7fbfa_0%,#eef5f4_100%)] px-6 py-10 text-center">
-                <div>
-                  <p className="text-sm font-semibold tracking-[0.12em] text-teal-700 uppercase">
-                    {infoSectionContent.mapLabel}
-                  </p>
-                  <p className="mt-3 text-base leading-7 text-slate-600">{infoSectionContent.mapDescription}</p>
-                  <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
-                    <a
-                      href={infoSectionContent.naverMapUrl}
-                      className="rounded-full bg-slate-950 px-5 py-3 text-center text-sm font-semibold !text-white shadow-[0_12px_24px_rgba(15,23,42,0.16)]"
-                      style={{ color: "#ffffff" }}
-                    >
-                      네이버지도 보기
-                    </a>
-                    <a
-                      href={infoSectionContent.kakaoMapUrl}
-                      className="rounded-full bg-teal-600 px-5 py-3 text-center text-sm font-semibold text-white shadow-[0_12px_24px_rgba(13,148,136,0.18)]"
-                    >
-                      카카오맵 보기
-                    </a>
-                  </div>
-                </div>
+              <div className="mt-6 overflow-hidden rounded-[1.75rem] border border-slate-200 bg-slate-100">
+                <iframe
+                  src={infoSectionContent.embedMapUrl}
+                  className="h-[320px] w-full border-0 sm:h-[380px]"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="안성경희365한의원 위치 지도"
+                />
+              </div>
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href={infoSectionContent.naverMapUrl}
+                  className="rounded-full border border-slate-950 bg-slate-950 px-5 py-3 text-center text-sm font-semibold !text-white shadow-[0_12px_24px_rgba(15,23,42,0.16)]"
+                  style={{ color: "#ffffff" }}
+                >
+                  네이버지도 보기
+                </a>
+                <a
+                  href={infoSectionContent.kakaoMapUrl}
+                  className="rounded-full bg-teal-600 px-5 py-3 text-center text-sm font-semibold text-white shadow-[0_12px_24px_rgba(13,148,136,0.18)]"
+                >
+                  카카오맵 보기
+                </a>
               </div>
               <div className="mt-6 grid gap-4 rounded-[1.5rem] bg-slate-50 p-5 text-base leading-7 text-slate-600 sm:grid-cols-2">
                 <p>

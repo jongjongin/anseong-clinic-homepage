@@ -11,7 +11,6 @@ export const headerMenuItems: HeaderMenuItem[] = [
   { label: "의료진", href: "#doctors" },
   { label: "블로그", href: "/blog" },
   { label: "이벤트", href: "#events" },
-  { label: "진료후기", href: "/reviews" },
   { label: "비대면진료", href: "#telemedicine" },
   { label: "오시는 길", href: "#hours" },
   { label: "상담 문의", href: "#consult" },
@@ -240,6 +239,8 @@ export const eventsSectionContent = {
       title: "5월 가정의 달 이벤트 진행 중",
       period: "진행 중",
       description: "건강을 챙겨야 할 시기, 가족과 함께 시작하는 관리. 상담을 통해 맞춤 프로그램을 안내드립니다.",
+      detailUrl: "https://blog.naver.com/jonginyoun113/224254540967",
+      endDate: "2026-05-31",
     },
   ],
 };
@@ -253,6 +254,8 @@ export const infoSectionContent = {
   locationTitle: "오시는 길",
   mapLabel: "지도 바로가기",
   mapDescription: "네이버지도와 카카오맵에서 병원 위치를 바로 확인하실 수 있습니다.",
+  embedMapUrl:
+    "https://maps.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%84%B1%EC%8B%9C%20%EB%82%A8%ED%8C%8C%EB%A1%9C%20103&t=&z=17&ie=UTF8&iwloc=&output=embed",
   address: "경기도 안성시 남파로 103 203호, 204호 (구 영천냉면 자리)",
   parking: "CU편의점을 끼고 돌면 좌측 지상주차장, 우측 지하주차장 모두 이용 가능합니다.",
   contact: "031-8057-0750",
@@ -272,9 +275,15 @@ export const infoSectionContent = {
 
 export const ctaSectionContent = {
   eyebrow: "Consultation",
-  title: ["지금 불편한 증상이 있다면", "전화 상담부터 편하게 시작해 보세요"],
+  title: ["현재 불편한 증상이 있다면", "상담 신청부터 편하게 남겨 주세요"],
   description:
-    "어떤 진료를 받아야 할지 고민되신다면 먼저 전화나 카카오톡으로 문의해 주세요. 현재 불편한 증상에 맞춰 내원 방향을 안내해드립니다.",
+    "이름과 전화번호를 남겨 주시면 카카오톡 상담 또는 전화 상담으로 이어서 도와드립니다. 어떤 진료가 필요한지 아직 헷갈리셔도 편하게 문의해 주세요.",
+  summaryTitle: "상담은 이렇게 진행됩니다",
+  summaryItems: [
+    "이름과 전화번호를 남겨 주시면 상담 내용을 확인합니다.",
+    "카카오톡 또는 전화로 현재 증상과 내원 방향을 안내해드립니다.",
+    "진료시간, 위치, 예약 문의까지 한 번에 도와드립니다.",
+  ],
   phoneButton: "전화 상담하기",
   kakaoButton: "상담 예약하기",
   phoneNumber: "031-8057-0750",

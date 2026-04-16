@@ -58,7 +58,7 @@ export default function HeroSection() {
                   <br />
                   건강을 책임지는
                   <br />
-                  안성경희365한의원
+                  <span className="whitespace-nowrap">안성경희365한의원</span>
                 </h1>
                 <p className="mt-5 max-w-2xl text-sm leading-7 text-white/84 sm:mt-6 sm:text-lg sm:leading-8">
                   단순한 통증 완화가 아니라 생활이 편해질 때까지 치료합니다.
