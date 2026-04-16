@@ -54,6 +54,7 @@ export const heroContent = {
     },
   ],
   visualImage: "/assets/people/people-1.jpg",
+  visualVideo: "/assets/hero/clinic-hero.mp4",
 };
 
 export const introSectionContent = {

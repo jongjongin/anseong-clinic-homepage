@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { gallerySectionContent } from "@/components/home/content";
+import ParallaxMedia from "@/components/home/parallax-media";
 import Reveal from "@/components/home/reveal";
 import SectionTitle from "@/components/home/section-title";
 
@@ -19,12 +20,12 @@ export default function GallerySection() {
           <Reveal>
             <div className="grid gap-5 sm:grid-cols-2">
               <div className="interactive-card relative min-h-[320px] overflow-hidden rounded-[2rem] border border-slate-200 bg-white sm:col-span-2 sm:min-h-[420px]">
-                <Image
+                <ParallaxMedia
                   src={gallerySectionContent.interiorImages[0].src}
                   alt={gallerySectionContent.interiorImages[0].alt}
-                  fill
-                  className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 60vw"
+                  className="object-cover"
+                  strength={24}
                 />
               </div>
               {gallerySectionContent.interiorImages.slice(1).map((image, index) => (
@@ -32,12 +33,12 @@ export default function GallerySection() {
                   key={image.src}
                   className="interactive-card relative min-h-[240px] overflow-hidden rounded-[2rem] border border-slate-200 bg-white"
                 >
-                  <Image
+                  <ParallaxMedia
                     src={image.src}
                     alt={image.alt}
-                    fill
-                    className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 30vw"
+                    className="object-cover"
+                    strength={16}
                   />
                 </div>
               ))}
@@ -53,12 +54,12 @@ export default function GallerySection() {
                     index === 0 ? "min-h-[280px]" : "min-h-[340px]"
                   }`}
                 >
-                  <Image
+                  <ParallaxMedia
                     src={image.src}
                     alt={image.alt}
-                    fill
-                    className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover"
+                    strength={18}
                   />
                 </div>
               ))}

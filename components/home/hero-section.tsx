@@ -1,8 +1,16 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import Image from "next/image";
 import { heroContent } from "@/components/home/content";
+import ParallaxMedia from "@/components/home/parallax-media";
 import Reveal from "@/components/home/reveal";
 
 export default function HeroSection() {
+  const heroVideoPath = heroContent.visualVideo;
+  const hasHeroVideo = heroVideoPath
+    ? existsSync(join(process.cwd(), "public", heroVideoPath.replace(/^\//, "")))
+    : false;
+
   return (
     <section
       id="hero"
@@ -13,11 +21,23 @@ export default function HeroSection() {
           <Reveal className="flex">
             <div className="relative flex min-h-[560px] w-full flex-col justify-between overflow-hidden rounded-[2.2rem] bg-slate-950 p-6 text-white shadow-[0_24px_80px_rgba(15,23,42,0.16)] sm:min-h-[620px] sm:p-8 lg:p-10">
               <div className="absolute inset-0">
+                {hasHeroVideo ? (
+                  <video
+                    className="h-full w-full object-cover object-center"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    poster={heroContent.visualImage}
+                  >
+                    <source src={heroVideoPath ?? undefined} type="video/mp4" />
+                  </video>
+                ) : null}
                 <Image
                   src={heroContent.visualImage}
                   alt="안성경희365한의원 대표 이미지"
                   fill
-                  className="object-cover object-center"
+                  className={`object-cover object-center ${hasHeroVideo ? "opacity-0" : ""}`}
                   sizes="(max-width: 1024px) 100vw, 52vw"
                   priority
                 />
@@ -81,12 +101,12 @@ export default function HeroSection() {
           <Reveal className="relative" delayMs={120}>
             <div className="rounded-[2.1rem] border border-slate-200 bg-white p-5 shadow-[0_20px_80px_rgba(15,23,42,0.06)] sm:p-7">
               <div className="relative min-h-[430px] overflow-hidden rounded-[1.8rem] border border-slate-100 bg-slate-50 sm:min-h-[540px]">
-                <Image
+                <ParallaxMedia
                   src={heroContent.visualImage}
                   alt="안성경희365한의원 대표 이미지"
-                  fill
-                  className="object-cover object-top"
                   sizes="(max-width: 1024px) 100vw, 42vw"
+                  className="object-cover object-top"
+                  strength={22}
                 />
                 <div className="absolute inset-x-4 bottom-4 rounded-[1.35rem] border border-white/40 bg-white/88 px-4 py-4 shadow-[0_12px_30px_rgba(15,23,42,0.12)] backdrop-blur-sm">
                   <p className="text-xs font-semibold tracking-[0.12em] text-teal-700 uppercase">
