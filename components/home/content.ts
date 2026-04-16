@@ -255,7 +255,7 @@ export const infoSectionContent = {
   mapLabel: "지도 바로가기",
   mapDescription: "네이버지도와 카카오맵에서 병원 위치를 바로 확인하실 수 있습니다.",
   embedMapUrl:
-    "https://maps.google.com/maps?q=%EC%95%88%EC%84%B1%EA%B2%BD%ED%9D%AC365%ED%95%9C%EC%9D%98%EC%9B%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%84%B1%EC%8B%9C%20%EB%82%A8%ED%8C%8C%EB%A1%9C%20103%20203%ED%98%B8%20204%ED%98%B8&t=&z=18&ie=UTF8&iwloc=&output=embed",
+    "https://maps.google.com/maps?q=%EC%95%88%EC%84%B1%EA%B2%BD%ED%9D%AC365%ED%95%9C%EC%9D%98%EC%9B%90&t=&z=18&ie=UTF8&iwloc=&output=embed",
   address: "경기도 안성시 남파로 103 203호, 204호 (구 영천냉면 자리)",
   parking: "CU편의점을 끼고 돌면 좌측 지상주차장, 우측 지하주차장 모두 이용 가능합니다.",
   contact: "031-8057-0750",
