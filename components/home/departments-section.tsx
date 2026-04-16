@@ -24,9 +24,11 @@ export default function DepartmentsSection() {
                   </div>
                   <span className="text-sm font-semibold text-slate-300">0{index + 1}</span>
                 </div>
-                <h3 className="mt-6 text-2xl font-bold text-slate-900 sm:text-[1.85rem]">{department.title}</h3>
-                <p className="mt-3 text-sm font-semibold text-teal-700">{department.summary}</p>
-                <p className="mt-5 text-base leading-8 text-slate-600">{department.description}</p>
+                <h3 className="mt-6 break-keep text-2xl font-bold text-slate-900 sm:text-[1.85rem]">
+                  {department.title}
+                </h3>
+                <p className="mt-3 break-keep text-sm font-semibold text-teal-700">{department.summary}</p>
+                <p className="mt-5 break-keep text-base leading-8 text-slate-600">{department.description}</p>
               </article>
             </Reveal>
           ))}

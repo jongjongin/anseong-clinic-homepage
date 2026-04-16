@@ -17,7 +17,7 @@ export const headerMenuItems: HeaderMenuItem[] = [
 ];
 
 export const heroContent = {
-  eyebrow: "365일 당신의 건강을 책임지는 안성경희365한의원",
+  eyebrow: "365일 진료",
   title: ["단순한 통증 완화가 아니라", "생활이 편해질 때까지", "치료합니다."],
   description:
     "현재의 통증만 줄이는 데 그치지 않고, 생활 속에서 더 편하게 움직이고 일할 수 있을 때까지 치료 방향을 함께 고민합니다.",

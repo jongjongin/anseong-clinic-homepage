@@ -52,15 +52,11 @@ export default function HeroSection() {
             </div>
 
             <div className="relative z-10 flex flex-1 items-end">
-              <div className="max-w-4xl">
-                <h1 className="text-[2.6rem] font-bold leading-[1.02] tracking-[-0.05em] text-white sm:text-[4.6rem] lg:max-w-5xl lg:text-[6.8rem] xl:text-[7.4rem]">
-                  365일 당신의
-                  <br />
-                  건강을 책임지는
-                  <br />
-                  <span className="whitespace-nowrap">안성경희365한의원</span>
+              <div className="max-w-5xl">
+                <h1 className="break-keep text-[2.4rem] font-bold leading-[1.12] tracking-[-0.04em] text-white sm:text-[4.2rem] lg:max-w-6xl lg:text-[5.8rem] xl:text-[6.4rem]">
+                  365일 당신의 건강을 책임지는 안성경희365한의원
                 </h1>
-                <p className="mt-5 max-w-2xl text-sm leading-7 text-white/84 sm:mt-6 sm:text-lg sm:leading-8">
+                <p className="mt-5 max-w-2xl break-keep text-sm leading-7 text-white/84 sm:mt-6 sm:text-lg sm:leading-8">
                   단순한 통증 완화가 아니라 생활이 편해질 때까지 치료합니다.
                 </p>
 

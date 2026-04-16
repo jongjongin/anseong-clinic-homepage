@@ -24,15 +24,15 @@ export default function InfoSection() {
                     key={item.day}
                     className="flex items-center justify-between gap-4 border-b border-slate-100 pb-4 text-sm sm:text-base"
                   >
-                    <span className="font-medium text-slate-600">{item.day}</span>
-                    <span className="font-semibold text-slate-900">{item.time}</span>
+                    <span className="break-keep font-medium text-slate-600">{item.day}</span>
+                    <span className="break-keep text-right font-semibold text-slate-900">{item.time}</span>
                   </div>
                 ))}
               </div>
 
               <div className="mt-6 rounded-[1.25rem] bg-slate-50 px-5 py-4 text-sm leading-7 text-slate-600">
-                <p>평일 점심시간 13:00 ~ 14:00</p>
-                <p>토·일·공휴일은 점심시간 없이 운영합니다.</p>
+                <p className="break-keep">평일 점심시간 13:00 ~ 14:00</p>
+                <p className="break-keep">토·일·공휴일은 점심시간 없이 운영합니다.</p>
               </div>
 
               <div className="mt-8 rounded-[1.5rem] bg-slate-50 p-5">
@@ -43,7 +43,7 @@ export default function InfoSection() {
                   {infoSectionContent.guidance.map((item) => (
                     <li key={item} className="flex gap-3">
                       <span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />
-                      <span>{item}</span>
+                      <span className="break-keep">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -79,13 +79,13 @@ export default function InfoSection() {
                 </a>
               </div>
               <div className="mt-6 grid gap-4 rounded-[1.5rem] bg-slate-50 p-5 text-base leading-7 text-slate-600 sm:grid-cols-2">
-                <p>
+                <p className="break-keep">
                   <span className="font-semibold text-slate-900">주소</span> {infoSectionContent.address}
                 </p>
-                <p>
+                <p className="break-keep">
                   <span className="font-semibold text-slate-900">주차</span> {infoSectionContent.parking}
                 </p>
-                <p>
+                <p className="break-keep">
                   <span className="font-semibold text-slate-900">문의</span> {infoSectionContent.contact}
                 </p>
               </div>

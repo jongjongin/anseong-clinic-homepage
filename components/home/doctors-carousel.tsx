@@ -77,7 +77,7 @@ export default function DoctorsCarousel() {
   return (
     <div className="mt-12">
       <div className="flex items-center justify-between gap-4">
-        <p className="text-sm font-medium text-slate-500">
+        <p className="break-keep text-sm font-medium text-slate-500">
           좌우로 넘기면서 각 원장님의 약력을 편하게 볼 수 있습니다.
         </p>
         <div className="hidden gap-2 sm:flex">
@@ -122,9 +122,9 @@ export default function DoctorsCarousel() {
               <p className="text-sm font-semibold tracking-[0.08em] text-teal-700 uppercase">
                 {doctor.role}
               </p>
-              <h3 className="mt-2 text-2xl font-bold text-slate-900">{doctor.name}</h3>
-              <p className="mt-3 text-sm font-medium text-slate-500">{doctor.summary}</p>
-              <ul className="mt-5 space-y-2 text-sm leading-6 text-slate-600">
+              <h3 className="mt-2 break-keep text-2xl font-bold text-slate-900">{doctor.name}</h3>
+              <p className="mt-3 break-keep text-sm font-medium text-slate-500">{doctor.summary}</p>
+              <ul className="mt-5 space-y-2 break-keep text-sm leading-6 text-slate-600">
                 {doctor.credentials.map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />

@@ -121,11 +121,11 @@ export default function EventsCarousel() {
                 <p className="text-sm font-semibold tracking-[0.1em] text-teal-700 uppercase">
                   {event.category}
                 </p>
-                <h3 className="mt-5 text-2xl font-bold leading-tight text-slate-900 sm:text-[1.9rem]">
+                <h3 className="mt-5 break-keep text-2xl font-bold leading-[1.3] text-slate-900 sm:text-[1.9rem]">
                   {event.title}
                 </h3>
                 <p className="mt-3 text-sm font-semibold text-slate-400">{event.period}</p>
-                <p className="mt-5 flex-1 text-base leading-8 text-slate-600">{event.description}</p>
+                <p className="mt-5 flex-1 break-keep text-base leading-8 text-slate-600">{event.description}</p>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <a
                     href={eventsSectionContent.consultationHref}

@@ -12,12 +12,10 @@ export default function CtaSection() {
               <p className="text-sm font-semibold tracking-[0.18em] uppercase text-white/65">
                 {ctaSectionContent.eyebrow}
               </p>
-              <h2 className="mt-4 text-[2rem] font-bold leading-tight sm:text-[2.35rem]">
-                {ctaSectionContent.title[0]}
-                <br />
-                {ctaSectionContent.title[1]}
+              <h2 className="mt-4 break-keep text-[2rem] font-bold leading-[1.3] sm:text-[2.35rem]">
+                {ctaSectionContent.title.join(" ")}
               </h2>
-              <p className="mt-5 text-base leading-8 text-white/78 sm:text-lg">
+              <p className="mt-5 break-keep text-base leading-8 text-white/78 sm:text-lg">
                 {ctaSectionContent.description}
               </p>
               <div className="mt-8 rounded-[1.6rem] border border-white/10 bg-white/8 p-5">

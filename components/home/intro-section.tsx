@@ -10,7 +10,7 @@ export default function IntroSection() {
             <p className="text-sm font-semibold tracking-[0.18em] text-teal-700 uppercase">
               {introSectionContent.eyebrow}
             </p>
-            <div className="mt-6 space-y-5 text-lg leading-9 text-slate-700 sm:text-[1.35rem] sm:leading-10">
+            <div className="mt-6 space-y-5 break-keep text-lg leading-9 text-slate-700 sm:text-[1.35rem] sm:leading-10">
               {introSectionContent.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}

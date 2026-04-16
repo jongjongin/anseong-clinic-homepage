@@ -52,8 +52,10 @@ export default async function BlogSection({
                   </div>
                   <div className="p-6 sm:p-7">
                     <p className="text-sm font-semibold text-teal-700">{post.pubDate}</p>
-                    <h3 className="mt-3 text-2xl font-bold leading-tight text-slate-900">{post.title}</h3>
-                    <p className="mt-4 line-clamp-2 text-base leading-8 text-slate-600">
+                    <h3 className="mt-3 break-keep text-2xl font-bold leading-[1.3] text-slate-900">
+                      {post.title}
+                    </h3>
+                    <p className="mt-4 line-clamp-2 break-keep text-base leading-8 text-slate-600">
                       {post.description}
                     </p>
                     <span className="mt-6 inline-flex text-sm font-semibold text-slate-900">
