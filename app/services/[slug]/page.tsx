@@ -170,29 +170,35 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </section>
 
         <section className="bg-white">
-          <div className="mx-auto grid max-w-6xl gap-5 px-4 pb-16 sm:px-6 sm:pb-20 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+          <div className="mx-auto grid max-w-6xl gap-5 px-4 pb-16 sm:px-6 sm:pb-20 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
             <article className="rounded-[2rem] border border-slate-200 bg-[#fbfcfc] p-6 sm:p-8">
               <p className="text-sm font-semibold tracking-[0.14em] text-slate-400 uppercase">담당 의료진 안내</p>
-              <div className="mt-5 flex items-center gap-4">
-                <div className="relative h-24 w-24 overflow-hidden rounded-full border border-slate-200 bg-white">
-                  <Image
-                    src={service.doctorImage}
-                    alt={`${service.doctorName} ${service.doctorRole}`}
-                    fill
-                    className="object-cover object-top"
-                    sizes="96px"
-                  />
-                </div>
-                <div>
-                  <h2 className="break-keep text-2xl font-bold text-slate-900">
-                    {service.doctorName} {service.doctorRole}
-                  </h2>
-                  <p className="mt-2 break-keep text-sm font-medium text-teal-700">{service.doctorSummary}</p>
-                </div>
-              </div>
-              <p className="mt-6 break-keep text-sm leading-7 text-slate-500">
+              <p className="mt-4 break-keep text-sm leading-7 text-slate-500">
                 현재 불편한 증상과 생활 속 불편을 함께 살피며, 처음 내원하시는 분도 이해하기 쉬운 방향으로 진료 흐름을 안내해드립니다.
               </p>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                {service.doctors.map((doctor) => (
+                  <div key={doctor.name} className="rounded-[1.5rem] border border-slate-200 bg-white p-5">
+                    <div className="flex items-center gap-4">
+                      <div className="relative h-20 w-20 overflow-hidden rounded-full border border-slate-200 bg-slate-50">
+                        <Image
+                          src={doctor.image}
+                          alt={`${doctor.name} ${doctor.role}`}
+                          fill
+                          className="object-cover object-top"
+                          sizes="80px"
+                        />
+                      </div>
+                      <div>
+                        <h2 className="break-keep text-xl font-bold text-slate-900">
+                          {doctor.name} {doctor.role}
+                        </h2>
+                      </div>
+                    </div>
+                    <p className="mt-4 break-keep text-sm leading-7 text-teal-700">{doctor.summary}</p>
+                  </div>
+                ))}
+              </div>
             </article>
 
             <article className="rounded-[2rem] border border-slate-200 bg-white p-6 sm:p-8">
@@ -208,6 +214,35 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             </article>
           </div>
         </section>
+
+        {service.relatedPosts?.length ? (
+          <section className="bg-white">
+            <div className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20 lg:px-8">
+              <article className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6 sm:p-8">
+                <p className="text-sm font-semibold tracking-[0.14em] text-slate-400 uppercase">관련 블로그 글</p>
+                <h2 className="mt-4 break-keep text-2xl font-bold text-slate-900">
+                  이 진료와 함께 읽어보시면 좋은 글입니다
+                </h2>
+                <div className="mt-6 grid gap-4 md:grid-cols-2">
+                  {service.relatedPosts.map((post) => (
+                    <Link
+                      key={post.href}
+                      href={post.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-[1.5rem] border border-slate-200 bg-white p-5 transition-colors hover:border-slate-900"
+                    >
+                      <p className="text-sm font-semibold text-teal-700">블로그 글 보기</p>
+                      <p className="mt-3 break-keep text-lg font-semibold leading-8 text-slate-900">
+                        {post.title}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </article>
+            </div>
+          </section>
+        ) : null}
 
         <CtaSection />
       </main>
