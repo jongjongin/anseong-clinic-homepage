@@ -5,6 +5,7 @@ export { default as IntroSection } from "@/components/home/intro-section";
 export { default as GallerySection } from "@/components/home/gallery-section";
 export { default as BlogSection } from "@/components/home/blog-section";
 export { default as DepartmentsSection } from "@/components/home/departments-section";
+export { default as ServiceGuideSection } from "@/components/home/service-guide-section";
 export { default as DoctorsSection } from "@/components/home/doctors-section";
 export { default as EventsSection } from "@/components/home/events-section";
 export { default as ReviewsSection } from "@/components/home/reviews-section";
