@@ -37,7 +37,7 @@ export default function DepartmentsSection() {
                 {getServiceSlug(department.title) ? (
                   <Link
                     href={`/services/${getServiceSlug(department.title)}`}
-                    className="mt-6 inline-flex rounded-full border border-slate-900 bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
+                    className="mt-6 inline-flex rounded-full border border-slate-950 bg-slate-950 px-5 py-3 text-sm font-semibold !text-white shadow-[0_12px_24px_rgba(15,23,42,0.16)] transition-colors hover:bg-slate-800"
                   >
                     자세히 보기
                   </Link>
