@@ -188,24 +188,6 @@ export const doctorsSectionContent = {
         "대한한의학회 정회원",
       ],
     },
-    {
-      name: "강유",
-      role: "원장",
-      image: "/assets/doctors/kang-yu.png",
-      summary: "근골격·연구 기반 진료",
-      credentials: [
-        "경희대학교 한의과대학 졸업",
-        "경희대학교 한의학과 의료봉사 동아리 청록회 주말봉사부장",
-        "MPS 연구회 정회원",
-        "MPS 표면해부학 겨울캠프 수료",
-        "경희김한겸한의원 임상실습 수료",
-        "경희의료원 임상과정 수료",
-        "강동경희대병원 임상과정 수료",
-        "최인원 EFT 센터 EFT Level 1 수료",
-        "SCIE 논문 제1저자",
-        "Natural Products as New Approaches for Treating Bladder Cancer 논문 제1저자",
-      ],
-    },
   ],
 };
 
