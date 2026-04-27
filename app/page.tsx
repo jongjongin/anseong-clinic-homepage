@@ -12,6 +12,7 @@ import {
   InfoSection,
   IntroSection,
   MobileContactBar,
+  ServiceGuideSection,
   TelemedicineSection,
 } from "@/components/home";
 
@@ -27,6 +28,7 @@ export default function Home() {
           <BlogSection limit={4} />
         </Suspense>
         <DepartmentsSection />
+        <ServiceGuideSection />
         <DoctorsSection />
         <EventsSection />
         <TelemedicineSection />
