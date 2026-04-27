@@ -1,8 +1,13 @@
+import Link from "next/link";
 import SectionTitle from "@/components/home/section-title";
 import { departmentsSectionContent } from "@/components/home/content";
+import { servicePages } from "@/lib/service-pages";
 import Reveal from "@/components/home/reveal";
 
 export default function DepartmentsSection() {
+  const getServiceSlug = (title: string) =>
+    servicePages.find((service) => service.title.replace(" 진료", "") === title)?.slug;
+
   return (
     <section id="departments" className="bg-white">
       <div className="mx-auto max-w-6xl px-4 py-18 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
@@ -29,6 +34,14 @@ export default function DepartmentsSection() {
                 </h3>
                 <p className="mt-3 break-keep text-sm font-semibold text-teal-700">{department.summary}</p>
                 <p className="mt-5 break-keep text-base leading-8 text-slate-600">{department.description}</p>
+                {getServiceSlug(department.title) ? (
+                  <Link
+                    href={`/services/${getServiceSlug(department.title)}`}
+                    className="mt-6 inline-flex rounded-full border border-slate-900 bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
+                  >
+                    자세히 보기
+                  </Link>
+                ) : null}
               </article>
             </Reveal>
           ))}
