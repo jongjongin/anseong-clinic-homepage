@@ -17,8 +17,8 @@ export default function ServiceGuideSection() {
         <Reveal>
           <SectionTitle
             eyebrow="진료 상세 안내"
-            title="현재 불편한 증상에 맞는 진료 방향을 메인에서 바로 확인해보세요"
-            description="진료과목마다 어떤 증상으로 많이 내원하시는지, 어떤 원장님들이 함께 살피는지, 내원 전 무엇을 함께 보면 좋은지 한눈에 확인하실 수 있습니다."
+            title="지금 가장 고민되는 증상에 맞는 진료를 메인에서 바로 확인해보세요"
+            description="많이 문의하시는 증상, 함께 안내하는 의료진, 내원 전 체크 포인트를 메인에서 바로 확인하실 수 있습니다."
           />
         </Reveal>
 
@@ -75,7 +75,7 @@ export default function ServiceGuideSection() {
                         {service.title}
                       </div>
                       <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold tracking-[0.14em] text-white/90 uppercase">
-                        Featured Care
+                        핵심 진료
                       </span>
                     </div>
                     <p className="mt-4 max-w-[28rem] break-keep text-xl font-bold leading-8 text-white sm:text-[1.65rem] sm:leading-9">
@@ -171,7 +171,7 @@ export default function ServiceGuideSection() {
                         {service.title}
                       </div>
                       <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold tracking-[0.14em] text-white/90 uppercase">
-                        Service Guide
+                        진료 안내
                       </span>
                     </div>
                     <p className="mt-4 max-w-[28rem] break-keep text-xl font-bold leading-8 text-white sm:text-[1.65rem] sm:leading-9">
