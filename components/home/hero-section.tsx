@@ -5,6 +5,11 @@ import { heroContent } from "@/components/home/content";
 import Reveal from "@/components/home/reveal";
 
 export default function HeroSection() {
+  const featuredQuickLinks = [
+    { label: "교통사고 진료", href: "/services/car-accident" },
+    { label: "보약 상담", href: "/services/tonic" },
+    { label: "다이어트 진료", href: "/services/diet" },
+  ];
   const heroVideoPath = heroContent.visualVideo;
   const hasHeroVideo = heroVideoPath
     ? existsSync(join(process.cwd(), "public", heroVideoPath.replace(/^\//, "")))
@@ -74,6 +79,23 @@ export default function HeroSection() {
                   >
                     {heroContent.secondaryButton}
                   </a>
+                </div>
+
+                <div className="mt-6">
+                  <p className="text-xs font-semibold tracking-[0.14em] text-white/70 uppercase sm:text-sm">
+                    많이 찾으시는 진료
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2.5">
+                    {featuredQuickLinks.map((item) => (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        className="rounded-full border border-white/16 bg-white/10 px-4 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/16"
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
