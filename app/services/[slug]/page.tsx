@@ -170,6 +170,66 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </section>
 
         <section className="bg-white">
+          <div className="mx-auto grid max-w-6xl gap-5 px-4 pb-16 sm:px-6 sm:pb-20 lg:grid-cols-[1fr_1fr] lg:px-8">
+            <article className="rounded-[2rem] border border-slate-200 bg-white p-6 sm:p-8">
+              <p className="text-sm font-semibold tracking-[0.14em] text-slate-400 uppercase">내원 전 함께 살펴보세요</p>
+              <div className="mt-5 grid gap-4 sm:grid-cols-3">
+                {service.checkpoints.map((item) => (
+                  <div key={item} className="rounded-[1.5rem] bg-slate-50 p-5">
+                    <p className="break-keep text-sm leading-7 text-slate-700">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </article>
+
+            <article className="rounded-[2rem] border border-slate-200 bg-[#fbfcfc] p-6 sm:p-8">
+              <p className="text-sm font-semibold tracking-[0.14em] text-slate-400 uppercase">이런 고민으로 상담하십니다</p>
+              <div className="mt-5 space-y-4">
+                {service.commonConcerns.map((item) => (
+                  <div key={item} className="rounded-[1.5rem] border border-slate-200 bg-white p-5">
+                    <p className="break-keep text-base leading-8 text-slate-600">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section className="bg-white">
+          <div className="mx-auto grid max-w-6xl gap-5 px-4 pb-16 sm:px-6 sm:pb-20 lg:grid-cols-[1fr_1fr] lg:px-8">
+            <article className="rounded-[2rem] border border-slate-200 bg-[#fbfcfc] p-6 sm:p-8">
+              <p className="text-sm font-semibold tracking-[0.14em] text-slate-400 uppercase">진료는 이렇게 진행됩니다</p>
+              <div className="mt-5 space-y-4">
+                {service.process.map((step, index) => (
+                  <div key={step.title} className="rounded-[1.5rem] border border-slate-200 bg-white p-5">
+                    <div className="flex items-start gap-4">
+                      <div className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-teal-700 text-sm font-bold text-white">
+                        {index + 1}
+                      </div>
+                      <div>
+                        <h2 className="break-keep text-lg font-semibold text-slate-900">{step.title}</h2>
+                        <p className="mt-2 break-keep text-sm leading-7 text-slate-600">{step.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </article>
+
+            <article className="rounded-[2rem] border border-slate-200 bg-white p-6 sm:p-8">
+              <p className="text-sm font-semibold tracking-[0.14em] text-slate-400 uppercase">처음 오시는 분께 안내드립니다</p>
+              <div className="mt-5 space-y-4">
+                {service.guidanceNotes.map((item) => (
+                  <div key={item} className="rounded-[1.5rem] bg-slate-50 p-5">
+                    <p className="break-keep text-base leading-8 text-slate-600">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section className="bg-white">
           <div className="mx-auto grid max-w-6xl gap-5 px-4 pb-16 sm:px-6 sm:pb-20 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
             <article className="rounded-[2rem] border border-slate-200 bg-[#fbfcfc] p-6 sm:p-8">
               <p className="text-sm font-semibold tracking-[0.14em] text-slate-400 uppercase">담당 의료진 안내</p>
@@ -202,10 +262,25 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             </article>
 
             <article className="rounded-[2rem] border border-slate-200 bg-white p-6 sm:p-8">
+              <p className="text-sm font-semibold tracking-[0.14em] text-slate-400 uppercase">내원 전 생활 안내</p>
+              <div className="mt-5 space-y-4">
+                {service.homeCare.map((item) => (
+                  <div key={item} className="rounded-[1.5rem] bg-slate-50 p-5">
+                    <p className="break-keep text-base leading-8 text-slate-600">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section className="bg-white">
+          <div className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20 lg:px-8">
+            <article className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6 sm:p-8">
               <p className="text-sm font-semibold tracking-[0.14em] text-slate-400 uppercase">자주 묻는 안내</p>
-              <div className="mt-5 space-y-5">
+              <div className="mt-5 grid gap-4 md:grid-cols-2">
                 {service.faqs.map((faq) => (
-                  <div key={faq.question} className="rounded-[1.5rem] bg-slate-50 p-5">
+                  <div key={faq.question} className="rounded-[1.5rem] border border-slate-200 bg-white p-5">
                     <h3 className="break-keep text-lg font-semibold text-slate-900">{faq.question}</h3>
                     <p className="mt-3 break-keep text-base leading-8 text-slate-600">{faq.answer}</p>
                   </div>
@@ -214,35 +289,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             </article>
           </div>
         </section>
-
-        {service.relatedPosts?.length ? (
-          <section className="bg-white">
-            <div className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20 lg:px-8">
-              <article className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6 sm:p-8">
-                <p className="text-sm font-semibold tracking-[0.14em] text-slate-400 uppercase">관련 블로그 글</p>
-                <h2 className="mt-4 break-keep text-2xl font-bold text-slate-900">
-                  이 진료와 함께 읽어보시면 좋은 글입니다
-                </h2>
-                <div className="mt-6 grid gap-4 md:grid-cols-2">
-                  {service.relatedPosts.map((post) => (
-                    <Link
-                      key={post.href}
-                      href={post.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="rounded-[1.5rem] border border-slate-200 bg-white p-5 transition-colors hover:border-slate-900"
-                    >
-                      <p className="text-sm font-semibold text-teal-700">블로그 글 보기</p>
-                      <p className="mt-3 break-keep text-lg font-semibold leading-8 text-slate-900">
-                        {post.title}
-                      </p>
-                    </Link>
-                  ))}
-                </div>
-              </article>
-            </div>
-          </section>
-        ) : null}
 
         <CtaSection />
       </main>
