@@ -6,7 +6,7 @@ import { servicePages } from "@/lib/service-pages";
 export const metadata: Metadata = {
   title: "진료과목 안내",
   description:
-    "안성경희365한의원의 척추관절, 교통사고, 약침추나, 소아성장, 다이어트, 여성질환, 미용 진료과목을 한곳에서 확인하실 수 있습니다.",
+    "안성경희365한의원의 척추관절, 교통사고, 약침추나, 소아성장, 다이어트, 보약, 여성질환, 미용 진료과목을 한곳에서 확인하실 수 있습니다.",
   alternates: {
     canonical: "/services",
   },
@@ -24,7 +24,7 @@ export default function ServicesPage() {
               현재 불편한 증상에 맞는 진료과목을 확인해 보세요
             </h1>
             <p className="mt-6 max-w-3xl break-keep text-base leading-8 text-slate-600 sm:text-lg">
-              척추관절, 교통사고, 약침추나, 소아성장, 다이어트, 여성질환, 미용 진료까지
+              척추관절, 교통사고, 약침추나, 소아성장, 다이어트, 보약, 여성질환, 미용 진료까지
               현재 필요한 진료를 상세 페이지에서 더 자세히 확인하실 수 있습니다.
             </p>
           </div>
