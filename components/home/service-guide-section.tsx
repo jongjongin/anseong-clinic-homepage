@@ -5,6 +5,12 @@ import SectionTitle from "@/components/home/section-title";
 import { servicePages } from "@/lib/service-pages";
 
 export default function ServiceGuideSection() {
+  const featuredSlugs = ["car-accident", "tonic", "diet"];
+  const featuredServices = featuredSlugs
+    .map((slug) => servicePages.find((service) => service.slug === slug))
+    .filter((service) => service !== undefined);
+  const otherServices = servicePages.filter((service) => !featuredSlugs.includes(service.slug));
+
   return (
     <section className="bg-[linear-gradient(180deg,#f8fbfb_0%,#ffffff_100%)]">
       <div className="mx-auto max-w-6xl px-4 py-18 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
@@ -39,8 +45,115 @@ export default function ServiceGuideSection() {
           </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-2">
-          {servicePages.map((service, index) => (
+        <Reveal delayMs={70}>
+          <div className="mt-12 flex items-center justify-between gap-4">
+            <div>
+              <p className="text-sm font-semibold tracking-[0.14em] text-teal-700 uppercase">핵심 진료</p>
+              <h3 className="mt-2 break-keep text-2xl font-bold text-slate-900 sm:text-[2rem]">
+                가장 많이 찾으시는 진료를 먼저 안내드립니다
+              </h3>
+            </div>
+          </div>
+        </Reveal>
+
+        <div className="mt-6 grid gap-5 xl:grid-cols-3">
+          {featuredServices.map((service, index) => (
+            <Reveal key={service.slug} delayMs={index * 45}>
+              <article className="overflow-hidden rounded-[2rem] border border-teal-200 bg-white shadow-[0_22px_46px_rgba(15,23,42,0.08)]">
+                <div className="relative min-h-[260px] border-b border-slate-200 bg-slate-100">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <div className="inline-flex rounded-full bg-[#FEE500] px-3 py-1 text-sm font-semibold text-slate-950">
+                        {service.title}
+                      </div>
+                      <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold tracking-[0.14em] text-white/90 uppercase">
+                        Featured Care
+                      </span>
+                    </div>
+                    <p className="mt-4 max-w-[28rem] break-keep text-xl font-bold leading-8 text-white sm:text-[1.65rem] sm:leading-9">
+                      {service.subtitle}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 sm:p-8">
+                  <div className="rounded-[1.5rem] border border-teal-100 bg-teal-50/60 px-5 py-5">
+                    <p className="text-sm font-semibold text-teal-700">진료 한눈에 보기</p>
+                    <p className="mt-3 break-keep text-base leading-8 text-slate-700">{service.summary}</p>
+                  </div>
+
+                  <div className="mt-6 grid gap-4 rounded-[1.5rem] bg-slate-50 p-5">
+                    <div>
+                      <p className="text-sm font-semibold text-slate-900">이런 증상으로 많이 문의하십니다</p>
+                      <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-600">
+                        {service.symptoms.slice(0, 2).map((symptom) => (
+                          <li key={symptom} className="flex gap-3 break-keep">
+                            <span className="mt-3 h-1.5 w-1.5 rounded-full bg-teal-700" />
+                            <span>{symptom}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      <p className="text-sm font-semibold text-slate-900">함께 안내하는 의료진</p>
+                      <p className="mt-3 break-keep text-sm leading-7 text-slate-600">
+                        {service.doctors.map((doctor) => `${doctor.name} 원장`).join(" · ")}
+                      </p>
+                    </div>
+
+                    <div>
+                      <p className="text-sm font-semibold text-slate-900">내원 전 함께 살펴보세요</p>
+                      <p className="mt-3 break-keep text-sm leading-7 text-slate-600">{service.checkpoints[0]}</p>
+                    </div>
+
+                    <div>
+                      <p className="text-sm font-semibold text-slate-900">이런 고민으로 상담하십니다</p>
+                      <p className="mt-3 break-keep text-sm leading-7 text-slate-600">{service.commonConcerns[0]}</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="inline-flex rounded-full border border-slate-950 bg-slate-950 px-5 py-3 text-sm font-semibold !text-white shadow-[0_12px_24px_rgba(15,23,42,0.16)] transition-colors hover:bg-slate-800"
+                    >
+                      상세 페이지 보기
+                    </Link>
+                    <Link
+                      href="#consult"
+                      className="inline-flex rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:border-slate-900"
+                    >
+                      상담 문의하기
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delayMs={80}>
+          <div className="mt-14 flex items-center justify-between gap-4">
+            <div>
+              <p className="text-sm font-semibold tracking-[0.14em] text-teal-700 uppercase">전체 진료 안내</p>
+              <h3 className="mt-2 break-keep text-2xl font-bold text-slate-900 sm:text-[2rem]">
+                다른 진료과목도 함께 확인해보세요
+              </h3>
+            </div>
+          </div>
+        </Reveal>
+
+        <div className="mt-6 grid gap-5 lg:grid-cols-2">
+          {otherServices.map((service, index) => (
             <Reveal key={service.slug} delayMs={index * 45}>
               <article className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_18px_40px_rgba(15,23,42,0.06)]">
                 <div className="relative min-h-[220px] border-b border-slate-200 bg-slate-100">
