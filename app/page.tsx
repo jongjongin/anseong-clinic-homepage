@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import {
   BlogSection,
   CtaSection,
-  DepartmentsSection,
   DoctorsSection,
   EventsSection,
   Footer,
@@ -27,7 +26,6 @@ export default function Home() {
         <Suspense fallback={null}>
           <BlogSection limit={4} />
         </Suspense>
-        <DepartmentsSection />
         <ServiceGuideSection />
         <DoctorsSection />
         <EventsSection />

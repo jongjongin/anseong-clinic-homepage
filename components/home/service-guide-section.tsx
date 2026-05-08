@@ -29,7 +29,7 @@ export default function ServiceGuideSection() {
   const otherServices = servicePages.filter((service) => !featuredSlugs.includes(service.slug));
 
   return (
-    <section className="bg-[linear-gradient(180deg,#f8fbfb_0%,#ffffff_100%)]">
+    <section id="departments" className="bg-[linear-gradient(180deg,#f8fbfb_0%,#ffffff_100%)]">
       <div className="mx-auto max-w-6xl px-4 py-18 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
         <Reveal>
           <SectionTitle

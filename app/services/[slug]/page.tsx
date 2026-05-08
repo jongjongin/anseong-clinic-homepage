@@ -198,6 +198,40 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           </div>
         </section>
 
+        {service.detailSections ? (
+          <section className="bg-slate-50">
+            <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+              <div className="max-w-3xl">
+                <p className="text-sm font-semibold tracking-[0.14em] text-teal-700 uppercase">상세 진료 포인트</p>
+                <h2 className="mt-3 break-keep text-3xl font-bold text-slate-900 sm:text-[2.4rem]">
+                  현재 상태에 맞춰 필요한 부분을 차근차근 확인합니다
+                </h2>
+              </div>
+
+              <div className="mt-8 grid gap-5">
+                {service.detailSections.map((section) => (
+                  <article key={section.title} className="rounded-[2rem] border border-slate-200 bg-white p-6 sm:p-8">
+                    <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+                      <div>
+                        <h3 className="break-keep text-2xl font-bold text-slate-900">{section.title}</h3>
+                        <p className="mt-4 break-keep text-base leading-8 text-slate-600">{section.description}</p>
+                      </div>
+                      <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+                        {section.items.map((item) => (
+                          <div key={item.title} className="rounded-[1.5rem] bg-slate-50 p-5">
+                            <h4 className="break-keep text-base font-semibold text-teal-700">{item.title}</h4>
+                            <p className="mt-3 break-keep text-sm leading-7 text-slate-600">{item.description}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
+
         <section className="bg-white">
           <div className="mx-auto grid max-w-6xl gap-5 px-4 pb-16 sm:px-6 sm:pb-20 lg:grid-cols-[1fr_1fr] lg:px-8">
             <article className="rounded-[2rem] border border-slate-200 bg-[#fbfcfc] p-6 sm:p-8">
