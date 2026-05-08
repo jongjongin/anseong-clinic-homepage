@@ -172,7 +172,10 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         <section className="bg-white">
           <div className="mx-auto grid max-w-6xl gap-5 px-4 pb-16 sm:px-6 sm:pb-20 lg:grid-cols-[1fr_1fr] lg:px-8">
             <article className="rounded-[2rem] border border-slate-200 bg-white p-6 sm:p-8">
-              <p className="text-sm font-semibold tracking-[0.14em] text-slate-400 uppercase">내원 전 함께 살펴보세요</p>
+              <p className="text-sm font-semibold tracking-[0.14em] text-slate-400 uppercase">내원 전 준비사항</p>
+              <p className="mt-4 break-keep text-base leading-8 text-slate-600">
+                처음 내원 전에는 현재 가장 불편한 증상과 생활 속에서 언제 더 불편한지 정도만 생각해 오셔도 충분합니다.
+              </p>
               <div className="mt-5 grid gap-4 sm:grid-cols-3">
                 {service.checkpoints.map((item) => (
                   <div key={item} className="rounded-[1.5rem] bg-slate-50 p-5">

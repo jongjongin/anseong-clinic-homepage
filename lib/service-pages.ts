@@ -29,6 +29,39 @@ export type ServicePage = {
   }[];
 };
 
+const allServiceDoctors: ServicePage["doctors"] = [
+  {
+    name: "윤종인",
+    role: "원장",
+    image: "/assets/doctors/yoon-jongin.png",
+    summary: "통증, 재활, 초음파 기반 근골격계 진료 경험을 바탕으로 현재 불편한 증상과 생활 흐름을 함께 살핍니다.",
+  },
+  {
+    name: "우예지",
+    role: "원장",
+    image: "/assets/doctors/woo-yeji.png",
+    summary: "부인과와 생활 균형 진료를 중심으로 환자분의 컨디션 변화와 일상 속 불편을 세심하게 확인합니다.",
+  },
+  {
+    name: "박은지",
+    role: "원장",
+    image: "/assets/doctors/park-eunji.png",
+    summary: "한방병원 임상 경험을 바탕으로 오래된 통증과 회복이 더딘 불편까지 차분하게 안내합니다.",
+  },
+  {
+    name: "이도훈",
+    role: "4과 원장",
+    image: "/assets/doctors/lee-dohoon.png",
+    summary: "경희대학교 한의과대학 졸업 후 공공의료 현장과 추나 진료 경험을 바탕으로 척추관절 불편을 함께 살핍니다.",
+  },
+  {
+    name: "윤필규",
+    role: "5과 원장",
+    image: "/assets/doctors/yoon-pilgyu.png",
+    summary: "스포츠한의학과 추나 진료 역량을 바탕으로 통증, 움직임 불편, 회복 관리 방향을 꼼꼼하게 안내합니다.",
+  },
+];
+
 export const servicePages: ServicePage[] = [
   {
     slug: "spine-joint",
@@ -42,26 +75,7 @@ export const servicePages: ServicePage[] = [
       "안성경희365한의원의 척추관절 진료 안내입니다. 목, 허리, 어깨, 무릎 통증과 움직임 불편을 함께 살피며 생활 속 불편이 줄어들 수 있는 방향으로 진료를 안내합니다.",
     keywords: ["안성 척추관절", "안성 허리통증", "안성 목통증", "안성 어깨통증", "안성 무릎통증"],
     image: "/assets/interior/interior-1.jpg",
-    doctors: [
-      {
-        name: "윤종인",
-        role: "원장",
-        image: "/assets/doctors/yoon-jongin.png",
-        summary: "목, 허리, 어깨, 무릎처럼 반복되는 통증을 생활 불편까지 함께 살피며 안내합니다.",
-      },
-      {
-        name: "우예지",
-        role: "원장",
-        image: "/assets/doctors/woo-yeji.png",
-        summary: "자세와 움직임에서 불편한 부분을 세심하게 확인하고 회복 방향을 함께 설명드립니다.",
-      },
-      {
-        name: "박은지",
-        role: "원장",
-        image: "/assets/doctors/park-eunji.png",
-        summary: "오래된 통증이나 쉽게 반복되는 관절 불편도 현재 상태에 맞춰 차분히 살핍니다.",
-      },
-    ],
+    doctors: allServiceDoctors,
     symptoms: [
       "목과 어깨가 자주 뭉치고 뻐근한 경우",
       "허리 통증으로 오래 앉아 있거나 서 있기 힘든 경우",
@@ -123,6 +137,10 @@ export const servicePages: ServicePage[] = [
         question: "운동을 계속해도 되는지 상담받을 수 있나요?",
         answer: "네, 현재 통증 상태에 따라 쉬어야 할지, 조절해서 가능한 움직임이 있는지 함께 안내해드립니다.",
       },
+      {
+        question: "검사 결과가 없어도 먼저 상담받을 수 있나요?",
+        answer: "네, 검사 결과가 없어도 현재 통증과 일상에서 가장 불편한 부분을 기준으로 먼저 상담과 진료 안내가 가능합니다.",
+      },
     ],
   },
   {
@@ -137,26 +155,7 @@ export const servicePages: ServicePage[] = [
       "안성경희365한의원의 교통사고 후유증 진료 안내입니다. 목, 허리 통증, 두통, 어지럼증, 피로감 등 사고 이후 반복되는 불편을 세심하게 살핍니다.",
     keywords: ["안성 교통사고 한의원", "안성 교통사고 후유증", "안성 자동차보험 한의원"],
     image: "/assets/people/people-1.jpg",
-    doctors: [
-      {
-        name: "윤종인",
-        role: "원장",
-        image: "/assets/doctors/yoon-jongin.png",
-        summary: "사고 후 목, 허리 통증처럼 일상에 바로 영향을 주는 불편을 중심으로 안내합니다.",
-      },
-      {
-        name: "우예지",
-        role: "원장",
-        image: "/assets/doctors/woo-yeji.png",
-        summary: "사고 뒤 나타나는 몸의 긴장감과 회복 지연에 대해 부담 없이 상담받으실 수 있습니다.",
-      },
-      {
-        name: "박은지",
-        role: "원장",
-        image: "/assets/doctors/park-eunji.png",
-        summary: "한방병원 임상 경험을 바탕으로 교통사고 이후 통증과 후유증을 세심하게 살핍니다.",
-      },
-    ],
+    doctors: allServiceDoctors,
     symptoms: [
       "사고 후 목, 허리, 어깨 통증이 계속되는 경우",
       "두통, 어지럼증, 피로감이 반복되는 경우",
@@ -218,6 +217,10 @@ export const servicePages: ServicePage[] = [
         question: "통증 말고 두통이나 피로감도 함께 이야기해도 되나요?",
         answer: "네, 교통사고 후에는 통증 외 증상도 함께 나타날 수 있어 같이 말씀해 주시는 것이 좋습니다.",
       },
+      {
+        question: "사고 후 바로 못 왔는데 지금 와도 괜찮을까요?",
+        answer: "네, 사고 직후보다 시간이 지난 뒤 불편이 더 커지는 경우도 많아 현재 느끼는 증상을 기준으로 상담받으실 수 있습니다.",
+      },
     ],
   },
   {
@@ -231,26 +234,7 @@ export const servicePages: ServicePage[] = [
       "안성경희365한의원의 약침·추나 진료 안내입니다. 통증 부위와 몸의 균형 상태를 함께 살피며 필요한 치료 방향을 안내합니다.",
     keywords: ["안성 추나", "안성 약침", "안성 추나치료", "안성 통증치료"],
     image: "/assets/interior/interior-2.jpg",
-    doctors: [
-      {
-        name: "윤종인",
-        role: "원장",
-        image: "/assets/doctors/yoon-jongin.png",
-        summary: "통증과 재활 중심의 진료 경험을 바탕으로 약침·추나 방향을 함께 안내합니다.",
-      },
-      {
-        name: "우예지",
-        role: "원장",
-        image: "/assets/doctors/woo-yeji.png",
-        summary: "몸의 균형과 움직임 불편을 세심하게 확인하며 필요한 치료 흐름을 설명드립니다.",
-      },
-      {
-        name: "박은지",
-        role: "원장",
-        image: "/assets/doctors/park-eunji.png",
-        summary: "오래된 통증과 뻣뻣함처럼 반복되는 불편도 현재 상태에 맞춰 차분히 살핍니다.",
-      },
-    ],
+    doctors: allServiceDoctors,
     symptoms: [
       "근육과 관절이 자주 뭉치고 뻣뻣한 경우",
       "몸의 균형이 틀어진 느낌이 드는 경우",
@@ -312,6 +296,10 @@ export const servicePages: ServicePage[] = [
         question: "통증이 오래됐는데도 방향을 잡을 수 있나요?",
         answer: "네, 오래 반복된 통증도 현재 상태와 생활 불편을 바탕으로 차분히 진료 방향을 안내해드립니다.",
       },
+      {
+        question: "약침과 추나 중 어떤 방향이 더 맞는지도 상담할 수 있나요?",
+        answer: "네, 현재 통증 양상과 몸의 균형 상태를 함께 본 뒤 어떤 방향이 더 필요한지 이해하기 쉽게 안내해드립니다.",
+      },
     ],
   },
   {
@@ -325,26 +313,7 @@ export const servicePages: ServicePage[] = [
       "안성경희365한의원의 소아성장 진료 안내입니다. 성장기 아이의 생활 습관, 식사, 수면, 컨디션을 함께 확인하며 건강한 성장 흐름을 돕습니다.",
     keywords: ["안성 소아성장", "안성 성장 한의원", "안성 키성장 상담"],
     image: "/assets/people/people-2.jpg",
-    doctors: [
-      {
-        name: "윤종인",
-        role: "원장",
-        image: "/assets/doctors/yoon-jongin.png",
-        summary: "성장기 아이의 체력과 생활 습관을 함께 보며 필요한 성장 상담 방향을 안내합니다.",
-      },
-      {
-        name: "우예지",
-        role: "원장",
-        image: "/assets/doctors/woo-yeji.png",
-        summary: "아이의 성장 상태뿐 아니라 식사, 수면, 컨디션까지 함께 살피며 세심하게 안내합니다.",
-      },
-      {
-        name: "박은지",
-        role: "원장",
-        image: "/assets/doctors/park-eunji.png",
-        summary: "부모님이 궁금해하시는 성장 흐름과 생활 관리 방향을 이해하기 쉽게 설명드립니다.",
-      },
-    ],
+    doctors: allServiceDoctors,
     symptoms: [
       "성장기 아이의 성장 상담이 필요한 경우",
       "식사, 수면, 체력 저하로 성장 관리가 걱정되는 경우",
@@ -406,6 +375,10 @@ export const servicePages: ServicePage[] = [
         question: "부모만 먼저 상담 문의해도 되나요?",
         answer: "네, 먼저 궁금한 점을 문의하신 뒤 아이와 함께 내원하실 방향을 안내받으실 수 있습니다.",
       },
+      {
+        question: "성장 상담은 어느 시기에 시작하면 좋을까요?",
+        answer: "또래 성장이나 체력, 수면, 식사 습관이 걱정되기 시작할 때 부담 없이 먼저 상담받아 보시는 것이 좋습니다.",
+      },
     ],
   },
   {
@@ -419,26 +392,7 @@ export const servicePages: ServicePage[] = [
       "안성경희365한의원의 다이어트 진료 안내입니다. 체질과 생활 패턴을 함께 고려해 무리하지 않는 감량 방향을 안내합니다.",
     keywords: ["안성 다이어트 한의원", "안성 다이어트", "안성 체질 다이어트"],
     image: "/assets/interior/interior-3.jpg",
-    doctors: [
-      {
-        name: "윤종인",
-        role: "원장",
-        image: "/assets/doctors/yoon-jongin.png",
-        summary: "무리한 감량보다 생활 패턴을 고려한 현실적인 다이어트 방향을 함께 살핍니다.",
-      },
-      {
-        name: "우예지",
-        role: "원장",
-        image: "/assets/doctors/woo-yeji.png",
-        summary: "체질과 생활 패턴을 함께 고려해 건강하게 이어갈 수 있는 감량 방향을 안내합니다.",
-      },
-      {
-        name: "박은지",
-        role: "원장",
-        image: "/assets/doctors/park-eunji.png",
-        summary: "현재 몸 상태와 목표를 함께 보며 부담 없이 이어갈 수 있는 관리 흐름을 설명드립니다.",
-      },
-    ],
+    doctors: allServiceDoctors,
     symptoms: [
       "체질과 생활 패턴에 맞는 감량 방향이 필요한 경우",
       "무리한 절식 없이 건강한 다이어트를 원하시는 경우",
@@ -517,27 +471,8 @@ export const servicePages: ServicePage[] = [
     seoDescription:
       "안성경희365한의원의 보약 진료 안내입니다. 피로, 체력 저하, 잦은 컨디션 저하와 회복 지연을 현재 생활 패턴과 함께 살피며 필요한 보약 상담 방향을 안내합니다.",
     keywords: ["안성 보약", "안성 한약", "안성 체력보강", "안성 피로회복 한의원"],
-    image: "/assets/interior/interior-1.jpg",
-    doctors: [
-      {
-        name: "윤종인",
-        role: "원장",
-        image: "/assets/doctors/yoon-jongin.png",
-        summary: "쉽게 지치는 몸 상태와 회복 흐름을 함께 보며 현재 컨디션에 맞는 보약 상담 방향을 안내합니다.",
-      },
-      {
-        name: "우예지",
-        role: "원장",
-        image: "/assets/doctors/woo-yeji.png",
-        summary: "식사, 수면, 피로 누적처럼 생활 속 컨디션 변화를 함께 살피며 세심하게 상담해드립니다.",
-      },
-      {
-        name: "박은지",
-        role: "원장",
-        image: "/assets/doctors/park-eunji.png",
-        summary: "출산 후, 수술 후, 잦은 피로처럼 회복이 필요한 시기의 몸 상태도 차분히 함께 살핍니다.",
-      },
-    ],
+    image: "/assets/people/people-2.jpg",
+    doctors: allServiceDoctors,
     symptoms: [
       "쉽게 피곤하고 체력이 떨어진 느낌이 오래가는 경우",
       "잔병치레가 잦고 회복이 더디다고 느끼는 경우",
@@ -616,26 +551,7 @@ export const servicePages: ServicePage[] = [
       "안성경희365한의원의 여성질환 진료 안내입니다. 생리통, 피로, 냉증, 순환 문제처럼 반복되는 불편을 몸 전체의 흐름과 함께 살핍니다.",
     keywords: ["안성 여성질환 한의원", "안성 생리통", "안성 냉증", "안성 여성 한의원"],
     image: "/assets/people/people-2.jpg",
-    doctors: [
-      {
-        name: "윤종인",
-        role: "원장",
-        image: "/assets/doctors/yoon-jongin.png",
-        summary: "반복되는 통증과 컨디션 저하를 생활 불편까지 함께 살피며 안내합니다.",
-      },
-      {
-        name: "우예지",
-        role: "원장",
-        image: "/assets/doctors/woo-yeji.png",
-        summary: "여성의 주기적 불편과 컨디션 변화를 함께 살피며 필요한 방향을 세심하게 안내합니다.",
-      },
-      {
-        name: "박은지",
-        role: "원장",
-        image: "/assets/doctors/park-eunji.png",
-        summary: "생리통, 피로, 순환 문제처럼 반복되는 불편을 현재 상태에 맞춰 차분히 살핍니다.",
-      },
-    ],
+    doctors: allServiceDoctors,
     symptoms: [
       "생리통이나 주기적 통증이 반복되는 경우",
       "냉증, 피로, 순환 문제로 불편을 느끼는 경우",
@@ -697,6 +613,10 @@ export const servicePages: ServicePage[] = [
         question: "진료 전 무엇을 준비하면 좋을까요?",
         answer: "증상이 심해지는 시기나 평소 가장 불편한 점을 정리해 오시면 상담에 도움이 됩니다.",
       },
+      {
+        question: "생리통이 아주 심하지 않아도 미리 상담받아볼 수 있나요?",
+        answer: "네, 통증이 심한 날만이 아니라 주기적인 피로감이나 냉증, 순환 불편이 있을 때도 편하게 상담받으실 수 있습니다.",
+      },
     ],
   },
   {
@@ -710,26 +630,7 @@ export const servicePages: ServicePage[] = [
       "안성경희365한의원의 미용 진료 안내입니다. 현재 피부 상태와 고민을 충분히 확인한 뒤 무리하지 않는 방향으로 맞춤 관리를 안내합니다.",
     keywords: ["안성 미용 한의원", "안성 피부관리", "안성 맞춤 시술"],
     image: "/assets/interior/interior-2.jpg",
-    doctors: [
-      {
-        name: "윤종인",
-        role: "원장",
-        image: "/assets/doctors/yoon-jongin.png",
-        summary: "현재 피부 고민과 생활 패턴을 함께 보며 무리하지 않는 관리 방향을 안내합니다.",
-      },
-      {
-        name: "우예지",
-        role: "원장",
-        image: "/assets/doctors/woo-yeji.png",
-        summary: "현재 피부 상태와 고민을 충분히 확인한 뒤 부담 없는 방향으로 미용 상담을 안내합니다.",
-      },
-      {
-        name: "박은지",
-        role: "원장",
-        image: "/assets/doctors/park-eunji.png",
-        summary: "처음 미용 상담을 받으시는 분도 이해하기 쉽도록 현재 상태에 맞춘 방향을 설명드립니다.",
-      },
-    ],
+    doctors: allServiceDoctors,
     symptoms: [
       "피부 상태에 맞는 맞춤 관리가 필요한 경우",
       "현재 고민 부위에 대해 상담을 먼저 받아보고 싶은 경우",
@@ -790,6 +691,10 @@ export const servicePages: ServicePage[] = [
       {
         question: "처음 상담에서 꼭 시술을 정해야 하나요?",
         answer: "아니요. 먼저 현재 피부 상태와 고민을 확인하고 어떤 방향이 맞는지 설명부터 들으실 수 있습니다.",
+      },
+      {
+        question: "처음 미용 상담을 받는 경우에도 부담 없이 문의할 수 있나요?",
+        answer: "네, 어떤 관리가 필요한지 잘 모르셔도 현재 피부 고민을 기준으로 편하게 상담받으실 수 있습니다.",
       },
     ],
   },

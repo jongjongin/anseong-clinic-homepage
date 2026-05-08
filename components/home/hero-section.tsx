@@ -97,6 +97,29 @@ export default function HeroSection() {
                     ))}
                   </div>
                 </div>
+
+                <div className="mt-5 max-w-2xl rounded-[1.6rem] border border-white/16 bg-white/10 p-4 backdrop-blur-md sm:p-5">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                      <p className="text-xs font-semibold tracking-[0.14em] text-[#FEE500] uppercase sm:text-sm">
+                        보약 상담 안내
+                      </p>
+                      <p className="mt-2 break-keep text-lg font-semibold text-white sm:text-xl">
+                        쉽게 지치고 회복이 더디게 느껴질 때 현재 몸 상태에 맞는 보약 상담도 함께 안내해드립니다.
+                      </p>
+                      <p className="mt-2 break-keep text-sm leading-7 text-white/76 sm:text-base">
+                        피로가 오래가거나 잔병치레가 반복될 때, 수면과 식사, 최근 컨디션 변화를 함께 살펴보며
+                        부담 없이 상담받으실 수 있습니다.
+                      </p>
+                    </div>
+                    <a
+                      href="/services/tonic"
+                      className="inline-flex shrink-0 rounded-full border border-white/24 bg-white/12 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/16"
+                    >
+                      보약 진료 자세히 보기
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
 

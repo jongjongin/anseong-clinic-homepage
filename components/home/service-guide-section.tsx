@@ -6,6 +6,23 @@ import { servicePages } from "@/lib/service-pages";
 
 export default function ServiceGuideSection() {
   const featuredSlugs = ["car-accident", "tonic", "diet"];
+  const featuredVisuals: Record<
+    string,
+    { imageClass: string; chip: string }
+  > = {
+    "car-accident": {
+      imageClass: "object-cover object-[center_28%]",
+      chip: "사고 후 통증·후유증",
+    },
+    tonic: {
+      imageClass: "object-cover object-[center_22%]",
+      chip: "피로·회복 저하",
+    },
+    diet: {
+      imageClass: "object-cover object-[center_44%]",
+      chip: "체중·붓기 관리",
+    },
+  };
   const featuredServices = featuredSlugs
     .map((slug) => servicePages.find((service) => service.slug === slug))
     .filter((service) => service !== undefined);
@@ -65,11 +82,14 @@ export default function ServiceGuideSection() {
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover"
+                    className={featuredVisuals[service.slug]?.imageClass ?? "object-cover"}
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+                    <span className="inline-flex rounded-full border border-white/18 bg-white/10 px-3 py-1 text-xs font-semibold tracking-[0.12em] text-white/88 uppercase">
+                      {featuredVisuals[service.slug]?.chip}
+                    </span>
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <div className="inline-flex rounded-full bg-[#FEE500] px-3 py-1 text-sm font-semibold text-slate-950">
                         {service.title}
@@ -88,6 +108,11 @@ export default function ServiceGuideSection() {
                   <div className="rounded-[1.5rem] border border-teal-100 bg-teal-50/60 px-5 py-5">
                     <p className="text-sm font-semibold text-teal-700">진료 한눈에 보기</p>
                     <p className="mt-3 break-keep text-base leading-8 text-slate-700">{service.summary}</p>
+                  </div>
+
+                  <div className="mt-4 rounded-[1.5rem] border border-amber-200 bg-amber-50/70 px-5 py-5">
+                    <p className="text-sm font-semibold text-amber-800">대표 문의</p>
+                    <p className="mt-3 break-keep text-base leading-8 text-slate-700">{service.commonConcerns[0]}</p>
                   </div>
 
                   <div className="mt-6 grid gap-4 rounded-[1.5rem] bg-slate-50 p-5">
@@ -111,13 +136,13 @@ export default function ServiceGuideSection() {
                     </div>
 
                     <div>
-                      <p className="text-sm font-semibold text-slate-900">내원 전 함께 살펴보세요</p>
+                      <p className="text-sm font-semibold text-slate-900">내원 전 준비사항</p>
                       <p className="mt-3 break-keep text-sm leading-7 text-slate-600">{service.checkpoints[0]}</p>
                     </div>
 
                     <div>
-                      <p className="text-sm font-semibold text-slate-900">이런 고민으로 상담하십니다</p>
-                      <p className="mt-3 break-keep text-sm leading-7 text-slate-600">{service.commonConcerns[0]}</p>
+                      <p className="text-sm font-semibold text-slate-900">상담 시 함께 말씀해 주세요</p>
+                      <p className="mt-3 break-keep text-sm leading-7 text-slate-600">{service.checkpoints[1]}</p>
                     </div>
                   </div>
 
@@ -207,13 +232,13 @@ export default function ServiceGuideSection() {
                     </div>
 
                     <div>
-                      <p className="text-sm font-semibold text-slate-900">내원 전 함께 살펴보세요</p>
+                      <p className="text-sm font-semibold text-slate-900">내원 전 준비사항</p>
                       <p className="mt-3 break-keep text-sm leading-7 text-slate-600">{service.checkpoints[0]}</p>
                     </div>
 
                     <div>
-                      <p className="text-sm font-semibold text-slate-900">이런 고민으로 상담하십니다</p>
-                      <p className="mt-3 break-keep text-sm leading-7 text-slate-600">{service.commonConcerns[0]}</p>
+                      <p className="text-sm font-semibold text-slate-900">상담 시 함께 말씀해 주세요</p>
+                      <p className="mt-3 break-keep text-sm leading-7 text-slate-600">{service.checkpoints[1]}</p>
                     </div>
                   </div>
 
