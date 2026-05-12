@@ -4,9 +4,14 @@ type BlogPost = {
   description: string;
   image: string | null;
   pubDate: string;
+  dateValue: number;
 };
 
-const BLOG_RSS_URL = "https://rss.blog.naver.com/jonginyoun113.xml";
+const BLOG_RSS_URLS = [
+  "https://rss.blog.naver.com/jonginyoun113.xml",
+  "https://rss.blog.naver.com/anseong365khclinic.xml",
+];
+const BLOG_REVALIDATE_SECONDS = 1800;
 
 function decodeHtml(value: string) {
   return value
@@ -84,6 +89,16 @@ function formatDate(pubDate: string) {
   }).format(date);
 }
 
+function parseDateValue(pubDate: string) {
+  const date = new Date(pubDate);
+
+  if (Number.isNaN(date.getTime())) {
+    return 0;
+  }
+
+  return date.getTime();
+}
+
 function parseRss(xml: string): BlogPost[] {
   const itemMatches = xml.match(/<item>[\s\S]*?<\/item>/gi) ?? [];
 
@@ -93,7 +108,9 @@ function parseRss(xml: string): BlogPost[] {
     const descriptionRaw = extractTagValue(item, "description");
     const description = stripHtml(descriptionRaw);
     const image = extractImageFromDescription(descriptionRaw);
-    const pubDate = formatDate(extractTagValue(item, "pubDate"));
+    const rawPubDate = extractTagValue(item, "pubDate");
+    const pubDate = formatDate(rawPubDate);
+    const dateValue = parseDateValue(rawPubDate);
 
     return {
       title,
@@ -101,6 +118,7 @@ function parseRss(xml: string): BlogPost[] {
       description,
       image,
       pubDate,
+      dateValue,
     };
   });
 }
@@ -108,7 +126,7 @@ function parseRss(xml: string): BlogPost[] {
 async function fetchBlogMeta(link: string) {
   try {
     const response = await fetch(link, {
-      next: { revalidate: 3600 },
+      next: { revalidate: BLOG_REVALIDATE_SECONDS },
       headers: {
         "User-Agent": "Mozilla/5.0",
       },
@@ -136,7 +154,7 @@ async function fetchBlogMeta(link: string) {
     }
 
     const frameResponse = await fetch(mainFrameUrl, {
-      next: { revalidate: 3600 },
+      next: { revalidate: BLOG_REVALIDATE_SECONDS },
       headers: {
         "User-Agent": "Mozilla/5.0",
       },
@@ -159,10 +177,10 @@ async function fetchBlogMeta(link: string) {
   }
 }
 
-export async function getNaverBlogPosts() {
+async function fetchBlogPostsFromRss(rssUrl: string) {
   try {
-    const response = await fetch(BLOG_RSS_URL, {
-      next: { revalidate: 3600 },
+    const response = await fetch(rssUrl, {
+      next: { revalidate: BLOG_REVALIDATE_SECONDS },
       headers: {
         "User-Agent": "Mozilla/5.0",
       },
@@ -173,7 +191,19 @@ export async function getNaverBlogPosts() {
     }
 
     const xml = await response.text();
-    const posts = parseRss(xml).slice(0, 9);
+    return parseRss(xml);
+  } catch {
+    return [];
+  }
+}
+
+export async function getNaverBlogPosts() {
+  try {
+    const rssPosts = await Promise.all(BLOG_RSS_URLS.map((rssUrl) => fetchBlogPostsFromRss(rssUrl)));
+    const posts = rssPosts
+      .flat()
+      .sort((a, b) => b.dateValue - a.dateValue)
+      .slice(0, 12);
 
     const enrichedPosts = await Promise.all(
       posts.map(async (post) => {
