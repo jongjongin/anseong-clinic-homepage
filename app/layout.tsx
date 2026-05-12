@@ -93,6 +93,7 @@ const localBusinessStructuredData = {
   ],
   sameAs: [
     "https://blog.naver.com/jonginyoun113",
+    "https://blog.naver.com/anseong365khclinic",
     "https://naver.me/xzxmqtNK",
     "https://place.map.kakao.com/247448692",
   ],
