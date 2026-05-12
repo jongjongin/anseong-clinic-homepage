@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 
-const siteUrl = "https://anseong365.com";
+const siteUrl = "https://www.anseong365.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | 안성경희365한의원",
   },
   description:
-    "안성경희365한의원은 안성시 남파로 103에 위치한 365일 진료 한의원입니다. 척추관절, 교통사고, 약침추나, 소아성장, 다이어트, 여성질환 진료와 카카오톡·전화 상담을 안내합니다.",
+    "안성 남파로 103, 365일 진료 한의원. 통증·교통사고·다이어트 상담을 안내합니다.",
   keywords: [
     "안성 한의원",
     "안성경희365한의원",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "안성경희365한의원 | 안성 365일 진료 한의원",
     description:
-      "안성시 남파로 103에 위치한 안성경희365한의원입니다. 365일 진료, 척추관절, 교통사고, 약침추나, 소아성장, 다이어트, 여성질환 진료를 안내합니다.",
+      "안성 남파로 103, 365일 진료 한의원. 통증·교통사고·다이어트 상담을 안내합니다.",
     url: siteUrl,
     siteName: "안성경희365한의원",
     locale: "ko_KR",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "안성경희365한의원 | 안성 365일 진료 한의원",
     description:
-      "안성시 남파로 103에 위치한 안성경희365한의원입니다. 365일 진료, 척추관절, 교통사고, 약침추나, 소아성장, 다이어트, 여성질환 진료를 안내합니다.",
+      "안성 남파로 103, 365일 진료 한의원. 통증·교통사고·다이어트 상담을 안내합니다.",
     images: ["/assets/logo/logo-wordmark.png"],
   },
 };
