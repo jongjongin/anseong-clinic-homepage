@@ -26,6 +26,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  verification: {
+    other: {
+      "naver-site-verification": "5e1034ffbcb04356a0a109edb07619dc0b2b83a0",
+    },
+  },
   openGraph: {
     title: "안성경희365한의원 | 안성 365일 진료 한의원",
     description:
