@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { servicePages } from "@/lib/service-pages";
 
-const siteUrl = "https://www.anseong365.com";
+const siteUrl = "https://anseong365.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

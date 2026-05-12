@@ -4,4 +4,4 @@ Allow: /
 User-agent: Yeti
 Allow: /
 
-Sitemap: https://www.anseong365.com/sitemap.xml
+Sitemap: https://anseong365.com/sitemap.xml
