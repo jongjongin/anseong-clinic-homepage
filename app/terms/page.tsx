@@ -3,6 +3,10 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "이용약관 | 안성경희365한의원",
   description: "안성경희365한의원 홈페이지 이용약관",
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 const sections = [
