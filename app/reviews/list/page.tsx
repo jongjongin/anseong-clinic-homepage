@@ -8,6 +8,10 @@ import { getCurrentUser } from "@/lib/auth";
 export const metadata: Metadata = {
   title: "로그인 후 진료후기 | 안성경희365한의원",
   description: "로그인 후 진료후기 열람 예시 화면",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default async function ReviewsListPage() {

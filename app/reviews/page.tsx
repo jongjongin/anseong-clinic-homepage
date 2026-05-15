@@ -5,6 +5,10 @@ import { reviewsSectionContent } from "@/components/home/content";
 export const metadata: Metadata = {
   title: "진료후기 | 안성경희365한의원",
   description: "안성경희365한의원 진료후기 안내",
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 export default function ReviewsPage() {

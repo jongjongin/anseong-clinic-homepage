@@ -7,6 +7,10 @@ import { getCurrentUser } from "@/lib/auth";
 export const metadata: Metadata = {
   title: "로그인 | 안성경희365한의원",
   description: "안성경희365한의원 로그인",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default async function LoginPage() {

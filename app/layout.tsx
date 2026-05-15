@@ -69,22 +69,36 @@ export const metadata: Metadata = {
   },
 };
 
-const localBusinessStructuredData = {
+const clinicStructuredData = {
   "@context": "https://schema.org",
-  "@type": "MedicalBusiness",
+  "@type": ["MedicalClinic", "LocalBusiness"],
   "@id": `${siteUrl}/#clinic`,
   name: "안성경희365한의원",
+  alternateName: "Anseong Kyunghee 365 Korean Medicine Clinic",
   url: siteUrl,
   image: `${siteUrl}/assets/logo/logo-wordmark.png`,
   logo: `${siteUrl}/assets/logo/logo-wordmark.png`,
   telephone: "031-8057-0750",
+  priceRange: "$$",
+  hasMap: "https://www.google.com/maps/search/?api=1&query=%EC%95%88%EC%84%B1%EA%B2%BD%ED%9D%AC365%ED%95%9C%EC%9D%98%EC%9B%90",
+  medicalSpecialty: [
+    "척추관절 통증",
+    "교통사고 후유증",
+    "약침·추나",
+    "소아성장",
+    "다이어트",
+    "보약",
+    "여성질환",
+  ],
   address: {
     "@type": "PostalAddress",
     streetAddress: "경기도 안성시 남파로 103 203호, 204호",
     addressLocality: "안성시",
     addressRegion: "경기도",
+    postalCode: "17579",
     addressCountry: "KR",
   },
+  openingHours: ["Mo-Fr 09:00-20:00", "Sa-Su 09:00-15:00"],
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -157,8 +171,8 @@ export default function RootLayout({
             })(window, document, "clarity", "script", "w6mwf7n6h0");
           `}
         </Script>
-        <Script id="local-business-jsonld" type="application/ld+json">
-          {JSON.stringify(localBusinessStructuredData)}
+        <Script id="clinic-jsonld" type="application/ld+json">
+          {JSON.stringify(clinicStructuredData)}
         </Script>
       </head>
       <body className="bg-white text-zinc-900">

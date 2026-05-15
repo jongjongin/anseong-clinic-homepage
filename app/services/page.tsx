@@ -1,20 +1,68 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import { Footer, Header, MobileContactBar } from "@/components/home";
 import { servicePages } from "@/lib/service-pages";
 
+const siteUrl = "https://anseong365.com";
+
 export const metadata: Metadata = {
-  title: "진료과목 안내",
+  title: "진료과목 안내 | 안성 통증·교통사고·추나 한의원",
   description:
-    "안성경희365한의원의 척추관절, 교통사고, 약침추나, 소아성장, 다이어트, 보약, 여성질환, 미용 진료과목을 한곳에서 확인하실 수 있습니다.",
+    "안성경희365한의원의 척추관절, 교통사고, 약침추나, 소아성장, 다이어트, 보약, 여성질환 진료를 확인하세요.",
   alternates: {
     canonical: "/services",
   },
+  openGraph: {
+    title: "진료과목 안내 | 안성경희365한의원",
+    description:
+      "안성경희365한의원의 척추관절, 교통사고, 약침추나, 소아성장, 다이어트, 보약, 여성질환 진료 안내입니다.",
+    url: `${siteUrl}/services`,
+  },
+};
+
+const servicesItemListStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": `${siteUrl}/services#itemlist`,
+  name: "안성경희365한의원 진료과목",
+  itemListElement: servicePages.map((service, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: service.title,
+    url: `${siteUrl}/services/${service.slug}`,
+    description: service.summary,
+  })),
+};
+
+const servicesBreadcrumbStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "홈",
+      item: siteUrl,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "진료과목 안내",
+      item: `${siteUrl}/services`,
+    },
+  ],
 };
 
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
+      <Script id="services-itemlist-jsonld" type="application/ld+json">
+        {JSON.stringify(servicesItemListStructuredData)}
+      </Script>
+      <Script id="services-breadcrumb-jsonld" type="application/ld+json">
+        {JSON.stringify(servicesBreadcrumbStructuredData)}
+      </Script>
       <Header />
       <main>
         <section className="border-b border-slate-200 bg-slate-50">
