@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import {
   BlogSection,
+  BeautyMenuSection,
   CtaSection,
   DoctorsSection,
   EventsSection,
@@ -22,7 +23,7 @@ const siteUrl = "https://anseong365.com";
 export const metadata: Metadata = {
   title: "안성경희365한의원 | 안성 365일 진료 한의원",
   description:
-    "안성 남파로 103, 365일 진료 한의원. 통증·교통사고·추나·보약·다이어트 상담을 안내합니다.",
+    "안성 남파로 103, 365일 진료 한의원. 통증·교통사고·추나·보약·다이어트·미용 상담을 안내합니다.",
   alternates: {
     canonical: siteUrl,
   },
@@ -83,6 +84,10 @@ const homePageStructuredData = {
       "@type": "MedicalProcedure",
       name: "보약 상담",
     },
+    {
+      "@type": "MedicalProcedure",
+      name: "점·쥐젖·편평사마귀 제거",
+    },
   ],
 };
 
@@ -101,6 +106,7 @@ export default function Home() {
           <BlogSection limit={4} />
         </Suspense>
         <ServiceGuideSection />
+        <BeautyMenuSection />
         <DoctorsSection />
         <EventsSection />
         <TelemedicineSection />

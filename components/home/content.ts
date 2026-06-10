@@ -209,6 +209,58 @@ export const eventsSectionContent = {
   ],
 };
 
+export const beautyMenuSectionContent = {
+  eyebrow: "미용 진료 안내",
+  title: "점·쥐젖·편평사마귀 제거를 차분하게 안내드립니다",
+  description:
+    "CO2 레이저를 이용한 제거 시술을 진행하며, 개수와 부위에 따라 상담 후 시술 범위와 소요 시간을 안내드립니다.",
+  badge: "CO2 Laser",
+  included: ["1개월 이내 리터치 1회 포함", "VAT 포함", "점·쥐젖·편평사마귀 진료 가능"],
+  prices: [
+    {
+      label: "40개 미만",
+      price: "22만원",
+      description: "얼굴 기준 40개 미만 제거 시술",
+    },
+    {
+      label: "40개 이상",
+      price: "44만원",
+      description: "개수가 많은 경우 2회에 나누어 진행될 수 있습니다",
+    },
+  ],
+  steps: [
+    {
+      title: "상담 및 개수 확인",
+      description: "점, 쥐젖, 편평사마귀 여부와 개수, 부위를 먼저 확인합니다.",
+    },
+    {
+      title: "CO2 레이저 시술",
+      description: "전체 시술 시간은 1시간 이상 소요될 수 있습니다.",
+    },
+    {
+      title: "재생 관리 안내",
+      description: "재생테이프 또는 재생크림·항생연고 관리 방법을 안내드립니다.",
+    },
+  ],
+  notices: [
+    "낱개 제거는 전화로 먼저 문의해 주세요.",
+    "얼굴 이외 부위는 얼굴 정도 면적으로 나누어 시술 범위를 안내합니다.",
+    "개수가 많은 경우 한 번에 무리하지 않고 두 차례에 나누어 진행될 수 있습니다.",
+  ],
+  aftercare: [
+    "시술 후 1~2주간 격한 운동과 음주는 피해주세요.",
+    "재생테이프 부착 상태에서는 시술 후 바로 간단한 세안과 화장이 가능합니다.",
+    "색조화장은 상처가 완전히 아문 뒤부터 권장합니다.",
+    "재생테이프 알러지가 있는 경우 재생크림이나 항생연고로 관리할 수 있습니다.",
+    "재생크림 또는 항생연고 관리 시 시술 당일은 세안을 피하고, 1~2일 뒤부터 미온수로 가볍게 세안해 주세요.",
+    "약산성 거품 세안제는 2~3일 후부터 사용을 권장합니다.",
+  ],
+  primaryButton: "카카오톡 상담하기",
+  primaryHref: "http://pf.kakao.com/_RWgxnG/chat",
+  secondaryButton: "전화 문의하기",
+  secondaryHref: "tel:031-8057-0750",
+};
+
 export const infoSectionContent = {
   eyebrow: "내원 안내",
   title: "내원 전에 꼭 필요한 진료시간과 위치 안내를 확인해 주세요",
