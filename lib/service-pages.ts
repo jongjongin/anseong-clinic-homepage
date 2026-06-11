@@ -33,11 +33,15 @@ export type ServicePage = {
     eyebrow: string;
     title: string;
     description: string;
+    tabs: string[];
     included: string[];
     prices: {
+      category: string;
       label: string;
+      title: string;
       price: string;
       description: string;
+      features: string[];
     }[];
     notices: string[];
     aftercare: string[];
@@ -843,17 +847,24 @@ export const servicePages: ServicePage[] = [
       title: "점·쥐젖·편평사마귀 제거 메뉴판",
       description:
         "CO2 레이저 시술 기준이며, 시술 범위와 개수에 따라 상담 후 진행합니다. 낱개 제거는 전화로 먼저 문의해 주세요.",
+      tabs: ["전체", "점 제거", "쥐젖 제거", "편평사마귀", "시술 후 관리"],
       included: ["1개월 이내 리터치 1회 포함", "VAT 포함", "점·쥐젖·편평사마귀 진료 가능"],
       prices: [
         {
+          category: "CO2 Laser",
           label: "40개 미만",
+          title: "CO2 레이저 제거",
           price: "22만원",
           description: "얼굴 기준 40개 미만 제거 시술",
+          features: ["리터치 1회 포함", "VAT 포함", "상담 후 개수 확인"],
         },
         {
+          category: "CO2 Laser",
           label: "40개 이상",
+          title: "CO2 레이저 제거",
           price: "44만원",
           description: "개수가 많은 경우 두 차례에 나누어 진행될 수 있습니다",
+          features: ["리터치 1회 포함", "VAT 포함", "분할 진행 가능"],
         },
       ],
       notices: [

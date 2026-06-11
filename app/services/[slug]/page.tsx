@@ -233,51 +233,86 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         ) : null}
 
         {service.menuBoard ? (
-          <section className="bg-[#fbfaf7]">
+          <section id="beauty-menu" className="bg-[#fbfaf7]">
             <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
               <article className="overflow-hidden rounded-[2.2rem] border border-[#e8dfd1] bg-white shadow-[0_24px_70px_rgba(86,74,54,0.10)]">
-                <div className="border-b border-[#eadfcd] bg-[#14221f] px-6 py-9 text-white sm:px-8 lg:px-10">
-                  <p className="text-sm font-semibold tracking-[0.16em] text-[#f4d88a] uppercase">
-                    {service.menuBoard.eyebrow}
-                  </p>
-                  <div className="mt-4 grid gap-5 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
-                    <div>
-                      <h2 className="break-keep text-3xl font-bold leading-[1.25] tracking-[-0.03em] sm:text-[2.6rem]">
-                        {service.menuBoard.title}
-                      </h2>
-                      <p className="mt-4 break-keep text-base leading-8 text-white/74">
-                        {service.menuBoard.description}
-                      </p>
+                <div className="relative overflow-hidden border-b border-[#eadfcd] bg-[#14221f] px-6 py-9 text-white sm:px-8 lg:px-10">
+                  <div className="absolute -right-24 -top-28 h-72 w-72 rounded-full bg-teal-300/16 blur-3xl" />
+                  <div className="absolute -bottom-32 left-8 h-72 w-72 rounded-full bg-[#f4d88a]/14 blur-3xl" />
+                  <div className="relative">
+                    <p className="text-sm font-semibold tracking-[0.16em] text-[#f4d88a] uppercase">
+                      {service.menuBoard.eyebrow}
+                    </p>
+                    <div className="mt-4 grid gap-5 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+                      <div>
+                        <h2 className="break-keep text-3xl font-bold leading-[1.25] tracking-[-0.03em] sm:text-[2.6rem]">
+                          {service.menuBoard.title}
+                        </h2>
+                        <p className="mt-4 break-keep text-base leading-8 text-white/74">
+                          {service.menuBoard.description}
+                        </p>
+                      </div>
+                      <div className="flex flex-wrap gap-2.5 lg:justify-end">
+                        {service.menuBoard.included.map((item) => (
+                          <span
+                            key={item}
+                            className="rounded-full border border-white/16 bg-white/10 px-4 py-2 text-sm font-semibold text-white/86"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                    <div className="flex flex-wrap gap-2.5 lg:justify-end">
-                      {service.menuBoard.included.map((item) => (
+
+                    <div className="mt-8 flex gap-2 overflow-x-auto pb-1">
+                      {service.menuBoard.tabs.map((tab, index) => (
                         <span
-                          key={item}
-                          className="rounded-full border border-white/16 bg-white/10 px-4 py-2 text-sm font-semibold text-white/86"
+                          key={tab}
+                          className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold ${
+                            index === 0
+                              ? "bg-[#FEE500] text-slate-950"
+                              : "border border-white/16 bg-white/10 text-white/82"
+                          }`}
                         >
-                          {item}
+                          {tab}
                         </span>
                       ))}
                     </div>
                   </div>
                 </div>
 
-                <div className="divide-y divide-[#eadfcd]">
+                <div className="grid gap-4 bg-[#fffdf8] p-6 sm:p-8 lg:grid-cols-2 lg:p-10">
                   {service.menuBoard.prices.map((item) => (
                     <div
                       key={item.label}
-                      className="grid gap-4 px-6 py-6 sm:px-8 lg:grid-cols-[0.8fr_0.55fr_1.25fr] lg:items-center lg:px-10"
+                      className="group rounded-[1.9rem] border border-[#eadfcd] bg-white p-6 shadow-[0_16px_44px_rgba(86,74,54,0.08)] transition-transform duration-200 hover:-translate-y-1 sm:p-7"
                     >
-                      <p className="break-keep text-xl font-bold text-slate-900 sm:text-2xl">{item.label}</p>
-                      <p className="text-3xl font-bold tracking-[-0.03em] text-teal-700 sm:text-[2.5rem]">
+                      <div className="flex flex-wrap items-center justify-between gap-3">
+                        <span className="rounded-full bg-slate-950 px-3 py-1 text-xs font-semibold tracking-[0.12em] text-white uppercase">
+                          {item.category}
+                        </span>
+                        <span className="rounded-full bg-teal-50 px-3 py-1 text-sm font-semibold text-teal-700">
+                          {item.label}
+                        </span>
+                      </div>
+                      <h3 className="mt-6 break-keep text-2xl font-bold text-slate-900">{item.title}</h3>
+                      <p className="mt-4 text-[2.6rem] font-bold tracking-[-0.04em] text-teal-700 sm:text-[3.2rem]">
                         {item.price}
                       </p>
-                      <p className="break-keep text-base leading-8 text-slate-600">{item.description}</p>
+                      <p className="mt-3 break-keep text-base leading-8 text-slate-600">{item.description}</p>
+                      <div className="mt-6 grid gap-2">
+                        {item.features.map((feature) => (
+                          <div key={feature} className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+                            <span className="h-1.5 w-1.5 rounded-full bg-[#FEE500]" />
+                            <span>{feature}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="grid gap-5 border-t border-[#eadfcd] bg-[#fffdf8] p-6 sm:p-8 lg:grid-cols-2 lg:p-10">
+                <div className="grid gap-5 border-t border-[#eadfcd] bg-white p-6 sm:p-8 lg:grid-cols-2 lg:p-10">
                   <div className="rounded-[1.7rem] border border-teal-100 bg-teal-50/70 p-5 sm:p-6">
                     <p className="text-sm font-semibold tracking-[0.14em] text-teal-700 uppercase">시술 전 안내</p>
                     <ul className="mt-5 space-y-3 text-sm leading-7 text-slate-700">
@@ -300,6 +335,29 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                         </li>
                       ))}
                     </ul>
+                  </div>
+                </div>
+
+                <div className="border-t border-[#eadfcd] bg-[#14221f] px-6 py-6 sm:px-8 lg:px-10">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <p className="break-keep text-base font-semibold text-white">
+                      개수나 부위가 애매하다면 먼저 상담으로 확인해 주세요.
+                    </p>
+                    <div className="flex flex-col gap-2 sm:flex-row">
+                      <a
+                        href="http://pf.kakao.com/_RWgxnG/chat"
+                        className="rounded-full border border-[#E2C400] bg-[#FEE500] px-5 py-3 text-center text-sm font-semibold text-slate-950 transition-colors hover:bg-[#F7DE00]"
+                        style={{ color: "#191919" }}
+                      >
+                        카카오톡 상담하기
+                      </a>
+                      <a
+                        href="tel:031-8057-0750"
+                        className="rounded-full border border-white/24 bg-white/10 px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-white/15"
+                      >
+                        전화 문의하기
+                      </a>
+                    </div>
                   </div>
                 </div>
               </article>
