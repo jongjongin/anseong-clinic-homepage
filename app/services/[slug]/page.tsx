@@ -232,6 +232,81 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           </section>
         ) : null}
 
+        {service.menuBoard ? (
+          <section className="bg-[#fbfaf7]">
+            <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+              <article className="overflow-hidden rounded-[2.2rem] border border-[#e8dfd1] bg-white shadow-[0_24px_70px_rgba(86,74,54,0.10)]">
+                <div className="border-b border-[#eadfcd] bg-[#14221f] px-6 py-9 text-white sm:px-8 lg:px-10">
+                  <p className="text-sm font-semibold tracking-[0.16em] text-[#f4d88a] uppercase">
+                    {service.menuBoard.eyebrow}
+                  </p>
+                  <div className="mt-4 grid gap-5 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+                    <div>
+                      <h2 className="break-keep text-3xl font-bold leading-[1.25] tracking-[-0.03em] sm:text-[2.6rem]">
+                        {service.menuBoard.title}
+                      </h2>
+                      <p className="mt-4 break-keep text-base leading-8 text-white/74">
+                        {service.menuBoard.description}
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2.5 lg:justify-end">
+                      {service.menuBoard.included.map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full border border-white/16 bg-white/10 px-4 py-2 text-sm font-semibold text-white/86"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="divide-y divide-[#eadfcd]">
+                  {service.menuBoard.prices.map((item) => (
+                    <div
+                      key={item.label}
+                      className="grid gap-4 px-6 py-6 sm:px-8 lg:grid-cols-[0.8fr_0.55fr_1.25fr] lg:items-center lg:px-10"
+                    >
+                      <p className="break-keep text-xl font-bold text-slate-900 sm:text-2xl">{item.label}</p>
+                      <p className="text-3xl font-bold tracking-[-0.03em] text-teal-700 sm:text-[2.5rem]">
+                        {item.price}
+                      </p>
+                      <p className="break-keep text-base leading-8 text-slate-600">{item.description}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="grid gap-5 border-t border-[#eadfcd] bg-[#fffdf8] p-6 sm:p-8 lg:grid-cols-2 lg:p-10">
+                  <div className="rounded-[1.7rem] border border-teal-100 bg-teal-50/70 p-5 sm:p-6">
+                    <p className="text-sm font-semibold tracking-[0.14em] text-teal-700 uppercase">시술 전 안내</p>
+                    <ul className="mt-5 space-y-3 text-sm leading-7 text-slate-700">
+                      {service.menuBoard.notices.map((item) => (
+                        <li key={item} className="flex gap-3 break-keep">
+                          <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-700" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="rounded-[1.7rem] border border-amber-200 bg-amber-50/70 p-5 sm:p-6">
+                    <p className="text-sm font-semibold tracking-[0.14em] text-amber-800 uppercase">시술 후 관리</p>
+                    <ul className="mt-5 space-y-3 text-sm leading-7 text-slate-700">
+                      {service.menuBoard.aftercare.map((item) => (
+                        <li key={item} className="flex gap-3 break-keep">
+                          <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-700" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+        ) : null}
+
         <section className="bg-white">
           <div className="mx-auto grid max-w-6xl gap-5 px-4 pb-16 sm:px-6 sm:pb-20 lg:grid-cols-[1fr_1fr] lg:px-8">
             <article className="rounded-[2rem] border border-slate-200 bg-[#fbfcfc] p-6 sm:p-8">

@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import {
   BlogSection,
-  BeautyMenuSection,
   CtaSection,
   DoctorsSection,
   EventsSection,
@@ -106,7 +105,6 @@ export default function Home() {
           <BlogSection limit={4} />
         </Suspense>
         <ServiceGuideSection />
-        <BeautyMenuSection />
         <DoctorsSection />
         <EventsSection />
         <TelemedicineSection />
