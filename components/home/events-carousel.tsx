@@ -19,10 +19,6 @@ export default function EventsCarousel() {
   const touchEndX = useRef<number | null>(null);
   const total = visibleItems.length;
 
-  if (total === 0) {
-    return null;
-  }
-
   useEffect(() => {
     if (total <= 1) {
       return;
@@ -34,6 +30,10 @@ export default function EventsCarousel() {
 
     return () => window.clearInterval(timer);
   }, [total]);
+
+  if (total === 0) {
+    return null;
+  }
 
   const goToPrevious = () => {
     setActiveIndex((current) => (current - 1 + total) % total);

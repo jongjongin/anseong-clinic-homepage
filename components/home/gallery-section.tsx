@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { gallerySectionContent } from "@/components/home/content";
 import ParallaxMedia from "@/components/home/parallax-media";
 import Reveal from "@/components/home/reveal";
@@ -28,7 +27,7 @@ export default function GallerySection() {
                   strength={24}
                 />
               </div>
-              {gallerySectionContent.interiorImages.slice(1).map((image, index) => (
+              {gallerySectionContent.interiorImages.slice(1).map((image) => (
                 <div
                   key={image.src}
                   className="interactive-card relative min-h-[240px] overflow-hidden rounded-[2rem] border border-slate-200 bg-white"
