@@ -1,6 +1,7 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import Image from "next/image";
+import Link from "next/link";
 import { heroContent } from "@/components/home/content";
 import Reveal from "@/components/home/reveal";
 
@@ -87,13 +88,13 @@ export default function HeroSection() {
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2.5">
                     {featuredQuickLinks.map((item) => (
-                      <a
+                      <Link
                         key={item.label}
                         href={item.href}
                         className="rounded-full border border-white/16 bg-white/10 px-4 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/16"
                       >
                         {item.label}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -112,12 +113,12 @@ export default function HeroSection() {
                         부담 없이 상담받으실 수 있습니다.
                       </p>
                     </div>
-                    <a
+                    <Link
                       href="/services/tonic"
                       className="inline-flex shrink-0 rounded-full border border-white/24 bg-white/12 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/16"
                     >
                       보약 진료 자세히 보기
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
