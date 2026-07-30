@@ -49,123 +49,100 @@ export default async function WarningDetailPage({ params }: WarningDetailPagePro
   }
 
   return (
-    <div className="min-h-screen bg-[#f2f6f5] text-slate-900">
+    <div className="min-h-screen bg-[#f6f7f5] text-slate-900">
       <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4 sm:px-6">
+        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:h-16 sm:px-6">
           <Link href="/" aria-label="안성경희365한의원 메인 홈페이지">
-            <div className="relative h-10 w-[190px] sm:h-12 sm:w-[230px]">
+            <div className="relative h-8 w-[168px] sm:h-9 sm:w-[190px]">
               <Image
                 src="/assets/logo/logo-wordmark.png"
                 alt="안성경희365한의원"
                 fill
                 className="object-contain object-left"
-                sizes="230px"
+                sizes="190px"
                 priority
               />
             </div>
           </Link>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-4 py-2.5 text-sm font-bold text-slate-700 transition-colors hover:border-slate-900 hover:text-slate-900"
+            className="inline-flex items-center gap-1.5 border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-700 transition-colors hover:border-slate-500 hover:text-slate-950 sm:text-sm"
           >
             <HomeIcon className="h-4 w-4" />
-            <span className="hidden sm:inline">메인 홈페이지</span>
-            <span className="sm:hidden">홈</span>
+            메인으로
           </Link>
         </div>
       </header>
 
-      <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
-        <Link
-          href="/warning"
-          className="inline-flex items-center gap-2 text-sm font-bold text-slate-600 transition-colors hover:text-teal-700"
-        >
-          <BackIcon className="h-4 w-4" />
-          시술 목록으로 돌아가기
-        </Link>
+      <main className="mx-auto max-w-6xl px-4 py-5 sm:px-6 sm:py-6">
+        <div className="flex items-center justify-between gap-4">
+          <Link
+            href="/warning"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 transition-colors hover:text-slate-900 sm:text-sm"
+          >
+            <BackIcon className="h-4 w-4" />
+            시술 목록
+          </Link>
+          <span className="text-[11px] text-slate-400">진료 시 받은 안내를 우선해 주세요.</span>
+        </div>
 
-        <section
-          className="relative mt-6 overflow-hidden rounded-[2rem] px-6 py-10 text-white shadow-[0_20px_50px_rgba(15,23,42,0.10)] sm:px-10 sm:py-12"
-          style={{ background: `linear-gradient(135deg, ${guide.accent}, ${guide.accent}d9)` }}
-        >
-          <div className="absolute -right-12 -top-16 h-52 w-52 rounded-full border-[34px] border-white/10" />
-          <div className="relative flex flex-col items-start gap-6 sm:flex-row sm:items-center">
-            <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-[1.7rem] bg-white/15 backdrop-blur sm:h-28 sm:w-28">
-              <WarningIcon name={guide.icon} className="h-16 w-16 sm:h-20 sm:w-20" />
-            </div>
-            <div>
-              <p className="text-xs font-bold tracking-[0.22em] text-white/70 uppercase">After Care Guide</p>
-              <h1 className="mt-3 text-[2.35rem] font-black tracking-[-0.04em] sm:text-[3.2rem]">
-                {guide.title} 후 주의사항
-              </h1>
-              <p className="mt-4 max-w-2xl break-keep text-base leading-7 text-white/85 sm:text-lg">
-                {guide.subtitle}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="mt-6 rounded-[1.7rem] border border-slate-200 bg-white p-6 sm:p-8">
-          <div className="flex items-center gap-3">
-            <span
-              className="flex h-10 w-10 items-center justify-center rounded-full text-lg font-black"
-              style={{ color: guide.accent, backgroundColor: guide.softAccent }}
-            >
-              ✓
+        <section className="mt-3 border border-slate-300 bg-white">
+          <div className="flex items-center gap-4 border-l-4 px-4 py-4 sm:px-5" style={{ borderLeftColor: guide.accent }}>
+            <span className="shrink-0" style={{ color: guide.accent }}>
+              <WarningIcon name={guide.icon} className="h-11 w-11 sm:h-12 sm:w-12" />
             </span>
-            <h2 className="text-xl font-extrabold text-slate-900 sm:text-2xl">흔히 나타날 수 있는 반응</h2>
+            <div>
+              <h1 className="text-2xl font-bold tracking-[-0.03em] sm:text-3xl">{guide.title} 후 주의사항</h1>
+              <p className="mt-1 break-keep text-xs leading-5 text-slate-500 sm:text-sm">{guide.subtitle}</p>
+            </div>
           </div>
-          <ul className="mt-5 grid gap-3 sm:grid-cols-3">
-            {guide.expected.map((item) => (
-              <li
-                key={item}
-                className="flex min-h-[92px] items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm leading-6 text-slate-600"
-              >
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: guide.accent }} />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 text-xs leading-5 text-slate-500">
-            위 반응은 개인차가 있으며, 예상 범위를 벗어나거나 시간이 지나면서 심해질 경우 의료진에게 확인해 주세요.
-          </p>
         </section>
 
-        <div className="mt-6 space-y-5">
+        <section className="mt-3 border border-slate-200 bg-white px-4 py-3.5 sm:px-5">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-6">
+            <h2 className="shrink-0 text-sm font-bold text-slate-900">흔히 나타날 수 있는 반응</h2>
+            <ul className="grid flex-1 gap-x-6 gap-y-1 sm:grid-cols-3">
+              {guide.expected.map((item) => (
+                <li key={item} className="flex gap-2 text-xs leading-5 text-slate-600">
+                  <span className="mt-2 h-1 w-1 shrink-0" style={{ backgroundColor: guide.accent }} />
+                  <span className="break-keep">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <div className="mt-3 grid gap-3 lg:grid-cols-3">
           {guide.sections.map((section, sectionIndex) => {
             const isUrgent = section.tone === "urgent";
 
             return (
               <section
                 key={section.title}
-                className={`overflow-hidden rounded-[1.7rem] border bg-white ${
-                  isUrgent ? "border-rose-200" : "border-slate-200"
-                }`}
+                className={`border bg-white ${isUrgent ? "border-rose-300" : "border-slate-200"}`}
               >
                 <div
-                  className={`flex items-center gap-4 border-b px-6 py-5 sm:px-8 ${
-                    isUrgent ? "border-rose-200 bg-rose-50" : "border-slate-200 bg-white"
+                  className={`flex min-h-12 items-center gap-2.5 border-b px-4 py-3 ${
+                    isUrgent ? "border-rose-200 bg-rose-50" : "border-slate-200"
                   }`}
                 >
                   <span
-                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-black ${
-                      isUrgent ? "bg-rose-600 text-white" : "text-white"
+                    className={`flex h-5 w-5 shrink-0 items-center justify-center text-[11px] font-bold text-white ${
+                      isUrgent ? "bg-rose-600" : ""
                     }`}
                     style={isUrgent ? undefined : { backgroundColor: guide.accent }}
                   >
                     {isUrgent ? "!" : sectionIndex + 1}
                   </span>
-                  <h2 className={`text-lg font-extrabold sm:text-xl ${isUrgent ? "text-rose-950" : "text-slate-900"}`}>
+                  <h2 className={`break-keep text-sm font-bold ${isUrgent ? "text-rose-950" : "text-slate-900"}`}>
                     {section.title}
                   </h2>
                 </div>
-                <ul className="divide-y divide-slate-100 px-6 sm:px-8">
+                <ul className="divide-y divide-slate-100 px-4">
                   {section.items.map((item) => (
-                    <li key={item} className="flex gap-3 py-4 text-[15px] leading-7 text-slate-600 sm:text-base">
+                    <li key={item} className="flex gap-2.5 py-2.5 text-xs leading-5 text-slate-600 sm:text-[13px]">
                       <span
-                        className={`mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full ${
-                          isUrgent ? "bg-rose-500" : ""
-                        }`}
+                        className={`mt-2 h-1 w-1 shrink-0 ${isUrgent ? "bg-rose-500" : ""}`}
                         style={isUrgent ? undefined : { backgroundColor: guide.accent }}
                       />
                       <span className="break-keep">{item}</span>
@@ -177,41 +154,26 @@ export default async function WarningDetailPage({ params }: WarningDetailPagePro
           })}
         </div>
 
-        <section className="mt-6 rounded-[1.7rem] bg-slate-900 px-6 py-7 text-white sm:flex sm:items-center sm:justify-between sm:gap-8 sm:px-8">
+        <section className="mt-3 border border-slate-300 bg-white px-4 py-3 sm:flex sm:items-center sm:justify-between sm:gap-5">
           <div>
-            <h2 className="text-lg font-extrabold">안내 내용과 다른 증상이 있나요?</h2>
-            <p className="mt-2 break-keep text-sm leading-6 text-slate-300">
-              개인별 시술 내용이 다르므로 걱정되는 변화가 있다면 한의원으로 연락해 주세요.
+            <h2 className="text-sm font-bold">안내와 다른 증상이 있나요?</h2>
+            <p className="mt-0.5 break-keep text-xs leading-5 text-slate-500">
+              증상이 심하거나 빠르게 악화되면 한의원 또는 가까운 응급기관에 연락해 주세요.
             </p>
           </div>
-          <a
-            href="tel:031-8057-0750"
-            className="mt-5 inline-flex shrink-0 items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-extrabold text-slate-950 sm:mt-0"
-          >
-            031-8057-0750
-          </a>
+          <div className="mt-2 flex shrink-0 gap-2 sm:mt-0">
+            <Link href="/warning" className="border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-700">
+              다른 시술 보기
+            </Link>
+            <a
+              href="tel:031-8057-0750"
+              className="bg-slate-900 px-3 py-2 text-xs font-bold"
+              style={{ color: "#ffffff" }}
+            >
+              031-8057-0750
+            </a>
+          </div>
         </section>
-
-        <div className="mt-8 grid gap-3 sm:grid-cols-2">
-          <Link
-            href="/warning"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-4 font-bold text-slate-700 transition-colors hover:border-teal-600 hover:text-teal-700"
-          >
-            <BackIcon className="h-4 w-4" />
-            다른 시술 주의사항
-          </Link>
-          <Link
-            href="/"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-teal-700 px-6 py-4 font-bold text-white transition-colors hover:bg-teal-800"
-          >
-            <HomeIcon className="h-5 w-5" />
-            메인 홈페이지
-          </Link>
-        </div>
-
-        <p className="mt-8 text-center text-xs leading-6 text-slate-500">
-          본 안내는 일반적인 참고사항입니다. 실제 시술을 담당한 의료진의 개별 안내가 가장 우선합니다.
-        </p>
       </main>
     </div>
   );
