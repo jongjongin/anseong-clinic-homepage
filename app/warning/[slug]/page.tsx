@@ -50,7 +50,7 @@ export default async function WarningDetailPage({ params }: WarningDetailPagePro
 
   return (
     <div className="min-h-screen bg-[#f6f7f5] text-slate-900">
-      <header className="border-b border-slate-200 bg-white">
+      <header className="hidden border-b border-slate-200 bg-white sm:block">
         <div className="mx-auto flex h-12 max-w-6xl items-center justify-between px-4 sm:h-16 sm:px-6">
           <Link href="/" aria-label="안성경희365한의원 메인 홈페이지">
             <div className="relative h-7 w-[150px] sm:h-9 sm:w-[190px]">
@@ -74,7 +74,7 @@ export default async function WarningDetailPage({ params }: WarningDetailPagePro
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-4 py-3 sm:px-6 sm:py-6">
+      <main className="mx-auto max-w-6xl px-4 py-2 sm:px-6 sm:py-6">
         <div className="flex items-center justify-between gap-4">
           <Link
             href="/warning"
@@ -83,10 +83,14 @@ export default async function WarningDetailPage({ params }: WarningDetailPagePro
             <BackIcon className="h-4 w-4" />
             시술 목록
           </Link>
-          <span className="text-[10px] text-slate-400 sm:text-[11px]">진료 시 받은 안내를 우선해 주세요.</span>
+          <Link href="/" className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-500 sm:hidden">
+            <HomeIcon className="h-3.5 w-3.5" />
+            메인
+          </Link>
+          <span className="hidden text-[11px] text-slate-400 sm:inline">진료 시 받은 안내를 우선해 주세요.</span>
         </div>
 
-        <section className="mt-2 border border-slate-300 bg-white sm:mt-3">
+        <section className="mt-1 border border-slate-300 bg-white sm:mt-3">
           <div className="flex items-center gap-3 border-l-4 px-3 py-2.5 sm:gap-4 sm:px-5 sm:py-4" style={{ borderLeftColor: guide.accent }}>
             <span className="shrink-0" style={{ color: guide.accent }}>
               <WarningIcon name={guide.icon} className="h-9 w-9 sm:h-12 sm:w-12" />
@@ -98,7 +102,7 @@ export default async function WarningDetailPage({ params }: WarningDetailPagePro
           </div>
         </section>
 
-        <section className="mt-2 border border-slate-200 bg-white px-3 py-2.5 sm:mt-3 sm:px-5 sm:py-3.5">
+        <section className="mt-1 border border-slate-200 bg-white px-3 py-2.5 sm:mt-3 sm:px-5 sm:py-3.5">
           <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-6">
             <h2 className="shrink-0 text-xs font-bold text-slate-900 sm:text-sm">흔히 나타날 수 있는 반응</h2>
             <ul className="grid flex-1 gap-x-6 gap-y-0.5 sm:grid-cols-3 sm:gap-y-1">
@@ -112,14 +116,14 @@ export default async function WarningDetailPage({ params }: WarningDetailPagePro
           </div>
         </section>
 
-        <div className="mt-2 space-y-1.5 lg:hidden">
+        <div className="mt-1.5 space-y-1.5 lg:hidden">
           {guide.sections.map((section, sectionIndex) => {
             const isUrgent = section.tone === "urgent";
 
             return (
               <details
                 key={section.title}
-                open={sectionIndex === 0}
+                open
                 className={`group border bg-white ${isUrgent ? "border-rose-300" : "border-slate-200"}`}
               >
                 <summary
@@ -196,7 +200,7 @@ export default async function WarningDetailPage({ params }: WarningDetailPagePro
           })}
         </div>
 
-        <section className="mt-2 border border-slate-300 bg-white px-3 py-2.5 sm:mt-3 sm:flex sm:items-center sm:justify-between sm:gap-5 sm:px-4 sm:py-3">
+        <section className="mt-1.5 border border-slate-300 bg-white px-3 py-2.5 sm:mt-3 sm:flex sm:items-center sm:justify-between sm:gap-5 sm:px-4 sm:py-3">
           <div>
             <h2 className="text-xs font-bold sm:text-sm">안내와 다른 증상이 있나요?</h2>
             <p className="mt-0.5 hidden break-keep text-xs leading-5 text-slate-500 sm:block">
@@ -245,4 +249,5 @@ function ChevronIcon({ className = "" }: { className?: string }) {
     </svg>
   );
 }
+
 
