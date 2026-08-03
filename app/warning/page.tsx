@@ -80,20 +80,22 @@ export default function WarningPage() {
             </Link>
           ))}
 
-          <a
-            href="tel:031-8057-0750"
-            className="group relative flex min-h-[82px] flex-col border border-slate-300 bg-slate-900 px-3 py-2.5 sm:min-h-[120px] sm:p-4"
-            style={{ color: "#ffffff" }}
+          <Link
+            href="/herbal-medicine"
+            className="group relative flex min-h-[82px] flex-col border border-slate-200 bg-white px-3 py-2.5 transition-colors hover:border-slate-400 sm:min-h-[120px] sm:p-4"
           >
+            <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[3px] bg-[#4b735b]" />
             <div className="flex items-start justify-between">
-              <PhoneIcon className="h-7 w-7 sm:h-10 sm:w-10" />
-              <ArrowIcon className="h-4 w-4 text-white/50 transition-transform group-hover:translate-x-0.5 group-hover:text-white" />
+              <span className="flex h-7 w-7 items-center justify-center border-2 border-[#4b735b] text-[9px] font-bold text-[#4b735b] sm:h-10 sm:w-10 sm:text-xs">
+                한약
+              </span>
+              <ArrowIcon className="h-4 w-4 text-slate-300 transition-transform group-hover:translate-x-0.5 group-hover:text-slate-600" />
             </div>
-            <p className="mt-1.5 text-[15px] font-bold sm:mt-3 sm:text-lg">증상이 심한 경우</p>
-            <p className="mt-1 hidden text-xs text-white/70 sm:block">
-              031-8057-0750 · 한의원 전화
+            <h2 className="mt-1.5 text-[15px] font-bold tracking-[-0.02em] sm:mt-3 sm:text-lg">한약</h2>
+            <p className="mt-1 hidden line-clamp-2 break-keep text-xs leading-4 text-slate-500 sm:block">
+              복용법, 데우기, 보관과 주의사항
             </p>
-          </a>
+          </Link>
         </section>
 
         <p className="mt-2 text-center text-[10px] leading-4 text-slate-400 sm:mt-4 sm:text-[11px] sm:leading-5">
@@ -117,20 +119,6 @@ function ArrowIcon({ className = "" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 20 20" fill="none" aria-hidden="true">
       <path d="m7 4 6 6-6 6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function PhoneIcon({ className = "" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M7.2 3.5 4.6 5.1c-.8.5-.9 1.4-.6 2.2 2.4 6.3 6.4 10.3 12.7 12.7.8.3 1.7.2 2.2-.6l1.6-2.6-4.3-2-1.3 1.7c-3.2-1.3-6.1-4.2-7.4-7.4l1.7-1.3-2-4.3Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
     </svg>
   );
 }
