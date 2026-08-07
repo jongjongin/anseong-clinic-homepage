@@ -76,16 +76,14 @@ export default function DietGuidePage() {
         <section aria-labelledby="program-title" className="mt-3 border border-slate-200 bg-white p-4 sm:p-5">
           <SectionTitle number="01" title="내 프로그램 확인" id="program-title" />
           <div className="mt-3 grid gap-2">
-            {programs.map((program, index) => (
-              <details key={program.name} open={index === 0} className="group border border-slate-200 bg-[#fafbf9]">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3.5 font-bold marker:content-none">
+            {programs.map((program) => (
+              <article key={program.name} className="border border-slate-200 bg-[#fafbf9]">
+                <div className="flex items-center gap-3 px-4 py-3.5 font-bold">
                   <span>
                     <span className="text-base text-slate-900">{program.name}</span>
                     <span className="ml-2 text-xs font-semibold text-emerald-700">{program.label}</span>
                   </span>
-                  <span className="shrink-0 text-xs font-semibold text-slate-400 group-open:hidden">눌러서 보기</span>
-                  <span className="hidden shrink-0 text-xs font-semibold text-slate-400 group-open:inline">접기</span>
-                </summary>
+                </div>
                 <ul className="border-t border-slate-200 px-4 py-2">
                   {program.items.map((item) => (
                     <li key={item} className="flex gap-2.5 border-b border-slate-100 py-2.5 text-[15px] leading-6 text-slate-600 last:border-0">
@@ -94,7 +92,7 @@ export default function DietGuidePage() {
                     </li>
                   ))}
                 </ul>
-              </details>
+              </article>
             ))}
           </div>
           <p className="mt-3 border-l-2 border-emerald-500 pl-3 text-sm leading-6 text-slate-600">
@@ -146,7 +144,6 @@ export default function DietGuidePage() {
             <ul className="space-y-2.5 text-[15px] leading-6 text-slate-600">
               <Bullet>체중은 하루 2번, 아침 화장실을 다녀온 후와 저녁 취침 전에 확인하세요.</Bullet>
               <Bullet><strong className="text-slate-900">2주에 한 번 내원해 인바디 측정과 상담</strong>을 받으세요.</Bullet>
-              <Bullet>프로그램은 1~9개월이며 보통 3개월 단위로 진행합니다.</Bullet>
             </ul>
           </GuideCard>
 
@@ -260,6 +257,7 @@ function ContactSection() {
         <a
           href="tel:031-8057-0750"
           className="flex min-h-11 items-center justify-center bg-white px-3 py-2 text-center text-sm font-bold text-slate-900"
+          style={{ color: "#0f172a" }}
         >
           전화 031-8057-0750
         </a>
@@ -268,6 +266,7 @@ function ContactSection() {
           target="_blank"
           rel="noreferrer"
           className="flex min-h-11 items-center justify-center bg-[#FEE500] px-3 py-2 text-center text-sm font-bold text-[#191919]"
+          style={{ color: "#191919" }}
         >
           카카오톡 문의
         </a>
