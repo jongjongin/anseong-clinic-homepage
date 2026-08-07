@@ -1,7 +1,7 @@
-import type { WarningGuide } from "@/app/warning/data";
+import type { PainGuide } from "@/app/warning/data";
 
 type WarningIconProps = {
-  name: WarningGuide["icon"];
+  name: PainGuide["icon"] | "skin" | "laser";
   className?: string;
 };
 

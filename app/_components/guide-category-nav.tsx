@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-export type GuideCategory = "warning" | "herb" | "diet" | "beauty";
+export type GuideCategory = "pain" | "herb" | "diet" | "beauty";
 
 const categories: Array<{ key: GuideCategory; label: string; href: string }> = [
-  { key: "warning", label: "시술 후", href: "/warning" },
+  { key: "pain", label: "통증", href: "/pain" },
   { key: "herb", label: "한약", href: "/herb" },
   { key: "diet", label: "다이어트", href: "/diet" },
-  { key: "beauty", label: "피부미용", href: "/beauty" },
+  { key: "beauty", label: "미용", href: "/beauty" },
 ];
 
 export default function GuideCategoryNav({ active }: { active: GuideCategory }) {

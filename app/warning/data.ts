@@ -1,11 +1,11 @@
-export type WarningSection = {
+export type PainSection = {
   title: string;
   description?: string;
   items: string[];
   tone?: "default" | "caution" | "urgent";
 };
 
-export type WarningGuide = {
+export type PainGuide = {
   slug: string;
   title: string;
   subtitle: string;
@@ -15,16 +15,14 @@ export type WarningGuide = {
     | "pharmacopuncture"
     | "bee"
     | "chuna"
-    | "shockwave"
-    | "skin"
-    | "laser";
+    | "shockwave";
   accent: string;
   softAccent: string;
   expected: string[];
-  sections: WarningSection[];
+  sections: PainSection[];
 };
 
-export const warningGuides: WarningGuide[] = [
+export const painGuides: PainGuide[] = [
   {
     slug: "acupuncture",
     title: "침치료",
@@ -230,49 +228,8 @@ export const warningGuides: WarningGuide[] = [
       },
     ],
   },
-  {
-    slug: "skin-booster",
-    title: "스킨부스터",
-    subtitle: "주사 자국과 붓기가 가라앉는 동안 피부 자극을 최소화해 주세요.",
-    shortDescription: "엠보싱, 붓기, 멍과 피부 진정 관리 방법",
-    icon: "skin",
-    accent: "#b75f7f",
-    softAccent: "#fbeef3",
-    expected: [
-      "주사 자국, 작은 엠보싱과 붉은 기",
-      "가벼운 붓기, 멍, 따끔거림 또는 당김",
-      "시술 부위가 울퉁불퉁해 보이는 일시적인 변화",
-    ],
-    sections: [
-      {
-        title: "시술 당일",
-        items: [
-          "시술 부위를 손으로 만지거나 누르고 문지르지 마세요.",
-          "세안과 화장 시작 시점은 사용한 제품과 시술 방법에 따라 다르므로 안내받은 시간을 지켜 주세요.",
-          "과음, 사우나·찜질방, 격한 운동과 뜨거운 목욕은 피하세요.",
-        ],
-      },
-      {
-        title: "피부를 관리할 때",
-        items: [
-          "순한 세안제와 보습제를 사용하고 스크럽·필링·레티놀 등 자극적인 제품은 잠시 쉬어 주세요.",
-          "외출 시 자외선 차단제를 사용하고 강한 햇빛 노출을 피하세요.",
-          "엠보싱과 작은 멍은 대개 시간이 지나며 줄어듭니다. 임의로 눌러 없애려 하지 마세요.",
-        ],
-      },
-      {
-        title: "즉시 의료진 확인이 필요한 경우",
-        tone: "urgent",
-        items: [
-          "통증이 심해지면서 피부가 하얗거나 보랏빛으로 변하고 얼룩덜룩해지는 경우",
-          "갑작스러운 시야 흐림, 시력 변화, 심한 눈 통증 또는 두통이 있는 경우",
-          "고름, 심한 열감, 빠르게 퍼지는 발적 또는 전신 알레르기 증상이 있는 경우",
-        ],
-      },
-    ],
-  },
 ];
 
-export function getWarningGuide(slug: string) {
-  return warningGuides.find((guide) => guide.slug === slug);
+export function getPainGuide(slug: string) {
+  return painGuides.find((guide) => guide.slug === slug);
 }
