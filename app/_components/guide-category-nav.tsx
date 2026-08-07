@@ -46,7 +46,13 @@ export default function GuideCategoryNav({ active }: { active: GuideCategory }) 
   );
 }
 
-export function GuideSiteHeader() {
+export function GuideSiteHeader({
+  actionHref = "/warning",
+  actionLabel = "전체 안내",
+}: {
+  actionHref?: string;
+  actionLabel?: string;
+} = {}) {
   return (
     <header className="border-b border-slate-200 bg-white">
       <div className="mx-auto flex h-12 max-w-5xl items-center justify-between px-4 sm:h-16 sm:px-6">
@@ -63,11 +69,11 @@ export function GuideSiteHeader() {
           </div>
         </Link>
         <Link
-          href="/warning"
+          href={actionHref}
           className="border border-slate-300 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 transition-colors hover:border-slate-500 sm:px-3 sm:py-2 sm:text-sm"
           style={{ color: "#475569" }}
         >
-          전체 안내
+          {actionLabel}
         </Link>
       </div>
     </header>
