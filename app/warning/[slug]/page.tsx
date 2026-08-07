@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import GuideCategoryNav from "@/app/_components/guide-category-nav";
 import WarningIcon from "@/app/warning/warning-icon";
 import { getWarningGuide, warningGuides } from "@/app/warning/data";
 
@@ -75,7 +76,9 @@ export default async function WarningDetailPage({ params }: WarningDetailPagePro
       </header>
 
       <main className="mx-auto max-w-6xl px-4 py-2 sm:px-6 sm:py-6">
-        <div className="flex items-center justify-between gap-4">
+        <GuideCategoryNav active="warning" />
+
+        <div className="mt-2 flex items-center justify-between gap-4 sm:mt-3">
           <Link
             href="/warning"
             className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-slate-500 transition-colors hover:text-slate-900 sm:text-sm"

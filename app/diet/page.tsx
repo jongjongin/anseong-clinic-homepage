@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import GuideCategoryNav from "@/app/_components/guide-category-nav";
 
 export const metadata: Metadata = {
   title: "다이어트, 이렇게 관리하세요",
@@ -18,6 +19,9 @@ const programs = [
   {
     name: "쏙쏙빠정",
     label: "정제 프로그램",
+    accent: "#ad5e79",
+    softAccent: "#fdf0f5",
+    border: "#edc8d5",
     items: [
       "식사 1시간 전 빈속에 1알씩, 하루 4알을 복용합니다. 예: 오전 7시 · 11시 · 오후 3시 · 5시",
       "처음에는 하루 2알부터 시작하고, 두근거림이나 불면이 없으면 하루 4알까지 늘려 주세요.",
@@ -27,6 +31,9 @@ const programs = [
   {
     name: "쏙쏙탕",
     label: "탕약 프로그램",
+    accent: "#337a71",
+    softAccent: "#edf8f5",
+    border: "#c8e5df",
     items: [
       "아침 · 점심 · 저녁 식사 1시간 전 빈속에 복용합니다.",
       "첫날은 2포로 시작하고, 이후에는 하루 3포를 복용합니다.",
@@ -35,6 +42,9 @@ const programs = [
   {
     name: "디톡스",
     label: "3~5일 프로그램",
+    accent: "#8d7028",
+    softAccent: "#fbf6e8",
+    border: "#e7d9a8",
     items: [
       "위장을 쉬게 하고 노폐물 배출과 부종 완화를 돕는 과정으로, 평균 1.5~2kg 감량을 목표로 합니다.",
       "1일차: 아침·점심은 일반식, 저녁은 선식과 붓기탕을 드세요.",
@@ -57,7 +67,9 @@ export default function DietGuidePage() {
       <GuideHeader />
 
       <main className="mx-auto max-w-4xl px-4 py-4 sm:px-6 sm:py-8">
-        <section className="border-b border-slate-300 pb-4 sm:pb-5">
+        <GuideCategoryNav active="diet" />
+
+        <section className="mt-3 border-b border-slate-300 pb-4 sm:pb-5">
           <p className="text-xs font-semibold text-emerald-700">안성경희365한의원 다이어트</p>
           <h1 className="mt-1 break-keep text-[26px] font-bold leading-tight tracking-[-0.04em] sm:text-4xl">
             다이어트, 이렇게 관리하세요
@@ -77,17 +89,21 @@ export default function DietGuidePage() {
           <SectionTitle number="01" title="내 프로그램 확인" id="program-title" />
           <div className="mt-3 grid gap-2">
             {programs.map((program) => (
-              <article key={program.name} className="border border-slate-200 bg-[#fafbf9]">
-                <div className="flex items-center gap-3 px-4 py-3.5 font-bold">
+              <article
+                key={program.name}
+                className="border bg-white"
+                style={{ borderColor: program.border, backgroundColor: program.softAccent }}
+              >
+                <div className="flex items-center gap-3 border-l-4 px-4 py-3.5 font-bold" style={{ borderLeftColor: program.accent }}>
                   <span>
                     <span className="text-base text-slate-900">{program.name}</span>
-                    <span className="ml-2 text-xs font-semibold text-emerald-700">{program.label}</span>
+                    <span className="ml-2 text-xs font-semibold" style={{ color: program.accent }}>{program.label}</span>
                   </span>
                 </div>
-                <ul className="border-t border-slate-200 px-4 py-2">
+                <ul className="border-t bg-white/70 px-4 py-2" style={{ borderTopColor: program.border }}>
                   {program.items.map((item) => (
                     <li key={item} className="flex gap-2.5 border-b border-slate-100 py-2.5 text-[15px] leading-6 text-slate-600 last:border-0">
-                      <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 bg-emerald-600" />
+                      <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0" style={{ backgroundColor: program.accent }} />
                       <span className="break-keep">{item}</span>
                     </li>
                   ))}
@@ -202,10 +218,10 @@ function GuideHeader() {
           </div>
         </Link>
         <Link
-          href="/warning"
+          href="/"
           className="border border-slate-300 px-2.5 py-1.5 text-[11px] font-semibold text-slate-700 transition-colors hover:border-slate-500 hover:text-slate-950 sm:px-3 sm:py-2 sm:text-sm"
         >
-          안내 목록
+          메인으로
         </Link>
       </div>
     </header>
