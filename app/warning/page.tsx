@@ -81,7 +81,7 @@ export default function WarningPage() {
           ))}
 
           <Link
-            href="/herbal-medicine"
+            href="/herb"
             className="group relative flex min-h-[82px] flex-col border border-slate-200 bg-white px-3 py-2.5 transition-colors hover:border-slate-400 sm:min-h-[120px] sm:p-4"
           >
             <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[3px] bg-[#4b735b]" />
@@ -94,6 +94,23 @@ export default function WarningPage() {
             <h2 className="mt-1.5 text-[15px] font-bold tracking-[-0.02em] sm:mt-3 sm:text-lg">한약</h2>
             <p className="mt-1 hidden line-clamp-2 break-keep text-xs leading-4 text-slate-500 sm:block">
               복용법, 데우기, 보관과 주의사항
+            </p>
+          </Link>
+
+          <Link
+            href="/diet"
+            className="group relative flex min-h-[82px] flex-col border border-slate-200 bg-white px-3 py-2.5 transition-colors hover:border-slate-400 sm:min-h-[120px] sm:p-4"
+          >
+            <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[3px] bg-emerald-600" />
+            <div className="flex items-start justify-between">
+              <span className="flex h-7 w-7 items-center justify-center border-2 border-emerald-600 text-[9px] font-bold text-emerald-700 sm:h-10 sm:w-10 sm:text-xs">
+                관리
+              </span>
+              <ArrowIcon className="h-4 w-4 text-slate-300 transition-transform group-hover:translate-x-0.5 group-hover:text-slate-600" />
+            </div>
+            <h2 className="mt-1.5 text-[15px] font-bold tracking-[-0.02em] sm:mt-3 sm:text-lg">다이어트</h2>
+            <p className="mt-1 hidden line-clamp-2 break-keep text-xs leading-4 text-slate-500 sm:block">
+              프로그램, 식단과 생활 관리 안내
             </p>
           </Link>
         </section>
