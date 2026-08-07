@@ -5,6 +5,7 @@ import GuideCategoryNav, {
   GuideSiteHeader,
   guideThemes,
 } from "@/app/_components/guide-category-nav";
+import WarningIcon from "@/app/warning/warning-icon";
 
 const BEAUTY_THEME = guideThemes.beauty;
 
@@ -173,33 +174,33 @@ export default function BeautyGuidePage() {
           description="같은 고민도 피부 타입과 병변의 깊이에 따라 필요한 시술이 다릅니다. 시술 특징과 회복 과정을 확인하고 진료 후 알맞은 방법을 결정하세요."
         />
 
-        <aside className="mt-3 border-l-4 bg-white px-4 py-3" style={{ borderLeftColor: BEAUTY_THEME.accent }}>
-          <p className="break-keep text-base font-bold leading-[1.6] text-[#334155]">
+        <aside className="mt-3 bg-white px-5 py-4 sm:px-6">
+          <p className="break-keep text-base font-bold leading-[1.7] text-[#334155]">
             결과, 통증과 회복 기간에는 개인차가 있습니다. 온라인 안내보다 진료 시 받은 개별 안내를 우선해 주세요.
           </p>
         </aside>
 
-        <nav aria-label="미용 시술 바로가기" className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+        <nav aria-label="미용 시술 바로가기" className="mt-3 grid grid-cols-2 gap-px overflow-hidden bg-slate-200 sm:grid-cols-4">
           {procedures.map((procedure) => (
             <a
               key={procedure.id}
               href={`#${procedure.id}`}
-              className="group flex min-h-14 items-center gap-2 border border-slate-200 bg-white px-3 py-2.5 transition-colors hover:border-slate-400"
+              className="group flex min-h-[132px] flex-col items-center justify-center bg-white px-3 py-4 text-center transition-colors hover:bg-slate-50 sm:min-h-[150px]"
             >
-              <span
-                className="flex h-7 w-7 shrink-0 items-center justify-center text-xs font-bold text-white"
-                style={{ backgroundColor: BEAUTY_THEME.accent }}
-              >
-                {procedure.number}
+              <span className="flex h-12 w-12 items-center justify-center" style={{ color: BEAUTY_THEME.accent }}>
+                <WarningIcon name={getBeautyIcon(procedure.id)} className="h-11 w-11" />
               </span>
-              <span className="break-keep text-sm font-bold leading-5 text-[#334155]">{procedure.title}</span>
+              <span className="mt-2 break-keep text-[15px] font-bold leading-6 text-[#334155]">
+                {getBeautyNavTitle(procedure.title)}
+              </span>
             </a>
           ))}
         </nav>
 
-        <section className="mt-3 border border-slate-200 bg-white p-4 sm:p-5">
-          <h2 className="text-lg font-bold tracking-[-0.02em] sm:text-xl">시술 전 꼭 알려 주세요</h2>
-          <div className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2">
+        <section className="mt-3 bg-white px-5 py-6 sm:px-8 sm:py-8">
+          <p className="text-xs font-bold tracking-[0.16em]" style={{ color: BEAUTY_THEME.accent }}>BEFORE TREATMENT</p>
+          <h2 className="mt-2 text-xl font-extrabold tracking-[-0.03em] sm:text-2xl">시술 전 꼭 알려 주세요</h2>
+          <div className="mt-4 grid gap-x-8 sm:grid-cols-2">
             {[
               "임신·수유 중이거나 임신 가능성이 있는 경우",
               "복용 중인 약, 항응고제·아스피린·광과민 약물이 있는 경우",
@@ -208,76 +209,77 @@ export default function BeautyGuidePage() {
               "치료 부위에 상처, 염증, 감염 또는 심한 여드름이 있는 경우",
               "최근 강한 햇빛 노출이나 태닝으로 피부가 붉어진 경우",
             ].map((item) => (
-              <p key={item} className="flex gap-2 text-base leading-[1.6] text-[#334155]">
-                <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0" style={{ backgroundColor: BEAUTY_THEME.accent }} />
+              <p key={item} className="flex gap-3 border-t border-slate-200 py-3 text-base leading-[1.7] text-[#334155]">
+                <span aria-hidden="true" className="mt-[0.72rem] h-px w-3 shrink-0" style={{ backgroundColor: BEAUTY_THEME.accent }} />
                 <span className="break-keep">{item}</span>
               </p>
             ))}
           </div>
         </section>
 
-        <section aria-label="미용 시술 상세 안내" className="mt-3 grid gap-3">
+        <section aria-label="미용 시술 상세 안내" className="mt-3 overflow-hidden bg-white">
           {procedures.map((procedure) => (
             <article
               key={procedure.id}
               id={procedure.id}
-              className="scroll-mt-4 border border-slate-200 bg-white p-4 sm:p-6"
+              className="scroll-mt-4 border-t border-slate-200 px-5 py-7 first:border-t-0 sm:px-8 sm:py-10"
             >
-              <div className="flex items-start gap-3 border-b border-slate-200 pb-4">
-                <span
-                  className="flex h-9 w-9 shrink-0 items-center justify-center text-xs font-bold text-white sm:h-10 sm:w-10"
-                  style={{ backgroundColor: BEAUTY_THEME.accent }}
-                >
-                  {procedure.number}
+              <div className="grid gap-4 sm:grid-cols-[64px_1fr] sm:gap-5">
+                <span className="flex h-14 w-14 items-center justify-center" style={{ color: BEAUTY_THEME.accent, backgroundColor: BEAUTY_THEME.tint }}>
+                  <WarningIcon name={getBeautyIcon(procedure.id)} className="h-9 w-9" />
                 </span>
-                <div>
-                  <h2 className="break-keep text-xl font-bold leading-tight tracking-[-0.03em] sm:text-2xl">{procedure.title}</h2>
-                  <p className="mt-1 break-keep text-base leading-[1.6] text-slate-500">{procedure.subtitle}</p>
+                <div className="min-w-0">
+                  <p className="text-xs font-bold tracking-[0.16em]" style={{ color: BEAUTY_THEME.accent }}>
+                    BEAUTY {procedure.number}
+                  </p>
+                  <h2 className="mt-1 break-keep text-[23px] font-extrabold leading-[1.3] tracking-[-0.04em] text-slate-800 sm:text-[30px]">
+                    {procedure.title}
+                  </h2>
+                  <p className="mt-2 break-keep text-base leading-[1.7] text-slate-500">{procedure.subtitle}</p>
                 </div>
               </div>
 
-              <div className="mt-4 grid gap-4 lg:grid-cols-[0.8fr_1.1fr_1.1fr] lg:gap-6">
-                <div>
-                  <h3 className="text-base font-bold" style={{ color: BEAUTY_THEME.accent }}>이런 고민에</h3>
-                  <div className="mt-2 flex flex-wrap gap-1.5 lg:block lg:space-y-1.5">
-                    {procedure.targets.map((target) => (
-                      <span
-                        key={target}
-                        className="inline-flex break-keep px-2.5 py-1.5 text-base font-bold leading-[1.6] text-[#334155] lg:flex"
-                        style={{ backgroundColor: BEAUTY_THEME.tint }}
-                      >
-                        {target}
-                      </span>
-                    ))}
-                  </div>
+              <div className="mt-5 border-y border-slate-200 py-4">
+                <h3 className="text-sm font-bold" style={{ color: BEAUTY_THEME.accent }}>이런 고민에</h3>
+                <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1.5">
+                  {procedure.targets.map((target) => (
+                    <span key={target} className="inline-flex items-center gap-2 break-keep text-base font-bold leading-[1.7] text-[#334155]">
+                      <span aria-hidden="true" className="h-1.5 w-1.5" style={{ backgroundColor: BEAUTY_THEME.accent }} />
+                      {target}
+                    </span>
+                  ))}
                 </div>
+              </div>
+
+              <div className="mt-6 grid gap-7 md:grid-cols-2 md:gap-10">
                 <InfoList title="시술 안내" items={procedure.treatment} />
-                <InfoList title="회복·관리" items={procedure.recovery} />
+                <InfoList title="회복과 관리" items={procedure.recovery} />
               </div>
 
               <div
-                className="mt-4 border-l-4 px-3.5 py-3 text-base font-bold leading-[1.6] text-[#334155]"
-                style={{ borderColor: BEAUTY_THEME.accent, backgroundColor: BEAUTY_THEME.tint }}
+                className="mt-6 px-4 py-4 text-base leading-[1.7] text-[#334155] sm:px-5"
+                style={{ backgroundColor: BEAUTY_THEME.tint }}
               >
-                <span className="mr-2 font-bold" style={{ color: BEAUTY_THEME.accent }}>꼭 확인</span>
-                <span className="break-keep">{procedure.caution}</span>
+                <strong className="mr-2 font-bold" style={{ color: BEAUTY_THEME.accent }}>꼭 확인</strong>
+                <span className="break-keep font-bold">{procedure.caution}</span>
               </div>
             </article>
           ))}
         </section>
 
-        <section className="mt-3 border border-slate-200 bg-white p-4 sm:p-5">
-          <h2 className="text-lg font-bold tracking-[-0.02em] sm:text-xl">모든 시술 후 공통 관리</h2>
-          <div className="mt-3 grid gap-2 sm:grid-cols-2">
+        <section className="mt-3 bg-white px-5 py-7 sm:px-8 sm:py-9">
+          <p className="text-xs font-bold tracking-[0.16em]" style={{ color: BEAUTY_THEME.accent }}>AFTER CARE</p>
+          <h2 className="mt-2 text-xl font-extrabold tracking-[-0.03em] sm:text-2xl">모든 시술 후 공통 관리</h2>
+          <div className="mt-4 border-t border-slate-200">
             {[
               ["자외선 차단", "강한 햇빛을 피하고 피부가 회복된 뒤에도 자외선 차단제를 꾸준히 사용하세요."],
               ["보습과 진정", "순한 세안제와 보습제를 사용하고 피부를 문지르거나 각질을 억지로 떼지 마세요."],
               ["열과 자극 피하기", "안내받은 기간 동안 과음, 사우나·찜질방, 뜨거운 목욕과 격한 운동을 피하세요."],
               ["바로 연락할 때", "심한 통증, 큰 물집, 고름, 빠르게 번지는 붉은 기나 예상하지 못한 색 변화가 있으면 연락해 주세요."],
             ].map(([title, description]) => (
-              <div key={title} className="px-3.5 py-3" style={{ backgroundColor: BEAUTY_THEME.tint }}>
-                <h3 className="text-base font-bold text-[#334155]">{title}</h3>
-                <p className="mt-1 break-keep text-base leading-[1.6] text-[#334155]">{description}</p>
+              <div key={title} className="grid gap-1 border-b border-slate-200 py-4 sm:grid-cols-[150px_1fr] sm:gap-6">
+                <h3 className="text-base font-bold text-slate-800">{title}</h3>
+                <p className="break-keep text-base leading-[1.7] text-[#334155]">{description}</p>
               </div>
             ))}
           </div>
@@ -296,15 +298,23 @@ export default function BeautyGuidePage() {
 function InfoList({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
-      <h3 className="text-base font-bold" style={{ color: BEAUTY_THEME.accent }}>{title}</h3>
-      <ul className="mt-1.5 divide-y divide-slate-100">
+      <h3 className="text-lg font-extrabold tracking-[-0.02em] text-slate-800">{title}</h3>
+      <ul className="mt-2 divide-y divide-slate-100">
         {items.map((item) => (
-          <li key={item} className="flex gap-2.5 py-2 text-base leading-[1.6] text-[#334155] first:pt-1">
-            <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0" style={{ backgroundColor: BEAUTY_THEME.accent }} />
+          <li key={item} className="flex gap-3 py-3 text-base leading-[1.7] text-[#334155] first:pt-1">
+            <span aria-hidden="true" className="mt-[0.72rem] h-px w-3 shrink-0" style={{ backgroundColor: BEAUTY_THEME.accent }} />
             <span className="break-keep">{item}</span>
           </li>
         ))}
       </ul>
     </div>
   );
+}
+
+function getBeautyIcon(id: string): "skin" | "laser" {
+  return id === "ldm" || id === "skin-booster" || id === "lhala-peel" ? "skin" : "laser";
+}
+
+function getBeautyNavTitle(title: string) {
+  return title.replace("CO2 레이저 — ", "");
 }

@@ -21,7 +21,7 @@ export default function GuideCategoryNav({ active }: { active: GuideCategory }) 
   const theme = guideThemes[active];
 
   return (
-    <nav aria-label="안내 대분류" className="grid grid-cols-4 gap-1 border border-slate-200 bg-white p-1">
+    <nav aria-label="안내 대분류" className="grid grid-cols-4 border-y border-slate-200 bg-white">
       {categories.map((category) => {
         const isActive = category.key === active;
 
@@ -31,12 +31,10 @@ export default function GuideCategoryNav({ active }: { active: GuideCategory }) 
             href={category.href}
             aria-current={isActive ? "page" : undefined}
             style={{
-              color: isActive ? "#ffffff" : "#64748b",
-              backgroundColor: isActive ? theme.accent : undefined,
+              color: isActive ? theme.accent : "#64748b",
+              borderBottomColor: isActive ? theme.accent : "transparent",
             }}
-            className={`flex min-h-9 items-center justify-center px-1.5 text-center text-[11px] font-bold transition-colors sm:min-h-10 sm:text-sm ${
-              isActive ? "text-white" : "text-slate-500 hover:bg-slate-100 hover:text-slate-900"
-            }`}
+            className="flex min-h-11 items-center justify-center border-b-2 px-1.5 text-center text-xs font-bold transition-colors hover:bg-slate-50 sm:min-h-12 sm:text-sm"
           >
             {category.label}
           </Link>
@@ -92,12 +90,12 @@ export function GuideHero({
   const theme = guideThemes[active];
 
   return (
-    <section className="mt-3 border-b border-slate-300 pb-4 sm:pb-5">
-      <p className="text-xs font-bold" style={{ color: theme.accent }}>안성경희365한의원</p>
-      <h1 className="mt-1 break-keep text-[26px] font-extrabold leading-tight tracking-[-0.04em] text-slate-800 sm:text-4xl">
+    <section className="mt-3 px-5 py-7 text-white sm:px-8 sm:py-10" style={{ backgroundColor: theme.accent }}>
+      <p className="text-sm font-bold tracking-[-0.01em] text-white/75">안성경희365한의원</p>
+      <h1 className="mt-2 break-keep text-[30px] font-extrabold leading-[1.2] tracking-[-0.045em] text-white sm:text-[42px]">
         {title}
       </h1>
-      <p className="mt-2 max-w-3xl break-keep text-base leading-[1.6] text-slate-600">
+      <p className="mt-3 max-w-3xl break-keep text-base leading-[1.7] text-white/85">
         {description}
       </p>
     </section>
