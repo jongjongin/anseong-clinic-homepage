@@ -20,8 +20,8 @@ const categories = [
     label: "통증",
     eyebrow: "치료 후 관리",
     description: "침 · 약침 · 봉침 · 추나 · 충격파",
-    accent: "#0f766e",
-    softAccent: "#e8f5f2",
+    accent: "#2563EB",
+    softAccent: "#EFF6FF",
     mark: "통증",
   },
   {
@@ -29,8 +29,8 @@ const categories = [
     label: "한약",
     eyebrow: "복용 안내",
     description: "복용법 · 데우기 · 보관 · 주의사항",
-    accent: "#4b735b",
-    softAccent: "#edf4ef",
+    accent: "#2F9E62",
+    softAccent: "#F0F9F1",
     mark: "한약",
   },
   {
@@ -38,8 +38,8 @@ const categories = [
     label: "다이어트",
     eyebrow: "프로그램 관리",
     description: "복용 · 식단 · 금식 · 생활 관리",
-    accent: "#ad5e79",
-    softAccent: "#fdf0f5",
+    accent: "#D6336C",
+    softAccent: "#FDF2F4",
     mark: "관리",
   },
   {
@@ -47,8 +47,8 @@ const categories = [
     label: "미용",
     eyebrow: "피부 시술 안내",
     description: "CO2 · 토닝 · LDM · 스킨부스터 · 라라필",
-    accent: "#6f55a0",
-    softAccent: "#f2eef9",
+    accent: "#7C3AED",
+    softAccent: "#F5F3FF",
     mark: "피부",
   },
 ];

@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import GuideCategoryNav from "@/app/_components/guide-category-nav";
+import GuideCategoryNav, {
+  GuideContact,
+  GuideHero,
+  GuideSiteHeader,
+  guideThemes,
+} from "@/app/_components/guide-category-nav";
 
 export const metadata: Metadata = {
   title: "한약 복용법과 주의사항",
@@ -57,25 +60,23 @@ const guideSections = [
 ];
 
 export default function HerbGuidePage() {
-  return (
-    <div className="min-h-screen bg-[#f6f7f5] text-slate-900">
-      <GuideHeader />
+  const theme = guideThemes.herb;
 
-      <main className="mx-auto max-w-4xl px-4 py-4 sm:px-6 sm:py-8">
+  return (
+    <div className="min-h-screen text-[#334155]" style={{ backgroundColor: theme.tint }}>
+      <GuideSiteHeader />
+
+      <main className="mx-auto max-w-5xl px-4 py-4 sm:px-6 sm:py-8">
         <GuideCategoryNav active="herb" />
 
-        <section className="mt-3 border-b border-slate-300 pb-4 sm:pb-5">
-          <p className="text-xs font-semibold text-teal-700">안성경희365한의원</p>
-          <h1 className="mt-1 break-keep text-[26px] font-bold leading-tight tracking-[-0.04em] sm:text-4xl">
-            한약 복용법과 주의사항
-          </h1>
-          <p className="mt-2 break-keep text-sm leading-6 text-slate-600 sm:text-base">
-            처방받은 한약을 안전하고 효과적으로 복용하기 위해 아래 내용을 확인해 주세요.
-          </p>
-        </section>
+        <GuideHero
+          active="herb"
+          title="한약 복용법과 주의사항"
+          description="처방받은 한약을 안전하고 효과적으로 복용하기 위해 아래 내용을 확인해 주세요."
+        />
 
-        <aside className="mt-3 border-l-4 border-teal-700 bg-[#edf6f3] px-4 py-3">
-          <p className="break-keep text-sm font-bold leading-6 text-teal-950">
+        <aside className="mt-3 border-l-4 bg-white px-4 py-3" style={{ borderLeftColor: theme.accent }}>
+          <p className="break-keep text-base font-bold leading-[1.6] text-[#334155]">
             복용 횟수와 시간은 처방 시 받은 개별 안내를 가장 먼저 따라 주세요.
           </p>
         </aside>
@@ -87,15 +88,22 @@ export default function HerbGuidePage() {
               className={`border border-slate-200 bg-white p-4 sm:p-5 ${index === 0 ? "md:col-span-2" : ""}`}
             >
               <div className="flex items-center gap-3 border-b border-slate-200 pb-3">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center bg-teal-700 text-xs font-bold text-white">
+                <span
+                  className="flex h-8 w-8 shrink-0 items-center justify-center text-xs font-bold text-white"
+                  style={{ backgroundColor: theme.accent }}
+                >
                   {section.number}
                 </span>
                 <h2 className="text-lg font-bold tracking-[-0.02em] sm:text-xl">{section.title}</h2>
               </div>
               <ul className={`mt-2 divide-y divide-slate-100 ${index === 0 ? "md:grid md:grid-cols-2 md:gap-x-6 md:divide-y-0" : ""}`}>
                 {section.items.map((item) => (
-                  <li key={item} className="flex gap-2.5 py-2.5 text-base leading-7 text-slate-600">
-                    <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-teal-600" />
+                  <li key={item} className="flex gap-2.5 py-2.5 text-base leading-[1.6] text-[#334155]">
+                    <span
+                      aria-hidden="true"
+                      className="mt-2.5 h-1.5 w-1.5 shrink-0"
+                      style={{ backgroundColor: theme.accent }}
+                    />
                     <span className="break-keep">{item}</span>
                   </li>
                 ))}
@@ -104,66 +112,12 @@ export default function HerbGuidePage() {
           ))}
         </section>
 
-        <ContactSection />
+        <GuideContact active="herb" />
 
         <p className="mt-3 break-keep text-center text-[11px] leading-5 text-slate-400">
           본 페이지는 공통 복약 안내입니다. 개인별 복용법은 진료 시 받은 안내를 우선해 주세요.
         </p>
       </main>
     </div>
-  );
-}
-
-function GuideHeader() {
-  return (
-    <header className="border-b border-slate-200 bg-white">
-      <div className="mx-auto flex h-12 max-w-4xl items-center justify-between px-4 sm:h-16 sm:px-6">
-        <Link href="/" aria-label="안성경희365한의원 메인 홈페이지">
-          <div className="relative h-7 w-[150px] sm:h-9 sm:w-[190px]">
-            <Image
-              src="/assets/logo/logo-wordmark.png"
-              alt="안성경희365한의원"
-              fill
-              className="object-contain object-left"
-              sizes="190px"
-              priority
-            />
-          </div>
-        </Link>
-        <Link
-          href="/"
-          className="border border-slate-300 px-2.5 py-1.5 text-[11px] font-semibold text-slate-700 transition-colors hover:border-slate-500 hover:text-slate-950 sm:px-3 sm:py-2 sm:text-sm"
-        >
-          메인으로
-        </Link>
-      </div>
-    </header>
-  );
-}
-
-function ContactSection() {
-  return (
-    <section className="mt-3 border border-slate-800 bg-slate-900 px-4 py-4 text-white sm:px-5">
-      <h2 className="text-base font-bold">궁금한 점이 있으신가요?</h2>
-      <p className="mt-1 text-sm leading-5 text-slate-300">전화 또는 카카오톡으로 문의해 주세요.</p>
-      <div className="mt-3 grid grid-cols-2 gap-2">
-        <a
-          href="tel:031-8057-0750"
-          className="flex min-h-11 items-center justify-center bg-white px-3 py-2 text-center text-sm font-bold text-slate-900"
-          style={{ color: "#0f172a" }}
-        >
-          전화 031-8057-0750
-        </a>
-        <a
-          href="http://pf.kakao.com/_RWgxnG/chat"
-          target="_blank"
-          rel="noreferrer"
-          className="flex min-h-11 items-center justify-center bg-[#FEE500] px-3 py-2 text-center text-sm font-bold text-[#191919]"
-          style={{ color: "#191919" }}
-        >
-          카카오톡 문의
-        </a>
-      </div>
-    </section>
   );
 }

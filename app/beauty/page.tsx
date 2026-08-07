@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import GuideCategoryNav from "@/app/_components/guide-category-nav";
+import GuideCategoryNav, {
+  GuideContact,
+  GuideHero,
+  GuideSiteHeader,
+  guideThemes,
+} from "@/app/_components/guide-category-nav";
+
+const BEAUTY_THEME = guideThemes.beauty;
 
 export const metadata: Metadata = {
   title: "피부미용 시술 안내",
@@ -22,8 +27,6 @@ const procedures = [
     number: "01",
     title: "CO2 레이저 — 점·쥐젖·편평사마귀 제거",
     subtitle: "병변을 먼저 확인하고 필요한 부위만 정교하게 제거합니다.",
-    accent: "#9f5f73",
-    softAccent: "#fbf0f4",
     targets: ["튀어나오거나 눈에 띄는 점", "목·겨드랑이 등의 쥐젖", "얼굴에 번지는 편평사마귀"],
     treatment: [
       "점처럼 보여도 서로 다른 병변일 수 있어 크기, 색, 경계와 변화 양상을 먼저 확인합니다.",
@@ -45,8 +48,6 @@ const procedures = [
     number: "02",
     title: "CO2 프락셀",
     subtitle: "피부에 미세한 치료 기둥을 만들어 흉터와 피부결 개선을 돕습니다.",
-    accent: "#8b5b3f",
-    softAccent: "#faf1eb",
     targets: ["패인 여드름 흉터", "거친 피부결과 넓어 보이는 모공", "잔주름과 광노화 피부"],
     treatment: [
       "프락셔널 CO2 레이저는 피부 전체가 아닌 미세한 점 형태로 에너지를 전달해 주변 피부를 남겨 두는 박피성 레이저 시술입니다.",
@@ -66,8 +67,6 @@ const procedures = [
     number: "03",
     title: "토닝",
     subtitle: "낮은 에너지의 레이저를 고르게 조사해 색소와 피부 톤을 관리합니다.",
-    accent: "#596f9c",
-    softAccent: "#eef2fa",
     targets: ["기미와 고르지 않은 피부 톤", "칙칙함과 잔색소", "반복 관리가 필요한 색소 고민"],
     treatment: [
       "일반적으로 저출력 1064nm Q-switched Nd:YAG 레이저를 피부에 고르게 조사하는 방식으로 진행합니다.",
@@ -87,8 +86,6 @@ const procedures = [
     number: "04",
     title: "듀얼토닝(제네시스토닝)",
     subtitle: "색소 토닝과 제네시스 방식의 열 자극을 함께 구성하는 복합 관리입니다.",
-    accent: "#6f55a0",
-    softAccent: "#f2eef9",
     targets: ["색소와 붉은 기가 함께 있는 피부", "피부결·모공과 잔주름", "톤과 피부 컨디션의 복합 관리"],
     treatment: [
       "색소를 목표로 하는 저출력 토닝에 비박피성 1064nm Nd:YAG 제네시스 방식의 진피 가열을 더해 피부 상태를 함께 관리합니다.",
@@ -108,8 +105,6 @@ const procedures = [
     number: "05",
     title: "LDM",
     subtitle: "서로 다른 고주파 초음파를 빠르게 전환해 피부 컨디션을 관리합니다.",
-    accent: "#2d7e87",
-    softAccent: "#eaf6f6",
     targets: ["민감하고 붉어진 피부", "건조함과 피부 컨디션 저하", "레이저·주사 시술 후 진정 관리"],
     treatment: [
       "LDM(Local Dynamic Micromassage)은 3MHz와 10MHz 등 서로 다른 초음파 주파수를 빠르게 교차시키는 비침습적 관리입니다.",
@@ -129,8 +124,6 @@ const procedures = [
     number: "06",
     title: "스킨부스터",
     subtitle: "피부 고민에 맞는 성분을 피부층에 주입해 수분감과 피부결을 관리합니다.",
-    accent: "#b6577b",
-    softAccent: "#fbeef4",
     targets: ["속건조와 잔주름", "탄력과 피부결 저하", "칙칙하고 생기 없는 피부"],
     treatment: [
       "스킨부스터는 히알루론산, 폴리뉴클레오타이드(PN) 등 제품별로 성분과 목적이 다르므로 피부 상태와 알레르기 이력을 확인해 선택합니다.",
@@ -150,8 +143,6 @@ const procedures = [
     number: "07",
     title: "라라필",
     subtitle: "LHA와 알칼리 성분, 지질 성분을 활용하는 피부결 관리 필링입니다.",
-    accent: "#9a7b25",
-    softAccent: "#faf6e7",
     targets: ["묵은 각질과 거친 피부결", "피지와 칙칙한 피부 톤", "수분감이 부족한 피부"],
     treatment: [
       "라라필(LHALA Peel)은 LHA, 알칼리 성분 H2sol™과 지질 성분을 조합한 필링 프로그램입니다.",
@@ -170,24 +161,20 @@ const procedures = [
 
 export default function BeautyGuidePage() {
   return (
-    <div className="min-h-screen bg-[#f6f7f5] text-slate-900">
-      <GuideHeader />
+    <div className="min-h-screen text-[#334155]" style={{ backgroundColor: BEAUTY_THEME.tint }}>
+      <GuideSiteHeader />
 
       <main className="mx-auto max-w-5xl px-4 py-4 sm:px-6 sm:py-8">
         <GuideCategoryNav active="beauty" />
 
-        <section className="mt-3 border-b border-slate-300 pb-4 sm:pb-5">
-          <p className="text-xs font-semibold text-rose-700">안성경희365한의원 피부미용</p>
-          <h1 className="mt-1 break-keep text-[26px] font-bold leading-tight tracking-[-0.04em] sm:text-4xl">
-            피부 고민에 맞춘 미용 시술 안내
-          </h1>
-          <p className="mt-2 max-w-3xl break-keep text-sm leading-6 text-slate-600 sm:text-base">
-            같은 고민도 피부 타입과 병변의 깊이에 따라 필요한 시술이 다릅니다. 시술 특징과 회복 과정을 확인하고 진료 후 알맞은 방법을 결정하세요.
-          </p>
-        </section>
+        <GuideHero
+          active="beauty"
+          title="피부 고민에 맞춘 미용 시술 안내"
+          description="같은 고민도 피부 타입과 병변의 깊이에 따라 필요한 시술이 다릅니다. 시술 특징과 회복 과정을 확인하고 진료 후 알맞은 방법을 결정하세요."
+        />
 
-        <aside className="mt-3 border-l-4 border-rose-600 bg-[#fbf0f3] px-4 py-3">
-          <p className="break-keep text-sm font-bold leading-6 text-rose-950">
+        <aside className="mt-3 border-l-4 bg-white px-4 py-3" style={{ borderLeftColor: BEAUTY_THEME.accent }}>
+          <p className="break-keep text-base font-bold leading-[1.6] text-[#334155]">
             결과, 통증과 회복 기간에는 개인차가 있습니다. 온라인 안내보다 진료 시 받은 개별 안내를 우선해 주세요.
           </p>
         </aside>
@@ -200,12 +187,12 @@ export default function BeautyGuidePage() {
               className="group flex min-h-14 items-center gap-2 border border-slate-200 bg-white px-3 py-2.5 transition-colors hover:border-slate-400"
             >
               <span
-                className="flex h-7 w-7 shrink-0 items-center justify-center text-[10px] font-bold text-white"
-                style={{ backgroundColor: procedure.accent }}
+                className="flex h-7 w-7 shrink-0 items-center justify-center text-xs font-bold text-white"
+                style={{ backgroundColor: BEAUTY_THEME.accent }}
               >
                 {procedure.number}
               </span>
-              <span className="break-keep text-[13px] font-bold leading-4 text-slate-800">{procedure.title}</span>
+              <span className="break-keep text-sm font-bold leading-5 text-[#334155]">{procedure.title}</span>
             </a>
           ))}
         </nav>
@@ -221,8 +208,8 @@ export default function BeautyGuidePage() {
               "치료 부위에 상처, 염증, 감염 또는 심한 여드름이 있는 경우",
               "최근 강한 햇빛 노출이나 태닝으로 피부가 붉어진 경우",
             ].map((item) => (
-              <p key={item} className="flex gap-2 text-sm leading-6 text-slate-600">
-                <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-rose-600" />
+              <p key={item} className="flex gap-2 text-base leading-[1.6] text-[#334155]">
+                <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0" style={{ backgroundColor: BEAUTY_THEME.accent }} />
                 <span className="break-keep">{item}</span>
               </p>
             ))}
@@ -239,40 +226,40 @@ export default function BeautyGuidePage() {
               <div className="flex items-start gap-3 border-b border-slate-200 pb-4">
                 <span
                   className="flex h-9 w-9 shrink-0 items-center justify-center text-xs font-bold text-white sm:h-10 sm:w-10"
-                  style={{ backgroundColor: procedure.accent }}
+                  style={{ backgroundColor: BEAUTY_THEME.accent }}
                 >
                   {procedure.number}
                 </span>
                 <div>
                   <h2 className="break-keep text-xl font-bold leading-tight tracking-[-0.03em] sm:text-2xl">{procedure.title}</h2>
-                  <p className="mt-1 break-keep text-sm leading-5 text-slate-500 sm:text-base">{procedure.subtitle}</p>
+                  <p className="mt-1 break-keep text-base leading-[1.6] text-slate-500">{procedure.subtitle}</p>
                 </div>
               </div>
 
               <div className="mt-4 grid gap-4 lg:grid-cols-[0.8fr_1.1fr_1.1fr] lg:gap-6">
                 <div>
-                  <h3 className="text-sm font-bold" style={{ color: procedure.accent }}>이런 고민에</h3>
+                  <h3 className="text-base font-bold" style={{ color: BEAUTY_THEME.accent }}>이런 고민에</h3>
                   <div className="mt-2 flex flex-wrap gap-1.5 lg:block lg:space-y-1.5">
                     {procedure.targets.map((target) => (
                       <span
                         key={target}
-                        className="inline-flex break-keep px-2.5 py-1.5 text-xs font-semibold leading-4 lg:flex"
-                        style={{ backgroundColor: procedure.softAccent, color: procedure.accent }}
+                        className="inline-flex break-keep px-2.5 py-1.5 text-base font-bold leading-[1.6] text-[#334155] lg:flex"
+                        style={{ backgroundColor: BEAUTY_THEME.tint }}
                       >
                         {target}
                       </span>
                     ))}
                   </div>
                 </div>
-                <InfoList title="시술 안내" items={procedure.treatment} accent={procedure.accent} />
-                <InfoList title="회복·관리" items={procedure.recovery} accent={procedure.accent} />
+                <InfoList title="시술 안내" items={procedure.treatment} />
+                <InfoList title="회복·관리" items={procedure.recovery} />
               </div>
 
               <div
-                className="mt-4 border-l-4 px-3.5 py-3 text-sm font-semibold leading-6 text-slate-700"
-                style={{ borderColor: procedure.accent, backgroundColor: procedure.softAccent }}
+                className="mt-4 border-l-4 px-3.5 py-3 text-base font-bold leading-[1.6] text-[#334155]"
+                style={{ borderColor: BEAUTY_THEME.accent, backgroundColor: BEAUTY_THEME.tint }}
               >
-                <span className="mr-2 font-bold" style={{ color: procedure.accent }}>꼭 확인</span>
+                <span className="mr-2 font-bold" style={{ color: BEAUTY_THEME.accent }}>꼭 확인</span>
                 <span className="break-keep">{procedure.caution}</span>
               </div>
             </article>
@@ -288,15 +275,15 @@ export default function BeautyGuidePage() {
               ["열과 자극 피하기", "안내받은 기간 동안 과음, 사우나·찜질방, 뜨거운 목욕과 격한 운동을 피하세요."],
               ["바로 연락할 때", "심한 통증, 큰 물집, 고름, 빠르게 번지는 붉은 기나 예상하지 못한 색 변화가 있으면 연락해 주세요."],
             ].map(([title, description]) => (
-              <div key={title} className="border border-slate-200 bg-[#fafbf9] px-3.5 py-3">
-                <h3 className="text-sm font-bold text-slate-900">{title}</h3>
-                <p className="mt-1 break-keep text-sm leading-6 text-slate-600">{description}</p>
+              <div key={title} className="px-3.5 py-3" style={{ backgroundColor: BEAUTY_THEME.tint }}>
+                <h3 className="text-base font-bold text-[#334155]">{title}</h3>
+                <p className="mt-1 break-keep text-base leading-[1.6] text-[#334155]">{description}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <ContactSection />
+        <GuideContact active="beauty" />
 
         <p className="mt-3 break-keep text-center text-[11px] leading-5 text-slate-400">
           본 페이지는 일반적인 시술 안내이며 진단을 대신하지 않습니다. 실제 장비, 강도, 횟수와 회복 안내는 진료 후 결정됩니다.
@@ -306,72 +293,18 @@ export default function BeautyGuidePage() {
   );
 }
 
-function GuideHeader() {
-  return (
-    <header className="border-b border-slate-200 bg-white">
-      <div className="mx-auto flex h-12 max-w-5xl items-center justify-between px-4 sm:h-16 sm:px-6">
-        <Link href="/" aria-label="안성경희365한의원 메인 홈페이지">
-          <div className="relative h-7 w-[150px] sm:h-9 sm:w-[190px]">
-            <Image
-              src="/assets/logo/logo-wordmark.png"
-              alt="안성경희365한의원"
-              fill
-              className="object-contain object-left"
-              sizes="190px"
-              priority
-            />
-          </div>
-        </Link>
-        <Link
-          href="/"
-          className="border border-slate-300 px-2.5 py-1.5 text-[11px] font-semibold text-slate-700 transition-colors hover:border-slate-500 hover:text-slate-950 sm:px-3 sm:py-2 sm:text-sm"
-        >
-          메인으로
-        </Link>
-      </div>
-    </header>
-  );
-}
-
-function InfoList({ title, items, accent }: { title: string; items: string[]; accent: string }) {
+function InfoList({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
-      <h3 className="text-sm font-bold" style={{ color: accent }}>{title}</h3>
+      <h3 className="text-base font-bold" style={{ color: BEAUTY_THEME.accent }}>{title}</h3>
       <ul className="mt-1.5 divide-y divide-slate-100">
         {items.map((item) => (
-          <li key={item} className="flex gap-2.5 py-2 text-sm leading-6 text-slate-600 first:pt-1">
-            <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0" style={{ backgroundColor: accent }} />
+          <li key={item} className="flex gap-2.5 py-2 text-base leading-[1.6] text-[#334155] first:pt-1">
+            <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0" style={{ backgroundColor: BEAUTY_THEME.accent }} />
             <span className="break-keep">{item}</span>
           </li>
         ))}
       </ul>
     </div>
-  );
-}
-
-function ContactSection() {
-  return (
-    <section className="mt-3 border border-slate-800 bg-slate-900 px-4 py-4 text-white sm:px-5">
-      <h2 className="text-base font-bold">내 피부에 맞는 시술이 궁금하신가요?</h2>
-      <p className="mt-1 text-sm leading-5 text-slate-300">전화 또는 카카오톡으로 문의해 주세요.</p>
-      <div className="mt-3 grid grid-cols-2 gap-2">
-        <a
-          href="tel:031-8057-0750"
-          className="flex min-h-11 items-center justify-center bg-white px-3 py-2 text-center text-sm font-bold text-slate-900"
-          style={{ color: "#0f172a" }}
-        >
-          전화 031-8057-0750
-        </a>
-        <a
-          href="http://pf.kakao.com/_RWgxnG/chat"
-          target="_blank"
-          rel="noreferrer"
-          className="flex min-h-11 items-center justify-center bg-[#FEE500] px-3 py-2 text-center text-sm font-bold text-[#191919]"
-          style={{ color: "#191919" }}
-        >
-          카카오톡 문의
-        </a>
-      </div>
-    </section>
   );
 }
