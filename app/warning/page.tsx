@@ -113,6 +113,23 @@ export default function WarningPage() {
               프로그램, 식단과 생활 관리 안내
             </p>
           </Link>
+
+          <Link
+            href="/beauty"
+            className="group relative flex min-h-[82px] flex-col border border-slate-200 bg-white px-3 py-2.5 transition-colors hover:border-slate-400 sm:min-h-[120px] sm:p-4"
+          >
+            <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[3px] bg-rose-600" />
+            <div className="flex items-start justify-between">
+              <span className="flex h-7 w-7 items-center justify-center border-2 border-rose-600 text-[9px] font-bold text-rose-700 sm:h-10 sm:w-10 sm:text-xs">
+                피부
+              </span>
+              <ArrowIcon className="h-4 w-4 text-slate-300 transition-transform group-hover:translate-x-0.5 group-hover:text-slate-600" />
+            </div>
+            <h2 className="mt-1.5 text-[15px] font-bold tracking-[-0.02em] sm:mt-3 sm:text-lg">미용</h2>
+            <p className="mt-1 hidden line-clamp-2 break-keep text-xs leading-4 text-slate-500 sm:block">
+              레이저, 초음파, 스킨부스터와 필링 안내
+            </p>
+          </Link>
         </section>
 
         <p className="mt-2 text-center text-[10px] leading-4 text-slate-400 sm:mt-4 sm:text-[11px] sm:leading-5">
