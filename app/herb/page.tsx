@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import GuideCategoryNav from "@/app/_components/guide-category-nav";
 
 export const metadata: Metadata = {
   title: "한약 복용법과 주의사항",
@@ -61,7 +62,9 @@ export default function HerbGuidePage() {
       <GuideHeader />
 
       <main className="mx-auto max-w-4xl px-4 py-4 sm:px-6 sm:py-8">
-        <section className="border-b border-slate-300 pb-4 sm:pb-5">
+        <GuideCategoryNav active="herb" />
+
+        <section className="mt-3 border-b border-slate-300 pb-4 sm:pb-5">
           <p className="text-xs font-semibold text-teal-700">안성경희365한의원</p>
           <h1 className="mt-1 break-keep text-[26px] font-bold leading-tight tracking-[-0.04em] sm:text-4xl">
             한약 복용법과 주의사항
@@ -128,10 +131,10 @@ function GuideHeader() {
           </div>
         </Link>
         <Link
-          href="/warning"
+          href="/"
           className="border border-slate-300 px-2.5 py-1.5 text-[11px] font-semibold text-slate-700 transition-colors hover:border-slate-500 hover:text-slate-950 sm:px-3 sm:py-2 sm:text-sm"
         >
-          안내 목록
+          메인으로
         </Link>
       </div>
     </header>
@@ -147,6 +150,7 @@ function ContactSection() {
         <a
           href="tel:031-8057-0750"
           className="flex min-h-11 items-center justify-center bg-white px-3 py-2 text-center text-sm font-bold text-slate-900"
+          style={{ color: "#0f172a" }}
         >
           전화 031-8057-0750
         </a>
@@ -155,6 +159,7 @@ function ContactSection() {
           target="_blank"
           rel="noreferrer"
           className="flex min-h-11 items-center justify-center bg-[#FEE500] px-3 py-2 text-center text-sm font-bold text-[#191919]"
+          style={{ color: "#191919" }}
         >
           카카오톡 문의
         </a>

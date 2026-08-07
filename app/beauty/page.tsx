@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import GuideCategoryNav from "@/app/_components/guide-category-nav";
 
 export const metadata: Metadata = {
   title: "피부미용 시술 안내",
   description:
-    "점·쥐젖·편평사마귀 제거, CO2 프락셀, 토닝, 듀얼토닝, LDM, 스킨부스터와 라라필 시술을 안내합니다.",
+    "CO2 레이저를 이용한 점·쥐젖·편평사마귀 제거, CO2 프락셀, 토닝, 듀얼토닝, LDM, 스킨부스터와 라라필 시술을 안내합니다.",
   alternates: {
     canonical: "/beauty",
   },
@@ -19,7 +20,7 @@ const procedures = [
   {
     id: "lesion-removal",
     number: "01",
-    title: "점·쥐젖·편평사마귀 제거",
+    title: "CO2 레이저 — 점·쥐젖·편평사마귀 제거",
     subtitle: "병변을 먼저 확인하고 필요한 부위만 정교하게 제거합니다.",
     accent: "#9f5f73",
     softAccent: "#fbf0f4",
@@ -30,12 +31,14 @@ const procedures = [
       "편평사마귀는 인유두종바이러스(HPV)와 관련되어 보이는 병변을 제거해도 새로 생기거나 다시 나타날 수 있습니다.",
     ],
     recovery: [
-      "시술 후 붉은 기, 소량의 진물, 얇은 딱지가 생길 수 있습니다. 안내받은 재생테이프나 연고 사용법을 지켜 주세요.",
-      "딱지를 억지로 떼거나 긁지 말고, 상처가 아문 뒤에도 자외선 차단을 꼼꼼히 해 주세요.",
+      "시술 후 붉은 기, 화끈거림, 소량의 진물과 얇은 딱지가 생길 수 있습니다.",
+      "재생테이프·연고·세안 시작 시점은 제거 깊이와 부위에 따라 다르므로 받은 안내를 우선해 주세요. 오염되거나 젖은 보호재는 안내받은 방법으로 교체하세요.",
+      "딱지나 각질을 억지로 떼지 말고, 화장품·스크럽·필링 제품은 상처가 완전히 아물기 전까지 시술 부위에 사용하지 마세요.",
+      "수영장, 사우나·찜질방, 격한 운동과 과음은 상처가 안정될 때까지 피하고, 상처가 아문 뒤에도 자외선 차단을 꼼꼼히 해 주세요.",
       "편평사마귀 부위는 긁거나 면도하지 말고 만진 뒤 손을 씻어 다른 부위로 번지는 것을 줄여 주세요.",
     ],
     caution:
-      "갑자기 커지거나 색·모양이 변한 점, 반복해서 피가 나거나 잘 낫지 않는 병변은 미용 제거보다 진단이 먼저입니다.",
+      "갑자기 커지거나 색·모양이 변한 점, 반복해서 피가 나는 병변은 진단이 먼저입니다. 시술 후 출혈이 멈추지 않거나 고름·악취·심한 열감, 빠르게 번지는 붉은 기와 큰 물집이 생기면 바로 연락해 주세요.",
   },
   {
     id: "co2-fractional",
@@ -171,7 +174,9 @@ export default function BeautyGuidePage() {
       <GuideHeader />
 
       <main className="mx-auto max-w-5xl px-4 py-4 sm:px-6 sm:py-8">
-        <section className="border-b border-slate-300 pb-4 sm:pb-5">
+        <GuideCategoryNav active="beauty" />
+
+        <section className="mt-3 border-b border-slate-300 pb-4 sm:pb-5">
           <p className="text-xs font-semibold text-rose-700">안성경희365한의원 피부미용</p>
           <h1 className="mt-1 break-keep text-[26px] font-bold leading-tight tracking-[-0.04em] sm:text-4xl">
             피부 고민에 맞춘 미용 시술 안내
@@ -318,10 +323,10 @@ function GuideHeader() {
           </div>
         </Link>
         <Link
-          href="/warning"
+          href="/"
           className="border border-slate-300 px-2.5 py-1.5 text-[11px] font-semibold text-slate-700 transition-colors hover:border-slate-500 hover:text-slate-950 sm:px-3 sm:py-2 sm:text-sm"
         >
-          안내 목록
+          메인으로
         </Link>
       </div>
     </header>
@@ -353,6 +358,7 @@ function ContactSection() {
         <a
           href="tel:031-8057-0750"
           className="flex min-h-11 items-center justify-center bg-white px-3 py-2 text-center text-sm font-bold text-slate-900"
+          style={{ color: "#0f172a" }}
         >
           전화 031-8057-0750
         </a>
@@ -361,6 +367,7 @@ function ContactSection() {
           target="_blank"
           rel="noreferrer"
           className="flex min-h-11 items-center justify-center bg-[#FEE500] px-3 py-2 text-center text-sm font-bold text-[#191919]"
+          style={{ color: "#191919" }}
         >
           카카오톡 문의
         </a>

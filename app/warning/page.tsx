@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import GuideCategoryNav from "@/app/_components/guide-category-nav";
 import WarningIcon from "@/app/warning/warning-icon";
 import { warningGuides } from "@/app/warning/data";
 
@@ -45,7 +46,9 @@ export default function WarningPage() {
       </header>
 
       <main className="mx-auto max-w-5xl px-4 py-3 sm:px-6 sm:py-7">
-        <section className="flex flex-col gap-1 border-b border-slate-300 pb-3 sm:flex-row sm:items-end sm:justify-between sm:gap-2 sm:pb-4">
+        <GuideCategoryNav active="warning" />
+
+        <section className="mt-3 flex flex-col gap-1 border-b border-slate-300 pb-3 sm:flex-row sm:items-end sm:justify-between sm:gap-2 sm:pb-4">
           <div>
             <p className="text-[10px] font-semibold text-teal-700 sm:text-xs">안성경희365한의원</p>
             <h1 className="mt-0.5 text-[22px] font-bold tracking-[-0.03em] sm:mt-1 sm:text-3xl">시술 후 주의사항</h1>
