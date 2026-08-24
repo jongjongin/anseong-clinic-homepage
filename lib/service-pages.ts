@@ -57,33 +57,27 @@ export type ServicePage = {
 const allServiceDoctors: ServicePage["doctors"] = [
   {
     name: "윤종인",
-    role: "원장",
+    role: "1과 원장",
     image: "/assets/doctors/yoon-jongin.png",
     summary: "통증, 재활, 초음파 기반 근골격계 진료 경험을 바탕으로 현재 불편한 증상과 생활 흐름을 함께 살핍니다.",
   },
   {
-    name: "우예지",
-    role: "원장",
-    image: "/assets/doctors/woo-yeji.png",
-    summary: "부인과와 생활 균형 진료를 중심으로 환자분의 컨디션 변화와 일상 속 불편을 세심하게 확인합니다.",
+    name: "임우상",
+    role: "2과 원장",
+    image: "/assets/doctors/im-woosang.png",
+    summary: "추나와 한방비만 진료, 근골격계 초음파 인증을 바탕으로 통증과 생활 관리를 함께 살핍니다.",
   },
   {
-    name: "박은지",
-    role: "원장",
-    image: "/assets/doctors/park-eunji.png",
-    summary: "한방병원 임상 경험을 바탕으로 오래된 통증과 회복이 더딘 불편까지 차분하게 안내합니다.",
+    name: "윤필규",
+    role: "3과 원장",
+    image: "/assets/doctors/yoon-pilgyu.png",
+    summary: "스포츠한의학과 추나 진료 역량을 바탕으로 통증, 움직임 불편, 회복 관리 방향을 꼼꼼하게 안내합니다.",
   },
   {
     name: "이도훈",
     role: "4과 원장",
     image: "/assets/doctors/lee-dohoon.png",
     summary: "경희대학교 한의과대학 졸업 후 공공의료 현장과 추나 진료 경험을 바탕으로 척추관절 불편을 함께 살핍니다.",
-  },
-  {
-    name: "윤필규",
-    role: "5과 원장",
-    image: "/assets/doctors/yoon-pilgyu.png",
-    summary: "스포츠한의학과 추나 진료 역량을 바탕으로 통증, 움직임 불편, 회복 관리 방향을 꼼꼼하게 안내합니다.",
   },
 ];
 
