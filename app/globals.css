@@ -44,6 +44,66 @@ a {
   transform: translateY(0);
 }
 
+/* ===== renewal (kkeut-style) additions — used by /renewal preview ===== */
+
+@theme {
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.font-pretendard {
+  font-family:
+    "Pretendard Variable",
+    Pretendard,
+    "Noto Sans KR",
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    sans-serif;
+}
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(15, 118, 110, 0.22);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.renewal-swiper .swiper-pagination-bullet {
+  background: #94a3b8;
+  opacity: 0.6;
+}
+
+.renewal-swiper .swiper-pagination-bullet-active {
+  background: #0f766e;
+  opacity: 1;
+}
+
+.renewal-swiper-dark .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+
+.renewal-swiper-dark .swiper-pagination-bullet-active {
+  background: #ffffff;
+}
+
+/* ===== end renewal additions ===== */
+
 .interactive-card {
   transition:
     transform 280ms ease,
