@@ -69,6 +69,43 @@ const sendNotificationEmail = async (input: {
   return response.ok;
 };
 
+const sendSlackNotification = async (input: {
+  name: string;
+  phone: string;
+  service: string;
+  desiredDate: string;
+  desiredTime: string;
+  message: string;
+}) => {
+  const webhookUrl = process.env.SLACK_WEBHOOK_URL;
+
+  if (!webhookUrl) {
+    return false;
+  }
+
+  const lines = [
+    `🔔 *새 상담 신청이 접수되었습니다*`,
+    `• 성함: ${input.name}`,
+    `• 연락처: ${input.phone}`,
+    `• 진료 항목: ${input.service || "-"}`,
+    `• 희망일시: ${input.desiredDate} ${input.desiredTime}`,
+  ];
+
+  if (input.message) {
+    lines.push(`• 문의 내용: ${input.message}`);
+  }
+
+  lines.push(`\n<https://anseong365.com/admin/reservations|관리자 페이지에서 보기>`);
+
+  const response = await fetch(webhookUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text: lines.join("\n") }),
+  });
+
+  return response.ok;
+};
+
 export async function POST(request: Request) {
   let body: unknown;
 
@@ -100,6 +137,7 @@ export async function POST(request: Request) {
 
   let savedToDb = false;
   let emailSent = false;
+  let slackSent = false;
 
   try {
     savedToDb = await createReservation(validated.value);
@@ -113,7 +151,13 @@ export async function POST(request: Request) {
     console.error("[reservations] email notification failed:", error);
   }
 
-  if (!savedToDb && !emailSent) {
+  try {
+    slackSent = await sendSlackNotification(validated.value);
+  } catch (error) {
+    console.error("[reservations] slack notification failed:", error);
+  }
+
+  if (!savedToDb && !emailSent && !slackSent) {
     return NextResponse.json(
       {
         error:
