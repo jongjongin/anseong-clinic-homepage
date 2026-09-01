@@ -21,21 +21,21 @@ export default function SteadySellerSection() {
         <Reveal>
           <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.25em] text-teal-300">Steady Seller</p>
-              <h2 className="mt-3 break-keep text-2xl font-bold leading-snug sm:text-4xl">
+              <p className="mar-font text-xs tracking-[0.3em] text-white/60">STEADY SELLER</p>
+              <h2 className="gb-font mt-4 break-keep text-[22px] font-bold leading-[1.55] sm:text-4xl sm:leading-[1.5]">
                 합리적인 가격과 진정성 있는 치료로
                 <br className="hidden sm:block" /> 확실한 변화를 보여드리겠습니다
               </h2>
-              <p className="mt-3 break-keep text-sm leading-relaxed text-white/70 sm:text-base">
+              <p className="mt-4 break-keep text-[13px] leading-relaxed text-white/60 sm:text-[15px]">
                 피부 미용 프로그램 가격표 — 카테고리를 눌러 원하는 시술을 확인해 보세요.
               </p>
             </div>
             <Link
               href="/renewal/menu"
-              className="group flex shrink-0 items-center gap-2 text-sm font-bold tracking-widest transition-opacity hover:opacity-70"
+              className="mar-font group flex shrink-0 items-center gap-2 text-sm tracking-[0.2em] transition-opacity hover:opacity-70"
             >
               VIEW MORE
-              <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">
+              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
             </Link>

@@ -37,28 +37,28 @@ export default function RenewalHeroSection() {
       </div>
 
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-5 text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/80 sm:text-sm">
-          Anseong Kyunghee 365 Korean Medicine Clinic
+        <p className="mar-font text-[11px] tracking-[0.35em] text-white/70 sm:text-sm">
+          ANSEONG KYUNGHEE 365
         </p>
-        <h1 className="mt-6 break-keep text-3xl font-bold leading-snug sm:text-5xl lg:text-6xl lg:leading-tight">
+        <h1 className="gb-font mt-7 break-keep text-[26px] font-bold leading-[1.45] sm:text-5xl sm:leading-[1.4] lg:text-[54px]">
           {heroContent.title[0]}
           <br />
           {heroContent.title[1]} {heroContent.title[2]}
         </h1>
-        <p className="mt-6 max-w-2xl break-keep text-sm leading-relaxed text-white/85 sm:text-base">
+        <p className="mt-7 max-w-xl break-keep text-[13px] leading-relaxed text-white/75 sm:text-[15px]">
           {heroContent.description}
         </p>
       </div>
 
-      <div className="relative z-10 border-t border-white/15 bg-black/25 backdrop-blur-sm">
-        <div className="mx-auto grid max-w-4xl grid-cols-3 divide-x divide-white/15 px-2 py-4 sm:py-5">
+      <div className="relative z-10 border-t border-white/10 bg-black/20 backdrop-blur-sm">
+        <div className="mx-auto grid max-w-4xl grid-cols-3 divide-x divide-white/10 px-2 py-4 sm:py-5">
           {heroContent.stats.map((stat) => (
-            <div key={stat.label} className="flex flex-col items-center gap-1 px-2 text-center">
-              <p className="text-[11px] font-semibold uppercase tracking-widest text-white/60 sm:text-xs">
-                {stat.label}
+            <div key={stat.label} className="flex flex-col items-center gap-1.5 px-2 text-center">
+              <p className="text-[11px] tracking-wide text-white/50 sm:text-xs">{stat.label}</p>
+              <p className="gb-font whitespace-pre-line break-keep text-xs font-bold sm:text-[15px]">
+                {stat.value}
               </p>
-              <p className="whitespace-pre-line break-keep text-xs font-bold sm:text-base">{stat.value}</p>
-              <p className="hidden whitespace-pre-line text-[11px] text-white/60 sm:block">{stat.note}</p>
+              <p className="hidden whitespace-pre-line text-[11px] text-white/45 sm:block">{stat.note}</p>
             </div>
           ))}
         </div>

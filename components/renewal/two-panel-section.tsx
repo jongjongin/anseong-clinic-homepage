@@ -32,14 +32,16 @@ export default function TwoPanelSection() {
           <Image src={panel.image} alt="" fill className="-z-10 object-cover object-center" sizes="(min-width:1024px) 50vw, 100vw" />
           <div className="absolute inset-0 z-0 bg-black/70" />
           <div className="relative z-10 max-w-md">
-            <h3 className="break-keep text-2xl font-semibold leading-snug lg:text-3xl">{panel.title}</h3>
-            <p className="mt-6 break-keep text-sm leading-relaxed text-white/80 lg:text-base">{panel.description}</p>
+            <h3 className="gb-font break-keep text-2xl font-bold leading-snug lg:text-[28px]">{panel.title}</h3>
+            <p className="gb-font mt-6 break-keep text-[13px] leading-[1.9] text-white/75 lg:text-[15px]">
+              {panel.description}
+            </p>
             <Link
               href={panel.href}
-              className="group mt-8 inline-flex items-center gap-2 border-b border-white/50 pb-1 text-sm font-semibold transition-colors hover:border-white"
+              className="gb-font group mt-9 inline-flex items-center gap-2 border-b border-white/40 pb-1 text-sm transition-colors hover:border-white"
             >
               {panel.linkLabel}
-              <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">
+              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
             </Link>
@@ -49,14 +51,16 @@ export default function TwoPanelSection() {
 
       {/* 중앙 원형 배지 (데스크톱) */}
       <div className="relative z-10 my-4 flex aspect-square w-[230px] items-center justify-center overflow-hidden rounded-full bg-white/80 text-center shadow-2xl backdrop-blur lg:absolute lg:left-1/2 lg:top-1/2 lg:my-0 lg:w-[260px] lg:-translate-x-1/2 lg:-translate-y-1/2">
-        <div className="flex flex-col items-center gap-2 px-6">
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-teal-700">365 Days</p>
-          <p className="break-keep text-xl font-bold leading-snug text-slate-900">
+        <div className="flex flex-col items-center gap-2.5 px-7">
+          <p className="mar-font text-[11px] tracking-[0.3em] text-[#959595]">365 DAYS</p>
+          <p className="gb-font break-keep text-lg font-bold leading-normal text-[#181818]">
             365일 진료하는
             <br />
             안성경희365한의원
           </p>
-          <p className="break-keep text-xs text-slate-500">{introSectionContent.paragraphs[2]}</p>
+          <p className="gb-font break-keep text-[11px] leading-relaxed text-[#6d6d6d]">
+            {introSectionContent.paragraphs[2]}
+          </p>
         </div>
       </div>
     </section>

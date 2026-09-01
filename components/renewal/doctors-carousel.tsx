@@ -35,7 +35,7 @@ export default function RenewalDoctorsCarousel() {
 
           return (
             <SwiperSlide key={doctor.name} className="!h-auto">
-              <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.06)]">
+              <div className="flex h-full flex-col overflow-hidden border border-[#eee] bg-white transition-colors duration-300 hover:border-[#181818]">
                 <div className="relative aspect-[4/5] w-full overflow-hidden bg-slate-100">
                   <Image
                     src={doctor.image}
@@ -47,17 +47,17 @@ export default function RenewalDoctorsCarousel() {
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <div className="flex items-baseline gap-2">
-                    <h3 className="text-lg font-bold text-slate-900">{doctor.name}</h3>
-                    <span className="text-sm font-medium text-teal-700">{doctor.role}</span>
+                    <h3 className="gb-font text-lg font-bold text-[#181818]">{doctor.name}</h3>
+                    <span className="text-[13px] text-teal-700">{doctor.role}</span>
                   </div>
-                  <p className="mt-1 break-keep text-sm text-slate-500">{doctor.summary}</p>
+                  <p className="mt-1.5 break-keep text-[13px] text-[#959595]">{doctor.summary}</p>
 
                   <div
                     className={`mt-4 grid transition-[grid-template-rows] duration-300 ${
                       expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                     }`}
                   >
-                    <ul className="flex flex-col gap-1 overflow-hidden text-xs leading-relaxed text-slate-500">
+                    <ul className="flex flex-col gap-1 overflow-hidden text-xs leading-relaxed text-[#959595]">
                       {doctor.credentials.map((credential) => (
                         <li key={credential} className="break-keep">
                           · {credential}
@@ -70,7 +70,7 @@ export default function RenewalDoctorsCarousel() {
                     type="button"
                     onClick={() => setExpandedName(expanded ? null : doctor.name)}
                     aria-expanded={expanded}
-                    className="mt-auto pt-4 text-left text-sm font-semibold text-teal-700 transition-colors hover:text-teal-900"
+                    className="gb-font mt-auto border-t border-[#f2f2f2] pt-4 text-left text-[13px] text-[#181818] transition-colors hover:text-teal-700"
                   >
                     {expanded ? "약력 접기 ↑" : "약력 보기 ↓"}
                   </button>
@@ -86,7 +86,7 @@ export default function RenewalDoctorsCarousel() {
           type="button"
           aria-label="이전 의료진"
           onClick={() => swiperRef.current?.slidePrev()}
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition hover:border-teal-700 hover:bg-teal-700 hover:text-white"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-[#e0e0e0] bg-white text-[#464646] transition hover:border-[#181818] hover:bg-[#181818] hover:text-white"
         >
           <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden>
             <path d="m14 6-6 6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -96,7 +96,7 @@ export default function RenewalDoctorsCarousel() {
           type="button"
           aria-label="다음 의료진"
           onClick={() => swiperRef.current?.slideNext()}
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 transition hover:border-teal-700 hover:bg-teal-700 hover:text-white"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-[#e0e0e0] bg-white text-[#464646] transition hover:border-[#181818] hover:bg-[#181818] hover:text-white"
         >
           <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden>
             <path d="m10 6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

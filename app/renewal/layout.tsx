@@ -16,6 +16,8 @@ export default function RenewalLayout({ children }: { children: React.ReactNode 
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       />
+      {/* 셀프호스팅 세리프 폰트 (고운바탕 · Marcellus) */}
+      <link rel="stylesheet" href="/assets/fonts/serif-fonts.css" />
       <SiteHeader />
       {children}
       <SiteFooter />

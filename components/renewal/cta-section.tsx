@@ -6,13 +6,13 @@ export default function RenewalCtaSection() {
     <section id="consult" className="bg-slate-950 py-20 text-white lg:py-28">
       <div className="mx-auto flex max-w-3xl flex-col items-center px-5 text-center sm:px-8">
         <Reveal className="flex flex-col items-center">
-          <p className="text-sm font-bold uppercase tracking-[0.25em] text-teal-300">Contact</p>
-          <h2 className="mt-4 break-keep text-2xl font-bold leading-snug sm:text-4xl">
+          <p className="mar-font text-xs tracking-[0.3em] text-white/50">CONTACT</p>
+          <h2 className="gb-font mt-5 break-keep text-[22px] font-bold leading-[1.55] sm:text-4xl sm:leading-[1.5]">
             {ctaSectionContent.title[0]}
             <br />
             {ctaSectionContent.title[1]}
           </h2>
-          <p className="mt-5 max-w-xl break-keep text-sm leading-relaxed text-white/70 sm:text-base">
+          <p className="mt-6 max-w-xl break-keep text-[13px] leading-[1.9] text-white/60 sm:text-[15px]">
             {ctaSectionContent.description}
           </p>
 
@@ -27,7 +27,7 @@ export default function RenewalCtaSection() {
             </a>
             <a
               href={`tel:${ctaSectionContent.phoneNumber}`}
-              className="rounded-full border border-white/40 px-7 py-3.5 text-sm font-semibold transition hover:bg-white hover:text-slate-900"
+              className="rounded-full border border-white/30 px-7 py-3.5 text-sm transition hover:border-white hover:bg-white hover:text-[#181818]"
             >
               {ctaSectionContent.phoneButton} {ctaSectionContent.phoneNumber}
             </a>

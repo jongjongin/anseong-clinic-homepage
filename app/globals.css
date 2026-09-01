@@ -68,11 +68,23 @@ a {
     BlinkMacSystemFont,
     system-ui,
     sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* 감성 헤딩용 세리프 (참고 사이트의 gbFont/marFont 체계) */
+.gb-font {
+  font-family: "Gowun Batang", "Pretendard Variable", serif;
+  letter-spacing: 0;
+}
+
+.mar-font {
+  font-family: Marcellus, "Gowun Batang", serif;
+  letter-spacing: 0.02em;
 }
 
 .text-outline {
   color: transparent;
-  -webkit-text-stroke: 1.5px rgba(15, 118, 110, 0.22);
+  -webkit-text-stroke: 1.2px rgba(24, 24, 24, 0.09);
 }
 
 .no-scrollbar {

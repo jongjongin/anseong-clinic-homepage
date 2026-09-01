@@ -78,7 +78,7 @@ export default async function MenuDetailPage({
 
           <div className="flex flex-col">
             <p className="text-sm font-medium text-teal-700">{item.categoryLabel}</p>
-            <h1 className="mt-2 break-keep text-2xl font-bold leading-snug text-[#181818] sm:text-3xl">
+            <h1 className="gb-font mt-2.5 break-keep text-2xl font-bold leading-snug text-[#181818] sm:text-3xl">
               {item.title}
             </h1>
             <p className="mt-2 break-keep text-sm leading-relaxed text-[#888]">{item.subtitle}</p>
@@ -206,7 +206,7 @@ export default async function MenuDetailPage({
         {related.length > 0 ? (
           <div className="mt-16">
             <div className="flex items-end justify-between">
-              <h2 className="text-lg font-bold text-[#181818]">같은 고민의 다른 시술</h2>
+              <h2 className="gb-font text-lg font-bold text-[#181818]">같은 고민의 다른 시술</h2>
               <Link
                 href={`/renewal/menu?category=${item.category}`}
                 className="text-sm font-semibold text-teal-700 transition-colors hover:text-teal-900"

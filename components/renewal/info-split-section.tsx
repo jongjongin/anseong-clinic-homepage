@@ -25,30 +25,30 @@ export default function InfoSplitSection() {
 
           <Reveal className="relative z-10 mx-auto flex max-w-md flex-col gap-8 px-6 py-16 text-white lg:px-10 lg:py-24">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.25em] text-teal-300">Information</p>
-              <h2 className="mt-3 break-keep text-2xl font-bold leading-snug sm:text-3xl">
+              <p className="mar-font text-xs tracking-[0.3em] text-white/60">INFORMATION</p>
+              <h2 className="gb-font mt-4 break-keep text-2xl font-bold leading-snug sm:text-[28px]">
                 진료시간 · 오시는 길
               </h2>
             </div>
 
-            <dl className="flex flex-col divide-y divide-white/15 border-y border-white/15">
+            <dl className="flex flex-col divide-y divide-white/10 border-y border-white/20">
               {infoSectionContent.hours.map((row) => (
                 <div key={row.day} className="flex items-center justify-between py-3 text-sm">
-                  <dt className="font-semibold text-white/70">{row.day}</dt>
-                  <dd className="font-bold">{row.time}</dd>
+                  <dt className="text-white/60">{row.day}</dt>
+                  <dd className="gb-font font-bold">{row.time}</dd>
                 </div>
               ))}
             </dl>
 
-            <div className="flex flex-col gap-2 text-sm leading-relaxed text-white/80">
+            <div className="flex flex-col gap-2 text-[13px] leading-[1.9] text-white/70">
               <p className="break-keep">{infoSectionContent.address}</p>
-              <p className="break-keep text-white/60">{infoSectionContent.parking}</p>
+              <p className="break-keep text-white/45">{infoSectionContent.parking}</p>
             </div>
 
             <div className="flex flex-wrap gap-3">
               <a
                 href={siteContact.phoneHref}
-                className="rounded-full bg-teal-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-500"
+                className="rounded-full bg-white px-6 py-3 text-[13px] font-semibold text-[#181818] transition hover:bg-white/85"
               >
                 {infoSectionContent.contact} 전화
               </a>
@@ -56,7 +56,7 @@ export default function InfoSplitSection() {
                 href={infoSectionContent.naverMapUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold transition hover:bg-white hover:text-slate-900"
+                className="rounded-full border border-white/30 px-6 py-3 text-[13px] transition hover:border-white hover:bg-white hover:text-[#181818]"
               >
                 네이버지도
               </a>
@@ -64,7 +64,7 @@ export default function InfoSplitSection() {
                 href={infoSectionContent.kakaoMapUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold transition hover:bg-white hover:text-slate-900"
+                className="rounded-full border border-white/30 px-6 py-3 text-[13px] transition hover:border-white hover:bg-white hover:text-[#181818]"
               >
                 카카오맵
               </a>
