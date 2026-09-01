@@ -186,7 +186,7 @@ export const menuItems: MenuItem[] = [
     eventLabel: "10회권 4회차에 흑자 제거 서비스",
     subtitle: "제네시스로 데운 뒤 1064nm로 색소를 부숩니다 · 기미·홍조·모공·흑자",
     hashtags: ["#기미", "#잡티", "#홍조", "#흑자"],
-    image: "/assets/people/people-1.jpg",
+    image: "/assets/menu/qmaster-full.webp",
     priceFrom: 89000,
     options: [
       { label: "1회", price: 89000 },
@@ -207,7 +207,7 @@ export const menuItems: MenuItem[] = [
     eventLabel: "10회 25% 할인",
     subtitle: "1064nm 단독 · 톤 정돈 · 옅은 잡티",
     hashtags: ["#잡티", "#칙칙한톤"],
-    image: "/assets/people/people-2.jpg",
+    image: "/assets/menu/qmaster-handpiece.webp",
     priceFrom: 65000,
     options: [
       { label: "1회", price: 65000 },
@@ -225,7 +225,7 @@ export const menuItems: MenuItem[] = [
     eventLabel: "10회 25% 할인",
     subtitle: "진피를 데워 콜라겐 생성 · 홍조·모공·잔주름",
     hashtags: ["#홍조", "#모공", "#잔주름"],
-    image: "/assets/interior/interior-2.jpg",
+    image: "/assets/menu/qmaster-full.webp",
     priceFrom: 69000,
     options: [
       { label: "1회", price: 69000 },
@@ -244,7 +244,7 @@ export const menuItems: MenuItem[] = [
     eventLabel: "부위권 개수 무제한 · 리터치 1회 무료",
     subtitle: "CO2 레이저 · 부위권은 개수 제한 없이 제거합니다 · 2회차부터 반값",
     hashtags: ["#점", "#쥐젖", "#편평사마귀", "#한관종"],
-    image: "/assets/interior/interior-1.jpg",
+    image: "/assets/menu/coscan.webp",
     priceFrom: 220000,
     options: [
       { label: "얼굴 전체", price: 220000, note: "개수 무제한" },
@@ -267,7 +267,7 @@ export const menuItems: MenuItem[] = [
     eventLabel: "리터치 1회 무료 · 2회차~ 반값",
     subtitle: "갈색의 거칠고 도톰한 병변을 크기별로 제거합니다",
     hashtags: ["#검버섯"],
-    image: "/assets/interior/interior-3.jpg",
+    image: "/assets/menu/coscan.webp",
     priceFrom: 13000,
     options: [
       { label: "5mm 이하 · 개당", price: 13000 },
@@ -288,7 +288,7 @@ export const menuItems: MenuItem[] = [
     eventLabel: "3회 14% 할인",
     subtitle: "금나노로 피지선만 가열 · 여드름·피지 감소",
     hashtags: ["#여드름", "#피지", "#모공"],
-    image: "/assets/people/people-1.jpg",
+    image: "/assets/menu/qmaster-handpiece.webp",
     priceFrom: 190000,
     options: [
       { label: "1회", price: 190000 },
@@ -361,7 +361,7 @@ export const menuItems: MenuItem[] = [
     eventLabel: "10회 21% 할인",
     subtitle: "미세바늘로 앰플 흡수 · S 미백 M 물광 V 탄력 P 재생 R 진정",
     hashtags: ["#첫부스터", "#물광", "#재생"],
-    image: "/assets/people/people-1.jpg",
+    image: "/assets/menu/crystalmeso.webp",
     priceFrom: 89000,
     options: [
       { label: "1회", price: 89000 },
@@ -381,7 +381,7 @@ export const menuItems: MenuItem[] = [
     eventLabel: "10회 24% 할인",
     subtitle: "연어 PN 재생 성분을 진피에 주사 · 속건조·탄력·잔주름·장벽 회복",
     hashtags: ["#속건조", "#잔주름", "#탄력"],
-    image: "/assets/people/people-2.jpg",
+    image: "/assets/menu/crystalmeso.webp",
     priceFrom: 165000,
     options: [
       { label: "1회", price: 165000 },
@@ -400,7 +400,7 @@ export const menuItems: MenuItem[] = [
     eventLabel: "3회 11% 할인",
     subtitle: "프락셀·MTS 채널로 흡수 · 흉터·모공·레이저 후 회복",
     hashtags: ["#여드름흉터", "#모공", "#홍조"],
-    image: "/assets/interior/interior-3.jpg",
+    image: "/assets/menu/crystalmeso.webp",
     priceFrom: 220000,
     options: [
       { label: "1회 (6cc)", price: 220000 },
@@ -418,7 +418,7 @@ export const menuItems: MenuItem[] = [
     eventLabel: "최대 19% 할인",
     subtitle: "고민에 맞게 부스터를 조합한 패키지",
     hashtags: ["#패키지", "#물광", "#재생"],
-    image: "/assets/interior/interior-2.jpg",
+    image: "/assets/menu/crystalmeso.webp",
     priceFrom: 349000,
     options: [
       { label: "미주안 1 + 에끌라페 3", price: 349000, original: 432000 },
@@ -478,7 +478,7 @@ export const menuItems: MenuItem[] = [
     eventLabel: "5회 기준",
     subtitle: "레이저가 색소 입자를 부수고 몸이 수주에 걸쳐 배출합니다",
     hashtags: ["#눈썹문신", "#아이라인"],
-    image: "/assets/people/people-2.jpg",
+    image: "/assets/menu/qmaster-full.webp",
     priceFrom: 290000,
     options: [
       { label: "눈썹 전체 (5회)", price: 290000 },
@@ -498,7 +498,7 @@ export const menuItems: MenuItem[] = [
     eventLabel: "5회 220,000원",
     subtitle: "레터링·소형 문신 · 동전 초과 크기는 상담 후 견적",
     hashtags: ["#소형문신", "#레터링"],
-    image: "/assets/interior/interior-3.jpg",
+    image: "/assets/menu/qmaster-handpiece.webp",
     priceFrom: 220000,
     options: [
       { label: "5회", price: 220000 },
