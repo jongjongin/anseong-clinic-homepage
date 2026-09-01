@@ -15,15 +15,15 @@ export type SiteNavItem = {
 export const siteNavItems: SiteNavItem[] = [
   {
     label: "시술메뉴/이벤트",
-    href: "/renewal/menu",
+    href: "/menu",
   },
   {
     label: "병원 소개",
-    href: "/renewal#intro",
+    href: "/#intro",
     children: [
-      { label: "한의원 소개", href: "/renewal#intro" },
-      { label: "의료진 소개", href: "/renewal#doctors" },
-      { label: "진료시간·오시는 길", href: "/renewal#hours" },
+      { label: "한의원 소개", href: "/#intro" },
+      { label: "의료진 소개", href: "/#doctors" },
+      { label: "진료시간·오시는 길", href: "/#hours" },
     ],
   },
   {
@@ -36,7 +36,7 @@ export const siteNavItems: SiteNavItem[] = [
   },
   {
     label: "건강 정보",
-    href: "/renewal#departments",
+    href: "/#departments",
     children: [
       { label: "통증 가이드", href: "/pain" },
       { label: "한약 가이드", href: "/herb" },
@@ -46,7 +46,7 @@ export const siteNavItems: SiteNavItem[] = [
     ],
   },
   { label: "블로그", href: "/blog" },
-  { label: "상담·예약", href: "/renewal#consult" },
+  { label: "상담·예약", href: "/#consult" },
 ];
 
 export const siteContact = {

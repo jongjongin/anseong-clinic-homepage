@@ -126,7 +126,7 @@ export default function MenuCatalog() {
           {items.map((item) => (
             <Link
               key={item.slug}
-              href={`/renewal/menu/${item.slug}`}
+              href={`/menu/${item.slug}`}
               className="group flex cursor-pointer flex-col gap-4"
             >
               <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-[#f8f8f8]">

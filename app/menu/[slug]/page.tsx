@@ -49,16 +49,16 @@ export default async function MenuDetailPage({
     <main className="bg-white pt-20 lg:pt-44">
       <div className="mx-auto w-full max-w-[1200px] px-5 pb-24 sm:px-8">
         <nav className="flex items-center gap-2 py-5 text-xs text-[#999]">
-          <Link href="/renewal" className="transition-colors hover:text-teal-700">
+          <Link href="/" className="transition-colors hover:text-teal-700">
             홈
           </Link>
           <span aria-hidden>›</span>
-          <Link href="/renewal/menu" className="transition-colors hover:text-teal-700">
+          <Link href="/menu" className="transition-colors hover:text-teal-700">
             시술메뉴/이벤트
           </Link>
           <span aria-hidden>›</span>
           <Link
-            href={`/renewal/menu?category=${item.category}`}
+            href={`/menu?category=${item.category}`}
             className="transition-colors hover:text-teal-700"
           >
             {item.categoryLabel}
@@ -197,7 +197,7 @@ export default async function MenuDetailPage({
             <div className="flex items-end justify-between">
               <h2 className="gb-font text-lg font-bold text-[#181818]">같은 고민의 다른 시술</h2>
               <Link
-                href={`/renewal/menu?category=${item.category}`}
+                href={`/menu?category=${item.category}`}
                 className="text-sm font-semibold text-teal-700 transition-colors hover:text-teal-900"
               >
                 {item.categoryLabel} 전체 보기 →
@@ -205,7 +205,7 @@ export default async function MenuDetailPage({
             </div>
             <div className="mt-6 grid grid-cols-2 gap-x-5 gap-y-8 lg:grid-cols-4">
               {related.map((other) => (
-                <Link key={other.slug} href={`/renewal/menu/${other.slug}`} className="group flex flex-col gap-3">
+                <Link key={other.slug} href={`/menu/${other.slug}`} className="group flex flex-col gap-3">
                   <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-[#f8f8f8]">
                     <Image
                       src={other.image}

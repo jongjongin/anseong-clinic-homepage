@@ -1,21 +1,13 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
 import Script from "next/script";
-import {
-  BlogSection,
-  CtaSection,
-  DoctorsSection,
-  EventsSection,
-  Footer,
-  GallerySection,
-  Header,
-  HeroSection,
-  InfoSection,
-  IntroSection,
-  MobileContactBar,
-  ServiceGuideSection,
-  TelemedicineSection,
-} from "@/components/home";
+import RenewalHeroSection from "@/components/renewal/hero-section";
+import TwoPanelSection from "@/components/renewal/two-panel-section";
+import ProgramsSection from "@/components/renewal/programs-section";
+import SteadySellerSection from "@/components/renewal/steady-seller-section";
+import RenewalDoctorsSection from "@/components/renewal/doctors-section";
+import SnsSection from "@/components/renewal/sns-section";
+import InfoSplitSection from "@/components/renewal/info-split-section";
+import RenewalCtaSection from "@/components/renewal/cta-section";
 
 const siteUrl = "https://anseong365.com";
 
@@ -92,27 +84,18 @@ const homePageStructuredData = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-slate-900">
+    <main className="flex w-full flex-col">
       <Script id="home-webpage-jsonld" type="application/ld+json">
         {JSON.stringify(homePageStructuredData)}
       </Script>
-      <Header />
-      <main>
-        <HeroSection />
-        <IntroSection />
-        <GallerySection />
-        <Suspense fallback={null}>
-          <BlogSection limit={4} />
-        </Suspense>
-        <ServiceGuideSection />
-        <DoctorsSection />
-        <EventsSection />
-        <TelemedicineSection />
-        <InfoSection />
-        <CtaSection />
-      </main>
-      <Footer />
-      <MobileContactBar />
-    </div>
+      <RenewalHeroSection />
+      <TwoPanelSection />
+      <ProgramsSection />
+      <SteadySellerSection />
+      <RenewalDoctorsSection />
+      <SnsSection />
+      <InfoSplitSection />
+      <RenewalCtaSection />
+    </main>
   );
 }

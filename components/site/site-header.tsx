@@ -20,7 +20,8 @@ export default function SiteHeader() {
   }, []);
 
   // 어두운 히어로가 있는 메인에서만 투명 오버레이 모드로 시작
-  const solid = isScrolled || pathname !== "/renewal";
+  const isHome = pathname === "/";
+  const solid = isScrolled || !isHome;
 
   return (
     <>
@@ -43,7 +44,7 @@ export default function SiteHeader() {
             <span className="block h-0.5 w-6 bg-current" />
           </span>
         </button>
-        <Link href="/renewal" className="flex flex-1 justify-center">
+        <Link href="/" className="flex flex-1 justify-center">
           <SiteLogo className="h-10 w-[170px]" inverted={!solid} />
         </Link>
         <div className="flex flex-1 items-center justify-end">
@@ -72,7 +73,7 @@ export default function SiteHeader() {
             : "bg-transparent pt-10 text-white"
         }`}
       >
-        <Link href="/renewal" className="flex justify-center">
+        <Link href="/" className="flex justify-center">
           <SiteLogo className="h-14 w-[260px]" inverted={!solid} />
         </Link>
         <nav
@@ -117,6 +118,9 @@ export default function SiteHeader() {
           )}
         </nav>
       </header>
+
+      {/* 고정 헤더 아래 콘텐츠 밀기 (오버레이 모드인 홈 제외) */}
+      {!isHome ? <div aria-hidden className="h-16 lg:h-[150px]" /> : null}
 
       <MobileDrawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
     </>

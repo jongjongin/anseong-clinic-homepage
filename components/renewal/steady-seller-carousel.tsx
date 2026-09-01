@@ -48,7 +48,7 @@ function CategoryCard({ category }: { category: BeautyMenuCategory }) {
       ) : null}
 
       <Link
-        href={`/renewal/menu?category=${category.key}`}
+        href={`/menu?category=${category.key}`}
         className="gb-font group mt-6 inline-flex items-center gap-2 border-t border-[#f2f2f2] pt-5 text-sm text-[#181818] transition-colors hover:text-teal-700"
       >
         자세히 보기

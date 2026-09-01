@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
-import { Footer, Header, MobileContactBar } from "@/components/home";
 import { servicePages } from "@/lib/service-pages";
 
 const siteUrl = "https://anseong365.com";
@@ -63,50 +62,43 @@ export default function ServicesPage() {
       <Script id="services-breadcrumb-jsonld" type="application/ld+json">
         {JSON.stringify(servicesBreadcrumbStructuredData)}
       </Script>
-      <Header />
-      <main>
-        <section className="border-b border-slate-200 bg-slate-50">
-          <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
-            <p className="text-sm font-semibold tracking-[0.18em] text-teal-700 uppercase">진료과목 안내</p>
-            <h1 className="mt-4 break-keep text-[2.4rem] font-bold leading-[1.2] text-slate-900 sm:text-[3.1rem]">
-              현재 불편한 증상에 맞는 진료과목을 확인해 보세요
-            </h1>
-            <p className="mt-6 max-w-3xl break-keep text-base leading-8 text-slate-600 sm:text-lg">
-              척추관절, 교통사고, 약침추나, 소아성장, 다이어트, 보약, 여성질환, 미용 진료까지
-              현재 필요한 진료를 상세 페이지에서 더 자세히 확인하실 수 있습니다.
-            </p>
-          </div>
-        </section>
+      <main className="bg-white pb-24 pt-8 lg:pt-12">
+        <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-8">
+          <p className="mar-font text-xs tracking-[0.3em] text-[#959595]">PROGRAM</p>
+          <h1 className="gb-font mt-4 break-keep text-2xl font-bold leading-snug text-[#181818] sm:text-4xl">
+            현재 불편한 증상에 맞는
+            <br className="sm:hidden" /> 진료 프로그램을 확인해 보세요
+          </h1>
+          <p className="mt-4 max-w-2xl break-keep text-[13px] leading-relaxed text-[#959595] sm:text-[15px]">
+            척추관절, 교통사고, 약침추나, 소아성장, 다이어트, 보약, 여성질환, 미용 진료까지 —
+            필요한 진료를 상세 페이지에서 확인하실 수 있습니다.
+          </p>
 
-        <section className="bg-white">
-          <div className="mx-auto grid max-w-6xl gap-5 px-4 py-16 sm:grid-cols-2 sm:px-6 sm:py-20 lg:px-8">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {servicePages.map((service, index) => (
               <article
                 key={service.slug}
-                className="rounded-[2rem] border border-slate-200 bg-[#fbfcfc] p-6 sm:p-8"
+                className="group flex flex-col border border-[#eee] bg-white p-8 transition-colors duration-300 hover:border-[#181818]"
               >
                 <div className="flex items-center justify-between gap-4">
-                  <span className="inline-flex rounded-full bg-sky-50 px-3 py-1 text-sm font-semibold text-sky-700">
-                    진료과목
-                  </span>
-                  <span className="text-sm font-semibold text-slate-300">0{index + 1}</span>
+                  <span className="text-xs font-medium text-teal-700">진료 프로그램</span>
+                  <span className="mar-font text-sm text-[#d0d0d0]">0{index + 1}</span>
                 </div>
-                <h2 className="mt-6 break-keep text-2xl font-bold text-slate-900">{service.title}</h2>
-                <p className="mt-3 break-keep text-sm font-semibold text-teal-700">{service.subtitle}</p>
-                <p className="mt-5 break-keep text-base leading-8 text-slate-600">{service.summary}</p>
+                <h2 className="gb-font mt-5 break-keep text-xl font-bold text-[#181818]">{service.title}</h2>
+                <p className="mt-1.5 break-keep text-[13px] text-[#959595]">{service.subtitle}</p>
+                <p className="mt-4 flex-1 break-keep text-[13px] leading-[1.8] text-[#6d6d6d]">{service.summary}</p>
                 <Link
                   href={`/services/${service.slug}`}
-                  className="mt-6 inline-flex rounded-full border border-slate-950 bg-slate-950 px-5 py-3 text-sm font-semibold !text-white shadow-[0_12px_24px_rgba(15,23,42,0.16)] transition-colors hover:bg-slate-800"
+                  className="gb-font mt-6 inline-flex items-center gap-2 border-t border-[#f2f2f2] pt-5 text-sm text-[#181818] transition-colors hover:text-teal-700"
                 >
                   자세히 보기
+                  <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </Link>
               </article>
             ))}
           </div>
-        </section>
+        </div>
       </main>
-      <Footer />
-      <MobileContactBar />
     </div>
   );
 }

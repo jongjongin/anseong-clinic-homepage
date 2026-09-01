@@ -65,7 +65,7 @@ export default function RenewalHeroSection() {
       </div>
 
       <a
-        href="/renewal#intro"
+        href="/#intro"
         aria-label="아래로 이동"
         className="absolute bottom-24 left-1/2 z-10 hidden -translate-x-1/2 animate-bounce text-white/80 transition hover:text-white lg:block"
       >

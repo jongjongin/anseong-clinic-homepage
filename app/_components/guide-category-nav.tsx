@@ -11,17 +11,17 @@ const categories: Array<{ key: GuideCategory; label: string; href: string }> = [
 ];
 
 export const guideThemes = {
-  pain: { tint: "#EFF6FF", accent: "#2563EB" },
-  herb: { tint: "#F0F9F1", accent: "#2F9E62" },
-  diet: { tint: "#FDF2F4", accent: "#D6336C" },
-  beauty: { tint: "#F5F3FF", accent: "#7C3AED" },
+  pain: { tint: "#f8f8f8", accent: "#0f766e" },
+  herb: { tint: "#f8f8f8", accent: "#0f766e" },
+  diet: { tint: "#f8f8f8", accent: "#0f766e" },
+  beauty: { tint: "#f8f8f8", accent: "#0f766e" },
 } satisfies Record<GuideCategory, { tint: string; accent: string }>;
 
 export default function GuideCategoryNav({ active }: { active: GuideCategory }) {
   const theme = guideThemes[active];
 
   return (
-    <nav aria-label="안내 대분류" className="grid grid-cols-4 border-y border-slate-200 bg-white">
+    <nav aria-label="안내 대분류" className="grid grid-cols-4 border-y border-[#eee] bg-white">
       {categories.map((category) => {
         const isActive = category.key === active;
 
@@ -31,10 +31,10 @@ export default function GuideCategoryNav({ active }: { active: GuideCategory }) 
             href={category.href}
             aria-current={isActive ? "page" : undefined}
             style={{
-              color: isActive ? theme.accent : "#64748b",
-              borderBottomColor: isActive ? theme.accent : "transparent",
+              color: isActive ? "#181818" : "#959595",
+              borderBottomColor: isActive ? "#181818" : "transparent",
             }}
-            className="flex min-h-11 items-center justify-center border-b-2 px-1.5 text-center text-xs font-bold transition-colors hover:bg-slate-50 sm:min-h-12 sm:text-sm"
+            className="flex min-h-11 items-center justify-center border-b-2 px-1.5 text-center text-xs font-semibold transition-colors hover:bg-[#f8f8f8] sm:min-h-12 sm:text-sm"
           >
             {category.label}
           </Link>
@@ -89,13 +89,15 @@ export function GuideHero({
 }) {
   const theme = guideThemes[active];
 
+  void theme;
+
   return (
-    <section className="mt-3 px-5 py-7 text-white sm:px-8 sm:py-10" style={{ backgroundColor: theme.accent }}>
-      <p className="text-sm font-bold tracking-[-0.01em] text-white/75">안성경희365한의원</p>
-      <h1 className="mt-2 break-keep text-[30px] font-extrabold leading-[1.2] tracking-[-0.045em] text-white sm:text-[42px]">
+    <section className="mt-3 border-b border-[#eee] px-5 py-8 sm:px-8 sm:py-10">
+      <p className="text-[13px] font-semibold tracking-wide text-[#464646]">안성경희365한의원</p>
+      <h1 className="gb-font mt-3 break-keep text-2xl font-bold leading-snug text-[#181818] sm:text-4xl">
         {title}
       </h1>
-      <p className="mt-3 max-w-3xl break-keep text-base leading-[1.7] text-white/85">
+      <p className="mt-3 max-w-3xl break-keep text-sm leading-[1.8] text-[#6d6d6d] sm:text-[15px]">
         {description}
       </p>
     </section>
@@ -105,17 +107,16 @@ export function GuideHero({
 export function GuideContact({ active }: { active: GuideCategory }) {
   const theme = guideThemes[active];
 
+  void theme;
+
   return (
-    <section className="mt-4 px-4 py-5 sm:px-5" style={{ backgroundColor: theme.accent, color: "#ffffff" }}>
-      <h2 className="text-lg font-extrabold">궁금한 점이 있으신가요?</h2>
-      <p className="mt-1 text-base leading-[1.6]" style={{ color: "#ffffff" }}>
-        전화 또는 카카오톡 채널로 문의해 주세요.
-      </p>
-      <div className="mt-3 grid grid-cols-2 gap-2">
+    <section className="mt-6 bg-[#181818] px-5 py-7 text-white sm:px-6">
+      <h2 className="gb-font text-lg font-bold">궁금한 점이 있으신가요?</h2>
+      <p className="mt-1 text-sm text-white/70">전화 또는 카카오톡 채널로 문의해 주세요.</p>
+      <div className="mt-4 grid grid-cols-2 gap-2">
         <a
           href="tel:031-8057-0750"
-          className="flex min-h-12 items-center justify-center bg-white px-2 py-2 text-center text-sm font-bold sm:text-base"
-          style={{ color: "#334155" }}
+          className="flex min-h-12 items-center justify-center rounded-full bg-white px-2 py-2 text-center text-sm font-semibold text-[#181818] transition hover:bg-white/90"
         >
           전화 031-8057-0750
         </a>
@@ -123,8 +124,7 @@ export function GuideContact({ active }: { active: GuideCategory }) {
           href="http://pf.kakao.com/_RWgxnG/chat"
           target="_blank"
           rel="noreferrer"
-          className="flex min-h-12 items-center justify-center bg-white px-2 py-2 text-center text-sm font-bold sm:text-base"
-          style={{ color: "#334155" }}
+          className="flex min-h-12 items-center justify-center rounded-full border border-[#E2C400] bg-[#FEE500] px-2 py-2 text-center text-sm font-semibold text-[#191919] transition hover:bg-[#F7DE00]"
         >
           카카오톡 채널
         </a>

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+import GlobalOverlays from "@/components/site/global-overlays";
+import SiteFooter from "@/components/site/site-footer";
+import SiteHeader from "@/components/site/site-header";
 
 const siteUrl = "https://anseong365.com";
 
@@ -174,8 +177,14 @@ export default function RootLayout({
         <Script id="clinic-jsonld" type="application/ld+json">
           {JSON.stringify(clinicStructuredData)}
         </Script>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+        />
+        <link rel="stylesheet" href="/assets/fonts/serif-fonts.css" />
       </head>
-      <body className="bg-white text-zinc-900">
+      <body className="font-pretendard bg-white text-zinc-900">
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NJKP5RRP"
@@ -184,7 +193,10 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
+        <SiteHeader />
         {children}
+        <SiteFooter />
+        <GlobalOverlays />
       </body>
     </html>
   );

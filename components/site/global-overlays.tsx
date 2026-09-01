@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 import FloatingButtons from "@/components/site/floating-buttons";
 import { OPEN_RESERVE_SHEET_EVENT } from "@/components/site/reserve-cta-button";
@@ -21,6 +22,8 @@ export default function GlobalOverlays() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [prefillMessage, setPrefillMessage] = useState("");
 
+  const pathname = usePathname();
+
   useEffect(() => {
     const openSheet = (event: Event) => {
       const detail = (event as CustomEvent<{ message?: string }>).detail;
@@ -30,6 +33,10 @@ export default function GlobalOverlays() {
     window.addEventListener(OPEN_RESERVE_SHEET_EVENT, openSheet);
     return () => window.removeEventListener(OPEN_RESERVE_SHEET_EVENT, openSheet);
   }, []);
+
+  if (pathname.startsWith("/admin") || pathname.startsWith("/login")) {
+    return null;
+  }
 
   return (
     <ReserveSheetContext.Provider value={{ openSheet: () => setIsSheetOpen(true) }}>

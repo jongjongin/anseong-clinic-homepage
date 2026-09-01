@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import GuideCategoryNav, {
   GuideContact,
   GuideHero,
-  GuideSiteHeader,
   guideThemes,
 } from "@/app/_components/guide-category-nav";
 
@@ -63,7 +62,6 @@ const prohibitedFoods = [
 export default function DietGuidePage() {
   return (
     <div className="min-h-screen text-[#334155]" style={{ backgroundColor: DIET_THEME.tint }}>
-      <GuideSiteHeader />
 
       <main className="mx-auto max-w-5xl px-4 py-4 sm:px-6 sm:py-8">
         <GuideCategoryNav active="diet" />

@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import GuideCategoryNav, {
   GuideContact,
   GuideHero,
-  GuideSiteHeader,
   guideThemes,
 } from "@/app/_components/guide-category-nav";
 import { getPainGuide, painGuides } from "@/app/warning/data";
@@ -56,7 +55,6 @@ export default async function PainDetailPage({ params }: PainDetailPageProps) {
 
   return (
     <div className="min-h-screen text-[#334155]" style={{ backgroundColor: theme.tint }}>
-      <GuideSiteHeader />
 
       <main className="mx-auto max-w-5xl px-4 py-3 sm:px-6 sm:py-7">
         <GuideCategoryNav active="pain" />

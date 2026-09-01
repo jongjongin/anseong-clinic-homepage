@@ -14,7 +14,7 @@ const panels = [
     image: "/assets/people/people-1.jpg",
     title: "꼭 필요한 치료만, 충분한 설명과 함께",
     description: introSectionContent.paragraphs[1],
-    href: "/renewal#doctors",
+    href: "/#doctors",
     linkLabel: "의료진 소개 보기",
   },
 ];

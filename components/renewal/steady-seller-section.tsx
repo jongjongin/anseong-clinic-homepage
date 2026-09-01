@@ -23,7 +23,7 @@ export default function SteadySellerSection() {
             <div>
               <p className="mar-font text-xs tracking-[0.3em] text-white/60">STEADY SELLER</p>
               <h2 className="gb-font mt-4 break-keep text-[22px] font-bold leading-[1.55] sm:text-4xl sm:leading-[1.5]">
-                합리적인 가격과 진정성 있는 치료로
+                진정성 있는 치료로
                 <br className="hidden sm:block" /> 확실한 변화를 보여드리겠습니다
               </h2>
               <p className="mt-4 break-keep text-[13px] leading-relaxed text-white/60 sm:text-[15px]">
@@ -31,7 +31,7 @@ export default function SteadySellerSection() {
               </p>
             </div>
             <Link
-              href="/renewal/menu"
+              href="/menu"
               className="mar-font group flex shrink-0 items-center gap-2 text-sm tracking-[0.2em] transition-opacity hover:opacity-70"
             >
               VIEW MORE

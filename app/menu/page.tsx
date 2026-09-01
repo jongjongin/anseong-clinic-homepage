@@ -4,7 +4,6 @@ import MenuCatalog from "@/components/renewal/menu-catalog";
 
 export const metadata: Metadata = {
   title: "시술메뉴/이벤트",
-  robots: { index: false, follow: false },
 };
 
 export default function MenuPage() {

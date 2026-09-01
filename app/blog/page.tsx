@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { BlogSection, Footer, Header } from "@/components/home";
+import { BlogSection} from "@/components/home";
 
 const siteUrl = "https://anseong365.com";
 
@@ -42,11 +42,9 @@ export default function BlogPage() {
       <Script id="blog-breadcrumb-jsonld" type="application/ld+json">
         {JSON.stringify(blogBreadcrumbStructuredData)}
       </Script>
-      <Header />
       <main>
         <BlogSection />
       </main>
-      <Footer />
     </div>
   );
 }

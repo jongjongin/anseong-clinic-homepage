@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { GuideSiteHeader } from "@/app/_components/guide-category-nav";
 
 export const metadata: Metadata = {
   title: "환자 안내",
@@ -56,7 +55,6 @@ const categories = [
 export default function GuideIndexPage() {
   return (
     <div className="min-h-screen bg-slate-50 text-[#334155]">
-      <GuideSiteHeader actionHref="/" actionLabel="메인으로" />
 
       <main className="mx-auto max-w-5xl px-4 py-4 sm:px-6 sm:py-8">
         <section className="border-b border-slate-300 pb-4 sm:pb-5">
