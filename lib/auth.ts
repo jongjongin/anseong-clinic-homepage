@@ -24,8 +24,24 @@ export const getSessionCookieOptions = () => ({
   secure: process.env.NODE_ENV === "production",
 });
 
-const verifySessionValue = (value: string, secret: string) => {
-  const [email, signature] = value.split(".");
+const verifySessionValue = (rawValue: string, secret: string) => {
+  // 쿠키 저장 시 값이 URL 인코딩되므로(@ → %40) 검증 전에 복원한다
+  let value = rawValue;
+  try {
+    value = decodeURIComponent(rawValue);
+  } catch {
+    // 인코딩되지 않은 값은 그대로 사용
+  }
+
+  // 이메일에도 점이 포함되므로 마지막 점을 기준으로 서명을 분리한다
+  const separatorIndex = value.lastIndexOf(".");
+
+  if (separatorIndex <= 0) {
+    return null;
+  }
+
+  const email = value.slice(0, separatorIndex);
+  const signature = value.slice(separatorIndex + 1);
 
   if (!email || !signature) {
     return null;
