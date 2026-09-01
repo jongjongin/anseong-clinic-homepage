@@ -1,0 +1,18 @@
+name: 상담신청 차트등록 리마인더
+
+# 진료시간(KST 09:00~20:00 = UTC 00:00~11:00)에 20분마다 실행.
+# 엔드포인트가 진료시간과 리마인드 간격을 다시 확인하므로 중복 발송은 없다.
+on:
+  schedule:
+    - cron: "*/20 0-11 * * *"
+  workflow_dispatch:
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: 미처리 상담신청 리마인드 요청
+        run: |
+          curl -sS -X POST "https://anseong365.com/api/reservations/remind" \
+            --max-time 60 --retry 2 --retry-delay 5 -w "\nHTTP %{http_code}\n"

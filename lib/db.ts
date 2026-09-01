@@ -39,7 +39,17 @@ export function ensureReservationsTable(sql: SqlClient): Promise<void> {
         status TEXT NOT NULL DEFAULT 'new',
         created_at TIMESTAMPTZ NOT NULL DEFAULT now()
       )
-    `.then(() => undefined);
+    `
+      .then(
+        () =>
+          // 차트 등록 리마인더 추적용 (기존 테이블에도 안전하게 추가)
+          sql`
+            ALTER TABLE reservations
+              ADD COLUMN IF NOT EXISTS reminder_count INT NOT NULL DEFAULT 0,
+              ADD COLUMN IF NOT EXISTS last_reminded_at TIMESTAMPTZ
+          `,
+      )
+      .then(() => undefined);
   }
 
   return tableReady;

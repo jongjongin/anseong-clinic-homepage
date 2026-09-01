@@ -141,3 +141,63 @@ export async function updateReservationStatus(id: number, status: ReservationSta
   await ensureReservationsTable(sql);
   await sql`UPDATE reservations SET status = ${status} WHERE id = ${id}`;
 }
+
+export type PendingReminder = {
+  id: number;
+  name: string;
+  phone: string;
+  service: string;
+  desired_date: string | null;
+  desired_time: string;
+  message: string;
+  reminder_count: number;
+  minutes_waiting: number;
+};
+
+/** 아직 차트에 등록되지 않은(status='new') 신청 중 리마인드가 필요한 건들 */
+export async function listPendingReminders(options: {
+  firstDelayMinutes: number;
+  repeatMinutes: number;
+  maxReminders: number;
+}): Promise<PendingReminder[] | null> {
+  const sql = getSql();
+
+  if (!sql) {
+    return null;
+  }
+
+  await ensureReservationsTable(sql);
+
+  const rows = await sql`
+    SELECT
+      id, name, phone, service, desired_date::text, desired_time, message,
+      reminder_count,
+      FLOOR(EXTRACT(EPOCH FROM (now() - created_at)) / 60)::int AS minutes_waiting
+    FROM reservations
+    WHERE status = 'new'
+      AND reminder_count < ${options.maxReminders}
+      AND created_at < now() - make_interval(mins => ${options.firstDelayMinutes})
+      AND (
+        last_reminded_at IS NULL
+        OR last_reminded_at < now() - make_interval(mins => ${options.repeatMinutes})
+      )
+    ORDER BY created_at ASC
+    LIMIT 20
+  `;
+
+  return rows as PendingReminder[];
+}
+
+export async function markReminded(id: number) {
+  const sql = getSql();
+
+  if (!sql) {
+    return;
+  }
+
+  await sql`
+    UPDATE reservations
+    SET reminder_count = reminder_count + 1, last_reminded_at = now()
+    WHERE id = ${id}
+  `;
+}

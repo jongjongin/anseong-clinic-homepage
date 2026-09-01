@@ -120,6 +120,18 @@ export default async function AdminReservationsPage() {
                       >
                         {STATUS_LABELS[(row.status as ReservationStatus) ?? "new"] ?? row.status}
                       </span>
+                      {row.status === "new" ? (
+                        <form action={setStatus}>
+                          <input type="hidden" name="id" value={row.id} />
+                          <input type="hidden" name="status" value="contacted" />
+                          <button
+                            type="submit"
+                            className="w-full rounded-lg bg-teal-700 px-3 py-2 text-xs font-bold text-white transition hover:bg-teal-800"
+                          >
+                            ✓ 차트 등록 완료 (알림 중지)
+                          </button>
+                        </form>
+                      ) : null}
                       <form action={setStatus} className="flex items-center gap-1.5">
                         <input type="hidden" name="id" value={row.id} />
                         <select

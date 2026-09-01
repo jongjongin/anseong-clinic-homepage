@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createReservation, validateReservationInput } from "@/lib/reservations";
+import { ADMIN_LINK, sendSlackMessage } from "@/lib/slack";
 
 export const runtime = "nodejs";
 
@@ -89,63 +90,9 @@ const buildSlackText = (input: {
     lines.push(`• 문의 내용: ${input.message}`);
   }
 
-  lines.push("\n<https://anseong365.com/admin/reservations|관리자 페이지에서 보기>");
+  lines.push(`\n${ADMIN_LINK}`);
 
   return lines.join("\n");
-};
-
-/**
- * 봇 토큰(chat.postMessage)을 우선 사용하고, 없으면 Incoming Webhook으로 보낸다.
- * 봇 토큰 방식은 채널을 환경변수로 바꿀 수 있고 스레드·수정 등 확장이 쉽다.
- */
-const sendSlackNotification = async (input: {
-  name: string;
-  phone: string;
-  service: string;
-  desiredDate: string;
-  desiredTime: string;
-  message: string;
-}) => {
-  const text = buildSlackText(input);
-  const botToken = process.env.SLACK_BOT_TOKEN;
-  const channel = process.env.SLACK_CHANNEL_ID;
-
-  if (botToken && channel) {
-    const response = await fetch("https://slack.com/api/chat.postMessage", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${botToken}`,
-        "Content-Type": "application/json; charset=utf-8",
-      },
-      body: JSON.stringify({ channel, text, unfurl_links: false }),
-    });
-
-    const result = (await response.json().catch(() => ({}))) as {
-      ok?: boolean;
-      error?: string;
-    };
-
-    if (result.ok) {
-      return true;
-    }
-
-    // 봇 토큰이 실패하면 웹훅으로 한 번 더 시도한다
-    console.error("[reservations] slack chat.postMessage failed:", result.error);
-  }
-
-  const webhookUrl = process.env.SLACK_WEBHOOK_URL;
-
-  if (!webhookUrl) {
-    return false;
-  }
-
-  const response = await fetch(webhookUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ text }),
-  });
-
-  return response.ok;
 };
 
 export async function POST(request: Request) {
@@ -194,7 +141,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    slackSent = await sendSlackNotification(validated.value);
+    slackSent = await sendSlackMessage(buildSlackText(validated.value));
   } catch (error) {
     console.error("[reservations] slack notification failed:", error);
   }
