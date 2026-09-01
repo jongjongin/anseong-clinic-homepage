@@ -326,7 +326,7 @@ export const menuItems: MenuItem[] = [
     eventLabel: "10회 17% 할인",
     subtitle: "열 없는 초음파 · 진정·속건조 · 단독 12분",
     hashtags: ["#속건조", "#진정", "#홍조"],
-    image: "/assets/interior/interior-2.jpg",
+    image: "/assets/menu/ulkin.webp",
     priceFrom: 35000,
     options: [
       { label: "1회 (12분)", price: 35000 },
@@ -345,7 +345,7 @@ export const menuItems: MenuItem[] = [
     eventLabel: "레이저·필링과 병행",
     subtitle: "열감·붓기·홍조를 가라앉히는 냉각 진정",
     hashtags: ["#진정", "#홍조"],
-    image: "/assets/interior/interior-1.jpg",
+    image: "/assets/menu/icool.webp",
     priceFrom: 29000,
     options: [{ label: "1회", price: 29000, note: "추가 결제 · 제한 없음" }],
     included: ["부가세 포함"],
@@ -437,7 +437,7 @@ export const menuItems: MenuItem[] = [
     eventLabel: "단품보다 최대 38% 절감 · 4회차 흑자 서비스",
     subtitle: "듀얼토닝 10 + 라라필 2 · 기미·잡티·피부톤",
     hashtags: ["#미백", "#기미", "#주1회"],
-    image: "/assets/people/people-1.jpg",
+    image: "/assets/menu/qmaster-full.webp",
     priceFrom: 650000,
     options: [
       { label: "베이직 (기본 시술만)", price: 650000, original: 1020000 },
@@ -458,7 +458,7 @@ export const menuItems: MenuItem[] = [
     eventLabel: "단품보다 최대 27% 절감",
     subtitle: "라라필 3 + 듀얼토닝 4 + 물방울 5 · 모공·속건조·피부결",
     hashtags: ["#재생탄력", "#모공", "#주1회"],
-    image: "/assets/interior/interior-1.jpg",
+    image: "/assets/menu/ulkin.webp",
     priceFrom: 590000,
     options: [
       { label: "베이직 (기본 시술만)", price: 590000, original: 726000 },
