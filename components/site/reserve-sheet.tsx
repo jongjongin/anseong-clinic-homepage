@@ -6,9 +6,10 @@ import ReserveForm from "@/components/site/reserve-form";
 type ReserveSheetProps = {
   open: boolean;
   onClose: () => void;
+  prefillMessage?: string;
 };
 
-export default function ReserveSheet({ open, onClose }: ReserveSheetProps) {
+export default function ReserveSheet({ open, onClose, prefillMessage = "" }: ReserveSheetProps) {
   useEffect(() => {
     if (!open) {
       return;
@@ -64,7 +65,7 @@ export default function ReserveSheet({ open, onClose }: ReserveSheetProps) {
               </svg>
             </button>
           </div>
-          <ReserveForm layout="sheet" />
+          <ReserveForm layout="sheet" key={prefillMessage} initialMessage={prefillMessage} />
         </div>
       </div>
     </div>

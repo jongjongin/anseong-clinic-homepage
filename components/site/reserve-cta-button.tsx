@@ -2,6 +2,11 @@
 
 export const OPEN_RESERVE_SHEET_EVENT = "open-reserve-sheet";
 
+/** 예약 바텀시트를 엽니다. message를 주면 문의 내용에 미리 채워집니다. */
+export const openReserveSheet = (message?: string) => {
+  window.dispatchEvent(new CustomEvent(OPEN_RESERVE_SHEET_EVENT, { detail: { message } }));
+};
+
 type ReserveCtaButtonProps = {
   className?: string;
   children: React.ReactNode;
@@ -17,7 +22,7 @@ export default function ReserveCtaButton({ className = "", children }: ReserveCt
       return;
     }
 
-    window.dispatchEvent(new CustomEvent(OPEN_RESERVE_SHEET_EVENT));
+    openReserveSheet();
   };
 
   return (

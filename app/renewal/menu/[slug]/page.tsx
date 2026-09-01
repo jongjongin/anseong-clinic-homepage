@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import ReserveCtaButton from "@/components/site/reserve-cta-button";
+import MenuProducts from "@/components/renewal/menu-products";
+import { menuDetailSections, menuProductFeatures } from "@/lib/menu-details";
 import { formatWon, getMenuCategory, getMenuItem, menuItems } from "@/lib/menu-items";
-import { siteContact } from "@/lib/site-nav";
 
 export const dynamicParams = false;
 
@@ -39,6 +39,8 @@ export default async function MenuDetailPage({
   }
 
   const category = getMenuCategory(item.category);
+  const features = menuProductFeatures[item.slug] ?? [];
+  const detailSections = menuDetailSections[item.slug] ?? [];
   const related = menuItems
     .filter((other) => other.category === item.category && other.slug !== item.slug)
     .slice(0, 4);
@@ -63,17 +65,19 @@ export default async function MenuDetailPage({
           </Link>
         </nav>
 
-        {/* 상단: 이미지 + 메뉴판 */}
+        {/* 상단: 이미지 + 시술 상품 */}
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
-          <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-[#f8f8f8]">
-            <Image
-              src={item.image}
-              alt={item.title}
-              fill
-              priority
-              className="object-cover"
-              sizes="(min-width:1024px) 50vw, 100vw"
-            />
+          <div className="lg:sticky lg:top-40 lg:self-start">
+            <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-[#f8f8f8]">
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                priority
+                className="object-cover"
+                sizes="(min-width:1024px) 50vw, 100vw"
+              />
+            </div>
           </div>
 
           <div className="flex flex-col">
@@ -81,7 +85,10 @@ export default async function MenuDetailPage({
             <h1 className="gb-font mt-2.5 break-keep text-2xl font-bold leading-snug text-[#181818] sm:text-3xl">
               {item.title}
             </h1>
-            <p className="mt-2 break-keep text-sm leading-relaxed text-[#888]">{item.subtitle}</p>
+            <p className="mt-3 break-keep text-sm leading-[1.8] text-[#6d6d6d]">
+              {item.description ?? item.subtitle}
+              {" (부가세 포함)"}
+            </p>
             <div className="mt-3 flex flex-wrap gap-1.5">
               {item.hashtags.map((tag) => (
                 <span key={tag} className="rounded-full bg-teal-50 px-2.5 py-1 text-xs font-medium text-teal-700">
@@ -90,38 +97,10 @@ export default async function MenuDetailPage({
               ))}
             </div>
 
-            {/* 하위 메뉴판 */}
-            <div className="mt-7 overflow-hidden rounded-2xl border border-[#eee]">
-              <div className="flex items-center justify-between bg-[#f8f8f8] px-5 py-3">
-                <p className="text-sm font-bold text-[#181818]">메뉴판</p>
-                <p className="text-xs text-[#999]">{item.eventLabel}</p>
-              </div>
-              <ul className="divide-y divide-[#f2f2f2]">
-                {item.options.map((option) => (
-                  <li key={option.label} className="flex items-baseline justify-between gap-4 px-5 py-3.5">
-                    <div className="min-w-0">
-                      <p className="break-keep text-sm font-medium text-[#333]">{option.label}</p>
-                      {option.note ? <p className="mt-0.5 text-xs text-teal-700">{option.note}</p> : null}
-                    </div>
-                    <p className="shrink-0 text-right">
-                      {option.original ? (
-                        <del className="mr-2 text-xs text-[#bbb]">{formatWon(option.original)}</del>
-                      ) : null}
-                      {option.price ? (
-                        <span className="text-[15px] font-extrabold text-[#181818]">
-                          {formatWon(option.price)}
-                        </span>
-                      ) : (
-                        <span className="text-[13px] font-bold text-teal-700">상담 후 안내</span>
-                      )}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <MenuProducts itemTitle={item.title} options={item.options} productFeatures={features} />
 
             {item.included?.length ? (
-              <ul className="mt-4 flex flex-wrap gap-1.5">
+              <ul className="mt-5 flex flex-wrap gap-1.5">
                 {item.included.map((line) => (
                   <li key={line} className="rounded-full border border-[#eee] px-3 py-1 text-xs text-[#777]">
                     ✓ {line}
@@ -130,7 +109,7 @@ export default async function MenuDetailPage({
               </ul>
             ) : null}
 
-            <dl className="mt-5 grid grid-cols-2 gap-3 text-sm">
+            <dl className="mt-4 grid grid-cols-2 gap-3 text-sm">
               {item.schedule ? (
                 <div className="rounded-xl bg-[#f8f8f8] px-4 py-3">
                   <dt className="text-xs text-[#999]">횟수 · 간격</dt>
@@ -144,30 +123,36 @@ export default async function MenuDetailPage({
                 </div>
               ) : null}
             </dl>
-
-            {item.description ? (
-              <p className="mt-5 break-keep rounded-2xl border border-teal-100 bg-teal-50/60 px-5 py-4 text-sm leading-relaxed text-slate-700">
-                {item.description}
-              </p>
-            ) : null}
-
-            <div className="mt-7 flex flex-col gap-2.5 sm:flex-row">
-              <ReserveCtaButton className="flex-1 rounded-full bg-teal-700 px-7 py-3.5 text-center text-sm font-semibold text-white transition hover:bg-teal-800">
-                이 시술 상담신청
-              </ReserveCtaButton>
-              <a
-                href={siteContact.kakaoChatUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex-1 rounded-full border border-[#E2C400] bg-[#FEE500] px-7 py-3.5 text-center text-sm font-semibold text-[#191919] transition hover:bg-[#F7DE00]"
-              >
-                카카오톡 상담
-              </a>
-            </div>
           </div>
         </div>
 
-        {/* 하단: 상담 포인트 + 전/후 안내 */}
+        {/* TREATMENT DETAIL — 시술 상세 */}
+        {detailSections.length > 0 ? (
+          <section className="mx-auto mt-20 max-w-3xl">
+            <div className="text-center">
+              <p className="mar-font text-xs tracking-[0.3em] text-[#959595]">TREATMENT DETAIL</p>
+              <h2 className="gb-font mt-3 text-2xl font-bold text-[#181818]">시술 상세</h2>
+            </div>
+            <div className="mt-10 flex flex-col gap-10">
+              {detailSections.map((section, index) => (
+                <div key={section.heading}>
+                  <h3 className="gb-font break-keep text-lg font-bold text-[#181818]">
+                    {index + 1}. {section.heading}
+                  </h3>
+                  <div className="mt-3 flex flex-col gap-3">
+                    {section.body.map((paragraph) => (
+                      <p key={paragraph} className="break-keep text-sm leading-[1.9] text-[#6d6d6d]">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {/* 상담 포인트 + 전/후 안내 */}
         {category ? (
           <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3">
             <div className="rounded-2xl border border-[#eee] p-6">

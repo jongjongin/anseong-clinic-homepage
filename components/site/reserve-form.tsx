@@ -16,6 +16,8 @@ const TIME_SLOTS = (() => {
 type ReserveFormProps = {
   layout: "bar" | "sheet";
   onSuccess?: () => void;
+  /** 문의 내용에 미리 채울 텍스트 (선택 시술 구성 등) */
+  initialMessage?: string;
 };
 
 type SubmitState =
@@ -24,7 +26,7 @@ type SubmitState =
   | { phase: "success" }
   | { phase: "error"; message: string };
 
-export default function ReserveForm({ layout, onSuccess }: ReserveFormProps) {
+export default function ReserveForm({ layout, onSuccess, initialMessage = "" }: ReserveFormProps) {
   const [state, setState] = useState<SubmitState>({ phase: "idle" });
   const today = useMemo(() => {
     const kst = new Date(Date.now() + 9 * 60 * 60 * 1000);
@@ -176,6 +178,7 @@ export default function ReserveForm({ layout, onSuccess }: ReserveFormProps) {
             name="message"
             rows={3}
             maxLength={1000}
+            defaultValue={initialMessage}
             placeholder="증상이나 궁금하신 점을 편하게 적어 주세요."
             className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-[15px] text-slate-900 outline-none transition focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20"
           />

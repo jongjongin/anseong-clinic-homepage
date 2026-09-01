@@ -19,9 +19,14 @@ export const useReserveSheet = () => useContext(ReserveSheetContext);
 
 export default function GlobalOverlays() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [prefillMessage, setPrefillMessage] = useState("");
 
   useEffect(() => {
-    const openSheet = () => setIsSheetOpen(true);
+    const openSheet = (event: Event) => {
+      const detail = (event as CustomEvent<{ message?: string }>).detail;
+      setPrefillMessage(detail?.message ?? "");
+      setIsSheetOpen(true);
+    };
     window.addEventListener(OPEN_RESERVE_SHEET_EVENT, openSheet);
     return () => window.removeEventListener(OPEN_RESERVE_SHEET_EVENT, openSheet);
   }, []);
@@ -31,7 +36,11 @@ export default function GlobalOverlays() {
       <FloatingButtons onReserveClick={() => setIsSheetOpen(true)} />
       <QuickReserveBar />
       <SiteMobileBar onReserveClick={() => setIsSheetOpen(true)} />
-      <ReserveSheet open={isSheetOpen} onClose={() => setIsSheetOpen(false)} />
+      <ReserveSheet
+        open={isSheetOpen}
+        onClose={() => setIsSheetOpen(false)}
+        prefillMessage={prefillMessage}
+      />
     </ReserveSheetContext.Provider>
   );
 }
