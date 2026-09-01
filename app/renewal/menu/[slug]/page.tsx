@@ -107,9 +107,13 @@ export default async function MenuDetailPage({
                       {option.original ? (
                         <del className="mr-2 text-xs text-[#bbb]">{formatWon(option.original)}</del>
                       ) : null}
-                      <span className="text-[15px] font-extrabold text-[#181818]">
-                        {formatWon(option.price)}
-                      </span>
+                      {option.price ? (
+                        <span className="text-[15px] font-extrabold text-[#181818]">
+                          {formatWon(option.price)}
+                        </span>
+                      ) : (
+                        <span className="text-[13px] font-bold text-teal-700">상담 후 안내</span>
+                      )}
                     </p>
                   </li>
                 ))}
@@ -231,7 +235,13 @@ export default async function MenuDetailPage({
                       {other.title}
                     </p>
                     <p className="mt-1 text-sm font-extrabold text-[#181818]">
-                      {formatWon(other.priceFrom)} <span className="font-medium text-[#999]">~</span>
+                      {other.priceFrom > 0 ? (
+                        <>
+                          {formatWon(other.priceFrom)} <span className="font-medium text-[#999]">~</span>
+                        </>
+                      ) : (
+                        <span className="font-bold text-teal-700">상담 후 안내</span>
+                      )}
                     </p>
                   </div>
                 </Link>

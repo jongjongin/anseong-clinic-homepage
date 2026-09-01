@@ -5,7 +5,8 @@
 
 export type MenuOption = {
   label: string;
-  price: number;
+  /** 없으면 "상담 후 안내"로 표시 */
+  price?: number;
   original?: number;
   note?: string;
 };
@@ -132,6 +133,23 @@ export const menuCategories: MenuCategory[] = [
       "6회차에 원장이 사진을 비교해 중간 평가를 해 드립니다",
       "유효기간은 6개월이며, 임신·질병 등 사유가 있으면 연장해 드립니다",
       "프로그램 종료 후에는 월 1회 유지 관리를 권해 드립니다",
+    ],
+  },
+  {
+    key: "consult",
+    label: "상담 후 결정하기",
+    concerns: [
+      "어떤 시술이 맞는지 잘 모르겠는 경우",
+      "여러 고민이 겹쳐 있어 우선순위를 정하고 싶은 경우",
+      "예산 안에서 가장 효과적인 방법을 찾고 싶은 경우",
+    ],
+    preCare: [
+      "현재 가장 신경 쓰이는 부위와 피부 상태를 먼저 말씀해 주세요",
+      "복용 중인 약과 최근 1개월 내 다른 시술 이력을 알려 주세요",
+    ],
+    postCare: [
+      "상담 후 바로 결정하지 않으셔도 됩니다",
+      "원장이 병변을 확인한 뒤 방법과 비용을 안내드립니다",
     ],
   },
   {
@@ -491,6 +509,27 @@ export const menuItems: MenuItem[] = [
     recovery: "붓기·딱지 1~2일",
   },
 ];
+
+menuItems.push({
+  slug: "consult-first",
+  category: "consult",
+  categoryLabel: cat.consult,
+  title: "자세한 1:1 맞춤 상담이 필요할 땐",
+  eventLabel: "상담 후 결정하기",
+  subtitle: "어떤 시술이 맞는지 모르셔도 괜찮습니다. 원장이 병변을 확인하고 방법과 비용을 안내드립니다.",
+  hashtags: ["#맞춤상담", "#상담후결정"],
+  image: "/assets/interior/interior-2.jpg",
+  priceFrom: 0,
+  options: [
+    { label: "1:1 맞춤 상담", note: "병변 확인 후 방법·비용 안내" },
+    { label: "전화 상담 031-8057-0750", note: "365일 상담 가능" },
+  ],
+  included: ["진단·시술 결정은 원장이 합니다"],
+  schedule: "365일 진료",
+  recovery: "—",
+  description:
+    "결과는 범위로, 회차는 이유와 함께, 회복 기간은 날짜로 설명드립니다. 상담 후 바로 결정하지 않으셔도 됩니다.",
+});
 
 export const getMenuItem = (slug: string) => menuItems.find((item) => item.slug === slug);
 

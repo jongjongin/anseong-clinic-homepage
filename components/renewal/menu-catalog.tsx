@@ -40,10 +40,13 @@ export default function MenuCatalog() {
       );
     }
 
+    // 가격 없는 항목(상담 후 결정)은 정렬 시 항상 뒤로
+    const forSort = (value: number) => (value > 0 ? value : Number.MAX_SAFE_INTEGER);
+
     if (sort === "high") {
-      list = [...list].sort((a, b) => b.priceFrom - a.priceFrom);
+      list = [...list].sort((a, b) => (b.priceFrom || 0) - (a.priceFrom || 0));
     } else if (sort === "low") {
-      list = [...list].sort((a, b) => a.priceFrom - b.priceFrom);
+      list = [...list].sort((a, b) => forSort(a.priceFrom) - forSort(b.priceFrom));
     }
 
     return list;
@@ -146,7 +149,13 @@ export default function MenuCatalog() {
                 </p>
                 <p className="break-keep text-xs leading-relaxed text-[#888]">{item.eventLabel}</p>
                 <p className="mt-1 text-[15px] font-extrabold text-[#181818]">
-                  {formatWon(item.priceFrom)} <span className="font-medium text-[#999]">~</span>
+                  {item.priceFrom > 0 ? (
+                    <>
+                      {formatWon(item.priceFrom)} <span className="font-medium text-[#999]">~</span>
+                    </>
+                  ) : (
+                    <span className="font-bold text-teal-700">상담 후 안내</span>
+                  )}
                 </p>
               </div>
             </Link>
