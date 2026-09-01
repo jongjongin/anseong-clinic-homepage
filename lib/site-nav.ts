@@ -14,6 +14,10 @@ export type SiteNavItem = {
 
 export const siteNavItems: SiteNavItem[] = [
   {
+    label: "시술메뉴/이벤트",
+    href: "/renewal/menu",
+  },
+  {
     label: "병원 소개",
     href: "/renewal#intro",
     children: [

@@ -31,7 +31,7 @@ export default function SteadySellerSection() {
               </p>
             </div>
             <Link
-              href="/services/beauty"
+              href="/renewal/menu"
               className="group flex shrink-0 items-center gap-2 text-sm font-bold tracking-widest transition-opacity hover:opacity-70"
             >
               VIEW MORE

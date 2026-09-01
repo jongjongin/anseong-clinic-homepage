@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import MobileDrawer from "@/components/site/mobile-drawer";
 import SiteLogo from "@/components/site/site-logo";
@@ -9,6 +10,7 @@ import { siteContact, siteNavItems } from "@/lib/site-nav";
 export default function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 10);
@@ -17,7 +19,8 @@ export default function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const solid = isScrolled;
+  // 어두운 히어로가 있는 메인에서만 투명 오버레이 모드로 시작
+  const solid = isScrolled || pathname !== "/renewal";
 
   return (
     <>
