@@ -6,7 +6,12 @@ let cachedSql: SqlClient | null = null;
 let tableReady: Promise<void> | null = null;
 
 export function getSql(): SqlClient | null {
-  const url = process.env.DATABASE_URL;
+  // Vercel-Neon 연동은 환경에 따라 다른 이름으로 URL을 만든다
+  const url =
+    process.env.DATABASE_URL ??
+    process.env.POSTGRES_URL ??
+    process.env.DATABASE_URL_UNPOOLED ??
+    process.env.POSTGRES_PRISMA_URL;
 
   if (!url) {
     return null;

@@ -77,7 +77,7 @@ export default function SiteHeader() {
           <SiteLogo className="h-14 w-[260px]" inverted={!solid} />
         </Link>
         <nav
-          className={`flex items-center gap-10 text-lg font-semibold tracking-wide xl:gap-14 ${
+          className={`flex items-center gap-6 text-[15px] font-semibold tracking-wide xl:gap-9 xl:text-[17px] ${
             solid ? "mt-4" : "mt-8"
           }`}
         >

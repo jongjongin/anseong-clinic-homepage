@@ -154,7 +154,7 @@ export default function ReserveForm({ layout, onSuccess, initialMessage = "" }: 
 
       <label className={isBar ? "flex w-[150px] flex-col gap-1" : "flex flex-col gap-1.5"}>
         <span className="text-xs font-semibold text-slate-500">희망일</span>
-        <input name="desiredDate" type="date" required min={today} className={fieldClass} />
+        <input name="desiredDate" type="date" required min={today} defaultValue={today} className={fieldClass} />
       </label>
 
       <label className={isBar ? "flex w-[120px] flex-col gap-1" : "flex flex-col gap-1.5"}>

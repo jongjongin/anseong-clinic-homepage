@@ -13,40 +13,21 @@ export type SiteNavItem = {
 };
 
 export const siteNavItems: SiteNavItem[] = [
+  { label: "병원 소개", href: "/#intro" },
   {
-    label: "시술메뉴/이벤트",
-    href: "/menu",
-  },
-  {
-    label: "병원 소개",
-    href: "/#intro",
-    children: [
-      { label: "한의원 소개", href: "/#intro" },
-      { label: "의료진 소개", href: "/#doctors" },
-      { label: "진료시간·오시는 길", href: "/#hours" },
-    ],
-  },
-  {
-    label: "진료 프로그램",
+    label: "진료 과목",
     href: "/services",
     children: servicePages.map((service) => ({
       label: service.title,
       href: `/services/${service.slug}`,
     })),
   },
-  {
-    label: "건강 정보",
-    href: "/#departments",
-    children: [
-      { label: "통증 가이드", href: "/pain" },
-      { label: "한약 가이드", href: "/herb" },
-      { label: "다이어트 가이드", href: "/diet" },
-      { label: "미용 가이드", href: "/beauty" },
-      { label: "시술 후 주의사항", href: "/warning" },
-    ],
-  },
+  { label: "의료진", href: "/#doctors" },
   { label: "블로그", href: "/blog" },
-  { label: "상담·예약", href: "/#consult" },
+  { label: "이벤트", href: "/menu" },
+  { label: "비대면진료", href: "/#telemedicine" },
+  { label: "오시는 길", href: "/#hours" },
+  { label: "상담 문의", href: "/#consult" },
 ];
 
 export const siteContact = {
