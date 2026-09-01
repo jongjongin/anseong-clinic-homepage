@@ -59,8 +59,8 @@ const buildReminderText = (item: {
   return lines.join("\n");
 };
 
-const runReminders = async () => {
-  if (!isBusinessHours()) {
+const runReminders = async (force = false) => {
+  if (!force && !isBusinessHours()) {
     return NextResponse.json({ ok: true, skipped: "outside-business-hours" });
   }
 
@@ -92,10 +92,14 @@ const runReminders = async () => {
   return NextResponse.json({ ok: true, pending: pending.length, sent });
 };
 
-export async function GET() {
-  return runReminders();
+/** ?force=1 을 붙이면 진료시간 밖에서도 실행한다 (테스트용, 리마인드 간격은 그대로 지킴) */
+const isForced = (request: Request) =>
+  new URL(request.url).searchParams.get("force") === "1";
+
+export async function GET(request: Request) {
+  return runReminders(isForced(request));
 }
 
-export async function POST() {
-  return runReminders();
+export async function POST(request: Request) {
+  return runReminders(isForced(request));
 }
