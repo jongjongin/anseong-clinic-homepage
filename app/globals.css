@@ -114,6 +114,76 @@ a {
   background: #ffffff;
 }
 
+/* 자가 감별 퀴즈 화면 전환 */
+@keyframes quiz-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes quiz-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes quiz-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes quiz-option-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quiz-in-right {
+  animation: quiz-in-right 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.quiz-in-left {
+  animation: quiz-in-left 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.quiz-reveal {
+  animation: quiz-reveal 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.quiz-option {
+  animation: quiz-option-in 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quiz-in-right,
+  .quiz-in-left,
+  .quiz-reveal,
+  .quiz-option {
+    animation: none;
+  }
+}
+
 /* ===== end renewal additions ===== */
 
 .interactive-card {

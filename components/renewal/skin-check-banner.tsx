@@ -34,7 +34,7 @@ export default function SkinCheckBanner() {
               href="/skin-check"
               className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#181818] px-8 py-4 text-sm font-semibold text-white transition hover:bg-teal-700"
             >
-              1분 자가 감별 시작하기
+              1분 퀴즈로 감별 시작하기
               <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
