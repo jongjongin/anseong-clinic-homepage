@@ -4,6 +4,7 @@ import RenewalHeroSection from "@/components/renewal/hero-section";
 import TwoPanelSection from "@/components/renewal/two-panel-section";
 import ProgramsSection from "@/components/renewal/programs-section";
 import SteadySellerSection from "@/components/renewal/steady-seller-section";
+import SkinCheckBanner from "@/components/renewal/skin-check-banner";
 import RenewalDoctorsSection from "@/components/renewal/doctors-section";
 import SnsSection from "@/components/renewal/sns-section";
 import TelemedicineSection from "@/components/renewal/telemedicine-section";
@@ -93,6 +94,7 @@ export default function Home() {
       <TwoPanelSection />
       <ProgramsSection />
       <SteadySellerSection />
+      <SkinCheckBanner />
       <RenewalDoctorsSection />
       <SnsSection />
       <TelemedicineSection />
