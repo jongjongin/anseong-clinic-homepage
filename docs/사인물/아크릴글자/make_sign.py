@@ -75,7 +75,7 @@ def hdim(y, x_l, x_r, label, size=5):
 W = 1000.0; L = 40.0
 y = 30.0
 text(L, y, "안성 한의원 · 아크릴 글자 발주 도면 (1:1 실측, 단위 mm)", "sans", 12, BLACK); y += 9
-text(L, y, "상품명: 아크릴 글자  |  사양: 무광 3T  |  색상: 코코아 / 회색(연한 회색 계열)  |  총 수량: 9개 (글자 5개 + 숫자 2개 + 밑줄 2개)", "sans", 6, GRAY); y += 9
+text(L, y, "상품명: 아크릴 글자  |  사양: 무광 3T  |  색상: 코코아 / 회색(연한 회색 계열)  |  총 수량: 9개 (글자 5개 + 숫자 2개 + 일자 막대 2개)", "sans", 6, GRAY); y += 9
 notes = [
     "■ 글꼴 안내: 지정 글꼴(Sandoll 고딕Neo Cond 04 Regular / MICE명조 OTF 01 Regular)이 이 파일에 포함되어 있지 않아,",
     "   임시로 Noto Sans KR(고딕 자리) / Noto Serif KR(명조 자리)로 타이핑되어 있습니다. 문자는 모두 편집 가능한 상태입니다.",
@@ -110,11 +110,11 @@ def spec_item(num, s, font, h, qty_note=""):
 spec_item(1, "리프팅 • 레이저실", "sans", 40)
 spec_item(2, "리프팅 • 레이저실", "sans", 40, "(1번과 동일, 별도 1개)")
 spec_item(3, "파우더룸 • 검사실", "serif", 100, "(가운데 기호 포함)")
-spec_item(4, "← 파우더룸", "sans", 70, "(화살표 포함)")
-spec_item(5, "파우더룸 →", "sans", 70, "(화살표 포함)")
+spec_item(4, "← 파우더룸 • 탈의실", "sans", 70, "(왼쪽 화살표 포함)")
+spec_item(5, "파우더룸 • 탈의실 →", "sans", 70, "(오른쪽 화살표 포함)")
 
 # 6~9: 숫자 2개 + 밑줄 2개
-text(L, y, "6 ~ 9. 「15」「16」 숫자 높이 90mm  /  「ㅡ」 밑줄 2개 폭 90mm   글꼴: MICE명조 OTF 01 Regular   (총 4개, 각각 별도 조각)", "sans", 5, GRAY); y += 16
+text(L, y, "6 ~ 9. 「15」「16」 숫자 높이 90mm  /  일자 막대(밑줄) 2개 가로 90mm × 세로 6mm   숫자 글꼴: MICE명조 OTF 01 Regular   (총 4개, 각각 별도 조각)", "sans", 5, GRAY); y += 16
 top_row = y
 x = L
 bar_h_note = None
@@ -127,22 +127,21 @@ for i, num_s in enumerate(["15", "16"]):
     line(x - 12, bot, x + m["adv"] + 30, bot, 0.25, GUIDE, (2, 2))
     vdim(x + m["adv"] + 22, top_row, bot, "높이 90mm")
     text(x, top_row - 3, f"{6 + i}. 숫자 {num_s}", "sans", 4.5, GRAY)
-    # 밑줄: 'ㅡ' 글자를 명조체로, 잉크 폭이 정확히 90mm가 되도록 크기 지정
-    bsize = size_for_width("serif", "ㅡ", 90)
-    bm = measure("serif", "ㅡ", bsize)
-    by = bot + 25                                  # 밑줄 잉크 최상단
-    bbase = by + bm["ymax"]
-    bx = x + m["adv"] / 2 - (bm["xmin"] + bm["xmax"]) / 2   # 숫자 가운데 정렬
-    text(bx, bbase, "ㅡ", "serif", bsize, COCOA)
-    bl = bx + bm["xmin"]; br = bx + bm["xmax"]; bbot = bbase - bm["ymin"]
-    hdim(bbot + 8, bl, br, "폭 90mm")
-    text(x, bbot + 22, f"{8 + i}. 밑줄 ㅡ (두께 약 {bm['ymax'] - bm['ymin']:.0f}mm·글꼴에 따름)", "sans", 4.5, GRAY)
+    # 밑줄: 사진과 같은 일자 막대 (가로 90mm × 세로 6mm 사각형)
+    BAR_W, BAR_H = 90.0, 6.0
+    by = bot + 25
+    bl = x + m["adv"] / 2 - BAR_W / 2          # 숫자 가운데 정렬
+    rect(bl, by, BAR_W, BAR_H, COCOA)
+    br = bl + BAR_W; bbot = by + BAR_H
+    hdim(bbot + 8, bl, br, "가로 90mm")
+    vdim(br + 10, by, bbot, "세로 6mm", size=4)
+    text(x, bbot + 22, f"{8 + i}. 일자 막대 (90 × 6mm, 사진 속 기존 제품과 동일 형태)", "sans", 4.5, GRAY)
     bar_h_note = bbot + 26
     x += m["adv"] + 120
 y = bar_h_note + 20
 line(L, y, W - L, y, 0.3, "#999999"); y += 10
-text(L, y, "※ 항목 3의 「•」 및 4·5의 화살표는 발주 메시지에 적힌 기호 그대로 넣었습니다. 「슬래시( / )」로 바꿔야 하면 해당 문자만 수정해 주세요.", "sans", 4.5, GRAY); y += 7
-text(L, y, "※ 밑줄(ㅡ)의 두께는 별도 지정이 없어 명조 글꼴의 획 두께를 따르도록 했습니다. 두께를 지정하려면 해당 문자 대신 90mm × 원하는 두께의 사각형으로 바꿔 주세요.", "sans", 4.5, GRAY); y += 12
+text(L, y, "※ 3·4·5번의 가운데 「•」와 4·5번 화살표는 발주 메시지에 적힌 기호 그대로 넣었습니다. 기호가 다르면 해당 문자만 수정해 주세요.", "sans", 4.5, GRAY); y += 7
+text(L, y, "※ 일자 막대(8·9번)는 글꼴 문자가 아닌 사각형 도형입니다. 세로 6mm는 기존 제품 사진을 잣대로 잰 근사값이므로, 기존 제품과 같은 두께로 맞춰 주세요.", "sans", 4.5, GRAY); y += 12
 H = y + 20
 
 # ---------- PDF 출력 ----------
