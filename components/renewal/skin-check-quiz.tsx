@@ -19,8 +19,6 @@ const TOTAL_STEPS = 3;
 /** 선택한 항목이 눌린 걸 눈으로 확인한 뒤 다음 화면으로 넘어가는 시간 */
 const PICK_FEEDBACK_MS = 260;
 
-const CHECK_TAGS = ["기미", "주근깨", "흑자", "검버섯", "점", "쥐젖", "편평사마귀", "한관종"];
-
 const screenKeyOf = (screen: Screen) =>
   screen.kind === "question"
     ? `q-${screen.id}`
@@ -65,20 +63,20 @@ export default function SkinCheckQuiz() {
       : "quiz-in-left";
 
   return (
-    <div className="mx-auto w-full max-w-[760px]">
-      <div className="overflow-hidden rounded-[24px] border border-[#ececec] bg-white shadow-[0_30px_70px_-32px_rgba(15,23,42,0.22)] sm:rounded-[28px]">
-        {/* 상단 진행 표시 */}
-        <div className="flex items-center justify-between gap-4 border-b border-[#f2f2f2] bg-[#fbfbfa] px-5 py-3.5 sm:px-9 sm:py-4">
+    <div className="mx-auto w-full max-w-[720px]">
+      <div className="overflow-hidden rounded-[24px] border border-[#e2e2e2] bg-white shadow-[0_30px_70px_-32px_rgba(15,23,42,0.22)] sm:rounded-[28px]">
+        {/* 진행 표시 */}
+        <div className="flex items-center justify-between gap-4 border-b border-[#ededed] bg-[#f7f7f6] px-5 py-4 sm:px-8">
           <div className="flex items-center gap-3">
-            <p className="mar-font text-[11px] tracking-[0.25em] text-[#959595]">
-              {screen.kind === "intro" ? "START" : isFinished ? "RESULT" : `Q${step}`}
+            <p className="text-[13px] font-bold text-[#454545]">
+              {screen.kind === "intro" ? "시작" : isFinished ? "결과" : `${step} / ${TOTAL_STEPS}`}
             </p>
             <div className="flex items-center gap-1.5" aria-hidden>
               {Array.from({ length: TOTAL_STEPS }, (_, index) => (
                 <span
                   key={index}
-                  className={`h-[3px] w-7 rounded-full transition-colors duration-500 ease-out sm:w-8 ${
-                    isFinished || index < step ? "bg-teal-700" : "bg-[#e4e4e4]"
+                  className={`h-1 w-8 rounded-full transition-colors duration-500 ${
+                    isFinished || index < step ? "bg-teal-700" : "bg-[#d8d8d8]"
                   }`}
                 />
               ))}
@@ -89,16 +87,13 @@ export default function SkinCheckQuiz() {
             <button
               type="button"
               onClick={goBack}
-              className="-mr-2 px-2 py-1 text-[13px] text-[#959595] transition-colors hover:text-[#181818]"
+              className="-mr-2 px-2 py-1 text-[14px] font-medium text-[#5f5f5f] transition-colors hover:text-[#171717]"
             >
               ← 이전
             </button>
-          ) : (
-            <span className="text-[11px] tracking-wide text-[#c4c4c4]">약 1분 · 최대 3문항</span>
-          )}
+          ) : null}
         </div>
 
-        {/* 화면 전환: key를 바꿔 다시 마운트하면서 넘김 애니메이션 */}
         <div key={screenKeyOf(screen)} className={enterClass}>
           {screen.kind === "intro" ? (
             <IntroCard onStart={() => go({ kind: "question", id: "start" })} />
@@ -112,8 +107,8 @@ export default function SkinCheckQuiz() {
         </div>
       </div>
 
-      <p className="mt-5 break-keep px-2 text-center text-[11px] leading-relaxed text-[#b4b4b4]">
-        상담 전 참고용 안내이며 진단이 아닙니다. 실제 병변 구분은 원장이 직접 확인한 뒤 안내해 드립니다.
+      <p className="mt-5 break-keep px-2 text-center text-[12.5px] leading-relaxed text-[#7a7a7a]">
+        상담 전 참고용이며 진단이 아닙니다. 최종 확인은 원장 진료로 안내해 드립니다.
       </p>
     </div>
   );
@@ -121,39 +116,24 @@ export default function SkinCheckQuiz() {
 
 function IntroCard({ onStart }: { onStart: () => void }) {
   return (
-    <div className="bg-gradient-to-b from-teal-50/50 to-white px-6 py-12 text-center sm:px-12 sm:py-20">
-      <div className="mx-auto flex max-w-[300px] items-center justify-center gap-2.5">
+    <div className="bg-gradient-to-b from-teal-50/60 to-white px-6 py-14 text-center sm:px-12 sm:py-20">
+      <div className="mx-auto flex max-w-[300px] items-center justify-center gap-3">
         {(["mole", "seborrheic", "melasma", "freckle"] as const).map((name) => (
-          <SkinIcon key={name} name={name} className="h-12 w-12 sm:h-14 sm:w-14" />
+          <SkinIcon key={name} name={name} className="h-14 w-14 sm:h-16 sm:w-16" />
         ))}
       </div>
 
-      <p className="mar-font mt-9 text-[11px] tracking-[0.35em] text-teal-700">SKIN QUIZ</p>
-      <h2 className="gb-font mt-4 break-keep text-[25px] font-bold leading-[1.35] text-[#181818] sm:text-[34px]">
-        내 피부 고민은
-        <br />
-        어떤 병변에 가까울까요?
+      <h2 className="gb-font mt-10 break-keep text-[27px] font-bold leading-[1.35] text-[#171717] sm:text-[36px]">
+        점인가요, 검버섯인가요?
       </h2>
-      <p className="mx-auto mt-4 max-w-[360px] break-keep text-[14px] leading-[1.85] text-[#6d6d6d] sm:text-[15px]">
-        짧은 질문 세 개면 충분합니다. 그림을 보고 가장 비슷한 것을 고르면 어떤 병변에 가까운지와 맞는
-        시술을 안내해 드립니다.
+      <p className="mx-auto mt-4 max-w-[330px] break-keep text-[16px] leading-[1.75] text-[#454545]">
+        3문항이면 어떤 병변인지, 무엇으로 제거하는지 알려드립니다.
       </p>
-
-      <div className="mx-auto mt-8 flex max-w-[420px] flex-wrap justify-center gap-1.5">
-        {CHECK_TAGS.map((item) => (
-          <span
-            key={item}
-            className="rounded-full border border-[#e6e6e6] bg-white/70 px-3 py-1 text-xs text-[#8a8a8a]"
-          >
-            {item}
-          </span>
-        ))}
-      </div>
 
       <button
         type="button"
         onClick={onStart}
-        className="group mt-10 inline-flex w-full max-w-[320px] items-center justify-center gap-2.5 rounded-full bg-[#181818] px-11 py-4.5 text-[15px] font-semibold text-white shadow-[0_14px_30px_-12px_rgba(15,23,42,0.5)] transition hover:bg-teal-700 sm:w-auto"
+        className="group mt-10 inline-flex w-full max-w-[320px] items-center justify-center gap-2.5 rounded-full bg-[#171717] px-11 py-4.5 text-[17px] font-bold text-white shadow-[0_14px_30px_-12px_rgba(15,23,42,0.5)] transition hover:bg-teal-700 sm:w-auto"
       >
         시작하기
         <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
@@ -192,23 +172,14 @@ function QuestionCard({
   };
 
   return (
-    <div className="px-4 py-9 sm:px-12 sm:py-14">
-      <div className="text-center">
-        <p className="mar-font text-[11px] tracking-[0.35em] text-teal-700">
-          QUESTION {String(step).padStart(2, "0")}
-        </p>
-        <h2 className="gb-font mt-4 break-keep text-[26px] font-bold leading-tight text-[#181818] sm:text-[32px]">
-          {question.title}
-        </h2>
-        {question.description ? (
-          <p className="mt-2.5 break-keep text-[13px] text-[#a0a0a0]">{question.description}</p>
-        ) : null}
-      </div>
+    <div className="px-4 py-10 sm:px-10 sm:py-14">
+      <h2 className="gb-font break-keep text-center text-[27px] font-bold leading-tight text-[#171717] sm:text-[34px]">
+        {question.title}
+      </h2>
 
-      <div className="mt-8 flex flex-col gap-2.5 sm:mt-10">
+      <div className="mt-8 flex flex-col gap-3 sm:mt-10">
         {question.options.map((option, index) => {
           const isPicked = picked === index;
-          const isDimmed = picked !== null && !isPicked;
 
           return (
             <button
@@ -225,25 +196,25 @@ function QuestionCard({
                       : { kind: "question", id: option.next ?? "start" },
                 )
               }
-              className={`quiz-option group flex min-h-[76px] items-center gap-3.5 rounded-2xl border bg-white px-3.5 py-3 text-left transition-all duration-200 sm:gap-4 sm:px-5 sm:py-4 ${
+              className={`quiz-option group flex min-h-[84px] items-center gap-4 rounded-2xl border-2 bg-white px-4 py-3.5 text-left transition-all duration-200 sm:px-5 ${
                 isPicked
-                  ? "border-teal-600 bg-teal-50/70 shadow-[0_14px_28px_-16px_rgba(15,118,110,0.55)]"
-                  : "border-[#ececec] hover:-translate-y-0.5 hover:border-teal-600 hover:shadow-[0_14px_28px_-16px_rgba(15,118,110,0.5)]"
-              } ${isDimmed ? "opacity-45" : ""}`}
+                  ? "border-teal-700 bg-teal-50"
+                  : "border-[#e2e2e2] hover:border-teal-700 hover:bg-teal-50/40"
+              } ${picked !== null && !isPicked ? "opacity-40" : ""}`}
             >
               {option.icon ? (
                 <SkinIcon
                   name={option.icon}
-                  className="h-[54px] w-[54px] shrink-0 sm:h-[60px] sm:w-[60px]"
+                  className="h-[60px] w-[60px] shrink-0 sm:h-[64px] sm:w-[64px]"
                 />
               ) : null}
 
               <span className="min-w-0 flex-1">
-                <span className="block break-keep text-[15.5px] font-semibold leading-snug text-[#181818] sm:text-[16px]">
+                <span className="block break-keep text-[17px] font-bold leading-snug text-[#171717] sm:text-[18px]">
                   {option.label}
                 </span>
                 {option.hint ? (
-                  <span className="mt-1 block break-keep text-[12px] leading-snug text-[#a0a0a0]">
+                  <span className="mt-1.5 block break-keep text-[13.5px] leading-snug text-[#5f5f5f]">
                     {option.hint}
                   </span>
                 ) : null}
@@ -251,8 +222,8 @@ function QuestionCard({
 
               <span
                 aria-hidden
-                className={`shrink-0 pr-1 transition-all duration-200 ${
-                  isPicked ? "text-teal-700" : "text-[#d4d4d4] group-hover:translate-x-1 group-hover:text-teal-700"
+                className={`shrink-0 pr-1 text-[18px] transition-all duration-200 ${
+                  isPicked ? "text-teal-700" : "text-[#b0b0b0] group-hover:translate-x-1 group-hover:text-teal-700"
                 }`}
               >
                 →
@@ -265,22 +236,55 @@ function QuestionCard({
   );
 }
 
+/** 결과 화면에서 가장 크게 보여야 하는 "무엇으로 제거/치료하는가" 블록 */
+function TreatmentBlock({
+  action,
+  label,
+  reason,
+  slug,
+}: {
+  action: string;
+  label: string;
+  reason: string;
+  slug: string;
+}) {
+  return (
+    <div className="mt-8 rounded-2xl bg-teal-700 p-6 text-white sm:p-7">
+      <p className="text-[14px] font-bold text-teal-100">이렇게 {action}합니다</p>
+      <p className="gb-font mt-2 break-keep text-[26px] font-bold leading-tight sm:text-[30px]">
+        {label}
+      </p>
+      <p className="mt-3 break-keep text-[15px] leading-[1.7] text-teal-50">{reason}</p>
+      <Link
+        href={`/menu/${slug}`}
+        className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-4 text-[16px] font-bold text-teal-800 transition hover:bg-teal-50"
+      >
+        가격 보기
+        <span aria-hidden>→</span>
+      </Link>
+    </div>
+  );
+}
+
 function AlertCard({ onRestart }: { onRestart: () => void }) {
   return (
-    <div className="px-5 py-10 sm:px-12 sm:py-14">
-      <div className="rounded-2xl border border-amber-200 bg-amber-50/60 p-6 text-center sm:p-8">
-        <SkinIcon name="warn-asymmetry" className="mx-auto h-16 w-16" />
-        <p className="mt-5 text-xs font-semibold tracking-wide text-amber-800">확인이 필요합니다</p>
-        <h2 className="gb-font mt-3 break-keep text-[22px] font-bold leading-snug text-[#181818] sm:text-2xl">
+    <div className="px-5 py-10 sm:px-10 sm:py-14">
+      <div className="text-center">
+        <SkinIcon name="warn-asymmetry" className="mx-auto h-20 w-20" />
+        <h2 className="gb-font mt-6 break-keep text-[25px] font-bold leading-snug text-[#171717] sm:text-[30px]">
           {moleAlert.title}
         </h2>
-        <div className="mt-4 flex flex-col gap-3">
-          {moleAlert.body.map((line) => (
-            <p key={line} className="break-keep text-[13.5px] leading-[1.9] text-[#464646]">
-              {line}
-            </p>
-          ))}
-        </div>
+      </div>
+
+      <div className="mt-7 rounded-2xl border-2 border-amber-300 bg-amber-50 p-5 sm:p-6">
+        {moleAlert.body.map((line) => (
+          <p
+            key={line}
+            className="break-keep text-[15px] leading-[1.75] text-[#3d3323] [&+&]:mt-3"
+          >
+            {line}
+          </p>
+        ))}
       </div>
 
       <ContactActions
@@ -295,65 +299,47 @@ function ResultCard({ resultKey, onRestart }: { resultKey: SkinResultKey; onRest
   const result = skinResults[resultKey];
 
   return (
-    <div className="px-5 py-10 sm:px-12 sm:py-14">
+    <div className="px-5 py-10 sm:px-10 sm:py-14">
       <div className="text-center">
         <SkinIcon name={resultKey} className="mx-auto h-24 w-24 sm:h-28 sm:w-28" />
-        <p className="mar-font mt-6 text-[11px] tracking-[0.35em] text-teal-700">YOUR RESULT</p>
-        <h2 className="gb-font mt-3 break-keep text-[28px] font-bold leading-tight text-[#181818] sm:text-[36px]">
+        <p className="mt-5 text-[14px] font-bold text-teal-700">이런 병변에 가까워요</p>
+        <h2 className="gb-font mt-2 break-keep text-[32px] font-bold leading-tight text-[#171717] sm:text-[40px]">
           {result.name}
         </h2>
-        <p className="mx-auto mt-4 max-w-[440px] break-keep text-[14px] leading-[1.9] text-[#6d6d6d] sm:text-[15px]">
+        <p className="mx-auto mt-4 max-w-[400px] break-keep text-[16px] leading-[1.7] text-[#454545]">
           {result.summary}
         </p>
       </div>
 
-      <div className="mt-9 rounded-2xl border border-[#f0f0f0] bg-[#fbfbfa] p-5 sm:p-7">
-        <p className="text-[13px] font-semibold text-[#181818]">이런 특징이 있어요</p>
-        <ul className="mt-3.5 flex flex-col gap-2.5">
-          {result.features.map((feature) => (
-            <li
-              key={feature}
-              className="flex items-start gap-2.5 break-keep text-[13.5px] leading-relaxed text-[#6d6d6d]"
-            >
-              <span className="mt-[8px] block h-1 w-1 shrink-0 rotate-45 bg-teal-700" aria-hidden />
-              {feature}
-            </li>
-          ))}
-        </ul>
+      {/* 무엇으로 제거하는지 — 결과 화면의 주인공 */}
+      <TreatmentBlock
+        action={result.action}
+        label={result.recommend.label}
+        reason={result.recommend.reason}
+        slug={result.recommend.slug}
+      />
 
-        <div className="mt-6 border-t border-[#ededed] pt-5">
-          <p className="text-[13px] font-semibold text-[#181818]">이렇게 구분해요</p>
-          <p className="mt-2 break-keep text-[13.5px] leading-[1.85] text-[#6d6d6d]">
-            {result.distinguish}
-          </p>
-        </div>
-      </div>
+      <ul className="mt-7 flex flex-wrap justify-center gap-2">
+        {result.features.map((feature) => (
+          <li
+            key={feature}
+            className="break-keep rounded-full border border-[#dcdcdc] bg-[#fafafa] px-4 py-2 text-[14px] font-medium text-[#454545]"
+          >
+            {feature}
+          </li>
+        ))}
+      </ul>
+
+      <p className="mt-6 break-keep rounded-2xl bg-[#f5f5f4] px-5 py-5 text-[15px] leading-[1.7] text-[#3d3d3d]">
+        <span className="font-bold text-[#171717]">구분 포인트 </span>
+        {result.distinguish}
+      </p>
 
       {result.note ? (
-        <p className="mt-3 break-keep rounded-2xl border border-teal-100 bg-teal-50/60 px-5 py-5 text-[13.5px] leading-[1.85] text-[#464646] sm:px-6">
+        <p className="mt-3 break-keep rounded-2xl border-2 border-teal-200 bg-teal-50 px-5 py-5 text-[15px] leading-[1.7] text-[#1f3d38]">
           {result.note}
         </p>
       ) : null}
-
-      {/* 권장 시술 */}
-      <div className="mt-3 rounded-2xl border border-[#ececec] bg-white p-5 sm:p-7">
-        <p className="mar-font text-[11px] tracking-[0.25em] text-[#959595]">RECOMMENDED</p>
-        <h3 className="gb-font mt-3 break-keep text-lg font-bold text-[#181818]">
-          {result.recommend.label}
-        </h3>
-        <p className="mt-2 break-keep text-[13.5px] leading-[1.85] text-[#6d6d6d]">
-          {result.recommend.reason}
-        </p>
-        <Link
-          href={`/menu/${result.recommend.slug}`}
-          className="gb-font group mt-5 inline-flex items-center gap-2 border-t border-[#f2f2f2] pt-5 text-sm text-[#181818] transition-colors hover:text-teal-700"
-        >
-          가격·상세 보기
-          <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
-            →
-          </span>
-        </Link>
-      </div>
 
       <ContactActions
         message={`[자가 감별] ${result.name} 으로 나왔습니다. ${result.recommend.label} 상담 원합니다.`}
@@ -366,11 +352,11 @@ function ResultCard({ resultKey, onRestart }: { resultKey: SkinResultKey; onRest
 function ContactActions({ message, onRestart }: { message: string; onRestart: () => void }) {
   return (
     <>
-      <div className="mt-6 flex flex-col gap-2.5 sm:flex-row">
+      <div className="mt-7 flex flex-col gap-3">
         <button
           type="button"
           onClick={() => openReserveSheet(message)}
-          className="flex-1 rounded-full bg-teal-700 px-7 py-4 text-center text-[15px] font-semibold text-white shadow-[0_14px_28px_-14px_rgba(15,118,110,0.7)] transition hover:bg-teal-800"
+          className="rounded-full bg-[#171717] px-7 py-4.5 text-center text-[16px] font-bold text-white transition hover:bg-teal-700"
         >
           이 내용으로 상담 신청
         </button>
@@ -378,22 +364,25 @@ function ContactActions({ message, onRestart }: { message: string; onRestart: ()
           href={siteContact.kakaoChatUrl}
           target="_blank"
           rel="noreferrer"
-          className="flex-1 rounded-full border border-[#E2C400] bg-[#FEE500] px-7 py-4 text-center text-[15px] font-semibold text-[#191919] transition hover:bg-[#F7DE00]"
+          className="rounded-full border-2 border-[#E2C400] bg-[#FEE500] px-7 py-4.5 text-center text-[16px] font-bold text-[#191919] transition hover:bg-[#F7DE00]"
         >
           카카오톡으로 사진 보내기
         </a>
       </div>
 
-      <div className="mt-6 flex items-center justify-between gap-3 border-t border-[#f2f2f2] pt-5">
+      <div className="mt-6 flex items-center justify-between gap-3 border-t border-[#ededed] pt-5">
         <button
           type="button"
           onClick={onRestart}
-          className="text-[13px] text-[#959595] transition-colors hover:text-[#181818]"
+          className="text-[14px] font-medium text-[#5f5f5f] transition-colors hover:text-[#171717]"
         >
-          ↻ 처음부터 다시 하기
+          ↻ 다시 하기
         </button>
-        <a href={siteContact.phoneHref} className="text-[13px] text-[#181818] hover:text-teal-700">
-          전화 문의 {siteContact.phone}
+        <a
+          href={siteContact.phoneHref}
+          className="text-[14px] font-bold text-[#171717] hover:text-teal-700"
+        >
+          전화 {siteContact.phone}
         </a>
       </div>
     </>

@@ -29,20 +29,16 @@ export default function SkinCheckPage() {
           <span className="text-[#464646]">피부 고민 자가 감별</span>
         </nav>
 
-        <div className="mx-auto max-w-[720px] text-center">
-          <p className="mar-font text-xs tracking-[0.3em] text-[#959595]">SELF CHECK</p>
-          <h1 className="gb-font mt-4 break-keep text-2xl font-bold leading-snug text-[#181818] sm:text-4xl">
-            &lsquo;점인 줄 알았는데&rsquo;
-            <br />
-            헷갈리는 피부 고민, 먼저 구분해 보세요
+        <div className="mx-auto max-w-[560px] text-center">
+          <h1 className="gb-font mt-2 break-keep text-[28px] font-bold leading-[1.3] text-[#171717] sm:text-[40px]">
+            점인가요, 검버섯인가요?
           </h1>
-          <p className="mt-4 break-keep text-[13px] leading-[1.9] text-[#959595] sm:text-[15px]">
-            기미·주근깨·흑자·검버섯·점·쥐젖·편평사마귀는 겉보기에 비슷해도 치료 방법이 전혀 다릅니다.
-            몇 가지 질문에 답하면 어떤 병변에 가까운지, 어떤 시술이 맞는지 안내해 드립니다.
+          <p className="mt-4 break-keep text-[16px] leading-[1.7] text-[#454545]">
+            비슷해 보여도 제거하는 방법이 다릅니다.
           </p>
         </div>
 
-        <div className="mt-12">
+        <div className="mt-10 sm:mt-14">
           <SkinCheckQuiz />
         </div>
       </div>
