@@ -18,6 +18,14 @@ export type SkinResultKey =
   | "redness"
   | "acne";
 
+export type SkinIconKey =
+  | "raised"
+  | "flat"
+  | SkinResultKey
+  | "warn-asymmetry"
+  | "warn-size"
+  | "warn-change";
+
 export type SkinResult = {
   key: SkinResultKey;
   name: string;
@@ -188,6 +196,8 @@ export const skinResults: Record<SkinResultKey, SkinResult> = {
 export type SkinOption = {
   label: string;
   hint?: string;
+  /** 선택지에 함께 보여줄 일러스트 */
+  icon?: SkinIconKey;
   /** 다음 질문 id 또는 결과 */
   next?: string;
   result?: SkinResultKey;
@@ -206,10 +216,10 @@ export const skinQuestions: Record<string, SkinQuestion> = {
     title: "어떤 고민인가요?",
     description: "가장 가까운 것을 하나 골라 주세요.",
     options: [
-      { label: "도톰하게 튀어나왔어요", hint: "점 · 쥐젖 · 사마귀 · 검버섯", next: "raised" },
-      { label: "평평한 색소예요", hint: "기미 · 주근깨 · 잡티", next: "flat" },
-      { label: "붉은기·실핏줄이 있어요", hint: "홍조 · 혈관 확장", result: "redness" },
-      { label: "여드름·모공이 고민이에요", hint: "염증성 여드름 · 피지", result: "acne" },
+      { label: "도톰하게 튀어나왔어요", hint: "점 · 쥐젖 · 사마귀 · 검버섯", icon: "raised", next: "raised" },
+      { label: "평평한 색소예요", hint: "기미 · 주근깨 · 잡티", icon: "flat", next: "flat" },
+      { label: "붉은기·실핏줄이 있어요", hint: "홍조 · 혈관 확장", icon: "redness", result: "redness" },
+      { label: "여드름·모공이 고민이에요", hint: "염증성 여드름 · 피지", icon: "acne", result: "acne" },
     ],
   },
   raised: {
@@ -217,12 +227,12 @@ export const skinQuestions: Record<string, SkinQuestion> = {
     title: "어떤 모양인가요?",
     description: "가장 비슷한 것을 골라 주세요.",
     options: [
-      { label: "갈색·검정에 경계가 뚜렷해요", hint: "수년째 그대로 · 점", next: "mole-warning" },
-      { label: "말랑한 돌기가 있어요", hint: "쥐젖 · 목 · 겨드랑이 · 눈꺼풀", result: "skin-tag" },
-      { label: "살색 납작한 돌기가 여러 개예요", hint: "편평사마귀 · 이마 · 볼 · 손등", result: "flat-wart" },
-      { label: "눈 밑에 단단한 알갱이가 있어요", hint: "한관종 · 살색 1~3mm", result: "syringoma" },
-      { label: "눈가에 하얀 알갱이가 비쳐요", hint: "비립종 · 1~2mm", result: "milium" },
-      { label: "갈색이고 표면이 거칠어요", hint: "검버섯 · 40대 이후 증가", result: "seborrheic" },
+      { label: "갈색·검정에 경계가 뚜렷해요", hint: "수년째 그대로 · 점", icon: "mole", next: "mole-warning" },
+      { label: "말랑한 돌기가 있어요", hint: "쥐젖 · 목 · 겨드랑이 · 눈꺼풀", icon: "skin-tag", result: "skin-tag" },
+      { label: "살색 납작한 돌기가 여러 개예요", hint: "편평사마귀 · 이마 · 볼 · 손등", icon: "flat-wart", result: "flat-wart" },
+      { label: "눈 밑에 단단한 알갱이가 있어요", hint: "한관종 · 살색 1~3mm", icon: "syringoma", result: "syringoma" },
+      { label: "눈가에 하얀 알갱이가 비쳐요", hint: "비립종 · 1~2mm", icon: "milium", result: "milium" },
+      { label: "갈색이고 표면이 거칠어요", hint: "검버섯 · 40대 이후 증가", icon: "seborrheic", result: "seborrheic" },
     ],
   },
   flat: {
@@ -230,10 +240,10 @@ export const skinQuestions: Record<string, SkinQuestion> = {
     title: "어떤 색소인가요?",
     description: "가장 비슷한 것을 골라 주세요.",
     options: [
-      { label: "광대·볼에 대칭인 흐린 얼룩", hint: "기미 · 경계가 흐릿함", result: "melasma" },
-      { label: "작은 점이 수십 개 흩어져 있어요", hint: "주근깨 · 어릴 때부터 · 1~3mm", result: "freckle" },
-      { label: "경계가 뚜렷한 평평한 반점", hint: "흑자 · 잡티 · 3~10mm", result: "lentigo" },
-      { label: "여드름 자국이 그대로 남았어요", hint: "염증 후 색소침착", result: "pih" },
+      { label: "광대·볼에 대칭인 흐린 얼룩", hint: "기미 · 경계가 흐릿함", icon: "melasma", result: "melasma" },
+      { label: "작은 점이 수십 개 흩어져 있어요", hint: "주근깨 · 어릴 때부터 · 1~3mm", icon: "freckle", result: "freckle" },
+      { label: "경계가 뚜렷한 평평한 반점", hint: "흑자 · 잡티 · 3~10mm", icon: "lentigo", result: "lentigo" },
+      { label: "여드름 자국이 그대로 남았어요", hint: "염증 후 색소침착", icon: "pih", result: "pih" },
     ],
   },
   "mole-warning": {
@@ -241,10 +251,10 @@ export const skinQuestions: Record<string, SkinQuestion> = {
     title: "이런 변화가 있나요?",
     description: "제거 전에 반드시 확인이 필요한 신호입니다.",
     options: [
-      { label: "해당되는 것이 없어요", hint: "모양·크기가 그대로예요", result: "mole" },
-      { label: "비대칭이거나 경계가 불규칙해요", hint: "진료 확인 필요", next: "mole-alert" },
-      { label: "6mm보다 커요", hint: "연필 지우개 크기 이상", next: "mole-alert" },
-      { label: "최근 색·크기가 변했어요", hint: "진료 확인 필요", next: "mole-alert" },
+      { label: "해당되는 것이 없어요", hint: "모양·크기가 그대로예요", icon: "mole", result: "mole" },
+      { label: "비대칭이거나 경계가 불규칙해요", hint: "진료 확인 필요", icon: "warn-asymmetry", next: "mole-alert" },
+      { label: "6mm보다 커요", hint: "연필 지우개 크기 이상", icon: "warn-size", next: "mole-alert" },
+      { label: "최근 색·크기가 변했어요", hint: "진료 확인 필요", icon: "warn-change", next: "mole-alert" },
     ],
   },
 };
