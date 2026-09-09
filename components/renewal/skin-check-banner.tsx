@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/home/reveal";
 import SkinIcon from "@/components/renewal/skin-icons";
-import type { SkinIconKey } from "@/lib/skin-check";
+import type { SkinIconKey, SkinResultKey } from "@/lib/skin-check";
+import { skinPhotos } from "@/lib/skin-photos";
 
 type Side = { icon: SkinIconKey; name: string; trait: string; how: string };
 
@@ -31,23 +32,14 @@ const comparisons: { question: string; pair: [Side, Side] }[] = [
   },
 ];
 
-/** 사진: Pexels 무료 라이선스(상업적 이용 가능, 출처 표기 의무 없음) */
-const guides = [
-  {
-    src: "/assets/skin-check/uv-protection.webp",
-    alt: "팔에 자외선 차단제를 덜어내는 모습",
-    title: "색소는 햇빛에 진해집니다",
-  },
-  {
-    src: "/assets/skin-check/self-check.webp",
-    alt: "손거울로 얼굴을 확인하는 모습",
-    title: "한 달에 한 번 같은 자리를 보세요",
-  },
-  {
-    src: "/assets/skin-check/consult.webp",
-    alt: "진료실에서 피부 상태를 함께 확인하는 모습",
-    title: "헷갈리면 사진만 보내주세요",
-  },
+/** 실제 병변 사진 (상업적 이용 가능 자료만 · 출처 표기) */
+const realPhotos: { key: SkinResultKey; name: string; how: string }[] = [
+  { key: "seborrheic", name: "검버섯", how: "검버섯 제거" },
+  { key: "lentigo", name: "흑자", how: "듀얼토닝" },
+  { key: "melasma", name: "기미", how: "듀얼토닝" },
+  { key: "freckle", name: "주근깨", how: "듀얼토닝" },
+  { key: "flat-wart", name: "편평사마귀", how: "CO2 제거" },
+  { key: "milium", name: "비립종", how: "CO2 제거" },
 ];
 
 export default function SkinCheckBanner() {
@@ -115,27 +107,45 @@ export default function SkinCheckBanner() {
           </div>
         </Reveal>
 
-        {/* 실제 사진 + 한 줄 안내 */}
+        {/* 실제 병변 사진 */}
         <Reveal>
-          <div className="mt-14 grid gap-6 sm:mt-20 sm:grid-cols-3 sm:gap-5">
-            {guides.map((guide) => (
-              <figure key={guide.title} className="min-w-0">
-                <div className="relative aspect-[3/2] w-full overflow-hidden rounded-[16px] bg-[#f0f0ef]">
-                  <Image
-                    src={guide.src}
-                    alt={guide.alt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, 33vw"
-                    className="object-cover"
-                  />
-                </div>
-                <figcaption className="mt-4 break-keep text-center text-[16px] font-bold text-[#171717] sm:text-[17px]">
-                  {guide.title}
-                </figcaption>
-              </figure>
-            ))}
+          <div className="mt-16 sm:mt-24">
+            <h3 className="gb-font break-keep text-center text-[24px] font-bold text-[#171717] sm:text-[30px]">
+              실제로는 이렇게 보입니다
+            </h3>
+
+            <div className="mt-8 grid grid-cols-2 gap-4 sm:mt-10 sm:grid-cols-3 sm:gap-5">
+              {realPhotos.map((item) => {
+                const photo = skinPhotos[item.key];
+                if (!photo) return null;
+
+                return (
+                  <figure key={item.key} className="min-w-0">
+                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[14px] bg-[#f0f0ef]">
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        sizes="(max-width: 640px) 50vw, 33vw"
+                        className="object-cover"
+                      />
+                    </div>
+                    <figcaption className="mt-3">
+                      <p className="break-keep text-[17px] font-bold text-[#171717]">{item.name}</p>
+                      <p className="mt-1.5 inline-block break-keep rounded-full bg-teal-50 px-3 py-1.5 text-[13px] font-bold text-teal-800">
+                        {item.how}
+                      </p>
+                      <p className="mt-2 break-all text-[10.5px] leading-tight text-[#9a9a9a]">
+                        {photo.credit}
+                      </p>
+                    </figcaption>
+                  </figure>
+                );
+              })}
+            </div>
           </div>
         </Reveal>
+
       </div>
     </section>
   );

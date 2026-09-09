@@ -37,8 +37,10 @@ export type SkinResult = {
   distinguish: string;
   /** 결과 화면 제목에 쓰는 동사: "이렇게 제거합니다" 등 */
   action: "제거" | "치료" | "관리";
-  /** 권장 시술 (menu-items의 slug) */
+  /** 주 시술 (menu-items의 slug) */
   recommend: { slug: string; label: string; reason: string };
+  /** 함께 진행하면 좋은 시술 */
+  alsoRecommend?: { slug: string; label: string; reason: string };
   /** 추가 안내 */
   note?: string;
 };
@@ -123,6 +125,11 @@ export const skinResults: Record<SkinResultKey, SkinResult> = {
       label: "검버섯 제거 (크기별)",
       reason: "크기를 측정해 크기별로 안내드립니다.",
     },
+    alsoRecommend: {
+      slug: "dual-toning",
+      label: "듀얼토닝",
+      reason: "함께 있는 흑자·잡티는 듀얼토닝으로 정리합니다.",
+    },
   },
   melasma: {
     key: "melasma",
@@ -146,9 +153,14 @@ export const skinResults: Record<SkinResultKey, SkinResult> = {
     distinguish: "계절에 따라 진해졌다 옅어집니다.",
     action: "치료",
     recommend: {
+      slug: "dual-toning",
+      label: "듀얼토닝",
+      reason: "제네시스로 데운 뒤 1064nm로 색소를 부숩니다.",
+    },
+    alsoRecommend: {
       slug: "laser-toning",
       label: "레이저토닝",
-      reason: "전반적인 톤을 정돈하며 관리합니다.",
+      reason: "톤 정돈만 원하시면 레이저토닝도 가능합니다.",
     },
   },
   lentigo: {
@@ -170,8 +182,13 @@ export const skinResults: Record<SkinResultKey, SkinResult> = {
     summary: "여드름·상처 자리에 그 모양대로 남은 갈색 자국",
     features: ["여드름·상처 자리", "같은 모양으로 남음", "서서히 옅어짐"],
     distinguish: "원인이 되는 여드름 관리가 함께 필요합니다.",
-    action: "관리",
+    action: "치료",
     recommend: {
+      slug: "dual-toning",
+      label: "듀얼토닝",
+      reason: "남은 색소를 낮은 출력으로 나눠 정리합니다.",
+    },
+    alsoRecommend: {
       slug: "lala-peel",
       label: "라라필",
       reason: "각질·피지를 정리해 색소가 빠질 환경을 만듭니다.",
@@ -182,12 +199,17 @@ export const skinResults: Record<SkinResultKey, SkinResult> = {
     name: "홍조 · 실핏줄",
     summary: "붉은기와 실핏줄이 도드라지는 혈관성 문제",
     features: ["얼굴이 쉽게 붉어짐", "실핏줄이 비침", "열감이 함께 느껴짐"],
-    distinguish: "색소가 아니라 혈관 문제라 토닝만으로는 부족합니다.",
+    distinguish: "혈관 문제라 진피를 데우는 제네시스가 함께 들어가야 합니다.",
     action: "치료",
     recommend: {
+      slug: "dual-toning",
+      label: "듀얼토닝",
+      reason: "제네시스로 진피를 데운 뒤 토닝까지 함께 진행합니다.",
+    },
+    alsoRecommend: {
       slug: "genesis",
       label: "제네시스",
-      reason: "진피를 데워 붉은기와 모공을 함께 관리합니다.",
+      reason: "홍조·모공만 집중한다면 제네시스 단독도 가능합니다.",
     },
   },
   acne: {

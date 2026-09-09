@@ -1,10 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import SkinIcon from "@/components/renewal/skin-icons";
 import { openReserveSheet } from "@/components/site/reserve-cta-button";
 import { moleAlert, skinQuestions, skinResults, type SkinResultKey } from "@/lib/skin-check";
+import { skinPhotos } from "@/lib/skin-photos";
 import { siteContact } from "@/lib/site-nav";
 
 type Screen =
@@ -98,7 +100,7 @@ export default function SkinCheckQuiz() {
           {screen.kind === "intro" ? (
             <IntroCard onStart={() => go({ kind: "question", id: "start" })} />
           ) : screen.kind === "question" ? (
-            <QuestionCard id={screen.id} step={step} onSelect={go} />
+            <QuestionCard id={screen.id} onSelect={go} />
           ) : screen.kind === "alert" ? (
             <AlertCard onRestart={restart} />
           ) : (
@@ -146,11 +148,9 @@ function IntroCard({ onStart }: { onStart: () => void }) {
 
 function QuestionCard({
   id,
-  step,
   onSelect,
 }: {
   id: string;
-  step: number;
   onSelect: (next: Screen) => void;
 }) {
   const question = skinQuestions[id];
@@ -297,6 +297,7 @@ function AlertCard({ onRestart }: { onRestart: () => void }) {
 
 function ResultCard({ resultKey, onRestart }: { resultKey: SkinResultKey; onRestart: () => void }) {
   const result = skinResults[resultKey];
+  const photo = skinPhotos[resultKey];
 
   return (
     <div className="px-5 py-10 sm:px-10 sm:py-14">
@@ -311,6 +312,24 @@ function ResultCard({ resultKey, onRestart }: { resultKey: SkinResultKey; onRest
         </p>
       </div>
 
+      {photo ? (
+        <figure className="mt-7">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#f0f0ef]">
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              fill
+              sizes="(max-width: 720px) 100vw, 640px"
+              className="object-cover"
+            />
+            <figcaption className="absolute left-0 top-0 rounded-br-2xl bg-[#171717]/80 px-3.5 py-2 text-[13px] font-bold text-white">
+              실제 사진
+            </figcaption>
+          </div>
+          <p className="mt-2 text-[11px] text-[#8a8a8a]">{photo.credit}</p>
+        </figure>
+      ) : null}
+
       {/* 무엇으로 제거하는지 — 결과 화면의 주인공 */}
       <TreatmentBlock
         action={result.action}
@@ -318,6 +337,29 @@ function ResultCard({ resultKey, onRestart }: { resultKey: SkinResultKey; onRest
         reason={result.recommend.reason}
         slug={result.recommend.slug}
       />
+
+      {result.alsoRecommend ? (
+        <Link
+          href={`/menu/${result.alsoRecommend.slug}`}
+          className="group mt-3 flex items-center gap-4 rounded-2xl border-2 border-[#e2e2e2] bg-white px-5 py-4 transition hover:border-teal-700"
+        >
+          <span className="min-w-0 flex-1">
+            <span className="block text-[13px] font-bold text-teal-700">함께 하면 좋아요</span>
+            <span className="mt-1 block break-keep text-[18px] font-bold text-[#171717]">
+              {result.alsoRecommend.label}
+            </span>
+            <span className="mt-1 block break-keep text-[14px] leading-snug text-[#5f5f5f]">
+              {result.alsoRecommend.reason}
+            </span>
+          </span>
+          <span
+            aria-hidden
+            className="shrink-0 text-[18px] text-[#b0b0b0] transition-transform duration-200 group-hover:translate-x-1 group-hover:text-teal-700"
+          >
+            →
+          </span>
+        </Link>
+      ) : null}
 
       <ul className="mt-7 flex flex-wrap justify-center gap-2">
         {result.features.map((feature) => (
