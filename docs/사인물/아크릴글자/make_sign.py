@@ -75,7 +75,7 @@ def hdim(y, x_l, x_r, label, size=5):
 W = 1000.0; L = 40.0
 y = 30.0
 text(L, y, "안성 한의원 · 아크릴 글자 발주 도면 (1:1 실측, 단위 mm)", "sans", 12, BLACK); y += 9
-text(L, y, "상품명: 아크릴 글자  |  사양: 무광 3T  |  색상: 코코아 / 회색(연한 회색 계열)  |  총 수량: 9개 (글자 5개 + 숫자 2개 + 일자 막대 2개)", "sans", 6, GRAY); y += 9
+text(L, y, "상품명: 아크릴 글자  |  사양: 무광 3T  |  색상: 코코아 / 회색(연한 회색 계열)  |  총 수량: 11개 (글자 5개 + 베드번호 숫자 3개 + 일자 막대 3개)", "sans", 6, GRAY); y += 9
 notes = [
     "■ 글꼴 안내: 지정 글꼴(Sandoll 고딕Neo Cond 04 Regular / MICE명조 OTF 01 Regular)이 이 파일에 포함되어 있지 않아,",
     "   임시로 Noto Sans KR(고딕 자리) / Noto Serif KR(명조 자리)로 타이핑되어 있습니다. 문자는 모두 편집 가능한 상태입니다.",
@@ -113,12 +113,12 @@ spec_item(3, "파우더룸 • 검사실", "serif", 100, "(가운데 기호 포�
 spec_item(4, "← 파우더룸 • 탈의실", "sans", 70, "(왼쪽 화살표 포함)")
 spec_item(5, "파우더룸 • 탈의실 →", "sans", 70, "(오른쪽 화살표 포함)")
 
-# 6~9: 숫자 2개 + 밑줄 2개
-text(L, y, "6 ~ 9. 「15」「16」 숫자 높이 90mm  /  일자 막대(밑줄) 2개 가로 90mm × 세로 6mm   숫자 글꼴: MICE명조 OTF 01 Regular   (총 4개, 각각 별도 조각)", "sans", 5, GRAY); y += 16
+# 6~11: 베드번호 숫자 3개 + 일자 막대 3개
+text(L, y, "6 ~ 11. 베드번호 「15」「16」「17」 숫자 높이 90mm  /  일자 막대(밑줄) 3개 가로 90mm × 세로 6mm   숫자 글꼴: MICE명조 OTF 01 Regular   (총 6개, 각각 별도 조각)", "sans", 5, GRAY); y += 16
 top_row = y
 x = L
 bar_h_note = None
-for i, num_s in enumerate(["15", "16"]):
+for i, num_s in enumerate(["15", "16", "17"]):
     size = size_for_height("serif", num_s, 90)
     m = measure("serif", num_s, size)
     base = top_row + m["ymax"]; bot = base - m["ymin"]
@@ -126,7 +126,7 @@ for i, num_s in enumerate(["15", "16"]):
     line(x - 12, top_row, x + m["adv"] + 30, top_row, 0.25, GUIDE, (2, 2))
     line(x - 12, bot, x + m["adv"] + 30, bot, 0.25, GUIDE, (2, 2))
     vdim(x + m["adv"] + 22, top_row, bot, "높이 90mm")
-    text(x, top_row - 3, f"{6 + i}. 숫자 {num_s}", "sans", 4.5, GRAY)
+    text(x, top_row - 3, f"{6 + i}. 베드번호 {num_s}", "sans", 4.5, GRAY)
     # 밑줄: 사진과 같은 일자 막대 (가로 90mm × 세로 6mm 사각형)
     BAR_W, BAR_H = 90.0, 6.0
     by = bot + 25
@@ -135,13 +135,13 @@ for i, num_s in enumerate(["15", "16"]):
     br = bl + BAR_W; bbot = by + BAR_H
     hdim(bbot + 8, bl, br, "가로 90mm")
     vdim(br + 10, by, bbot, "세로 6mm", size=4)
-    text(x, bbot + 22, f"{8 + i}. 일자 막대 (90 × 6mm, 사진 속 기존 제품과 동일 형태)", "sans", 4.5, GRAY)
+    text(x, bbot + 22, f"{9 + i}. 일자 막대 (90 × 6mm, {num_s}번 아래에 부착)", "sans", 4.5, GRAY)
     bar_h_note = bbot + 26
-    x += m["adv"] + 120
+    x += m["adv"] + 145
 y = bar_h_note + 20
 line(L, y, W - L, y, 0.3, "#999999"); y += 10
 text(L, y, "※ 3·4·5번의 가운데 「•」와 4·5번 화살표는 발주 메시지에 적힌 기호 그대로 넣었습니다. 기호가 다르면 해당 문자만 수정해 주세요.", "sans", 4.5, GRAY); y += 7
-text(L, y, "※ 일자 막대(8·9번)는 글꼴 문자가 아닌 사각형 도형입니다. 세로 6mm는 기존 제품 사진을 잣대로 잰 근사값이므로, 기존 제품과 같은 두께로 맞춰 주세요.", "sans", 4.5, GRAY); y += 12
+text(L, y, "※ 일자 막대(9·10·11번)는 글꼴 문자가 아닌 사각형 도형입니다. 세로 6mm는 기존 제품 사진을 잣대로 잰 근사값이므로, 기존 제품과 같은 두께로 맞춰 주세요.", "sans", 4.5, GRAY); y += 12
 H = y + 20
 
 # ---------- PDF 출력 ----------
