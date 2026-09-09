@@ -39,6 +39,31 @@ export const skinPhotos: Partial<Record<SkinResultKey, SkinPhoto>> = {
     alt: "턱 주변에 여러 개 생긴 편평사마귀",
     credit: "Hassan et al. / Wikimedia Commons · CC BY 4.0",
   },
+  mole: {
+    src: "/assets/skin-check/real/mole.webp",
+    alt: "볼에 경계가 또렷하게 자리한 점",
+    credit: "Pexels",
+  },
+  "skin-tag": {
+    src: "/assets/skin-check/real/skin-tag.webp",
+    alt: "피부 위로 도톰하게 솟은 쥐젖",
+    credit: "Davidwidlund / Wikimedia Commons · CC BY-SA 4.0",
+  },
+  pih: {
+    src: "/assets/skin-check/real/pih.webp",
+    alt: "여드름이 있던 자리에 남은 갈색 색소침착",
+    credit: "Pexels",
+  },
+  redness: {
+    src: "/assets/skin-check/real/redness.webp",
+    alt: "볼에 붉은기가 도드라진 홍조",
+    credit: "Pexels",
+  },
+  acne: {
+    src: "/assets/skin-check/real/acne.webp",
+    alt: "볼에 올라온 염증성 여드름",
+    credit: "Pexels",
+  },
   milium: {
     src: "/assets/skin-check/real/milium.webp",
     alt: "볼에 하얗게 비쳐 보이는 비립종",

@@ -1,9 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/home/reveal";
 import SkinIcon from "@/components/renewal/skin-icons";
-import type { SkinIconKey, SkinResultKey } from "@/lib/skin-check";
-import { skinPhotos } from "@/lib/skin-photos";
+import SkinPhotoGallery from "@/components/renewal/skin-photo-gallery";
+import type { SkinIconKey } from "@/lib/skin-check";
 
 type Side = { icon: SkinIconKey; name: string; trait: string; how: string };
 
@@ -32,16 +31,6 @@ const comparisons: { question: string; pair: [Side, Side] }[] = [
   },
 ];
 
-/** 실제 병변 사진 (상업적 이용 가능 자료만 · 출처 표기) */
-const realPhotos: { key: SkinResultKey; name: string; how: string }[] = [
-  { key: "seborrheic", name: "검버섯", how: "검버섯 제거" },
-  { key: "lentigo", name: "흑자", how: "듀얼토닝" },
-  { key: "melasma", name: "기미", how: "듀얼토닝" },
-  { key: "freckle", name: "주근깨", how: "듀얼토닝" },
-  { key: "flat-wart", name: "편평사마귀", how: "CO2 제거" },
-  { key: "milium", name: "비립종", how: "CO2 제거" },
-];
-
 export default function SkinCheckBanner() {
   return (
     <section className="bg-white py-16 lg:py-24">
@@ -49,7 +38,7 @@ export default function SkinCheckBanner() {
         <Reveal>
           <div className="text-center">
             <h2 className="gb-font break-keep text-[28px] font-bold leading-[1.3] text-[#171717] sm:text-[40px]">
-              점인가요, 검버섯인가요?
+              기미인가요, 점인가요?
             </h2>
             <p className="mx-auto mt-4 max-w-[400px] break-keep text-[16px] leading-[1.7] text-[#454545]">
               비슷해 보여도 제거하는 방법이 다릅니다.
@@ -113,35 +102,8 @@ export default function SkinCheckBanner() {
             <h3 className="gb-font break-keep text-center text-[24px] font-bold text-[#171717] sm:text-[30px]">
               실제로는 이렇게 보입니다
             </h3>
-
-            <div className="mt-8 grid grid-cols-2 gap-4 sm:mt-10 sm:grid-cols-3 sm:gap-5">
-              {realPhotos.map((item) => {
-                const photo = skinPhotos[item.key];
-                if (!photo) return null;
-
-                return (
-                  <figure key={item.key} className="min-w-0">
-                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[14px] bg-[#f0f0ef]">
-                      <Image
-                        src={photo.src}
-                        alt={photo.alt}
-                        fill
-                        sizes="(max-width: 640px) 50vw, 33vw"
-                        className="object-cover"
-                      />
-                    </div>
-                    <figcaption className="mt-3">
-                      <p className="break-keep text-[17px] font-bold text-[#171717]">{item.name}</p>
-                      <p className="mt-1.5 inline-block break-keep rounded-full bg-teal-50 px-3 py-1.5 text-[13px] font-bold text-teal-800">
-                        {item.how}
-                      </p>
-                      <p className="mt-2 break-all text-[10.5px] leading-tight text-[#9a9a9a]">
-                        {photo.credit}
-                      </p>
-                    </figcaption>
-                  </figure>
-                );
-              })}
+            <div className="mt-8 sm:mt-10">
+              <SkinPhotoGallery />
             </div>
           </div>
         </Reveal>

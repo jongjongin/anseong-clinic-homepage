@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SkinCheckQuiz from "@/components/renewal/skin-check-quiz";
+import SkinPhotoGallery from "@/components/renewal/skin-photo-gallery";
 
 const siteUrl = "https://anseong365.com";
 
@@ -31,7 +32,7 @@ export default function SkinCheckPage() {
 
         <div className="mx-auto max-w-[560px] text-center">
           <h1 className="gb-font mt-2 break-keep text-[28px] font-bold leading-[1.3] text-[#171717] sm:text-[40px]">
-            점인가요, 검버섯인가요?
+            기미인가요, 점인가요?
           </h1>
           <p className="mt-4 break-keep text-[16px] leading-[1.7] text-[#454545]">
             비슷해 보여도 제거하는 방법이 다릅니다.
@@ -41,6 +42,18 @@ export default function SkinCheckPage() {
         <div className="mt-10 sm:mt-14">
           <SkinCheckQuiz />
         </div>
+
+        <section id="photos" className="mt-20 scroll-mt-24 sm:mt-28">
+          <h2 className="gb-font break-keep text-center text-[24px] font-bold text-[#171717] sm:text-[30px]">
+            전체 질환 예시 사진
+          </h2>
+          <p className="mx-auto mt-3 max-w-[420px] break-keep text-center text-[15px] leading-[1.7] text-[#454545]">
+            실제 사진으로 내 고민과 비교해 보세요.
+          </p>
+          <div className="mt-8 sm:mt-10">
+            <SkinPhotoGallery />
+          </div>
+        </section>
       </div>
     </main>
   );

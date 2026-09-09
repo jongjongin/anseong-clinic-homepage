@@ -126,7 +126,7 @@ function IntroCard({ onStart }: { onStart: () => void }) {
       </div>
 
       <h2 className="gb-font mt-10 break-keep text-[27px] font-bold leading-[1.35] text-[#171717] sm:text-[36px]">
-        점인가요, 검버섯인가요?
+        기미인가요, 점인가요?
       </h2>
       <p className="mx-auto mt-4 max-w-[330px] break-keep text-[16px] leading-[1.75] text-[#454545]">
         3문항이면 어떤 병변인지, 무엇으로 제거하는지 알려드립니다.
@@ -259,7 +259,7 @@ function TreatmentBlock({
         href={`/menu/${slug}`}
         className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-4 text-[16px] font-bold text-teal-800 transition hover:bg-teal-50"
       >
-        가격 보기
+        프로그램 보기
         <span aria-hidden>→</span>
       </Link>
     </div>
@@ -344,11 +344,10 @@ function ResultCard({ resultKey, onRestart }: { resultKey: SkinResultKey; onRest
           className="group mt-3 flex items-center gap-4 rounded-2xl border-2 border-[#e2e2e2] bg-white px-5 py-4 transition hover:border-teal-700"
         >
           <span className="min-w-0 flex-1">
-            <span className="block text-[13px] font-bold text-teal-700">함께 하면 좋아요</span>
-            <span className="mt-1 block break-keep text-[18px] font-bold text-[#171717]">
+            <span className="block break-keep text-[19px] font-bold text-[#171717]">
               {result.alsoRecommend.label}
             </span>
-            <span className="mt-1 block break-keep text-[14px] leading-snug text-[#5f5f5f]">
+            <span className="mt-1.5 block break-keep text-[14px] leading-snug text-[#5f5f5f]">
               {result.alsoRecommend.reason}
             </span>
           </span>
@@ -382,6 +381,16 @@ function ResultCard({ resultKey, onRestart }: { resultKey: SkinResultKey; onRest
           {result.note}
         </p>
       ) : null}
+
+      <a
+        href="/skin-check#photos"
+        className="group mt-3 flex items-center justify-center gap-2 rounded-2xl border-2 border-[#e2e2e2] bg-white px-5 py-4 text-[15px] font-bold text-[#171717] transition hover:border-teal-700 hover:text-teal-700"
+      >
+        전체 질환 예시 사진 보기
+        <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">
+          →
+        </span>
+      </a>
 
       <ContactActions
         message={`[자가 감별] ${result.name} 으로 나왔습니다. ${result.recommend.label} 상담 원합니다.`}
