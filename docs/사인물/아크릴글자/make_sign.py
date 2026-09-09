@@ -75,7 +75,7 @@ def hdim(y, x_l, x_r, label, size=5):
 W = 1400.0; L = 40.0
 y = 30.0
 text(L, y, "안성 한의원 · 아크릴 글자 발주 도면 (1:1 실측, 단위 mm)", "sans", 12, BLACK); y += 9
-text(L, y, "상품명: 아크릴 글자  |  사양: 무광 3T  |  색상: 코코아 / 회색(연한 회색 계열)  |  총 수량: 11개 (글자 5개 + 베드번호 숫자 3개 + 일자 막대 3개)", "sans", 6, GRAY); y += 9
+text(L, y, "상품명: 아크릴 글자  |  사양: 무광 3T  |  색상: 코코아 / 회색(연한 회색 계열)  |  총 수량: 15개 (글자 5개 + 베드번호 숫자 3개 + 일자 막대 3개 + 「좌」 4개)", "sans", 6, GRAY); y += 9
 notes = [
     "■ 글꼴 안내: 지정 글꼴(Sandoll 고딕Neo Cond 04 Regular / MICE명조 OTF 01 Regular)이 이 파일에 포함되어 있지 않아,",
     "   임시로 Noto Sans KR(고딕 자리) / Noto Serif KR(명조 자리)로 타이핑되어 있습니다. 문자는 모두 편집 가능한 상태입니다.",
@@ -142,6 +142,24 @@ for i, num_s in enumerate(["15", "16", "17"]):
     bar_h_note = bbot + 26
     x += m["adv"] + 145
 y = bar_h_note + 20
+
+# 12. 「좌」 세로 30mm, 동일 글자 4개 (베드번호와 같은 명조체)
+Z, ZH, ZN = "좌", 30.0, 4
+text(L, y, f"12. 「{Z}」 세로 {ZH:g}mm   글꼴: MICE명조 OTF 01 Regular (베드번호와 동일 글꼴)   동일한 글자 {ZN}개", "sans", 5, GRAY); y += 8
+zsize = size_for_height("serif", Z, ZH)
+zm = measure("serif", Z, zsize)
+ztop = y; zbase = ztop + zm["ymax"]; zbot = zbase - zm["ymin"]
+zx = L
+for j in range(ZN):
+    text(zx, zbase, Z, "serif", zsize, COCOA)
+    if j == 0:
+        hdim(zbot + 9, zx + zm["xmin"], zx + zm["xmax"], f"가로 {zm['xmax'] - zm['xmin']:.0f}mm", size=4)
+    zx += zm["adv"] + 30
+line(L - 12, ztop, zx + 6, ztop, 0.25, GUIDE, (2, 2))
+line(L - 12, zbot, zx + 6, zbot, 0.25, GUIDE, (2, 2))
+vdim(zx + 2, ztop, zbot, f"세로 {ZH:g}mm", size=4)
+y = zbot + 26
+
 line(L, y, W - L, y, 0.3, "#999999"); y += 10
 text(L, y, "※ 3·4·5번의 가운데 「•」와 4·5번 화살표는 발주 메시지에 적힌 기호 그대로 넣었습니다. 기호가 다르면 해당 문자만 수정해 주세요.", "sans", 4.5, GRAY); y += 7
 text(L, y, "※ 일자 막대(9·10·11번)는 글꼴 문자가 아닌 사각형 도형입니다. 가로 110mm는 숫자 폭(약 108mm)에 맞춘 값이고, 세로 6mm는 기존 제품 사진을 잣대로 잰 근사값이므로 기존 제품과 같은 두께로 맞춰 주세요.", "sans", 4.5, GRAY); y += 12
