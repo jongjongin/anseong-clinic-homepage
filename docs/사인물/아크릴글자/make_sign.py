@@ -114,7 +114,7 @@ spec_item(4, "← 파우더룸 • 탈의실", "sans", 70, "(왼쪽 화살표 �
 spec_item(5, "파우더룸 • 탈의실 →", "sans", 70, "(오른쪽 화살표 포함)")
 
 # 6~11: 베드번호 숫자 3개 + 일자 막대 3개
-text(L, y, "6 ~ 11. 베드번호 「15」「16」「17」 숫자 높이 90mm  /  일자 막대(밑줄) 3개 가로 90mm × 세로 6mm   숫자 글꼴: MICE명조 OTF 01 Regular   (총 6개, 각각 별도 조각)", "sans", 5, GRAY); y += 16
+text(L, y, "6 ~ 11. 베드번호 「15」「16」「17」 숫자 높이 90mm  /  일자 막대(밑줄) 3개 가로 110mm × 세로 6mm (숫자 폭에 맞춤)   숫자 글꼴: MICE명조 OTF 01 Regular   (총 6개, 각각 별도 조각)", "sans", 5, GRAY); y += 16
 top_row = y
 x = L
 bar_h_note = None
@@ -127,21 +127,22 @@ for i, num_s in enumerate(["15", "16", "17"]):
     line(x - 12, bot, x + m["adv"] + 30, bot, 0.25, GUIDE, (2, 2))
     vdim(x + m["adv"] + 22, top_row, bot, "높이 90mm")
     text(x, top_row - 3, f"{6 + i}. 베드번호 {num_s}", "sans", 4.5, GRAY)
-    # 밑줄: 사진과 같은 일자 막대 (가로 90mm × 세로 6mm 사각형)
-    BAR_W, BAR_H = 90.0, 6.0
+    # 밑줄: 사진과 같은 일자 막대 (가로 110mm × 세로 6mm 사각형, 숫자 폭에 맞춤)
+    BAR_W, BAR_H = 110.0, 6.0
     by = bot + 25
-    bl = x + m["adv"] / 2 - BAR_W / 2          # 숫자 가운데 정렬
+    ink_c = x + (m["xmin"] + m["xmax"]) / 2    # 숫자 잉크 기준 중심
+    bl = ink_c - BAR_W / 2
     rect(bl, by, BAR_W, BAR_H, COCOA)
     br = bl + BAR_W; bbot = by + BAR_H
-    hdim(bbot + 8, bl, br, "가로 90mm")
+    hdim(bbot + 8, bl, br, f"가로 {BAR_W:g}mm")
     vdim(br + 10, by, bbot, "세로 6mm", size=4)
-    text(x, bbot + 22, f"{9 + i}. 일자 막대 (90 × 6mm, {num_s}번 아래에 부착)", "sans", 4.5, GRAY)
+    text(x, bbot + 22, f"{9 + i}. 일자 막대 ({BAR_W:g} × {BAR_H:g}mm, {num_s}번 아래에 부착)", "sans", 4.5, GRAY)
     bar_h_note = bbot + 26
     x += m["adv"] + 145
 y = bar_h_note + 20
 line(L, y, W - L, y, 0.3, "#999999"); y += 10
 text(L, y, "※ 3·4·5번의 가운데 「•」와 4·5번 화살표는 발주 메시지에 적힌 기호 그대로 넣었습니다. 기호가 다르면 해당 문자만 수정해 주세요.", "sans", 4.5, GRAY); y += 7
-text(L, y, "※ 일자 막대(9·10·11번)는 글꼴 문자가 아닌 사각형 도형입니다. 세로 6mm는 기존 제품 사진을 잣대로 잰 근사값이므로, 기존 제품과 같은 두께로 맞춰 주세요.", "sans", 4.5, GRAY); y += 12
+text(L, y, "※ 일자 막대(9·10·11번)는 글꼴 문자가 아닌 사각형 도형입니다. 가로 110mm는 숫자 폭(약 108mm)에 맞춘 값이고, 세로 6mm는 기존 제품 사진을 잣대로 잰 근사값이므로 기존 제품과 같은 두께로 맞춰 주세요.", "sans", 4.5, GRAY); y += 12
 H = y + 20
 
 # ---------- PDF 출력 ----------
