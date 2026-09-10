@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { siteContact } from "@/lib/site-nav";
 
@@ -7,7 +8,11 @@ type FloatingButtonsProps = {
   onReserveClick: () => void;
 };
 
+/** 퀴즈처럼 화면을 꽉 채우는 페이지에서는 버튼이 콘텐츠를 가려 모바일에서만 숨긴다 */
+const hideOnMobile = ["/skin-check"];
+
 export default function FloatingButtons({ onReserveClick }: FloatingButtonsProps) {
+  const pathname = usePathname();
   const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
@@ -33,7 +38,11 @@ export default function FloatingButtons({ onReserveClick }: FloatingButtonsProps
     "flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition duration-200 hover:scale-110";
 
   return (
-    <div className="fixed bottom-[7.5rem] right-4 z-[60] flex flex-col items-center gap-3 md:bottom-24 lg:bottom-28 lg:right-8">
+    <div
+      className={`fixed bottom-[7.5rem] right-4 z-[60] flex-col items-center gap-3 md:bottom-24 lg:bottom-28 lg:right-8 ${
+        hideOnMobile.includes(pathname) ? "hidden lg:flex" : "flex"
+      }`}
+    >
       <button
         type="button"
         onClick={handleReserve}

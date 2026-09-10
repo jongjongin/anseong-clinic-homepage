@@ -20,9 +20,9 @@ export const metadata: Metadata = {
 
 export default function SkinCheckPage() {
   return (
-    <main className="bg-white pb-24 pt-8 lg:pt-12">
+    <main className="bg-white pb-24 pt-3 sm:pt-8 lg:pt-12">
       <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-8">
-        <nav className="flex items-center gap-2 py-5 text-xs text-[#999]">
+        <nav className="hidden items-center gap-2 py-5 text-xs text-[#999] sm:flex">
           <Link href="/" className="transition-colors hover:text-teal-700">
             홈
           </Link>
@@ -30,7 +30,7 @@ export default function SkinCheckPage() {
           <span className="text-[#464646]">피부 고민 자가 감별</span>
         </nav>
 
-        <div className="mx-auto max-w-[560px] text-center">
+        <div className="mx-auto max-w-[560px] text-center max-sm:sr-only">
           <h1 className="gb-font mt-2 break-keep text-[28px] font-bold leading-[1.3] text-[#171717] sm:text-[40px]">
             기미인가요, 점인가요?
           </h1>
@@ -39,7 +39,7 @@ export default function SkinCheckPage() {
           </p>
         </div>
 
-        <div className="mt-10 sm:mt-14">
+        <div className="mt-3 sm:mt-14">
           <SkinCheckQuiz />
         </div>
 

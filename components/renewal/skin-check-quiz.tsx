@@ -66,9 +66,9 @@ export default function SkinCheckQuiz() {
 
   return (
     <div className="mx-auto w-full max-w-[720px]">
-      <div className="overflow-hidden rounded-[24px] border border-[#e2e2e2] bg-white shadow-[0_30px_70px_-32px_rgba(15,23,42,0.22)] sm:rounded-[28px]">
+      <div className="flex min-h-[calc(100svh-13.5rem)] flex-col overflow-hidden rounded-[24px] border border-[#e2e2e2] bg-white shadow-[0_30px_70px_-32px_rgba(15,23,42,0.22)] sm:min-h-0 sm:rounded-[28px]">
         {/* 진행 표시 */}
-        <div className="flex items-center justify-between gap-4 border-b border-[#ededed] bg-[#f7f7f6] px-5 py-4 sm:px-8">
+        <div className="flex items-center justify-between gap-4 shrink-0 border-b border-[#ededed] bg-[#f7f7f6] px-5 py-3 sm:px-8 sm:py-4">
           <div className="flex items-center gap-3">
             <p className="text-[13px] font-bold text-[#454545]">
               {screen.kind === "intro" ? "시작" : isFinished ? "결과" : `${step} / ${TOTAL_STEPS}`}
@@ -96,7 +96,7 @@ export default function SkinCheckQuiz() {
           ) : null}
         </div>
 
-        <div key={screenKeyOf(screen)} className={enterClass}>
+        <div key={screenKeyOf(screen)} className={`flex flex-1 flex-col ${enterClass}`}>
           {screen.kind === "intro" ? (
             <IntroCard onStart={() => go({ kind: "question", id: "start" })} />
           ) : screen.kind === "question" ? (
@@ -118,14 +118,14 @@ export default function SkinCheckQuiz() {
 
 function IntroCard({ onStart }: { onStart: () => void }) {
   return (
-    <div className="bg-gradient-to-b from-teal-50/60 to-white px-6 py-14 text-center sm:px-12 sm:py-20">
+    <div className="flex flex-1 flex-col justify-center bg-gradient-to-b from-teal-50/60 to-white px-6 py-10 text-center sm:px-12 sm:py-20">
       <div className="mx-auto flex max-w-[300px] items-center justify-center gap-3">
         {(["mole", "seborrheic", "melasma", "freckle"] as const).map((name) => (
           <SkinIcon key={name} name={name} className="h-14 w-14 sm:h-16 sm:w-16" />
         ))}
       </div>
 
-      <h2 className="gb-font mt-10 break-keep text-[27px] font-bold leading-[1.35] text-[#171717] sm:text-[36px]">
+      <h2 className="gb-font mt-8 break-keep text-[27px] font-bold leading-[1.35] text-[#171717] sm:mt-10 sm:text-[36px]">
         기미인가요, 점인가요?
       </h2>
       <p className="mx-auto mt-4 max-w-[330px] break-keep text-[16px] leading-[1.75] text-[#454545]">
@@ -135,7 +135,7 @@ function IntroCard({ onStart }: { onStart: () => void }) {
       <button
         type="button"
         onClick={onStart}
-        className="group mt-10 inline-flex w-full max-w-[320px] items-center justify-center gap-2.5 rounded-full bg-[#171717] px-11 py-4.5 text-[17px] font-bold text-white shadow-[0_14px_30px_-12px_rgba(15,23,42,0.5)] transition hover:bg-teal-700 sm:w-auto"
+        className="group mx-auto mt-9 inline-flex w-full max-w-[320px] sm:mt-10 items-center justify-center gap-2.5 rounded-full bg-[#171717] px-11 py-4.5 text-[17px] font-bold text-white shadow-[0_14px_30px_-12px_rgba(15,23,42,0.5)] transition hover:bg-teal-700 sm:w-auto"
       >
         시작하기
         <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
@@ -172,12 +172,12 @@ function QuestionCard({
   };
 
   return (
-    <div className="px-4 py-10 sm:px-10 sm:py-14">
-      <h2 className="gb-font break-keep text-center text-[27px] font-bold leading-tight text-[#171717] sm:text-[34px]">
+    <div className="flex flex-1 flex-col px-4 py-6 [@media(max-height:720px)]:py-4 sm:px-10 sm:py-14">
+      <h2 className="gb-font shrink-0 break-keep text-center text-[26px] [@media(max-height:720px)]:text-[22px] font-bold leading-tight text-[#171717] sm:text-[34px]">
         {question.title}
       </h2>
 
-      <div className="mt-8 flex flex-col gap-3 sm:mt-10">
+      <div className="mt-5 [@media(max-height:720px)]:mt-3 grid flex-1 grid-cols-2 content-center gap-2.5 [@media(max-height:720px)]:gap-2 sm:mt-9 sm:gap-3">
         {question.options.map((option, index) => {
           const isPicked = picked === index;
 
@@ -196,7 +196,7 @@ function QuestionCard({
                       : { kind: "question", id: option.next ?? "start" },
                 )
               }
-              className={`quiz-option group flex min-h-[84px] items-center gap-4 rounded-2xl border-2 bg-white px-4 py-3.5 text-left transition-all duration-200 sm:px-5 ${
+              className={`quiz-option group flex flex-col items-center justify-start gap-2 [@media(max-height:720px)]:gap-1.5 rounded-2xl border-2 bg-white px-2.5 py-3.5 [@media(max-height:720px)]:py-2.5 text-center transition-all duration-200 sm:px-3 sm:py-4 ${
                 isPicked
                   ? "border-teal-700 bg-teal-50"
                   : "border-[#e2e2e2] hover:border-teal-700 hover:bg-teal-50/40"
@@ -205,29 +205,18 @@ function QuestionCard({
               {option.icon ? (
                 <SkinIcon
                   name={option.icon}
-                  className="h-[60px] w-[60px] shrink-0 sm:h-[64px] sm:w-[64px]"
+                  className="h-[52px] w-[52px] [@media(max-height:720px)]:h-[38px] [@media(max-height:720px)]:w-[38px] shrink-0 sm:h-[62px] sm:w-[62px]"
                 />
               ) : null}
 
-              <span className="min-w-0 flex-1">
-                <span className="block break-keep text-[17px] font-bold leading-snug text-[#171717] sm:text-[18px]">
-                  {option.label}
+              <span className="block break-keep text-[15px] font-bold leading-snug text-[#171717] sm:text-[16.5px]">
+                {option.label}
+              </span>
+              {option.hint ? (
+                <span className="block break-keep text-[12px] leading-snug text-[#5f5f5f] [@media(max-height:720px)]:hidden sm:block sm:text-[13px]">
+                  {option.hint}
                 </span>
-                {option.hint ? (
-                  <span className="mt-1.5 block break-keep text-[13.5px] leading-snug text-[#5f5f5f]">
-                    {option.hint}
-                  </span>
-                ) : null}
-              </span>
-
-              <span
-                aria-hidden
-                className={`shrink-0 pr-1 text-[18px] transition-all duration-200 ${
-                  isPicked ? "text-teal-700" : "text-[#b0b0b0] group-hover:translate-x-1 group-hover:text-teal-700"
-                }`}
-              >
-                →
-              </span>
+              ) : null}
             </button>
           );
         })}
@@ -268,7 +257,7 @@ function TreatmentBlock({
 
 function AlertCard({ onRestart }: { onRestart: () => void }) {
   return (
-    <div className="px-5 py-10 sm:px-10 sm:py-14">
+    <div className="px-5 py-8 sm:px-10 sm:py-14">
       <div className="text-center">
         <SkinIcon name="warn-asymmetry" className="mx-auto h-20 w-20" />
         <h2 className="gb-font mt-6 break-keep text-[25px] font-bold leading-snug text-[#171717] sm:text-[30px]">
@@ -300,7 +289,7 @@ function ResultCard({ resultKey, onRestart }: { resultKey: SkinResultKey; onRest
   const photo = skinPhotos[resultKey];
 
   return (
-    <div className="px-5 py-10 sm:px-10 sm:py-14">
+    <div className="px-5 py-8 sm:px-10 sm:py-14">
       <div className="text-center">
         <SkinIcon name={resultKey} className="mx-auto h-24 w-24 sm:h-28 sm:w-28" />
         <p className="mt-5 text-[14px] font-bold text-teal-700">이런 병변에 가까워요</p>

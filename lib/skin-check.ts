@@ -82,7 +82,7 @@ export const skinResults: Record<SkinResultKey, SkinResult> = {
     recommend: {
       slug: "co2-removal",
       label: "CO2 레이저 제거",
-      reason: "질병 치료라 부가세가 면제됩니다.",
+      reason: "면역 상태에 따라 재발할 수 있어 경과를 함께 봅니다.",
     },
     note: "전염됩니다. 손으로 뜯거나 긁지 마세요.",
   },

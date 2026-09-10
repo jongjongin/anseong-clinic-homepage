@@ -80,7 +80,6 @@ export const beautyMenuCategories: BeautyMenuCategory[] = [
         ],
       },
     ],
-    footnotes: ["사마귀는 질병 치료로 부가세 면제 (점·쥐젖·검버섯은 과세)"],
   },
   {
     key: "pore",
