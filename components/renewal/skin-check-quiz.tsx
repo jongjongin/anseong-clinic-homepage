@@ -29,33 +29,52 @@ const screenKeyOf = (screen: Screen) =>
       : screen.kind;
 
 export default function SkinCheckQuiz() {
-  const [screen, setScreen] = useState<Screen>({ kind: "intro" });
-  const [history, setHistory] = useState<Screen[]>([]);
+  // 지나온 화면을 쌓아 둔다. 마지막 항목이 현재 화면.
+  const [stack, setStack] = useState<Screen[]>([{ kind: "intro" }]);
   const [direction, setDirection] = useState<"next" | "back">("next");
+
+  const screen = stack[stack.length - 1];
+  const depth = stack.length - 1;
+
+  /**
+   * 폰 뒤로가기로 이전 문항에 돌아갈 수 있게 화면마다 히스토리 항목을 쌓는다.
+   * 되돌아온 지점은 state의 quizDepth로 판단하므로 여러 칸을 한 번에 건너뛰어도 맞는다.
+   */
+  useEffect(() => {
+    const onPopState = (event: PopStateEvent) => {
+      const target = (event.state as { quizDepth?: number } | null)?.quizDepth ?? 0;
+      setDirection("back");
+      setStack((prev) => (target + 1 >= prev.length ? prev : prev.slice(0, target + 1)));
+    };
+
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
 
   const go = (next: Screen) => {
     setDirection("next");
-    setHistory((prev) => [...prev, screen]);
-    setScreen(next);
-  };
-
-  const goBack = () => {
-    setDirection("back");
-    setHistory((prev) => {
-      if (prev.length === 0) return prev;
-      setScreen(prev[prev.length - 1]);
-      return prev.slice(0, -1);
+    setStack((prev) => {
+      window.history.pushState({ quizDepth: prev.length }, "");
+      return [...prev, next];
     });
   };
 
-  const restart = () => {
-    setDirection("next");
-    setHistory([]);
-    setScreen({ kind: "intro" });
+  // 화면 안의 '이전' 버튼도 브라우저 뒤로가기를 태워 히스토리와 어긋나지 않게 한다
+  const goBack = () => {
+    if (depth > 0) window.history.back();
   };
 
-  // intro가 history에 포함되므로 문항 번호는 history 길이와 같다
-  const step = Math.min(history.length, TOTAL_STEPS);
+  const restart = () => {
+    if (depth > 0) {
+      window.history.go(-depth);
+      return;
+    }
+    setDirection("next");
+    setStack([{ kind: "intro" }]);
+  };
+
+  // intro가 stack[0]이므로 문항 번호는 depth와 같다
+  const step = Math.min(depth, TOTAL_STEPS);
   const isFinished = screen.kind === "result" || screen.kind === "alert";
 
   const enterClass = isFinished
@@ -85,7 +104,7 @@ export default function SkinCheckQuiz() {
             </div>
           </div>
 
-          {history.length > 0 ? (
+          {depth > 0 ? (
             <button
               type="button"
               onClick={goBack}
@@ -371,15 +390,20 @@ function ResultCard({ resultKey, onRestart }: { resultKey: SkinResultKey; onRest
         </p>
       ) : null}
 
-      <a
-        href="/skin-check#photos"
-        className="group mt-3 flex items-center justify-center gap-2 rounded-2xl border-2 border-[#e2e2e2] bg-white px-5 py-4 text-[15px] font-bold text-[#171717] transition hover:border-teal-700 hover:text-teal-700"
+      <button
+        type="button"
+        onClick={() => {
+          const target = document.getElementById("photos");
+          if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+          else window.location.href = "/skin-check#photos";
+        }}
+        className="group mt-3 flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-[#e2e2e2] bg-white px-5 py-4 text-[15px] font-bold text-[#171717] transition hover:border-teal-700 hover:text-teal-700"
       >
         전체 질환 예시 사진 보기
         <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">
           →
         </span>
-      </a>
+      </button>
 
       <ContactActions
         message={`[자가 감별] ${result.name} 으로 나왔습니다. ${result.recommend.label} 상담 원합니다.`}
