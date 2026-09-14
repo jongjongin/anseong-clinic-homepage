@@ -18,6 +18,8 @@ FONTS = {
                   target="Sandoll 고딕Neo Cond 04 Regular"),
     "serif": dict(file=os.path.join(HERE, "NotoSerifKR-Regular.ttf"), rl="NotoSerifKR", svg="Noto Serif KR",
                   target="MICE명조 OTF 01 Regular"),
+    "serifb": dict(file=os.path.join(HERE, "NotoSerifKR-Bold.ttf"), rl="NotoSerifKRB", svg="Noto Serif KR",
+                  target="MICE명조 OTF 01 Bold (획 두께 확보용 굵은 자체)"),
 }
 for k, f in FONTS.items():
     t = TTFont(f["file"])
@@ -178,14 +180,14 @@ for i, num_s in enumerate(["15", "16", "17"]):
 y = bar_h_note + 20
 
 # 12. 「좌」 세로 30mm, 동일 글자 4개 (베드번호와 같은 명조체)
-Z, ZH, ZN = "좌", 30.0, 4
-text(L, y, f"12. 「{Z}」 세로 {ZH:g}mm   글꼴: MICE명조 OTF 01 Regular (베드번호와 동일 글꼴)   동일한 글자 {ZN}개", "sans", 5, GRAY); y += 8
-zsize = size_for_height("serif", Z, ZH)
-zm = measure("serif", Z, zsize)
+Z, ZH, ZN, ZF = "좌", 30.0, 4, "serifb"
+text(L, y, f"12. 「{Z}」 세로 {ZH:g}mm   글꼴: 명조 굵은 자체(Bold)   동일한 글자 {ZN}개   ※ 획이 얇아 녹는 것을 막기 위해 굵은 자체 사용 (최소 획 약 1.4mm)", "sans", 5, GRAY); y += 8
+zsize = size_for_height(ZF, Z, ZH)
+zm = measure(ZF, Z, zsize)
 ztop = y; zbase = ztop + zm["ymax"]; zbot = zbase - zm["ymin"]
 zx = L
 for j in range(ZN):
-    set_layer("art"); text(zx, zbase, Z, "serif", zsize, COCOA); set_layer("note")
+    set_layer("art"); text(zx, zbase, Z, ZF, zsize, COCOA); set_layer("note")
     if j == 0:
         hdim(zbot + 9, zx + zm["xmin"], zx + zm["xmax"], f"가로 {zm['xmax'] - zm['xmin']:.0f}mm", size=4)
     zx += zm["adv"] + 30
@@ -196,6 +198,7 @@ y = zbot + 26
 
 line(L, y, W - L, y, 0.3, "#999999"); y += 10
 text(L, y, "※ 3·4·5번의 가운데 「•」와 4·5번 화살표는 발주 메시지에 적힌 기호 그대로 넣었습니다. 기호가 다르면 해당 문자만 수정해 주세요.", "sans", 4.5, GRAY); y += 7
+text(L, y, "※ 12번 「좌」는 30mm에서 가는 획이 얇아지는 것을 막기 위해 굵은 자체로 바꿨습니다. 최소 획 약 1.4mm이며, 더 두꺼워야 하면 알려 주세요.", "sans", 4.5, GRAY); y += 7
 text(L, y, "※ 일자 막대(9·10·11번)는 글꼴 문자가 아닌 사각형 도형입니다. 가로 110mm는 숫자 폭(약 108mm)에 맞춘 값이고, 세로 6mm는 기존 제품 사진을 잣대로 잰 근사값이므로 기존 제품과 같은 두께로 맞춰 주세요.", "sans", 4.5, GRAY); y += 12
 H = y + 20
 
