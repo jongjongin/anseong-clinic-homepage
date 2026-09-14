@@ -4,6 +4,8 @@
 import os, html
 from fontTools.ttLib import TTFont
 from fontTools.pens.boundsPen import BoundsPen
+from fontTools.pens.recordingPen import RecordingPen
+from fontTools.pens.qu2cuPen import Qu2CuPen
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont as RLFont
@@ -39,6 +41,32 @@ def measure(font, s, size):
         x += adv
     k = size / upm
     return dict(adv=x * k, xmin=xmin * k, xmax=xmax * k, ymin=ymin * k, ymax=ymax * k)
+
+_OUTLINE_CACHE = {}
+
+def glyph_outline(font, ch):
+    """한 글자의 윤곽선을 폰트 단위(y 위쪽 양수) 경로 명령 목록으로 반환"""
+    key = (font, ch)
+    if key in _OUTLINE_CACHE:
+        return _OUTLINE_CACHE[key]
+    f = FONTS[font]
+    g = f["cmap"][ord(ch)]
+    rp = RecordingPen()
+    f["gs"][g].draw(Qu2CuPen(rp, max_err=0.2, all_cubic=True))
+    _OUTLINE_CACHE[key] = rp.value
+    return rp.value
+
+def text_outline(font, s, size):
+    """문자열 전체의 윤곽선을 베이스라인 기준 (x 오른쪽, y 위쪽) 좌표로 반환"""
+    f = FONTS[font]; k = size / f["upm"]
+    out = []; pen_x = 0
+    for ch in s:
+        g = f["cmap"][ord(ch)]
+        for op, args in glyph_outline(font, ch):
+            pts = [((px + pen_x) * k, py * k) for (px, py) in args]
+            out.append((op, pts))
+        pen_x += f["hmtx"][g][0]
+    return out
 
 def size_for_height(font, s, h):
     m = measure(font, s, 1.0)
@@ -77,9 +105,9 @@ y = 30.0
 text(L, y, "안성 한의원 · 아크릴 글자 발주 도면 (1:1 실측, 단위 mm)", "sans", 12, BLACK); y += 9
 text(L, y, "상품명: 아크릴 글자  |  사양: 무광 3T  |  색상: 코코아 / 회색(연한 회색 계열)  |  총 수량: 15개 (글자 5개 + 베드번호 숫자 3개 + 일자 막대 3개 + 「좌」 4개)", "sans", 6, GRAY); y += 9
 notes = [
-    "■ 글꼴 안내: 지정 글꼴(Sandoll 고딕Neo Cond 04 Regular / MICE명조 OTF 01 Regular)이 이 파일에 포함되어 있지 않아,",
-    "   임시로 Noto Sans KR(고딕 자리) / Noto Serif KR(명조 자리)로 타이핑되어 있습니다. 문자는 모두 편집 가능한 상태입니다.",
-    "■ 작업 순서: ① 각 문자를 선택해 지정 글꼴로 변경 → ② 파란색 치수선의 높이(세로) 또는 폭에 맞게 크기 조정 → ③ 윤곽선 만들기(Create Outlines) 후 커팅.",
+    "■ 이 파일의 모든 글자는 윤곽선(아웃라인) 처리가 끝난 벡터 도형입니다. 글꼴 설치 없이 바로 커팅하실 수 있습니다.",
+    "   사용 글꼴: 고딕 = Noto Sans KR Regular, 명조 = Noto Serif KR Regular (둘 다 무료 글꼴, 상업적 사용 가능).",
+    "■ 작업 순서: ① 각 도형을 파란색 치수선의 세로 높이에 맞춰 비율 그대로 확대·축소 → ② 그대로 커팅. 문자 입력이나 글꼴 변경은 필요 없습니다.",
     "■ 분홍 점선 = 글자 위/아래 기준선(인쇄·커팅 제외), 파란 선 = 치수 표기. 「가로 전체」는 벽면 필요 폭이며 지정 글꼴로 바꾸면 달라집니다. 글자 색은 코코아색으로 표시했으며 실제 색상은 재료 색상을 따릅니다.",
 ]
 for n in notes:
@@ -169,14 +197,23 @@ H = y + 20
 def hex2rgb(h): h = h.lstrip("#"); return tuple(int(h[i:i+2], 16) / 255 for i in (0, 2, 4))
 pdf_path = os.path.join(OUT, "아크릴글자_발주도면.pdf")
 c = canvas.Canvas(pdf_path, pagesize=(W * mm, H * mm))
+c._fillMode = 1  # nonzero winding (글자 속 구멍 처리)
 c.setTitle("아크릴 글자 발주 도면 (1:1)"); c.setAuthor("안성 한의원")
 Y = lambda v: (H - v) * mm
 for op in ops:
     if op[0] == "text":
         _, x, yy, s, font, size, color, anchor = op
-        c.setFillColorRGB(*hex2rgb(color)); c.setFont(FONTS[font]["rl"], size * mm)
-        if anchor == "middle": c.drawCentredString(x * mm, Y(yy), s)
-        else: c.drawString(x * mm, Y(yy), s)
+        if anchor == "middle":
+            x -= measure(font, s, size)["adv"] / 2
+        c.setFillColorRGB(*hex2rgb(color))
+        path = c.beginPath(); x0 = x * mm; y0 = Y(yy)
+        for o, pts in text_outline(font, s, size * mm):
+            q = [(x0 + px, y0 + py) for (px, py) in pts]
+            if o == "moveTo":   path.moveTo(*q[0])
+            elif o == "lineTo": path.lineTo(*q[0])
+            elif o == "curveTo":path.curveTo(q[0][0], q[0][1], q[1][0], q[1][1], q[2][0], q[2][1])
+            elif o == "closePath": path.close()
+        c.drawPath(path, stroke=0, fill=1, fillMode=1)
     elif op[0] == "line":
         _, x1, y1, x2, y2, w, color, dash = op
         c.setStrokeColorRGB(*hex2rgb(color)); c.setLineWidth(w * mm)
@@ -195,8 +232,16 @@ svg = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}mm" height="{H}mm" vi
 for op in ops:
     if op[0] == "text":
         _, x, yy, s, font, size, color, anchor = op
-        fam = FONTS[font]["svg"]
-        svg.append(f'<text x="{x:.3f}" y="{yy:.3f}" font-family="{fam}" font-size="{size:.3f}" fill="{color}" text-anchor="{anchor}">{html.escape(s)}</text>')
+        if anchor == "middle":
+            x -= measure(font, s, size)["adv"] / 2
+        d = []
+        for o, pts in text_outline(font, s, size):
+            q = [(x + px, yy - py) for (px, py) in pts]   # SVG는 y가 아래로 증가
+            if o == "moveTo":   d.append(f"M{q[0][0]:.3f} {q[0][1]:.3f}")
+            elif o == "lineTo": d.append(f"L{q[0][0]:.3f} {q[0][1]:.3f}")
+            elif o == "curveTo":d.append("C" + " ".join(f"{a:.3f} {b:.3f}" for a, b in q))
+            elif o == "closePath": d.append("Z")
+        svg.append(f'<path d="{" ".join(d)}" fill="{color}" fill-rule="nonzero"/>')
     elif op[0] == "line":
         _, x1, y1, x2, y2, w, color, dash = op
         da = f' stroke-dasharray="{dash[0]} {dash[1]}"' if dash else ""
