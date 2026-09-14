@@ -221,6 +221,16 @@ def art_bbox(oplist):
             x0 = min(x0, x); x1 = max(x1, x + w); y0 = min(y0, yy); y1 = max(y1, yy + h)
     return x0, y0, x1, y1
 
+def strip_unused_font(path):
+    """reportlab이 남기는 미사용 기본 글꼴(/Font) 참조를 제거.
+    바이트 수를 공백으로 맞춰 xref 오프셋을 보존한다."""
+    d = open(path, "rb").read()
+    import re as _re
+    m = _re.search(rb"/Font\s+\d+\s+0\s+R", d)
+    if m:
+        d = d[:m.start()] + b" " * (m.end() - m.start()) + d[m.end():]
+        open(path, "wb").write(d)
+
 def render_pdf(path, oplist, pw, ph, dx=0.0, dy=0.0, force_color=None, title=""):
     c = canvas.Canvas(path, pagesize=(pw * mm, ph * mm))
     c._fillMode = 1                      # nonzero winding (글자 속 구멍 처리)
@@ -250,6 +260,7 @@ def render_pdf(path, oplist, pw, ph, dx=0.0, dy=0.0, force_color=None, title="")
             c.setFillColorRGB(*hex2rgb(force_color or fill))
             c.rect(X(x), Y(yy + h), w * mm, h * mm, stroke=0, fill=1)
     c.showPage(); c.save()
+    strip_unused_font(path)
 
 def render_svg(path, oplist, pw, ph, dx=0.0, dy=0.0, force_color=None):
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{pw}mm" height="{ph}mm" viewBox="0 0 {pw} {ph}">',
