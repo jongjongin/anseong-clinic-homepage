@@ -77,14 +77,20 @@ def size_for_width(font, s, w):
     return w / (m["xmax"] - m["xmin"])
 
 # ---------- 도형 목록 ----------
+# layer: "art" = 실제로 커팅할 조각, "note" = 치수선·설명글(커팅 제외)
 ops = []
+LAYER = "note"
+
+def set_layer(v):
+    global LAYER
+    LAYER = v
 COCOA = "#4B3A2F"; GUIDE = "#FF00FF"; GRAY = "#666666"; BLACK = "#111111"; DIM = "#0066CC"
 def text(x, y, s, font, size, color=BLACK, anchor="start"):
-    ops.append(("text", x, y, s, font, size, color, anchor))
+    ops.append(("text", x, y, s, font, size, color, anchor, LAYER))
 def line(x1, y1, x2, y2, w=0.25, color=GUIDE, dash=None):
-    ops.append(("line", x1, y1, x2, y2, w, color, dash))
+    ops.append(("line", x1, y1, x2, y2, w, color, dash, LAYER))
 def rect(x, y, w, h, fill):
-    ops.append(("rect", x, y, w, h, fill))
+    ops.append(("rect", x, y, w, h, fill, LAYER))
 
 def vdim(x, y_top, y_bot, label, size=5):
     """세로 치수선 (x 위치, 위/아래 y) + 라벨"""
@@ -127,7 +133,7 @@ def spec_item(num, s, font, h, qty_note=""):
     base = top + m["ymax"]      # 베이스라인
     bot = base - m["ymin"]      # 잉크 최하단
     x_text = L
-    text(x_text, base, s, font, size, COCOA)
+    set_layer("art"); text(x_text, base, s, font, size, COCOA); set_layer("note")
     x_r = x_text + m["adv"]
     # 위/아래 기준선 (점선)
     line(L - 12, top, x_r + 30, top, 0.25, GUIDE, (2, 2))
@@ -152,7 +158,7 @@ for i, num_s in enumerate(["15", "16", "17"]):
     size = size_for_height("serif", num_s, 90)
     m = measure("serif", num_s, size)
     base = top_row + m["ymax"]; bot = base - m["ymin"]
-    text(x, base, num_s, "serif", size, COCOA)
+    set_layer("art"); text(x, base, num_s, "serif", size, COCOA); set_layer("note")
     line(x - 12, top_row, x + m["adv"] + 30, top_row, 0.25, GUIDE, (2, 2))
     line(x - 12, bot, x + m["adv"] + 30, bot, 0.25, GUIDE, (2, 2))
     vdim(x + m["adv"] + 22, top_row, bot, "높이 90mm")
@@ -162,7 +168,7 @@ for i, num_s in enumerate(["15", "16", "17"]):
     by = bot + 25
     ink_c = x + (m["xmin"] + m["xmax"]) / 2    # 숫자 잉크 기준 중심
     bl = ink_c - BAR_W / 2
-    rect(bl, by, BAR_W, BAR_H, COCOA)
+    set_layer("art"); rect(bl, by, BAR_W, BAR_H, COCOA); set_layer("note")
     br = bl + BAR_W; bbot = by + BAR_H
     hdim(bbot + 8, bl, br, f"가로 {BAR_W:g}mm")
     vdim(br + 10, by, bbot, "세로 6mm", size=4)
@@ -179,7 +185,7 @@ zm = measure("serif", Z, zsize)
 ztop = y; zbase = ztop + zm["ymax"]; zbot = zbase - zm["ymin"]
 zx = L
 for j in range(ZN):
-    text(zx, zbase, Z, "serif", zsize, COCOA)
+    set_layer("art"); text(zx, zbase, Z, "serif", zsize, COCOA); set_layer("note")
     if j == 0:
         hdim(zbot + 9, zx + zm["xmin"], zx + zm["xmax"], f"가로 {zm['xmax'] - zm['xmin']:.0f}mm", size=4)
     zx += zm["adv"] + 30
@@ -193,63 +199,98 @@ text(L, y, "※ 3·4·5번의 가운데 「•」와 4·5번 화살표는 발주
 text(L, y, "※ 일자 막대(9·10·11번)는 글꼴 문자가 아닌 사각형 도형입니다. 가로 110mm는 숫자 폭(약 108mm)에 맞춘 값이고, 세로 6mm는 기존 제품 사진을 잣대로 잰 근사값이므로 기존 제품과 같은 두께로 맞춰 주세요.", "sans", 4.5, GRAY); y += 12
 H = y + 20
 
-# ---------- PDF 출력 ----------
-def hex2rgb(h): h = h.lstrip("#"); return tuple(int(h[i:i+2], 16) / 255 for i in (0, 2, 4))
-pdf_path = os.path.join(OUT, "아크릴글자_발주도면.pdf")
-c = canvas.Canvas(pdf_path, pagesize=(W * mm, H * mm))
-c._fillMode = 1  # nonzero winding (글자 속 구멍 처리)
-c.setTitle("아크릴 글자 발주 도면 (1:1)"); c.setAuthor("안성 한의원")
-Y = lambda v: (H - v) * mm
-for op in ops:
-    if op[0] == "text":
-        _, x, yy, s, font, size, color, anchor = op
-        if anchor == "middle":
-            x -= measure(font, s, size)["adv"] / 2
-        c.setFillColorRGB(*hex2rgb(color))
-        path = c.beginPath(); x0 = x * mm; y0 = Y(yy)
-        for o, pts in text_outline(font, s, size * mm):
-            q = [(x0 + px, y0 + py) for (px, py) in pts]
-            if o == "moveTo":   path.moveTo(*q[0])
-            elif o == "lineTo": path.lineTo(*q[0])
-            elif o == "curveTo":path.curveTo(q[0][0], q[0][1], q[1][0], q[1][1], q[2][0], q[2][1])
-            elif o == "closePath": path.close()
-        c.drawPath(path, stroke=0, fill=1, fillMode=1)
-    elif op[0] == "line":
-        _, x1, y1, x2, y2, w, color, dash = op
-        c.setStrokeColorRGB(*hex2rgb(color)); c.setLineWidth(w * mm)
-        c.setDash([d * mm for d in dash] if dash else [])
-        c.line(x1 * mm, Y(y1), x2 * mm, Y(y2))
-    elif op[0] == "rect":
-        _, x, yy, w, h, fill = op
-        c.setFillColorRGB(*hex2rgb(fill)); c.rect(x * mm, Y(yy + h), w * mm, h * mm, stroke=0, fill=1)
-c.showPage(); c.save()
+# ---------- 출력 ----------
+def hex2rgb(h):
+    h = h.lstrip("#"); return tuple(int(h[i:i+2], 16) / 255 for i in (0, 2, 4))
 
-# ---------- SVG 출력 (미리보기용) ----------
-svg = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}mm" height="{H}mm" viewBox="0 0 {W} {H}">',
-       '<style>@font-face{font-family:"Noto Sans KR";src:url("../NotoSansKR-Regular.ttf")}'
-       '@font-face{font-family:"Noto Serif KR";src:url("../NotoSerifKR-Regular.ttf")}</style>',
-       f'<rect width="{W}" height="{H}" fill="white"/>']
-for op in ops:
-    if op[0] == "text":
-        _, x, yy, s, font, size, color, anchor = op
-        if anchor == "middle":
-            x -= measure(font, s, size)["adv"] / 2
-        d = []
-        for o, pts in text_outline(font, s, size):
-            q = [(x + px, yy - py) for (px, py) in pts]   # SVG는 y가 아래로 증가
-            if o == "moveTo":   d.append(f"M{q[0][0]:.3f} {q[0][1]:.3f}")
-            elif o == "lineTo": d.append(f"L{q[0][0]:.3f} {q[0][1]:.3f}")
-            elif o == "curveTo":d.append("C" + " ".join(f"{a:.3f} {b:.3f}" for a, b in q))
-            elif o == "closePath": d.append("Z")
-        svg.append(f'<path d="{" ".join(d)}" fill="{color}" fill-rule="nonzero"/>')
-    elif op[0] == "line":
-        _, x1, y1, x2, y2, w, color, dash = op
-        da = f' stroke-dasharray="{dash[0]} {dash[1]}"' if dash else ""
-        svg.append(f'<line x1="{x1:.3f}" y1="{y1:.3f}" x2="{x2:.3f}" y2="{y2:.3f}" stroke="{color}" stroke-width="{w}"{da}/>')
-    elif op[0] == "rect":
-        _, x, yy, w, h, fill = op
-        svg.append(f'<rect x="{x}" y="{yy}" width="{w}" height="{h}" fill="{fill}"/>')
-svg.append("</svg>")
-with open(os.path.join(OUT, "preview.svg"), "w", encoding="utf-8") as fh:
-    fh.write("\n".join(svg))
-print(f"page {W} x {H:.0f} mm ->", pdf_path)
+def art_bbox(oplist):
+    """조각들의 실제 잉크 경계 (x0, y0, x1, y1) - 페이지 좌표(y 아래로 증가)"""
+    x0 = y0 = 1e9; x1 = y1 = -1e9
+    for op in oplist:
+        if op[0] == "text":
+            _, x, yy, t, font, size, color, anchor, _l = op
+            m = measure(font, t, size)
+            if anchor == "middle": x -= m["adv"] / 2
+            x0 = min(x0, x + m["xmin"]); x1 = max(x1, x + m["xmax"])
+            y0 = min(y0, yy - m["ymax"]); y1 = max(y1, yy - m["ymin"])
+        elif op[0] == "rect":
+            _, x, yy, w, h, fill, _l = op
+            x0 = min(x0, x); x1 = max(x1, x + w); y0 = min(y0, yy); y1 = max(y1, yy + h)
+    return x0, y0, x1, y1
+
+def render_pdf(path, oplist, pw, ph, dx=0.0, dy=0.0, force_color=None, title=""):
+    c = canvas.Canvas(path, pagesize=(pw * mm, ph * mm))
+    c._fillMode = 1                      # nonzero winding (글자 속 구멍 처리)
+    c.setTitle(title); c.setAuthor("안성 한의원")
+    Y = lambda v: (ph - (v + dy)) * mm
+    X = lambda v: (v + dx) * mm
+    for op in oplist:
+        if op[0] == "text":
+            _, x, yy, t, font, size, color, anchor, _l = op
+            if anchor == "middle": x -= measure(font, t, size)["adv"] / 2
+            c.setFillColorRGB(*hex2rgb(force_color or color))
+            path_o = c.beginPath(); x0 = X(x); y0 = Y(yy)
+            for o, pts in text_outline(font, t, size * mm):
+                q = [(x0 + px, y0 + py) for (px, py) in pts]
+                if o == "moveTo":      path_o.moveTo(*q[0])
+                elif o == "lineTo":    path_o.lineTo(*q[0])
+                elif o == "curveTo":   path_o.curveTo(q[0][0], q[0][1], q[1][0], q[1][1], q[2][0], q[2][1])
+                elif o == "closePath": path_o.close()
+            c.drawPath(path_o, stroke=0, fill=1, fillMode=1)
+        elif op[0] == "line":
+            _, x1, y1, x2, y2, w, color, dash, _l = op
+            c.setStrokeColorRGB(*hex2rgb(force_color or color)); c.setLineWidth(w * mm)
+            c.setDash([d * mm for d in dash] if dash else [])
+            c.line(X(x1), Y(y1), X(x2), Y(y2))
+        elif op[0] == "rect":
+            _, x, yy, w, h, fill, _l = op
+            c.setFillColorRGB(*hex2rgb(force_color or fill))
+            c.rect(X(x), Y(yy + h), w * mm, h * mm, stroke=0, fill=1)
+    c.showPage(); c.save()
+
+def render_svg(path, oplist, pw, ph, dx=0.0, dy=0.0, force_color=None):
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{pw}mm" height="{ph}mm" viewBox="0 0 {pw} {ph}">',
+           f'<rect width="{pw}" height="{ph}" fill="white"/>']
+    for op in oplist:
+        if op[0] == "text":
+            _, x, yy, t, font, size, color, anchor, _l = op
+            if anchor == "middle": x -= measure(font, t, size)["adv"] / 2
+            x += dx; yy += dy
+            d = []
+            for o, pts in text_outline(font, t, size):
+                q = [(x + px, yy - py) for (px, py) in pts]
+                if o == "moveTo":      d.append(f"M{q[0][0]:.3f} {q[0][1]:.3f}")
+                elif o == "lineTo":    d.append(f"L{q[0][0]:.3f} {q[0][1]:.3f}")
+                elif o == "curveTo":   d.append("C" + " ".join(f"{a:.3f} {b:.3f}" for a, b in q))
+                elif o == "closePath": d.append("Z")
+            out.append(f'<path d="{" ".join(d)}" fill="{force_color or color}" fill-rule="nonzero"/>')
+        elif op[0] == "line":
+            _, x1, y1, x2, y2, w, color, dash, _l = op
+            da = f' stroke-dasharray="{dash[0]} {dash[1]}"' if dash else ""
+            out.append(f'<line x1="{x1+dx:.3f}" y1="{y1+dy:.3f}" x2="{x2+dx:.3f}" y2="{y2+dy:.3f}" '
+                       f'stroke="{force_color or color}" stroke-width="{w}"{da}/>')
+        elif op[0] == "rect":
+            _, x, yy, w, h, fill, _l = op
+            out.append(f'<rect x="{x+dx:.3f}" y="{yy+dy:.3f}" width="{w}" height="{h}" fill="{force_color or fill}"/>')
+    out.append("</svg>")
+    open(path, "w", encoding="utf-8").write("\n".join(out))
+
+# --- (1) 치수 도면: 설명·치수선 포함 ---
+render_pdf(os.path.join(OUT, "아크릴글자_도면_치수표기.pdf"), ops, W, H,
+           title="아크릴 글자 발주 도면 (치수 표기, 1:1)")
+render_svg(os.path.join(OUT, "preview_도면.svg"), ops, W, H)
+
+# --- (2) 커팅용: 실제 조각만, 여백 정리, 전부 검정 ---
+art = [o for o in ops if o[-1] == "art"]
+MG = 30.0
+ax0, ay0, ax1, ay1 = art_bbox(art)
+cw = (ax1 - ax0) + MG * 2
+ch = (ay1 - ay0) + MG * 2
+render_pdf(os.path.join(OUT, "아크릴글자_커팅용.pdf"), art, cw, ch,
+           dx=MG - ax0, dy=MG - ay0, force_color="#000000",
+           title="아크릴 글자 커팅용 (윤곽선, 1:1)")
+render_svg(os.path.join(OUT, "preview_커팅용.svg"), art, cw, ch,
+           dx=MG - ax0, dy=MG - ay0, force_color="#000000")
+
+print(f"치수 도면 : {W:.0f} x {H:.0f} mm")
+print(f"커팅용    : {cw:.0f} x {ch:.0f} mm  (조각 {len(art)}개)")
