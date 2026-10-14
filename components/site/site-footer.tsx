@@ -41,9 +41,6 @@ export default function SiteFooter() {
 
         <div className="flex flex-col gap-2 border-t border-slate-800 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} {footerContent.clinicName}. All rights reserved.</p>
-          <Link href="/admin/reservations" className="transition-colors hover:text-slate-300">
-            관리자
-          </Link>
         </div>
       </div>
     </footer>

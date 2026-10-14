@@ -7,7 +7,6 @@ export { default as BlogSection } from "@/components/home/blog-section";
 export { default as ServiceGuideSection } from "@/components/home/service-guide-section";
 export { default as DoctorsSection } from "@/components/home/doctors-section";
 export { default as EventsSection } from "@/components/home/events-section";
-export { default as ReviewsSection } from "@/components/home/reviews-section";
 export { default as TelemedicineSection } from "@/components/home/telemedicine-section";
 export { default as InfoSection } from "@/components/home/info-section";
 export { default as CtaSection } from "@/components/home/cta-section";

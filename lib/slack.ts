@@ -43,4 +43,4 @@ export async function sendSlackMessage(text: string): Promise<boolean> {
   return response.ok;
 }
 
-export const ADMIN_LINK = "<https://anseong365.com/admin/reservations|관리자 페이지에서 차트 등록 완료 처리>";
+export const ADMIN_LINK = "<https://ansung365-timer.web.app/consult.html|직원 사이트 상담 신청 화면에서 처리>";
