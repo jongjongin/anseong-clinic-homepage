@@ -25,4 +25,4 @@ Vercel 배포, Neon Postgres, 상담 신청은 슬랙 알림.
 
 - `app/globals.css`의 `a { color: inherit }`은 `@layer base` 안에 있어야 한다.
   레이어 밖에 두면 링크의 `text-*` 유틸리티를 전부 덮어써서 글자가 안 보인다.
-- 개발/배포: `claude/homepage-design-ux-apply-tzu3d7` 브랜치에서 작업 후 main에 ff-merge.
+- 개발/배포: `origin/main` 기준 작업 브랜치(`jongjongin/homepage`)에서 작업 후 main에 ff-merge. (옛 `claude/homepage-design-ux-apply-tzu3d7`는 로그인 삭제 전 판이라 쓰지 말 것)
