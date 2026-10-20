@@ -1,6 +1,5 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { siteContact } from "@/lib/site-nav";
 
@@ -8,11 +7,7 @@ type FloatingButtonsProps = {
   onReserveClick: () => void;
 };
 
-/** 퀴즈처럼 화면을 꽉 채우는 페이지에서는 버튼이 콘텐츠를 가려 모바일에서만 숨긴다 */
-const hideOnMobile = ["/skin-check"];
-
 export default function FloatingButtons({ onReserveClick }: FloatingButtonsProps) {
-  const pathname = usePathname();
   const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
@@ -35,19 +30,17 @@ export default function FloatingButtons({ onReserveClick }: FloatingButtonsProps
   };
 
   const circle =
-    "flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition duration-200 hover:scale-110";
+    "h-12 w-12 items-center justify-center rounded-full shadow-lg transition duration-200 hover:scale-110";
 
   return (
     <div
-      className={`fixed bottom-[7.5rem] right-4 z-[60] flex-col items-center gap-3 md:bottom-24 lg:bottom-28 lg:right-8 ${
-        hideOnMobile.includes(pathname) ? "hidden lg:flex" : "flex"
-      }`}
+      className="fixed bottom-28 right-8 z-[60] hidden flex-col items-center gap-3 lg:flex"
     >
       <button
         type="button"
         onClick={handleReserve}
         aria-label="상담 예약"
-        className={`${circle} bg-teal-700 text-white`}
+        className={`${circle} hidden bg-teal-700 text-white lg:flex`}
       >
         <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden>
           <rect x="3.5" y="5" width="17" height="15.5" rx="2.5" stroke="currentColor" strokeWidth="1.8" />
@@ -61,7 +54,7 @@ export default function FloatingButtons({ onReserveClick }: FloatingButtonsProps
         target="_blank"
         rel="noreferrer"
         aria-label="카카오톡 상담"
-        className={`${circle} bg-[#FEE500] text-[#191919]`}
+        className={`${circle} flex bg-[#FEE500] text-[#191919]`}
       >
         <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden>
           <path d="M12 3C6.9 3 3 6.2 3 10.1c0 2.5 1.6 4.7 4.1 6l-.9 3.4c-.1.3.3.6.6.4l4-2.6c.4 0 .8.1 1.2.1 5.1 0 9-3.2 9-7.2S17.1 3 12 3Z" />
@@ -73,7 +66,7 @@ export default function FloatingButtons({ onReserveClick }: FloatingButtonsProps
         target="_blank"
         rel="noreferrer"
         aria-label="네이버 블로그"
-        className={`${circle} bg-[#03C75A] text-white`}
+        className={`${circle} hidden bg-[#03C75A] text-white lg:flex`}
       >
         <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden>
           <path d="M4 4h5.1l5.6 8.2V4H20v16h-5.1l-5.6-8.2V20H4V4Z" />
@@ -84,7 +77,7 @@ export default function FloatingButtons({ onReserveClick }: FloatingButtonsProps
         type="button"
         aria-label="맨 위로"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className={`${circle} border border-slate-200 bg-white text-slate-700 ${
+        className={`${circle} hidden border border-slate-200 bg-white text-slate-700 lg:flex ${
           showTop ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >

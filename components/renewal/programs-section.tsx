@@ -23,7 +23,7 @@ export default function ProgramsSection() {
           <h2 className="gb-font mt-5 break-keep text-[22px] font-bold leading-snug text-[#181818] sm:text-4xl">
             진료 프로그램
           </h2>
-          <p className="mt-4 break-keep text-[13px] leading-relaxed text-[#959595] sm:text-[15px]">
+          <p className="mt-4 break-keep text-[13px] leading-relaxed text-[#5f5f5f] sm:text-[15px]">
             통증부터 다이어트, 미용까지 — 필요한 진료를 골라 자세한 안내를 확인해 보세요.
           </p>
         </Reveal>

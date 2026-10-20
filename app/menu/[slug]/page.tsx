@@ -20,9 +20,23 @@ export async function generateMetadata({
   const { slug } = await params;
   const item = getMenuItem(slug);
 
+  if (!item) {
+    return { title: "시술메뉴", robots: { index: false, follow: false } };
+  }
+
+  const description = `${item.subtitle}. 안성경희365한의원 ${item.title} 시술 안내와 가격 (부가세 포함).`;
+
   return {
-    title: item ? item.title : "시술메뉴",
-    robots: { index: false, follow: false },
+    title: `${item.title} | ${item.categoryLabel}`,
+    description,
+    alternates: { canonical: `/menu/${item.slug}` },
+    openGraph: {
+      title: `${item.title} | 안성경희365한의원`,
+      description,
+      url: `https://anseong365.com/menu/${item.slug}`,
+      type: "website",
+      images: [{ url: item.image, alt: item.title }],
+    },
   };
 }
 
@@ -46,9 +60,9 @@ export default async function MenuDetailPage({
     .slice(0, 4);
 
   return (
-    <main className="bg-white pt-20 lg:pt-44">
+    <main className="bg-white pt-8 lg:pt-12">
       <div className="mx-auto w-full max-w-[1200px] px-5 pb-24 sm:px-8">
-        <nav className="flex items-center gap-2 py-5 text-xs text-[#999]">
+        <nav className="flex items-center gap-2 py-5 text-xs text-[#5f5f5f]">
           <Link href="/" className="transition-colors hover:text-teal-700">
             홈
           </Link>
@@ -85,7 +99,7 @@ export default async function MenuDetailPage({
             <h1 className="gb-font mt-2.5 break-keep text-2xl font-bold leading-snug text-[#181818] sm:text-3xl">
               {item.title}
             </h1>
-            <p className="mt-3 break-keep text-sm leading-[1.8] text-[#6d6d6d]">
+            <p className="mt-3 break-keep text-sm leading-[1.8] text-[#5f5f5f]">
               {item.description ?? item.subtitle}
               {" (부가세 포함)"}
             </p>
@@ -102,7 +116,7 @@ export default async function MenuDetailPage({
             {item.included?.length ? (
               <ul className="mt-5 flex flex-wrap gap-1.5">
                 {item.included.map((line) => (
-                  <li key={line} className="rounded-full border border-[#eee] px-3 py-1 text-xs text-[#777]">
+                  <li key={line} className="rounded-full border border-[#eee] px-3 py-1 text-xs text-[#5f5f5f]">
                     ✓ {line}
                   </li>
                 ))}
@@ -112,13 +126,13 @@ export default async function MenuDetailPage({
             <dl className="mt-4 grid grid-cols-2 gap-3 text-sm">
               {item.schedule ? (
                 <div className="rounded-xl bg-[#f8f8f8] px-4 py-3">
-                  <dt className="text-xs text-[#999]">횟수 · 간격</dt>
+                  <dt className="text-xs text-[#5f5f5f]">횟수 · 간격</dt>
                   <dd className="mt-1 break-keep font-semibold text-[#333]">{item.schedule}</dd>
                 </div>
               ) : null}
               {item.recovery ? (
                 <div className="rounded-xl bg-[#f8f8f8] px-4 py-3">
-                  <dt className="text-xs text-[#999]">회복</dt>
+                  <dt className="text-xs text-[#5f5f5f]">회복</dt>
                   <dd className="mt-1 break-keep font-semibold text-[#333]">{item.recovery}</dd>
                 </div>
               ) : null}
@@ -130,7 +144,7 @@ export default async function MenuDetailPage({
         {detailSections.length > 0 ? (
           <section className="mx-auto mt-20 max-w-3xl">
             <div className="text-center">
-              <p className="mar-font text-xs tracking-[0.3em] text-[#959595]">TREATMENT DETAIL</p>
+              <p className="mar-font text-xs tracking-[0.3em] text-[#5f5f5f]">TREATMENT DETAIL</p>
               <h2 className="gb-font mt-3 text-2xl font-bold text-[#181818]">시술 상세</h2>
             </div>
             <div className="mt-10 flex flex-col gap-10">
@@ -141,7 +155,7 @@ export default async function MenuDetailPage({
                   </h3>
                   <div className="mt-3 flex flex-col gap-3">
                     {section.body.map((paragraph) => (
-                      <p key={paragraph} className="break-keep text-sm leading-[1.9] text-[#6d6d6d]">
+                      <p key={paragraph} className="break-keep text-sm leading-[1.9] text-[#5f5f5f]">
                         {paragraph}
                       </p>
                     ))}
@@ -159,7 +173,7 @@ export default async function MenuDetailPage({
               <h2 className="text-sm font-bold text-[#181818]">이런 경우 상담해 보세요</h2>
               <ul className="mt-4 flex flex-col gap-2.5">
                 {category.concerns.map((line) => (
-                  <li key={line} className="flex items-start gap-2 break-keep text-sm leading-relaxed text-[#666]">
+                  <li key={line} className="flex items-start gap-2 break-keep text-sm leading-relaxed text-[#5f5f5f]">
                     <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rotate-45 bg-teal-700" aria-hidden />
                     {line}
                   </li>
@@ -170,7 +184,7 @@ export default async function MenuDetailPage({
               <h2 className="text-sm font-bold text-[#181818]">시술 전에는</h2>
               <ul className="mt-4 flex flex-col gap-2.5">
                 {category.preCare.map((line) => (
-                  <li key={line} className="flex items-start gap-2 break-keep text-sm leading-relaxed text-[#666]">
+                  <li key={line} className="flex items-start gap-2 break-keep text-sm leading-relaxed text-[#5f5f5f]">
                     <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rotate-45 bg-teal-700" aria-hidden />
                     {line}
                   </li>
@@ -181,7 +195,7 @@ export default async function MenuDetailPage({
               <h2 className="text-sm font-bold text-[#181818]">시술 후에는</h2>
               <ul className="mt-4 flex flex-col gap-2.5">
                 {category.postCare.map((line) => (
-                  <li key={line} className="flex items-start gap-2 break-keep text-sm leading-relaxed text-[#666]">
+                  <li key={line} className="flex items-start gap-2 break-keep text-sm leading-relaxed text-[#5f5f5f]">
                     <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rotate-45 bg-teal-700" aria-hidden />
                     {line}
                   </li>
@@ -222,7 +236,7 @@ export default async function MenuDetailPage({
                     <p className="mt-1 text-sm font-extrabold text-[#181818]">
                       {other.priceFrom > 0 ? (
                         <>
-                          {formatWon(other.priceFrom)} <span className="font-medium text-[#999]">~</span>
+                          {formatWon(other.priceFrom)} <span className="font-medium text-[#5f5f5f]">~</span>
                         </>
                       ) : (
                         <span className="font-bold text-teal-700">상담 후 안내</span>
@@ -235,7 +249,7 @@ export default async function MenuDetailPage({
           </div>
         ) : null}
 
-        <p className="mt-14 text-center text-[11px] text-[#aaa]">
+        <p className="mt-14 text-center text-[11px] text-[#5f5f5f]">
           부가세 포함 금액 · 병변 상태에 따라 비용이 달라질 수 있습니다 · 2026.08 기준
         </p>
       </div>

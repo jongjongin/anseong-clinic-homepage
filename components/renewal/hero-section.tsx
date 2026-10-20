@@ -1,6 +1,7 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import Image from "next/image";
+import Link from "next/link";
 import { heroContent } from "@/components/home/content";
 
 export default function RenewalHeroSection() {
@@ -10,7 +11,7 @@ export default function RenewalHeroSection() {
     : false;
 
   return (
-    <section id="hero" className="relative flex h-[100svh] w-full flex-col overflow-hidden bg-slate-950 text-white">
+    <section id="hero" className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-slate-950 text-white">
       <div className="absolute inset-0">
         {hasHeroVideo ? (
           <video
@@ -36,7 +37,7 @@ export default function RenewalHeroSection() {
         <div className="pointer-events-none absolute inset-0 bg-black/40" />
       </div>
 
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-5 text-center">
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-5 pb-10 pt-16 text-center lg:pt-[190px]">
         <p className="mar-font text-[11px] tracking-[0.35em] text-white/70 sm:text-sm">
           ANSEONG KYUNGHEE 365
         </p>
@@ -50,7 +51,8 @@ export default function RenewalHeroSection() {
         </p>
       </div>
 
-      <div className="relative z-10 border-t border-white/10 bg-black/20 backdrop-blur-sm">
+      {/* 노트북처럼 낮은 화면(데스크톱 1024px+ 이면서 높이 800px 이하)에서는 상담 바와 겹치므로 통계 줄을 숨긴다 */}
+      <div className="relative z-10 shrink-0 border-t border-white/10 bg-black/20 pb-[calc(4rem+1px+env(safe-area-inset-bottom))] backdrop-blur-sm lg:pb-[var(--quick-reserve-bar-height,11rem)] [@media(min-width:1024px)_and_(max-height:800px)]:hidden">
         <div className="mx-auto grid max-w-4xl grid-cols-3 divide-x divide-white/10 px-2 py-4 sm:py-5">
           {heroContent.stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center gap-1.5 px-2 text-center">
@@ -64,15 +66,15 @@ export default function RenewalHeroSection() {
         </div>
       </div>
 
-      <a
+      <Link
         href="/#intro"
         aria-label="아래로 이동"
-        className="absolute bottom-24 left-1/2 z-10 hidden -translate-x-1/2 animate-bounce text-white/80 transition hover:text-white lg:block"
+        className="absolute bottom-[calc(var(--quick-reserve-bar-height,11rem)+7rem)] left-1/2 z-10 hidden -translate-x-1/2 animate-bounce text-white/80 transition hover:text-white lg:block"
       >
         <svg viewBox="0 0 24 24" fill="none" className="h-8 w-8" aria-hidden>
           <path d="m6 9 6 6 6-6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-      </a>
+      </Link>
     </section>
   );
 }

@@ -8,8 +8,8 @@ type SiteMobileBarProps = {
 
 export default function SiteMobileBar({ onReserveClick }: SiteMobileBarProps) {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[65] border-t border-slate-200 bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur md:hidden">
-      <div className="grid grid-cols-3">
+    <div className="fixed inset-x-0 bottom-0 z-[65] border-t border-slate-200 bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden">
+      <div className="grid grid-cols-4">
         <a
           href={siteContact.phoneHref}
           className="flex flex-col items-center gap-1 py-3 text-xs font-semibold text-slate-700 transition-colors active:bg-slate-50"
@@ -50,6 +50,19 @@ export default function SiteMobileBar({ onReserveClick }: SiteMobileBarProps) {
             <circle cx="12" cy="11" r="2.2" stroke="currentColor" strokeWidth="1.8" />
           </svg>
           오시는길
+        </a>
+        <a
+          href={siteContact.kakaoChatUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="flex flex-col items-center gap-1 py-3 text-xs font-semibold text-slate-700 transition-colors active:bg-slate-50"
+        >
+          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#FEE500]" aria-hidden>
+            <svg viewBox="0 0 24 24" fill="#191919" className="h-3.5 w-3.5">
+              <path d="M12 3C6.9 3 3 6.2 3 10.1c0 2.5 1.6 4.7 4.1 6l-.9 3.4c-.1.3.3.6.6.4l4-2.6c.4 0 .8.1 1.2.1 5.1 0 9-3.2 9-7.2S17.1 3 12 3Z" />
+            </svg>
+          </span>
+          카톡상담
         </a>
       </div>
     </div>

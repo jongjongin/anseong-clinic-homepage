@@ -69,7 +69,7 @@ export default async function PainDetailPage({ params }: PainDetailPageProps) {
             <BackIcon className="h-4 w-4" />
             통증치료 목록
           </Link>
-          <span className="hidden text-sm text-slate-400 sm:inline">진료 시 받은 안내를 우선해 주세요.</span>
+          <span className="hidden text-sm text-slate-600 sm:inline">진료 시 받은 안내를 우선해 주세요.</span>
         </div>
 
         <section className="mt-3 border border-slate-200 bg-white p-4 sm:p-5">

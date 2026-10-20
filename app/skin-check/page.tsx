@@ -22,7 +22,7 @@ export default function SkinCheckPage() {
   return (
     <main className="bg-white pb-24 pt-3 sm:pt-8 lg:pt-12">
       <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-8">
-        <nav className="hidden items-center gap-2 py-5 text-xs text-[#999] sm:flex">
+        <nav className="hidden items-center gap-2 py-5 text-xs text-[#5f5f5f] sm:flex">
           <Link href="/" className="transition-colors hover:text-teal-700">
             홈
           </Link>

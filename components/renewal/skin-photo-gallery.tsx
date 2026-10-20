@@ -49,7 +49,7 @@ export default function SkinPhotoGallery({ compact = false }: { compact?: boolea
             >
               {result.recommend.label}
             </Link>
-            <p className="mt-2 break-all text-[10.5px] leading-tight text-[#9a9a9a]">
+            <p className="mt-2 break-all text-[10.5px] leading-tight text-[#5f5f5f]">
               {photo!.credit}
             </p>
           </figcaption>

@@ -18,8 +18,6 @@ export const guideThemes = {
 } satisfies Record<GuideCategory, { tint: string; accent: string }>;
 
 export default function GuideCategoryNav({ active }: { active: GuideCategory }) {
-  const theme = guideThemes[active];
-
   return (
     <nav aria-label="안내 대분류" className="grid grid-cols-4 border-y border-[#eee] bg-white">
       {categories.map((category) => {
@@ -97,7 +95,7 @@ export function GuideHero({
       <h1 className="gb-font mt-3 break-keep text-2xl font-bold leading-snug text-[#181818] sm:text-4xl">
         {title}
       </h1>
-      <p className="mt-3 max-w-3xl break-keep text-sm leading-[1.8] text-[#6d6d6d] sm:text-[15px]">
+      <p className="mt-3 max-w-3xl break-keep text-sm leading-[1.8] text-[#5f5f5f] sm:text-[15px]">
         {description}
       </p>
     </section>

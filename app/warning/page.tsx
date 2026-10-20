@@ -132,7 +132,7 @@ export default function GuideIndexPage() {
           </div>
         </section>
 
-        <p className="mt-3 break-keep text-center text-[11px] leading-5 text-slate-400">
+        <p className="mt-3 break-keep text-center text-[11px] leading-5 text-slate-600">
           개인 상태에 따라 안내가 달라질 수 있으며 진료 시 받은 설명을 우선해 주세요.
         </p>
       </main>

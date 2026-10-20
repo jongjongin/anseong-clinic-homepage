@@ -112,7 +112,7 @@ export default function HerbGuidePage() {
 
         <GuideContact active="herb" />
 
-        <p className="mt-3 break-keep text-center text-[11px] leading-5 text-slate-400">
+        <p className="mt-3 break-keep text-center text-[11px] leading-5 text-slate-600">
           본 페이지는 공통 복약 안내입니다. 개인별 복용법은 진료 시 받은 안내를 우선해 주세요.
         </p>
       </main>

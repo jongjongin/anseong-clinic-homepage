@@ -1,36 +1,72 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import ReserveForm from "@/components/site/reserve-form";
 
 const STORAGE_KEY = "renewal-reserve-bar-collapsed";
+const STORAGE_EVENT = "renewal-reserve-bar-change";
+let fallbackCollapsed = false;
+
+function subscribe(onChange: () => void) {
+  window.addEventListener(STORAGE_EVENT, onChange);
+  window.addEventListener("storage", onChange);
+  return () => {
+    window.removeEventListener(STORAGE_EVENT, onChange);
+    window.removeEventListener("storage", onChange);
+  };
+}
+
+function getCollapsed() {
+  try {
+    return sessionStorage.getItem(STORAGE_KEY) === "1";
+  } catch {
+    return fallbackCollapsed;
+  }
+}
+
+function getServerCollapsed() {
+  return false;
+}
 
 export default function QuickReserveBar() {
-  const [collapsed, setCollapsed] = useState(false);
+  const collapsed = useSyncExternalStore(subscribe, getCollapsed, getServerCollapsed);
+  const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    try {
-      setCollapsed(sessionStorage.getItem(STORAGE_KEY) === "1");
-    } catch {
-      // 저장소 접근이 막힌 환경에서는 기본(펼침) 상태 유지
-    }
+    const bar = barRef.current;
+    if (!bar) return;
+
+    // 폼 줄바꿈, 접힘 상태, 하단 안전 영역까지 포함한 실제 높이를 히어로와 공유한다.
+    const updateHeight = () => {
+      document.documentElement.style.setProperty(
+        "--quick-reserve-bar-height",
+        `${bar.getBoundingClientRect().height}px`,
+      );
+    };
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(bar);
+    return () => {
+      observer.disconnect();
+      document.documentElement.style.removeProperty("--quick-reserve-bar-height");
+    };
   }, []);
 
   const toggle = () => {
-    setCollapsed((current) => {
-      const next = !current;
-      try {
-        sessionStorage.setItem(STORAGE_KEY, next ? "1" : "0");
-      } catch {
-        // ignore
-      }
-      return next;
-    });
+    const next = !collapsed;
+    fallbackCollapsed = next;
+    try {
+      sessionStorage.setItem(STORAGE_KEY, next ? "1" : "0");
+    } catch {
+      // 저장소 접근이 막혀도 현재 페이지에서는 접기/펼치기를 유지한다.
+    }
+    window.dispatchEvent(new Event(STORAGE_EVENT));
   };
 
   return (
     <div
       id="reserve"
+      ref={barRef}
       className="fixed inset-x-0 bottom-0 z-[70] hidden pb-[max(env(safe-area-inset-bottom),1rem)] lg:block"
     >
       <div className="pointer-events-none flex justify-center px-3 sm:px-6">

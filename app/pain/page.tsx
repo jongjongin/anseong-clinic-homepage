@@ -51,7 +51,7 @@ export default function PainGuidePage() {
                 <span style={{ color: theme.accent }}>
                   <WarningIcon name={guide.icon} className="h-8 w-8 sm:h-10 sm:w-10" />
                 </span>
-                <span className="text-base text-slate-300 transition-transform group-hover:translate-x-0.5 group-hover:text-slate-600">›</span>
+                <span className="text-base text-slate-500 transition-transform group-hover:translate-x-0.5 group-hover:text-slate-600">›</span>
               </div>
               <h2 className="mt-2 text-lg font-extrabold tracking-[-0.02em] sm:mt-3 sm:text-xl">{guide.title}</h2>
               <p className="mt-1 line-clamp-2 break-keep text-base leading-[1.6] text-slate-500">
@@ -63,7 +63,7 @@ export default function PainGuidePage() {
 
         <GuideContact active="pain" />
 
-        <p className="mt-3 break-keep text-center text-[11px] leading-5 text-slate-400">
+        <p className="mt-3 break-keep text-center text-[11px] leading-5 text-slate-600">
           개인 상태에 따라 관리 방법이 다를 수 있으며 진료 시 받은 안내를 우선해 주세요.
         </p>
       </main>

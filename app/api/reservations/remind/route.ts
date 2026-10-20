@@ -96,10 +96,29 @@ const runReminders = async (force = false) => {
 const isForced = (request: Request) =>
   new URL(request.url).searchParams.get("force") === "1";
 
+const isAuthorized = (request: Request) => {
+  const secret = process.env.REMIND_SECRET;
+
+  if (!secret) {
+    console.warn("[reservations/remind] REMIND_SECRET 미설정 — 인증 없이 실행");
+    return true;
+  }
+
+  return request.headers.get("authorization") === `Bearer ${secret}`;
+};
+
 export async function GET(request: Request) {
+  if (!isAuthorized(request)) {
+    return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 401 });
+  }
+
   return runReminders(isForced(request));
 }
 
 export async function POST(request: Request) {
+  if (!isAuthorized(request)) {
+    return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 401 });
+  }
+
   return runReminders(isForced(request));
 }

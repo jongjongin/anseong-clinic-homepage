@@ -106,7 +106,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </Script>
         <section className="bg-white">
           <div className="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-12">
-            <nav className="flex items-center gap-2 text-xs text-[#999]">
+            <nav className="flex items-center gap-2 text-xs text-[#5f5f5f]">
               <Link href="/" className="transition-colors hover:text-teal-700">홈</Link>
               <span aria-hidden>›</span>
               <Link href="/services" className="transition-colors hover:text-teal-700">진료 프로그램</Link>
@@ -121,7 +121,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                   {service.title}
                 </h1>
                 <p className="mt-4 break-keep text-[15px] text-teal-700">{service.subtitle}</p>
-                <p className="mt-6 break-keep text-sm leading-[1.9] text-[#6d6d6d] sm:text-[15px]">
+                <p className="mt-6 break-keep text-sm leading-[1.9] text-[#5f5f5f] sm:text-[15px]">
                   {service.intro}
                 </p>
               </div>
@@ -144,8 +144,8 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         <section className="bg-white">
           <div className="mx-auto grid max-w-[1200px] gap-5 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1fr_1fr]">
             <article className="border border-[#eee] bg-white p-6 sm:p-8">
-              <p className="text-xs font-semibold tracking-wide text-[#959595]">이런 분께 안내합니다</p>
-              <ul className="mt-5 space-y-4 break-keep text-sm leading-[1.9] text-[#6d6d6d]">
+              <p className="text-xs font-semibold tracking-wide text-[#5f5f5f]">이런 분께 안내합니다</p>
+              <ul className="mt-5 space-y-4 break-keep text-sm leading-[1.9] text-[#5f5f5f]">
                 {service.symptoms.map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="mt-3 h-2 w-2 rounded-full bg-teal-700" />
@@ -156,9 +156,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             </article>
 
             <article className="border border-[#eee] bg-white p-6 sm:p-8">
-              <p className="text-xs font-semibold tracking-wide text-[#959595]">진료 안내</p>
-              <p className="mt-5 break-keep text-sm leading-[1.9] text-[#6d6d6d]">{service.summary}</p>
-              <ul className="mt-6 space-y-4 break-keep text-sm leading-[1.9] text-[#6d6d6d]">
+              <p className="text-xs font-semibold tracking-wide text-[#5f5f5f]">진료 안내</p>
+              <p className="mt-5 break-keep text-sm leading-[1.9] text-[#5f5f5f]">{service.summary}</p>
+              <ul className="mt-6 space-y-4 break-keep text-sm leading-[1.9] text-[#5f5f5f]">
                 {service.care.map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="mt-3 h-2 w-2 rounded-full bg-[#FEE500]" />
@@ -173,8 +173,8 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         <section className="bg-white">
           <div className="mx-auto grid max-w-[1200px] gap-5 px-5 pb-16 sm:px-8 sm:pb-20 lg:grid-cols-[1fr_1fr]">
             <article className="border border-[#eee] bg-white p-6 sm:p-8">
-              <p className="text-xs font-semibold tracking-wide text-[#959595]">내원 전 준비사항</p>
-              <p className="mt-4 break-keep text-sm leading-[1.9] text-[#6d6d6d]">
+              <p className="text-xs font-semibold tracking-wide text-[#5f5f5f]">내원 전 준비사항</p>
+              <p className="mt-4 break-keep text-sm leading-[1.9] text-[#5f5f5f]">
                 처음 내원 전에는 현재 가장 불편한 증상과 생활 속에서 언제 더 불편한지 정도만 생각해 오셔도 충분합니다.
               </p>
               <div className="mt-5 grid gap-4 sm:grid-cols-3">
@@ -187,11 +187,11 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             </article>
 
             <article className="border border-[#eee] bg-white p-6 sm:p-8">
-              <p className="text-xs font-semibold tracking-wide text-[#959595]">이런 고민으로 상담하십니다</p>
+              <p className="text-xs font-semibold tracking-wide text-[#5f5f5f]">이런 고민으로 상담하십니다</p>
               <div className="mt-5 space-y-4">
                 {service.commonConcerns.map((item) => (
                   <div key={item} className="rounded-xl border border-[#f2f2f2] bg-white p-5">
-                    <p className="break-keep text-sm leading-[1.9] text-[#6d6d6d]">{item}</p>
+                    <p className="break-keep text-sm leading-[1.9] text-[#5f5f5f]">{item}</p>
                   </div>
                 ))}
               </div>
@@ -215,13 +215,13 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                     <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
                       <div>
                         <h3 className="gb-font break-keep text-xl font-bold text-[#181818]">{section.title}</h3>
-                        <p className="mt-4 break-keep text-sm leading-[1.9] text-[#6d6d6d]">{section.description}</p>
+                        <p className="mt-4 break-keep text-sm leading-[1.9] text-[#5f5f5f]">{section.description}</p>
                       </div>
                       <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
                         {section.items.map((item) => (
                           <div key={item.title} className="rounded-xl bg-[#f8f8f8] p-5">
                             <h4 className="break-keep text-base font-semibold text-teal-700">{item.title}</h4>
-                            <p className="mt-3 break-keep text-[13px] leading-[1.8] text-[#6d6d6d]">{item.description}</p>
+                            <p className="mt-3 break-keep text-[13px] leading-[1.8] text-[#5f5f5f]">{item.description}</p>
                           </div>
                         ))}
                       </div>
@@ -238,7 +238,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         <section className="bg-white">
           <div className="mx-auto grid max-w-[1200px] gap-5 px-5 pb-16 sm:px-8 sm:pb-20 lg:grid-cols-[1fr_1fr]">
             <article className="border border-[#eee] bg-white p-6 sm:p-8">
-              <p className="text-xs font-semibold tracking-wide text-[#959595]">진료는 이렇게 진행됩니다</p>
+              <p className="text-xs font-semibold tracking-wide text-[#5f5f5f]">진료는 이렇게 진행됩니다</p>
               <div className="mt-5 space-y-4">
                 {service.process.map((step, index) => (
                   <div key={step.title} className="rounded-xl border border-[#f2f2f2] bg-white p-5">
@@ -248,7 +248,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                       </div>
                       <div>
                         <h2 className="break-keep text-[15px] font-semibold text-[#181818]">{step.title}</h2>
-                        <p className="mt-2 break-keep text-[13px] leading-[1.8] text-[#6d6d6d]">{step.description}</p>
+                        <p className="mt-2 break-keep text-[13px] leading-[1.8] text-[#5f5f5f]">{step.description}</p>
                       </div>
                     </div>
                   </div>
@@ -257,11 +257,11 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             </article>
 
             <article className="border border-[#eee] bg-white p-6 sm:p-8">
-              <p className="text-xs font-semibold tracking-wide text-[#959595]">처음 오시는 분께 안내드립니다</p>
+              <p className="text-xs font-semibold tracking-wide text-[#5f5f5f]">처음 오시는 분께 안내드립니다</p>
               <div className="mt-5 space-y-4">
                 {service.guidanceNotes.map((item) => (
                   <div key={item} className="rounded-xl bg-[#f8f8f8] p-5">
-                    <p className="break-keep text-sm leading-[1.9] text-[#6d6d6d]">{item}</p>
+                    <p className="break-keep text-sm leading-[1.9] text-[#5f5f5f]">{item}</p>
                   </div>
                 ))}
               </div>
@@ -272,8 +272,8 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         <section className="bg-white">
           <div className="mx-auto grid max-w-[1200px] gap-5 px-5 pb-16 sm:px-8 sm:pb-20 lg:grid-cols-[1.1fr_0.9fr]">
             <article className="border border-[#eee] bg-white p-6 sm:p-8">
-              <p className="text-xs font-semibold tracking-wide text-[#959595]">담당 의료진 안내</p>
-              <p className="mt-4 break-keep text-[13px] leading-[1.8] text-[#959595]">
+              <p className="text-xs font-semibold tracking-wide text-[#5f5f5f]">담당 의료진 안내</p>
+              <p className="mt-4 break-keep text-[13px] leading-[1.8] text-[#5f5f5f]">
                 현재 불편한 증상과 생활 속 불편을 함께 살피며, 처음 내원하시는 분도 이해하기 쉬운 방향으로 진료 흐름을 안내해드립니다.
               </p>
               <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
@@ -302,11 +302,11 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             </article>
 
             <article className="border border-[#eee] bg-white p-6 sm:p-8">
-              <p className="text-xs font-semibold tracking-wide text-[#959595]">내원 전 생활 안내</p>
+              <p className="text-xs font-semibold tracking-wide text-[#5f5f5f]">내원 전 생활 안내</p>
               <div className="mt-5 space-y-4">
                 {service.homeCare.map((item) => (
                   <div key={item} className="rounded-xl bg-[#f8f8f8] p-5">
-                    <p className="break-keep text-sm leading-[1.9] text-[#6d6d6d]">{item}</p>
+                    <p className="break-keep text-sm leading-[1.9] text-[#5f5f5f]">{item}</p>
                   </div>
                 ))}
               </div>
@@ -317,12 +317,12 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         <section className="bg-white">
           <div className="mx-auto max-w-[1200px] px-5 pb-16 sm:px-8 sm:pb-20">
             <article className="border border-[#eee] bg-[#f8f8f8] p-6 sm:p-8">
-              <p className="text-xs font-semibold tracking-wide text-[#959595]">자주 묻는 안내</p>
+              <p className="text-xs font-semibold tracking-wide text-[#5f5f5f]">자주 묻는 안내</p>
               <div className="mt-5 grid gap-4 md:grid-cols-2">
                 {service.faqs.map((faq) => (
                   <div key={faq.question} className="rounded-xl border border-[#f2f2f2] bg-white p-5">
                     <h3 className="break-keep text-[15px] font-semibold text-[#181818]">{faq.question}</h3>
-                    <p className="mt-3 break-keep text-sm leading-[1.9] text-[#6d6d6d]">{faq.answer}</p>
+                    <p className="mt-3 break-keep text-sm leading-[1.9] text-[#5f5f5f]">{faq.answer}</p>
                   </div>
                 ))}
               </div>

@@ -52,13 +52,13 @@ export default function TwoPanelSection() {
       {/* 중앙 원형 배지 (데스크톱) */}
       <div className="relative z-10 my-4 flex aspect-square w-[230px] items-center justify-center overflow-hidden rounded-full bg-white/80 text-center shadow-2xl backdrop-blur lg:absolute lg:left-1/2 lg:top-1/2 lg:my-0 lg:w-[260px] lg:-translate-x-1/2 lg:-translate-y-1/2">
         <div className="flex flex-col items-center gap-2.5 px-7">
-          <p className="mar-font text-[11px] tracking-[0.3em] text-[#959595]">365 DAYS</p>
+          <p className="mar-font text-[11px] tracking-[0.3em] text-[#5f5f5f]">365 DAYS</p>
           <p className="gb-font break-keep text-lg font-bold leading-normal text-[#181818]">
             365일 진료하는
             <br />
             안성경희365한의원
           </p>
-          <p className="gb-font break-keep text-[11px] leading-relaxed text-[#6d6d6d]">
+          <p className="gb-font break-keep text-[11px] leading-relaxed text-[#5f5f5f]">
             {introSectionContent.paragraphs[2]}
           </p>
         </div>

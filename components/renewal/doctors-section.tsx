@@ -8,11 +8,11 @@ export default function RenewalDoctorsSection() {
       <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-8">
         <Reveal>
           <div className="flex flex-col items-center text-center">
-            <p className="mar-font text-xs tracking-[0.3em] text-[#959595]">MEDICAL TEAM</p>
+            <p className="mar-font text-xs tracking-[0.3em] text-[#5f5f5f]">MEDICAL TEAM</p>
             <h2 className="gb-font mt-4 break-keep text-[22px] font-bold leading-snug text-[#181818] sm:text-4xl">
               {doctorsSectionContent.title}
             </h2>
-            <p className="mt-4 max-w-2xl break-keep text-[13px] leading-relaxed text-[#959595] sm:text-[15px]">
+            <p className="mt-4 max-w-2xl break-keep text-[13px] leading-relaxed text-[#5f5f5f] sm:text-[15px]">
               {doctorsSectionContent.description}
             </p>
           </div>

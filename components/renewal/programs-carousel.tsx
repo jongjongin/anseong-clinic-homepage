@@ -45,10 +45,10 @@ export default function ProgramsCarousel({ programs }: ProgramsCarouselProps) {
           <SwiperSlide key={program.slug} className="!h-auto">
             <div className="flex h-full flex-col border border-[#eee] bg-white p-9 transition-colors duration-300 hover:border-[#181818]">
               <h3 className="gb-font break-keep text-[19px] font-bold text-[#181818]">{program.title}</h3>
-              <p className="mt-1.5 break-keep text-[13px] text-[#959595]">{program.subtitle}</p>
+              <p className="mt-1.5 break-keep text-[13px] text-[#5f5f5f]">{program.subtitle}</p>
               <ul className="mt-6 flex flex-1 flex-col gap-2.5 border-t border-[#f2f2f2] pt-6">
                 {program.bullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-2.5 break-keep text-[13px] leading-relaxed text-[#6d6d6d]">
+                  <li key={bullet} className="flex items-start gap-2.5 break-keep text-[13px] leading-relaxed text-[#5f5f5f]">
                     <span className="mt-[7px] block h-1 w-1 shrink-0 rotate-45 bg-teal-700" aria-hidden />
                     {bullet}
                   </li>

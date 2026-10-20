@@ -15,4 +15,5 @@ jobs:
       - name: 미처리 상담신청 리마인드 요청
         run: |
           curl -sS -X POST "https://anseong365.com/api/reservations/remind" \
+            -H "Authorization: Bearer ${{ secrets.REMIND_SECRET }}" \
             --max-time 60 --retry 2 --retry-delay 5 -w "\nHTTP %{http_code}\n"

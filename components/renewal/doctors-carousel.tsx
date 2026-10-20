@@ -50,14 +50,14 @@ export default function RenewalDoctorsCarousel() {
                     <h3 className="gb-font text-lg font-bold text-[#181818]">{doctor.name}</h3>
                     <span className="text-[13px] text-teal-700">{doctor.role}</span>
                   </div>
-                  <p className="mt-1.5 break-keep text-[13px] text-[#959595]">{doctor.summary}</p>
+                  <p className="mt-1.5 break-keep text-[13px] text-[#5f5f5f]">{doctor.summary}</p>
 
                   <div
                     className={`mt-4 grid transition-[grid-template-rows] duration-300 ${
                       expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                     }`}
                   >
-                    <ul className="flex flex-col gap-1 overflow-hidden text-xs leading-relaxed text-[#959595]">
+                    <ul className="flex flex-col gap-1 overflow-hidden text-xs leading-relaxed text-[#5f5f5f]">
                       {doctor.credentials.map((credential) => (
                         <li key={credential} className="break-keep">
                           · {credential}

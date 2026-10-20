@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { menuItems } from "@/lib/menu-items";
 import { servicePages } from "@/lib/service-pages";
 
 const siteUrl = "https://anseong365.com";
@@ -46,5 +47,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  return [...staticPages, ...serviceDetailPages];
+  const menuDetailPages: MetadataRoute.Sitemap = menuItems.map((item) => ({
+    url: `${siteUrl}/menu/${item.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...serviceDetailPages, ...menuDetailPages];
 }

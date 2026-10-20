@@ -88,7 +88,7 @@ export default function MenuProducts({ itemTitle, options, productFeatures }: Me
               {option.note ? <p className="mt-1 text-xs text-teal-700">{option.note}</p> : null}
               <ul className="mt-2.5 flex flex-col gap-1">
                 {productFeatures.map((line) => (
-                  <li key={line} className="break-keep text-xs leading-relaxed text-[#959595]">
+                  <li key={line} className="break-keep text-xs leading-relaxed text-[#5f5f5f]">
                     {line}
                   </li>
                 ))}
@@ -101,7 +101,7 @@ export default function MenuProducts({ itemTitle, options, productFeatures }: Me
                         {formatWon(option.price)}
                       </span>
                       {option.original ? (
-                        <del className="text-[13px] text-[#bbb]">{formatWon(option.original)}</del>
+                        <del className="text-[13px] text-[#5f5f5f]">{formatWon(option.original)}</del>
                       ) : null}
                       {rate ? (
                         <span className="text-[13px] font-extrabold text-teal-700">{rate}%</span>
@@ -147,7 +147,7 @@ export default function MenuProducts({ itemTitle, options, productFeatures }: Me
         </a>
       </div>
       {selected.length > 0 ? (
-        <p className="mt-2 text-[11px] text-[#959595]">
+        <p className="mt-2 text-[11px] text-[#5f5f5f]">
           담은 구성이 예약 신청서의 문의 내용에 자동으로 채워집니다.
         </p>
       ) : null}

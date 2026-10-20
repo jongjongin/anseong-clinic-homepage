@@ -285,7 +285,7 @@ export default function BeautyGuidePage() {
 
         <GuideContact active="beauty" />
 
-        <p className="mt-3 break-keep text-center text-[11px] leading-5 text-slate-400">
+        <p className="mt-3 break-keep text-center text-[11px] leading-5 text-slate-600">
           본 페이지는 일반적인 시술 안내이며 진단을 대신하지 않습니다. 실제 장비, 강도, 횟수와 회복 안내는 진료 후 결정됩니다.
         </p>
       </main>

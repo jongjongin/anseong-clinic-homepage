@@ -56,10 +56,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/logo/logo-wordmark.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "안성경희365한의원",
+        alt: "안성경희365한의원 · 안성 365일 진료 한의원",
       },
     ],
   },
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     title: "안성경희365한의원 | 안성 365일 진료 한의원",
     description:
       "안성 남파로 103, 365일 진료 한의원. 통증·교통사고·다이어트 상담을 안내합니다.",
-    images: ["/assets/logo/logo-wordmark.png"],
+    images: ["/og-image.png"],
   },
 };
 
@@ -101,7 +101,7 @@ const clinicStructuredData = {
     postalCode: "17579",
     addressCountry: "KR",
   },
-  openingHours: ["Mo-Fr 09:00-20:00", "Sa-Su 09:00-15:00"],
+  openingHours: ["Mo-Fr 09:00-20:00", "Sa-Su,PH 09:00-15:00"],
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -111,7 +111,7 @@ const clinicStructuredData = {
     },
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Saturday", "Sunday"],
+      dayOfWeek: ["Saturday", "Sunday", "https://schema.org/PublicHolidays"],
       opens: "09:00",
       closes: "15:00",
     },

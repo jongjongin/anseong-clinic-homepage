@@ -128,7 +128,7 @@ export default function SkinCheckQuiz() {
         </div>
       </div>
 
-      <p className="mt-5 break-keep px-2 text-center text-[12.5px] leading-relaxed text-[#7a7a7a]">
+      <p className="mt-5 break-keep px-2 text-center text-[12.5px] leading-relaxed text-[#5f5f5f]">
         상담 전 참고용이며 진단이 아닙니다. 최종 확인은 원장 진료로 안내해 드립니다.
       </p>
     </div>
@@ -334,7 +334,7 @@ function ResultCard({ resultKey, onRestart }: { resultKey: SkinResultKey; onRest
               실제 사진
             </figcaption>
           </div>
-          <p className="mt-2 text-[11px] text-[#8a8a8a]">{photo.credit}</p>
+          <p className="mt-2 text-[11px] text-[#5f5f5f]">{photo.credit}</p>
         </figure>
       ) : null}
 
@@ -361,7 +361,7 @@ function ResultCard({ resultKey, onRestart }: { resultKey: SkinResultKey; onRest
           </span>
           <span
             aria-hidden
-            className="shrink-0 text-[18px] text-[#b0b0b0] transition-transform duration-200 group-hover:translate-x-1 group-hover:text-teal-700"
+            className="shrink-0 text-[18px] text-[#5f5f5f] transition-transform duration-200 group-hover:translate-x-1 group-hover:text-teal-700"
           >
             →
           </span>

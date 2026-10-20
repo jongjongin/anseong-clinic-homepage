@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { BlogSection} from "@/components/home";
+import BlogSection from "@/components/home/blog-section";
 
 const siteUrl = "https://anseong365.com";
 

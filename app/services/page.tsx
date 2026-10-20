@@ -64,12 +64,12 @@ export default function ServicesPage() {
       </Script>
       <main className="bg-white pb-24 pt-8 lg:pt-12">
         <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-8">
-          <p className="mar-font text-xs tracking-[0.3em] text-[#959595]">PROGRAM</p>
+          <p className="mar-font text-xs tracking-[0.3em] text-[#5f5f5f]">PROGRAM</p>
           <h1 className="gb-font mt-4 break-keep text-2xl font-bold leading-snug text-[#181818] sm:text-4xl">
             현재 불편한 증상에 맞는
             <br className="sm:hidden" /> 진료 프로그램을 확인해 보세요
           </h1>
-          <p className="mt-4 max-w-2xl break-keep text-[13px] leading-relaxed text-[#959595] sm:text-[15px]">
+          <p className="mt-4 max-w-2xl break-keep text-[13px] leading-relaxed text-[#5f5f5f] sm:text-[15px]">
             척추관절, 교통사고, 약침추나, 소아성장, 다이어트, 보약, 여성질환, 미용 진료까지 —
             필요한 진료를 상세 페이지에서 확인하실 수 있습니다.
           </p>
@@ -82,11 +82,11 @@ export default function ServicesPage() {
               >
                 <div className="flex items-center justify-between gap-4">
                   <span className="text-xs font-medium text-teal-700">진료 프로그램</span>
-                  <span className="mar-font text-sm text-[#d0d0d0]">0{index + 1}</span>
+                  <span className="mar-font text-sm text-[#5f5f5f]">0{index + 1}</span>
                 </div>
                 <h2 className="gb-font mt-5 break-keep text-xl font-bold text-[#181818]">{service.title}</h2>
-                <p className="mt-1.5 break-keep text-[13px] text-[#959595]">{service.subtitle}</p>
-                <p className="mt-4 flex-1 break-keep text-[13px] leading-[1.8] text-[#6d6d6d]">{service.summary}</p>
+                <p className="mt-1.5 break-keep text-[13px] text-[#5f5f5f]">{service.subtitle}</p>
+                <p className="mt-4 flex-1 break-keep text-[13px] leading-[1.8] text-[#5f5f5f]">{service.summary}</p>
                 <Link
                   href={`/services/${service.slug}`}
                   className="gb-font mt-6 inline-flex items-center gap-2 border-t border-[#f2f2f2] pt-5 text-sm text-[#181818] transition-colors hover:text-teal-700"

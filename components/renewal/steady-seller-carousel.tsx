@@ -15,9 +15,9 @@ const ALL_KEY = "all";
 function CategoryCard({ category }: { category: BeautyMenuCategory }) {
   return (
     <div className="flex h-full flex-col bg-white p-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
-      <p className="mar-font text-[10px] tracking-[0.25em] text-[#959595]">BEAUTY MENU</p>
+      <p className="mar-font text-[10px] tracking-[0.25em] text-[#5f5f5f]">BEAUTY MENU</p>
       <h3 className="gb-font mt-2.5 break-keep text-[17px] font-bold text-[#181818]">{category.title}</h3>
-      <p className="mt-1 break-keep text-xs text-[#959595]">{category.subtitle}</p>
+      <p className="mt-1 break-keep text-xs text-[#5f5f5f]">{category.subtitle}</p>
 
       <div className="mt-6 flex flex-1 flex-col gap-5 border-t border-[#f2f2f2] pt-6">
         {category.items.map((item) => (
@@ -27,10 +27,10 @@ function CategoryCard({ category }: { category: BeautyMenuCategory }) {
             <ul className="mt-2 flex flex-col gap-1.5">
               {item.prices.map((price) => (
                 <li key={`${item.name}-${price.label}`} className="flex items-baseline justify-between gap-3 text-[13px]">
-                  <span className="break-keep text-[#959595]">{price.label}</span>
+                  <span className="break-keep text-[#5f5f5f]">{price.label}</span>
                   <span className="whitespace-nowrap text-right">
                     {price.original ? (
-                      <del className="mr-1.5 text-[11px] text-[#c4c4c4]">{price.original}</del>
+                      <del className="mr-1.5 text-[11px] text-[#5f5f5f]">{price.original}</del>
                     ) : null}
                     <span className="font-bold text-[#181818]">{price.price}</span>
                   </span>
@@ -42,7 +42,7 @@ function CategoryCard({ category }: { category: BeautyMenuCategory }) {
       </div>
 
       {category.footnotes?.length ? (
-        <p className="mt-5 break-keep text-[11px] leading-relaxed text-[#b0b0b0]">
+        <p className="mt-5 break-keep text-[11px] leading-relaxed text-[#5f5f5f]">
           {category.footnotes.join(" · ")}
         </p>
       ) : null}

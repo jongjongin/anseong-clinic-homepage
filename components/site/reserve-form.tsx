@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { servicePages } from "@/lib/service-pages";
 
 const TIME_SLOTS = (() => {
@@ -28,9 +28,14 @@ type SubmitState =
 
 export default function ReserveForm({ layout, onSuccess, initialMessage = "" }: ReserveFormProps) {
   const [state, setState] = useState<SubmitState>({ phase: "idle" });
-  const today = useMemo(() => {
-    const kst = new Date(Date.now() + 9 * 60 * 60 * 1000);
-    return kst.toISOString().slice(0, 10);
+  const [today, setToday] = useState("");
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      const kst = new Date(Date.now() + 9 * 60 * 60 * 1000);
+      setToday(kst.toISOString().slice(0, 10));
+    }, 0);
+    return () => window.clearTimeout(timer);
   }, []);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -198,7 +203,7 @@ export default function ReserveForm({ layout, onSuccess, initialMessage = "" }: 
         <Link
           href="/privacy-policy"
           target="_blank"
-          className="whitespace-nowrap text-xs text-slate-400 underline underline-offset-2 transition hover:text-teal-700"
+          className="whitespace-nowrap text-xs text-slate-600 underline underline-offset-2 transition hover:text-teal-700"
         >
           (자세히)
         </Link>
