@@ -4,6 +4,7 @@ import "./globals.css";
 import GlobalOverlays from "@/components/site/global-overlays";
 import SiteFooter from "@/components/site/site-footer";
 import SiteHeader from "@/components/site/site-header";
+import { siteEvents } from "@/lib/events";
 
 const siteUrl = "https://anseong365.com";
 
@@ -196,7 +197,7 @@ export default function RootLayout({
         <SiteHeader />
         {children}
         <SiteFooter />
-        <GlobalOverlays />
+        <GlobalOverlays events={siteEvents} />
       </body>
     </html>
   );

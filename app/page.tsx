@@ -10,6 +10,11 @@ import SnsSection from "@/components/renewal/sns-section";
 import TelemedicineSection from "@/components/renewal/telemedicine-section";
 import InfoSplitSection from "@/components/renewal/info-split-section";
 import RenewalCtaSection from "@/components/renewal/cta-section";
+import EventRibbon from "@/components/site/event-ribbon";
+import { getActiveEvent } from "@/lib/events";
+
+/** 기간 한정 이벤트 띠가 마감 뒤 사라지도록 1시간마다 다시 그린다 */
+export const revalidate = 3600;
 
 const siteUrl = "https://anseong365.com";
 
@@ -85,12 +90,15 @@ const homePageStructuredData = {
 };
 
 export default function Home() {
+  const activeEvent = getActiveEvent();
+
   return (
     <main className="flex w-full flex-col">
       <Script id="home-webpage-jsonld" type="application/ld+json">
         {JSON.stringify(homePageStructuredData)}
       </Script>
       <RenewalHeroSection />
+      {activeEvent ? <EventRibbon event={activeEvent} /> : null}
       <TwoPanelSection />
       <ProgramsSection />
       <SteadySellerSection />

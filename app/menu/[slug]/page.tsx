@@ -3,10 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import MenuProducts from "@/components/renewal/menu-products";
+import EventRibbon from "@/components/site/event-ribbon";
+import { getActiveEventForMenu } from "@/lib/events";
 import { menuDetailSections, menuProductFeatures } from "@/lib/menu-details";
 import { formatWon, getMenuCategory, getMenuItem, menuItems } from "@/lib/menu-items";
 
 export const dynamicParams = false;
+
+/** 기간 한정 이벤트 안내가 마감 뒤 사라지도록 1시간마다 다시 그린다 */
+export const revalidate = 3600;
 
 export function generateStaticParams() {
   return menuItems.map((item) => ({ slug: item.slug }));
@@ -53,6 +58,7 @@ export default async function MenuDetailPage({
   }
 
   const category = getMenuCategory(item.category);
+  const activeEvent = getActiveEventForMenu(item.slug);
   const features = menuProductFeatures[item.slug] ?? [];
   const detailSections = menuDetailSections[item.slug] ?? [];
   const related = menuItems
@@ -110,6 +116,12 @@ export default async function MenuDetailPage({
                 </span>
               ))}
             </div>
+
+            {activeEvent ? (
+              <div className="mt-5">
+                <EventRibbon event={activeEvent} variant="card" slug={item.slug} />
+              </div>
+            ) : null}
 
             <MenuProducts itemTitle={item.title} options={item.options} productFeatures={features} />
 

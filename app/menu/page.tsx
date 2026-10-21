@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import MenuCatalog from "@/components/renewal/menu-catalog";
+import EventRibbon from "@/components/site/event-ribbon";
+import { getActiveEvent } from "@/lib/events";
+
+/** 기간 한정 이벤트 안내가 마감 뒤 사라지도록 1시간마다 다시 그린다 */
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "시술메뉴/이벤트 | 안성 피부 레이저·토닝·점 제거 가격",
@@ -17,6 +22,8 @@ export const metadata: Metadata = {
 };
 
 export default function MenuPage() {
+  const activeEvent = getActiveEvent();
+
   return (
     <main className="bg-white pt-8 lg:pt-12">
       <div className="mx-auto w-full max-w-[1200px] px-5 pb-10 sm:px-8">
@@ -36,6 +43,11 @@ export default function MenuPage() {
             →
           </span>
         </Link>
+        {activeEvent ? (
+          <div className="mt-6 max-w-xl">
+            <EventRibbon event={activeEvent} variant="card" />
+          </div>
+        ) : null}
       </div>
       <Suspense fallback={<div className="py-24" />}>
         <MenuCatalog />
