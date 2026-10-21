@@ -127,7 +127,7 @@ export default function DietGuidePage() {
                 <li key={item.rank} className="px-3 py-3" style={{ backgroundColor: DIET_THEME.tint }}>
                   <span className="block text-sm font-bold" style={{ color: DIET_THEME.accent }}>{item.rank}</span>
                   <strong className="mt-0.5 block text-base text-[#334155]">{item.food}</strong>
-                  <span className="mt-0.5 block text-sm text-slate-500">{item.detail}</span>
+                  <span className="mt-0.5 block text-sm text-slate-600">{item.detail}</span>
                 </li>
               ))}
             </ol>
@@ -184,7 +184,7 @@ export default function DietGuidePage() {
               <MealCard meal="점심" menu="곤약밥 · 닭가슴살 100g · 김치" />
               <MealCard meal="저녁" menu="고구마 1개 · 삶은 달걀 · 오이스틱 · 요거트" />
             </div>
-            <p className="mt-3 text-center text-xs leading-5 text-slate-500">더 많은 예시는 내원 시 식단표로 제공해 드립니다.</p>
+            <p className="mt-3 text-center text-xs leading-5 text-slate-600">더 많은 예시는 내원 시 식단표로 제공해 드립니다.</p>
           </GuideCard>
         </div>
 

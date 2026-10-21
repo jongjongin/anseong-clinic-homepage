@@ -37,9 +37,9 @@ export default function SiteFooter() {
           </nav>
         </div>
 
-        <p className="max-w-3xl text-xs leading-relaxed text-slate-500">{footerContent.notice}</p>
+        <p className="max-w-3xl text-xs leading-relaxed text-slate-400">{footerContent.notice}</p>
 
-        <div className="flex flex-col gap-2 border-t border-slate-800 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-2 border-t border-slate-800 pt-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} {footerContent.clinicName}. All rights reserved.</p>
         </div>
       </div>

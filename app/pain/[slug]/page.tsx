@@ -64,7 +64,7 @@ export default async function PainDetailPage({ params }: PainDetailPageProps) {
         <div className="mt-3 flex items-center justify-between gap-4">
           <Link
             href="/pain"
-            className="inline-flex items-center gap-1.5 text-sm font-bold text-slate-500 transition-colors hover:text-slate-900"
+            className="inline-flex items-center gap-1.5 text-sm font-bold text-slate-600 transition-colors hover:text-slate-900"
           >
             <BackIcon className="h-4 w-4" />
             통증치료 목록

@@ -6,13 +6,13 @@ export default function RenewalCtaSection() {
     <section id="consult" className="bg-slate-950 py-20 text-white lg:py-28">
       <div className="mx-auto flex max-w-3xl flex-col items-center px-5 text-center sm:px-8">
         <Reveal className="flex flex-col items-center">
-          <p className="mar-font text-xs tracking-[0.3em] text-white/50">CONTACT</p>
+          <p className="mar-font text-xs tracking-[0.3em] text-white/70">CONTACT</p>
           <h2 className="gb-font mt-5 break-keep text-[22px] font-bold leading-[1.55] sm:text-4xl sm:leading-[1.5]">
             {ctaSectionContent.title[0]}
             <br />
             {ctaSectionContent.title[1]}
           </h2>
-          <p className="mt-6 max-w-xl break-keep text-[13px] leading-[1.9] text-white/60 sm:text-[15px]">
+          <p className="mt-6 max-w-xl break-keep text-[13px] leading-[1.9] text-white/80 sm:text-[15px]">
             {ctaSectionContent.description}
           </p>
 

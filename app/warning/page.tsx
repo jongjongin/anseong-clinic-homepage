@@ -28,7 +28,7 @@ const categories = [
     label: "한약",
     eyebrow: "복용 안내",
     description: "복용법 · 데우기 · 보관 · 주의사항",
-    accent: "#2F9E62",
+    accent: "#1F7A4A",
     softAccent: "#F0F9F1",
     number: "02",
   },
@@ -37,7 +37,7 @@ const categories = [
     label: "다이어트",
     eyebrow: "프로그램 관리",
     description: "복용 · 식단 · 금식 · 생활 관리",
-    accent: "#D6336C",
+    accent: "#B8235A",
     softAccent: "#FDF2F4",
     number: "03",
   },
@@ -89,7 +89,7 @@ export default function GuideIndexPage() {
                 </span>
                 <span
                   className="text-xl transition-transform group-hover:translate-x-0.5"
-                  style={{ color: "#cbd5e1" }}
+                  style={{ color: "#94a3b8" }}
                   aria-hidden="true"
                 >
                   ›

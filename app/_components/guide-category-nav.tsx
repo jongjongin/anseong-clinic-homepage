@@ -29,7 +29,7 @@ export default function GuideCategoryNav({ active }: { active: GuideCategory }) 
             href={category.href}
             aria-current={isActive ? "page" : undefined}
             style={{
-              color: isActive ? "#181818" : "#959595",
+              color: isActive ? "#181818" : "#5f5f5f",
               borderBottomColor: isActive ? "#181818" : "transparent",
             }}
             className="flex min-h-11 items-center justify-center border-b-2 px-1.5 text-center text-xs font-semibold transition-colors hover:bg-[#f8f8f8] sm:min-h-12 sm:text-sm"

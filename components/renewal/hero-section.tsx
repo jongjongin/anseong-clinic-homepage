@@ -11,7 +11,7 @@ export default function RenewalHeroSection() {
     : false;
 
   return (
-    <section id="hero" className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-slate-950 text-white">
+    <section id="hero" className="relative flex min-h-[calc(100svh-4rem-1px-env(safe-area-inset-bottom))] w-full flex-col overflow-hidden bg-slate-950 text-white lg:min-h-[100svh]">
       <div className="absolute inset-0">
         {hasHeroVideo ? (
           <video
@@ -52,19 +52,25 @@ export default function RenewalHeroSection() {
       </div>
 
       {/* 노트북처럼 낮은 화면(데스크톱 1024px+ 이면서 높이 800px 이하)에서는 상담 바와 겹치므로 통계 줄을 숨긴다 */}
-      <div className="relative z-10 shrink-0 border-t border-white/10 bg-black/20 pb-[calc(4rem+1px+env(safe-area-inset-bottom))] backdrop-blur-sm lg:pb-[var(--quick-reserve-bar-height,11rem)] [@media(min-width:1024px)_and_(max-height:800px)]:hidden">
+      <div className="relative z-10 shrink-0 border-t border-white/10 bg-black/20 backdrop-blur-sm [@media(min-width:1024px)_and_(max-height:800px)]:hidden">
         <div className="mx-auto grid max-w-4xl grid-cols-3 divide-x divide-white/10 px-2 py-4 sm:py-5">
           {heroContent.stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center gap-1.5 px-2 text-center">
-              <p className="text-[11px] tracking-wide text-white/50 sm:text-xs">{stat.label}</p>
+              <p className="text-xs tracking-wide text-white/75 sm:text-xs">{stat.label}</p>
               <p className="gb-font whitespace-pre-line break-keep text-xs font-bold sm:text-[15px]">
                 {stat.value}
               </p>
-              <p className="hidden whitespace-pre-line text-[11px] text-white/45 sm:block">{stat.note}</p>
+              <p className="hidden whitespace-pre-line text-[11px] text-white/70 sm:block">{stat.note}</p>
             </div>
           ))}
         </div>
       </div>
+
+      {/* 데스크톱: 하단 상담 바 높이만큼 비워 통계 줄이 바에 가리지 않게 한다 (모바일은 히어로 높이에서 이미 뺐다) */}
+      <div
+        aria-hidden
+        className="relative hidden shrink-0 lg:block lg:h-[var(--quick-reserve-bar-height,11rem)] [@media(min-width:1024px)_and_(max-height:800px)]:hidden"
+      />
 
       <Link
         href="/#intro"

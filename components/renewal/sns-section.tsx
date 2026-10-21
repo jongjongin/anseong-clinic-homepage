@@ -28,12 +28,12 @@ export default function SnsSection() {
       <div className="relative z-10 mx-auto max-w-[1200px] px-6">
         <Reveal>
           <div className="mb-10 text-center">
-            <p className="mar-font text-xs tracking-[0.3em] text-white/60">SNS CONTENTS</p>
+            <p className="mar-font text-xs tracking-[0.3em] text-white/80">SNS CONTENTS</p>
             <h2 className="gb-font mt-4 break-keep text-[22px] font-bold leading-[1.5] lg:text-4xl">
               블로그에서 만나는
               <br className="sm:hidden" /> 안성경희365한의원
             </h2>
-            <p className="mt-4 break-keep text-[13px] text-white/60 lg:text-[15px]">
+            <p className="mt-4 break-keep text-[13px] text-white/80 lg:text-[15px]">
               진료 후기와 건강 정보, 병원 소식을 네이버 블로그에서 확인해 보세요.
             </p>
           </div>
@@ -63,7 +63,7 @@ export default function SnsSection() {
                       <path d="M4 4h5.1l5.6 8.2V4H20v16h-5.1l-5.6-8.2V20H4V4Z" />
                     </svg>
                   </span>
-                  <p className="mar-font text-[10px] tracking-[0.25em] text-white/60">{card.label}</p>
+                  <p className="mar-font text-[10px] tracking-[0.25em] text-white/80">{card.label}</p>
                   <p className="gb-font break-keep text-lg font-bold">{card.title}</p>
                   <p className="translate-y-1 gb-font text-[13px] text-white opacity-100 transition-all duration-300 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
                     블로그 바로가기 →

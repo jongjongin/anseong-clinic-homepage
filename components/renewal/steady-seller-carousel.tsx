@@ -111,7 +111,7 @@ export default function SteadySellerCarousel() {
         </Swiper>
       </div>
 
-      <p className="mt-6 text-[11px] text-white/50">
+      <p className="mt-6 text-xs text-white/75">
         부가세 포함 · 병변 상태에 따라 비용이 달라질 수 있습니다 · {beautyMenuUpdated} 기준
       </p>
     </div>
