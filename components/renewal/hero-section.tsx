@@ -20,7 +20,8 @@ export default function RenewalHeroSection() {
             muted
             loop
             playsInline
-            poster={heroContent.visualImage}
+            // 영상과 같은 로비 사진을 먼저 보여 줘 영상이 뜰 때 화면이 튀지 않게 한다 (1600px·128KB)
+            poster="/assets/hero/hero-poster.jpg"
           >
             <source src={heroVideoPath ?? undefined} type="video/mp4" />
           </video>
