@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import { formatEventWon, isEventActive, type SiteEvent } from "@/lib/event-time";
+import { track } from "@/lib/analytics";
 
 /** 1분마다 시각을 다시 확인 — 마감 시각이 지나면 바로 사라지게 */
 const subscribe = (onChange: () => void) => {
@@ -28,10 +29,17 @@ export default function EventRibbon({ event, variant = "strip", slug }: EventRib
   if (!active) return null;
 
   const lead = event.offers[0];
+  const selectPromotion = () => {
+    track("select_promotion", {
+      promotion_id: event.id,
+      promotion_name: event.title,
+      creative_slot: variant === "strip" ? "home_strip" : "menu_card",
+    });
+  };
 
   if (variant === "strip") {
     return (
-      <Link href={event.href} className="group block bg-[#0f3d3a] text-white">
+      <Link href={event.href} onClick={selectPromotion} className="group block bg-[#0f3d3a] text-white">
         <div className="mx-auto flex max-w-[1200px] items-center gap-3 px-5 py-3.5 sm:px-8 lg:justify-center lg:gap-5 lg:py-4">
           <span className="shrink-0 rounded-full bg-white px-2.5 py-1 text-[11px] font-extrabold tracking-wider text-[#0f3d3a]">
             EVENT
@@ -79,7 +87,7 @@ export default function EventRibbon({ event, variant = "strip", slug }: EventRib
   }
 
   return (
-    <Link href={event.href} className={`group ${cardClass} transition-colors hover:bg-teal-50`}>
+    <Link href={event.href} onClick={selectPromotion} className={`group ${cardClass} transition-colors hover:bg-teal-50`}>
       {body}
       <span aria-hidden className="shrink-0 text-[#0f3d3a] transition-transform duration-300 group-hover:translate-x-1">
         →

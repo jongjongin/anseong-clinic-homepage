@@ -23,13 +23,26 @@ export default function MenuCatalog() {
   const searchParams = useSearchParams();
   const category = searchParams.get("category") ?? "all";
 
-  return <MenuCatalogView key={category} initialCategory={category} />;
+  return <MenuCatalogView initialCategory={category} />;
 }
 
+const validCategory = (key: string) => (menuCategories.some((c) => c.key === key) ? key : "all");
+
 export function MenuCatalogView({ initialCategory = "all" }: { initialCategory?: string }) {
-  const [category, setCategory] = useState(
-    menuCategories.some((c) => c.key === initialCategory) ? initialCategory : "all",
-  );
+  const [category, setCategoryState] = useState(validCategory(initialCategory));
+  // 주소(?category=)가 바뀌면(헤더 메뉴·뒤로 가기) 선택도 따라간다. 정렬·검색어는 유지.
+  const [syncedFrom, setSyncedFrom] = useState(initialCategory);
+  if (syncedFrom !== initialCategory) {
+    setSyncedFrom(initialCategory);
+    setCategoryState(validCategory(initialCategory));
+  }
+
+  /** 분류를 고르면 주소에도 남겨 공유·뒤로 가기 때 그대로 열리게 한다 */
+  const setCategory = (key: string) => {
+    setCategoryState(key);
+    const url = key === "all" ? window.location.pathname : `${window.location.pathname}?category=${key}`;
+    window.history.replaceState(window.history.state, "", url);
+  };
   const [sort, setSort] = useState<SortKey>("recent");
   const [query, setQuery] = useState("");
 

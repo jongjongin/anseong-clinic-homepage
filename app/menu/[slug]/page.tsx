@@ -101,14 +101,19 @@ export async function generateMetadata({
     return { title: "시술메뉴", robots: { index: false, follow: false } };
   }
 
-  const description = `${item.subtitle}. 안성경희365한의원 ${item.title} 시술 안내와 가격 (부가세 포함).`;
+  // "[기미에 안정적] 듀얼토닝" → 이름 "듀얼토닝" + 꼬리표 "기미에 안정적"
+  const tag = item.title.match(/^\[([^\]]+)\]/)?.[1];
+  const name = item.title.replace(/^\[[^\]]*\]\s*/, "");
+  const searchTitle = item.category === "consult" ? name : `안성 ${name}${tag ? ` · ${tag}` : ""}`;
+  const fromPrice = item.priceFrom > 0 ? ` ${formatWon(item.priceFrom)}부터(부가세 포함).` : "";
+  const description = `${item.subtitle}.${fromPrice} 안성 남파로 103 안성경희365한의원.`;
 
   return {
-    title: `${item.title} | ${item.categoryLabel}`,
+    title: searchTitle,
     description,
     alternates: { canonical: `/menu/${item.slug}` },
     openGraph: {
-      title: `${item.title} | 안성경희365한의원`,
+      title: `${searchTitle} | 안성경희365한의원`,
       description,
       url: `https://anseong365.com/menu/${item.slug}`,
       type: "website",

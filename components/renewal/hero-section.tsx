@@ -75,7 +75,7 @@ export default function RenewalHeroSection() {
       <Link
         href="/#intro"
         aria-label="아래로 이동"
-        className="absolute bottom-[calc(var(--quick-reserve-bar-height,11rem)+7rem)] left-1/2 z-10 hidden -translate-x-1/2 animate-bounce text-white/80 transition hover:text-white lg:block"
+        className="absolute bottom-[calc(var(--quick-reserve-bar-height,11rem)+7rem)] left-1/2 z-10 hidden -translate-x-1/2 animate-bounce text-white/80 transition hover:text-white lg:block [@media(min-width:1024px)_and_(max-height:800px)]:hidden"
       >
         <svg viewBox="0 0 24 24" fill="none" className="h-8 w-8" aria-hidden>
           <path d="m6 9 6 6 6-6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />

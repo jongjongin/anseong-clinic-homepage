@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { openReserveSheet } from "@/components/site/reserve-cta-button";
 import { formatEventWon, isEventActive, type SiteEvent } from "@/lib/event-time";
+import { track } from "@/lib/analytics";
 
 const hideUntilKey = (id: string) => `event-popup:${id}:hide-until`;
 const closedKey = (id: string) => `event-popup:${id}:closed`;
@@ -32,6 +33,23 @@ export default function EventPopup({ events }: { events: SiteEvent[] }) {
   const [event, setEvent] = useState<SiteEvent | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const visible = event !== null && pathname === "/";
+  const viewedPromotionRef = useRef<string | null>(null);
+  const promotionId = event?.id;
+  const promotionName = event?.title;
+
+  useEffect(() => {
+    if (!visible || promotionId === undefined) {
+      viewedPromotionRef.current = null;
+      return;
+    }
+    if (viewedPromotionRef.current === promotionId) return;
+    viewedPromotionRef.current = promotionId;
+    track("view_promotion", {
+      promotion_id: promotionId,
+      promotion_name: promotionName,
+      creative_slot: "home_popup",
+    });
+  }, [visible, promotionId, promotionName]);
 
   useEffect(() => {
     if (pathname !== "/") return;
@@ -45,8 +63,14 @@ export default function EventPopup({ events }: { events: SiteEvent[] }) {
   }, [pathname, events]);
 
   const close = useCallback(
-    (mode: "session" | "today") => {
+    (mode: "session" | "today", dismiss = true) => {
       if (!event) return;
+      if (dismiss) {
+        track("dismiss_promotion", {
+          promotion_id: event.id,
+          mode: mode === "today" ? "today" : "close",
+        });
+      }
       try {
         if (mode === "today") {
           localStorage.setItem(hideUntilKey(event.id), String(nextKstMidnight(Date.now())));
@@ -80,6 +104,16 @@ export default function EventPopup({ events }: { events: SiteEvent[] }) {
 
   if (!visible || !event) return null;
 
+  const selectPromotion = (action: "detail" | "reserve") => {
+    track("select_promotion", {
+      promotion_id: event.id,
+      promotion_name: event.title,
+      creative_slot: "home_popup",
+      action,
+    });
+    close("session", false);
+  };
+
   return (
     <div
       className="fixed inset-0 z-[90] flex items-center justify-center bg-black/55 px-4 py-6"
@@ -98,7 +132,7 @@ export default function EventPopup({ events }: { events: SiteEvent[] }) {
               <h2 id="event-popup-title" className="sr-only">
                 {event.title} · {event.periodText}
               </h2>
-              <Link href={event.href} onClick={() => close("session")} className="block bg-[#f4f1ea]">
+              <Link href={event.href} onClick={() => selectPromotion("detail")} className="block bg-[#f4f1ea]">
                 <Image
                   src={event.poster.src}
                   width={event.poster.width}
@@ -152,7 +186,7 @@ export default function EventPopup({ events }: { events: SiteEvent[] }) {
           <div className="grid grid-cols-2 gap-2 px-5 pb-5 pt-4">
             <Link
               href={event.href}
-              onClick={() => close("session")}
+              onClick={() => selectPromotion("detail")}
               className="rounded-full border border-[#0f3d3a] py-3 text-center text-[14px] font-bold text-[#0f3d3a] transition hover:bg-[#0f3d3a]/5"
             >
               자세히 보기
@@ -160,7 +194,7 @@ export default function EventPopup({ events }: { events: SiteEvent[] }) {
             <button
               type="button"
               onClick={() => {
-                close("session");
+                selectPromotion("reserve");
                 openReserveSheet(event.inquiry);
               }}
               className="rounded-full bg-[#0f3d3a] py-3 text-[14px] font-bold text-white transition hover:bg-[#0b2f2d]"

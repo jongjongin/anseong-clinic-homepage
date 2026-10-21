@@ -30,14 +30,14 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   }
 
   return {
-    title: `${service.title} 안내`,
+    title: `안성 ${service.title} 안내`,
     description: service.seoDescription,
     keywords: service.keywords,
     alternates: {
       canonical: `/services/${service.slug}`,
     },
     openGraph: {
-      title: `${service.title} 안내 | 안성경희365한의원`,
+      title: `안성 ${service.title} 안내 | 안성경희365한의원`,
       description: service.seoDescription,
       images: [
         {

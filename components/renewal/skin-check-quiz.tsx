@@ -9,6 +9,7 @@ import { formatEventWon, isEventActive, type EventOffer, type SiteEvent } from "
 import { moleAlert, skinQuestions, skinResults, type SkinResultKey } from "@/lib/skin-check";
 import { skinPhotos } from "@/lib/skin-photos";
 import { siteContact } from "@/lib/site-nav";
+import { track } from "@/lib/analytics";
 
 type Screen =
   | { kind: "intro" }
@@ -305,7 +306,19 @@ function TreatmentBlock({
   );
 }
 
+function useTrackResult(result: SkinResultKey | "mole-alert") {
+  const trackedResultRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (trackedResultRef.current === result) return;
+    trackedResultRef.current = result;
+    track("skin_check_result", { result });
+  }, [result]);
+}
+
 function AlertCard({ onRestart }: { onRestart: () => void }) {
+  useTrackResult("mole-alert");
+
   return (
     <div className="px-5 py-8 sm:px-10 sm:py-14">
       <div className="text-center">
@@ -343,6 +356,8 @@ function ResultCard({
   onRestart: () => void;
   events: SiteEvent[];
 }) {
+  useTrackResult(resultKey);
+
   const result = skinResults[resultKey];
   const alsoEvent = result.alsoRecommend ? findEventOffer(events, result.alsoRecommend.slug) : null;
   const photo = skinPhotos[resultKey];

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import GlobalOverlays from "@/components/site/global-overlays";
+import AnalyticsListener from "@/components/site/analytics-listener";
 import SiteFooter from "@/components/site/site-footer";
 import SiteHeader from "@/components/site/site-header";
 import { siteEvents } from "@/lib/events";
@@ -197,6 +198,7 @@ export default function RootLayout({
         {children}
         <SiteFooter />
         <GlobalOverlays events={siteEvents} />
+        <AnalyticsListener />
       </body>
     </html>
   );

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { servicePages } from "@/lib/service-pages";
+import { track } from "@/lib/analytics";
 
 const TIME_SLOTS = (() => {
   const slots: string[] = [];
@@ -12,6 +13,30 @@ const TIME_SLOTS = (() => {
   }
   return slots;
 })();
+
+/** 고정 공휴일(월-일) — 토·일과 같은 진료시간. 설·추석 연휴는 해마다 날짜가 달라 넣지 않았다. */
+const FIXED_HOLIDAYS = new Set(["01-01", "03-01", "05-05", "06-06", "08-15", "10-03", "10-09", "12-25"]);
+
+/**
+ * 고른 날짜에 신청할 수 있는 시간.
+ * 진료시간: 평일 09~20시(점심 13~14시), 토·일·공휴일 09~15시. 오늘이면 30분 뒤부터.
+ */
+const slotsFor = (isoDate: string, now?: { date: string; minutes: number }) => {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(isoDate);
+  if (!match) return TIME_SLOTS;
+
+  const weekday = new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3]))).getUTCDay();
+  const shortDay = weekday === 0 || weekday === 6 || FIXED_HOLIDAYS.has(isoDate.slice(5));
+
+  return TIME_SLOTS.filter((slot) => {
+    const [hour, minute] = slot.split(":").map(Number);
+    const minutes = hour * 60 + minute;
+    if (minutes >= (shortDay ? 15 : 20) * 60) return false;
+    if (!shortDay && minutes >= 13 * 60 && minutes < 14 * 60) return false;
+    if (now && isoDate === now.date && minutes < now.minutes + 30) return false;
+    return true;
+  });
+};
 
 type ReserveFormProps = {
   layout: "bar" | "sheet";
@@ -29,14 +54,26 @@ type SubmitState =
 export default function ReserveForm({ layout, onSuccess, initialMessage = "" }: ReserveFormProps) {
   const [state, setState] = useState<SubmitState>({ phase: "idle" });
   const [today, setToday] = useState("");
+  const [nowMinutes, setNowMinutes] = useState(0);
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
       const kst = new Date(Date.now() + 9 * 60 * 60 * 1000);
-      setToday(kst.toISOString().slice(0, 10));
+      const iso = kst.toISOString().slice(0, 10);
+      const minutes = kst.getUTCHours() * 60 + kst.getUTCMinutes();
+      setToday(iso);
+      setNowMinutes(minutes);
+      // 오늘 신청할 수 있는 시간이 이미 지났으면 내일을 기본으로
+      const hasSlotToday = slotsFor(iso, { date: iso, minutes }).length > 0;
+      setDate(hasSlotToday ? iso : new Date(kst.getTime() + 24 * 60 * 60 * 1000).toISOString().slice(0, 10));
     }, 0);
     return () => window.clearTimeout(timer);
   }, []);
+
+  const now = today ? { date: today, minutes: nowMinutes } : undefined;
+  const slots = slotsFor(date, now);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -64,6 +101,7 @@ export default function ReserveForm({ layout, onSuccess, initialMessage = "" }: 
       const data = (await response.json().catch(() => ({}))) as { error?: string };
 
       if (!response.ok) {
+        track("lead_error", { form: layout, status: response.status });
         setState({
           phase: "error",
           message: data.error ?? "접수 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.",
@@ -72,9 +110,16 @@ export default function ReserveForm({ layout, onSuccess, initialMessage = "" }: 
       }
 
       form.reset();
+      setTime("");
+      track("generate_lead", {
+        form: layout,
+        service: (formData.get("service") as string) || "none",
+        has_message: Boolean(formData.get("message")),
+      });
       setState({ phase: "success" });
       onSuccess?.();
     } catch {
+      track("lead_error", { form: layout, status: "network" });
       setState({
         phase: "error",
         message: "네트워크 오류가 발생했습니다. 전화(031-8057-0750)로 문의해 주세요.",
@@ -159,16 +204,34 @@ export default function ReserveForm({ layout, onSuccess, initialMessage = "" }: 
 
       <label className={isBar ? "flex w-[150px] flex-col gap-1" : "flex flex-col gap-1.5"}>
         <span className="text-xs font-semibold text-slate-500">희망일</span>
-        <input name="desiredDate" type="date" required min={today} defaultValue={today} className={fieldClass} />
+        <input
+          name="desiredDate"
+          type="date"
+          required
+          min={today}
+          value={date}
+          onChange={(changeEvent) => {
+            const next = changeEvent.target.value;
+            setDate(next);
+            if (time && !slotsFor(next, now).includes(time)) setTime("");
+          }}
+          className={fieldClass}
+        />
       </label>
 
       <label className={isBar ? "flex w-[120px] flex-col gap-1" : "flex flex-col gap-1.5"}>
         <span className="text-xs font-semibold text-slate-500">예약시간</span>
-        <select name="desiredTime" required defaultValue="" className={fieldClass}>
+        <select
+          name="desiredTime"
+          required
+          value={time}
+          onChange={(changeEvent) => setTime(changeEvent.target.value)}
+          className={fieldClass}
+        >
           <option value="" disabled>
-            시간 선택
+            {slots.length ? "시간 선택" : "가능한 시간 없음"}
           </option>
-          {TIME_SLOTS.map((slot) => (
+          {slots.map((slot) => (
             <option key={slot} value={slot}>
               {slot}
             </option>
