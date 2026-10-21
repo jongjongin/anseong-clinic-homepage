@@ -24,7 +24,7 @@ export default function SteadySellerSection() {
               <p className="mar-font text-xs tracking-[0.3em] text-white/80">STEADY SELLER</p>
               <h2 className="gb-font mt-4 break-keep text-[22px] font-bold leading-[1.55] sm:text-4xl sm:leading-[1.5]">
                 진정성 있는 치료로
-                <br className="hidden sm:block" /> 확실한 변화를 보여드리겠습니다
+                <br className="hidden sm:block" /> 꾸준한 변화를 함께 만들어 갑니다
               </h2>
               <p className="mt-4 break-keep text-[13px] leading-relaxed text-white/80 sm:text-[15px]">
                 피부 미용 프로그램 가격표 — 카테고리를 눌러 원하는 시술을 확인해 보세요.
