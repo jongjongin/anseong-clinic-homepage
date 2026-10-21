@@ -34,6 +34,7 @@ export default function ReserveSheet({ open, onClose, prefillMessage = "" }: Res
   return (
     <div
       aria-hidden={!open}
+      inert={!open}
       onClick={onClose}
       className={`fixed inset-0 z-[80] bg-black/50 transition-opacity duration-300 ${
         open ? "opacity-100" : "pointer-events-none opacity-0"

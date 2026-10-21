@@ -37,6 +37,7 @@ export default function MobileDrawer({ open, onClose }: MobileDrawerProps) {
   return (
     <div
       aria-hidden={!open}
+      inert={!open}
       className={`fixed inset-0 z-[90] bg-black/50 transition-opacity duration-300 lg:hidden ${
         open ? "opacity-100" : "pointer-events-none opacity-0"
       }`}

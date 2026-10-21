@@ -48,7 +48,12 @@ export default function SkinCheckBanner() {
 
         {/* 비교: 모바일은 스와이프, 데스크톱은 3열 */}
         <Reveal>
-          <div className="no-scrollbar mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 sm:mt-14 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:pb-0">
+          <div
+            tabIndex={0}
+            role="region"
+            aria-label="병변 비교 (옆으로 넘겨 보기)"
+            className="no-scrollbar mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 outline-none focus-visible:ring-2 focus-visible:ring-teal-700 sm:mt-14 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:pb-0"
+          >
             {comparisons.map((item) => (
               <article
                 key={item.question}
