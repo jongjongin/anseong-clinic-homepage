@@ -5,6 +5,7 @@ import GlobalOverlays from "@/components/site/global-overlays";
 import SiteFooter from "@/components/site/site-footer";
 import SiteHeader from "@/components/site/site-header";
 import { siteEvents } from "@/lib/events";
+import JsonLd from "@/components/site/json-ld";
 
 const siteUrl = "https://anseong365.com";
 
@@ -175,9 +176,7 @@ export default function RootLayout({
             })(window, document, "clarity", "script", "w6mwf7n6h0");
           `}
         </Script>
-        <Script id="clinic-jsonld" type="application/ld+json">
-          {JSON.stringify(clinicStructuredData)}
-        </Script>
+        <JsonLd data={clinicStructuredData} />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
         <link
           rel="stylesheet"

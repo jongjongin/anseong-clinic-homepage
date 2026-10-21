@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import BlogSection from "@/components/home/blog-section";
+import JsonLd from "@/components/site/json-ld";
 
 const siteUrl = "https://anseong365.com";
 
@@ -39,9 +39,7 @@ const blogBreadcrumbStructuredData = {
 export default function BlogPage() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <Script id="blog-breadcrumb-jsonld" type="application/ld+json">
-        {JSON.stringify(blogBreadcrumbStructuredData)}
-      </Script>
+      <JsonLd data={blogBreadcrumbStructuredData} />
       <main>
         <BlogSection />
       </main>

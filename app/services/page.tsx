@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import { servicePages } from "@/lib/service-pages";
+import JsonLd from "@/components/site/json-ld";
 
 const siteUrl = "https://anseong365.com";
 
@@ -56,12 +56,8 @@ const servicesBreadcrumbStructuredData = {
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <Script id="services-itemlist-jsonld" type="application/ld+json">
-        {JSON.stringify(servicesItemListStructuredData)}
-      </Script>
-      <Script id="services-breadcrumb-jsonld" type="application/ld+json">
-        {JSON.stringify(servicesBreadcrumbStructuredData)}
-      </Script>
+      <JsonLd data={servicesItemListStructuredData} />
+      <JsonLd data={servicesBreadcrumbStructuredData} />
       <main className="bg-white pb-24 pt-8 lg:pt-12">
         <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-8">
           <p className="mar-font text-xs tracking-[0.3em] text-[#5f5f5f]">PROGRAM</p>

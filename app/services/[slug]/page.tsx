@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Script from "next/script";
 import BeautyTreatments from "@/components/renewal/beauty-treatments";
 import RenewalCtaSection from "@/components/renewal/cta-section";
+import JsonLd from "@/components/site/json-ld";
 import { getServicePage, servicePages } from "@/lib/service-pages";
 
 type ServicePageProps = {
@@ -98,12 +98,8 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
   return (
     <div className="min-h-screen bg-white text-[#181818]">
       <main className="bg-white">
-        <Script id={`${service.slug}-faq-jsonld`} type="application/ld+json">
-          {JSON.stringify(faqStructuredData)}
-        </Script>
-        <Script id={`${service.slug}-breadcrumb-jsonld`} type="application/ld+json">
-          {JSON.stringify(breadcrumbStructuredData)}
-        </Script>
+        <JsonLd data={faqStructuredData} />
+        <JsonLd data={breadcrumbStructuredData} />
         <section className="bg-white">
           <div className="mx-auto max-w-[1200px] px-5 py-8 sm:px-8 lg:py-12">
             <nav className="flex items-center gap-2 text-xs text-[#5f5f5f]">

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import RenewalHeroSection from "@/components/renewal/hero-section";
 import TwoPanelSection from "@/components/renewal/two-panel-section";
 import ProgramsSection from "@/components/renewal/programs-section";
@@ -12,6 +11,7 @@ import InfoSplitSection from "@/components/renewal/info-split-section";
 import RenewalCtaSection from "@/components/renewal/cta-section";
 import EventRibbon from "@/components/site/event-ribbon";
 import { getActiveEvent } from "@/lib/events";
+import JsonLd from "@/components/site/json-ld";
 
 /** 기간 한정 이벤트 띠가 마감 뒤 사라지도록 1시간마다 다시 그린다 */
 export const revalidate = 3600;
@@ -94,9 +94,7 @@ export default function Home() {
 
   return (
     <main className="flex w-full flex-col">
-      <Script id="home-webpage-jsonld" type="application/ld+json">
-        {JSON.stringify(homePageStructuredData)}
-      </Script>
+      <JsonLd data={homePageStructuredData} />
       <RenewalHeroSection />
       {activeEvent ? <EventRibbon event={activeEvent} /> : null}
       <TwoPanelSection />

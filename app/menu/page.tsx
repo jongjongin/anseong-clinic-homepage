@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import MenuCatalog from "@/components/renewal/menu-catalog";
+import MenuCatalog, { MenuCatalogView } from "@/components/renewal/menu-catalog";
 import EventRibbon from "@/components/site/event-ribbon";
 import { getActiveEvent } from "@/lib/events";
 
@@ -49,7 +49,7 @@ export default function MenuPage() {
           </div>
         ) : null}
       </div>
-      <Suspense fallback={<div className="py-24" />}>
+      <Suspense fallback={<MenuCatalogView />}>
         <MenuCatalog />
       </Suspense>
     </main>

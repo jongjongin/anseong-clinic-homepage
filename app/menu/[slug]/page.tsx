@@ -4,9 +4,81 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import MenuProducts from "@/components/renewal/menu-products";
 import EventRibbon from "@/components/site/event-ribbon";
+import JsonLd from "@/components/site/json-ld";
 import { getActiveEventForMenu } from "@/lib/events";
 import { menuDetailSections, menuProductFeatures } from "@/lib/menu-details";
-import { formatWon, getMenuCategory, getMenuItem, menuItems } from "@/lib/menu-items";
+import {
+  formatWon,
+  getMenuCategory,
+  getMenuItem,
+  type MenuItem,
+  menuItems,
+} from "@/lib/menu-items";
+
+const SITE_URL = "https://anseong365.com";
+
+function buildBreadcrumbJsonLd(item: MenuItem) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "홈",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "시술메뉴/이벤트",
+        item: `${SITE_URL}/menu`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: item.title,
+        item: `${SITE_URL}/menu/${item.slug}`,
+      },
+    ],
+  };
+}
+
+function buildServiceJsonLd(item: MenuItem) {
+  const url = `${SITE_URL}/menu/${item.slug}`;
+  const offers = item.options
+    .filter((option): option is typeof option & { price: number } => typeof option.price === "number")
+    .map((option) => ({
+      "@type": "Offer",
+      name: option.label,
+      price: option.price,
+      priceCurrency: "KRW",
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        price: option.price,
+        priceCurrency: "KRW",
+        valueAddedTaxIncluded: true,
+      },
+      url,
+    }));
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: item.title,
+    description: item.description ?? item.subtitle,
+    url,
+    image: `${SITE_URL}${item.image}`,
+    serviceType: item.categoryLabel,
+    provider: {
+      "@type": "MedicalClinic",
+      "@id": `${SITE_URL}/#clinic`,
+      name: "안성경희365한의원",
+    },
+    areaServed: "안성",
+    ...(offers.length > 0 ? { offers } : {}),
+  };
+}
 
 export const dynamicParams = false;
 
@@ -67,6 +139,8 @@ export default async function MenuDetailPage({
 
   return (
     <main className="bg-white pt-8 lg:pt-12">
+      <JsonLd data={buildBreadcrumbJsonLd(item)} />
+      <JsonLd data={buildServiceJsonLd(item)} />
       <div className="mx-auto w-full max-w-[1200px] px-5 pb-24 sm:px-8">
         <nav className="flex items-center gap-2 py-5 text-xs text-[#5f5f5f]">
           <Link href="/" className="transition-colors hover:text-teal-700">

@@ -14,9 +14,19 @@ const SORTS = [
 
 type SortKey = (typeof SORTS)[number]["key"];
 
+/**
+ * 주소의 ?category= 를 읽어 해당 분류를 연 카탈로그.
+ * useSearchParams 는 정적 HTML 에서 빠지므로, 페이지는 Suspense fallback 으로
+ * <MenuCatalogView /> (전체보기)를 서버 HTML 에 그려 검색 로봇·첫 화면에 목록이 보이게 한다.
+ */
 export default function MenuCatalog() {
   const searchParams = useSearchParams();
-  const initialCategory = searchParams.get("category") ?? "all";
+  const category = searchParams.get("category") ?? "all";
+
+  return <MenuCatalogView key={category} initialCategory={category} />;
+}
+
+export function MenuCatalogView({ initialCategory = "all" }: { initialCategory?: string }) {
   const [category, setCategory] = useState(
     menuCategories.some((c) => c.key === initialCategory) ? initialCategory : "all",
   );

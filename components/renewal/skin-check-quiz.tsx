@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import SkinIcon from "@/components/renewal/skin-icons";
 import { openReserveSheet } from "@/components/site/reserve-cta-button";
+import { formatEventWon, isEventActive, type EventOffer, type SiteEvent } from "@/lib/event-time";
 import { moleAlert, skinQuestions, skinResults, type SkinResultKey } from "@/lib/skin-check";
 import { skinPhotos } from "@/lib/skin-photos";
 import { siteContact } from "@/lib/site-nav";
@@ -28,7 +29,19 @@ const screenKeyOf = (screen: Screen) =>
       ? `r-${screen.key}`
       : screen.kind;
 
-export default function SkinCheckQuiz() {
+type EventMatch = { event: SiteEvent; offer: EventOffer } | null;
+
+/** 추천 시술이 진행 중 이벤트에 들어 있으면 그 이벤트 가격을 돌려준다 (기간이 지나면 null) */
+function findEventOffer(events: SiteEvent[], slug: string): EventMatch {
+  for (const event of events) {
+    if (!isEventActive(event)) continue;
+    const offer = event.offers.find((candidate) => candidate.slug === slug);
+    if (offer) return { event, offer };
+  }
+  return null;
+}
+
+export default function SkinCheckQuiz({ events = [] }: { events?: SiteEvent[] }) {
   // 지나온 화면을 쌓아 둔다. 마지막 항목이 현재 화면.
   const [stack, setStack] = useState<Screen[]>([{ kind: "intro" }]);
   const [direction, setDirection] = useState<"next" | "back">("next");
@@ -123,7 +136,7 @@ export default function SkinCheckQuiz() {
           ) : screen.kind === "alert" ? (
             <AlertCard onRestart={restart} />
           ) : (
-            <ResultCard resultKey={screen.key} onRestart={restart} />
+            <ResultCard resultKey={screen.key} onRestart={restart} events={events} />
           )}
         </div>
       </div>
@@ -250,11 +263,13 @@ function TreatmentBlock({
   label,
   reason,
   slug,
+  eventMatch,
 }: {
   action: string;
   label: string;
   reason: string;
   slug: string;
+  eventMatch: EventMatch;
 }) {
   return (
     <div className="mt-8 rounded-2xl bg-teal-700 p-6 text-white sm:p-7">
@@ -263,6 +278,22 @@ function TreatmentBlock({
         {label}
       </p>
       <p className="mt-3 break-keep text-[15px] leading-[1.7] text-teal-50">{reason}</p>
+      {eventMatch ? (
+        <div className="mt-4 rounded-xl bg-white/15 px-4 py-3">
+          <p className="text-[13px] font-bold text-white">
+            EVENT · {eventMatch.event.periodText}
+          </p>
+          <p className="mt-1 text-[15px] font-bold text-white">
+            {eventMatch.offer.optionLabel} {formatEventWon(eventMatch.offer.price)}
+            {eventMatch.offer.discount ? (
+              <span className="ml-1.5 text-[13px] font-semibold text-teal-50">({eventMatch.offer.discount}% 할인)</span>
+            ) : null}
+          </p>
+          {eventMatch.offer.note ? (
+            <p className="mt-0.5 text-[13px] text-teal-50">+ {eventMatch.offer.note}</p>
+          ) : null}
+        </div>
+      ) : null}
       <Link
         href={`/menu/${slug}`}
         className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-4 text-[16px] font-bold text-teal-800 transition hover:bg-teal-50"
@@ -303,8 +334,17 @@ function AlertCard({ onRestart }: { onRestart: () => void }) {
   );
 }
 
-function ResultCard({ resultKey, onRestart }: { resultKey: SkinResultKey; onRestart: () => void }) {
+function ResultCard({
+  resultKey,
+  onRestart,
+  events,
+}: {
+  resultKey: SkinResultKey;
+  onRestart: () => void;
+  events: SiteEvent[];
+}) {
   const result = skinResults[resultKey];
+  const alsoEvent = result.alsoRecommend ? findEventOffer(events, result.alsoRecommend.slug) : null;
   const photo = skinPhotos[resultKey];
 
   return (
@@ -344,6 +384,7 @@ function ResultCard({ resultKey, onRestart }: { resultKey: SkinResultKey; onRest
         label={result.recommend.label}
         reason={result.recommend.reason}
         slug={result.recommend.slug}
+        eventMatch={findEventOffer(events, result.recommend.slug)}
       />
 
       {result.alsoRecommend ? (
@@ -354,6 +395,11 @@ function ResultCard({ resultKey, onRestart }: { resultKey: SkinResultKey; onRest
           <span className="min-w-0 flex-1">
             <span className="block break-keep text-[19px] font-bold text-[#171717]">
               {result.alsoRecommend.label}
+              {alsoEvent ? (
+                <span className="ml-2 inline-block rounded-full bg-teal-700 px-2 py-0.5 align-middle text-[12px] font-bold text-white">
+                  이벤트 {alsoEvent.offer.optionLabel} {formatEventWon(alsoEvent.offer.price)}
+                </span>
+              ) : null}
             </span>
             <span className="mt-1.5 block break-keep text-[14px] leading-snug text-[#5f5f5f]">
               {result.alsoRecommend.reason}

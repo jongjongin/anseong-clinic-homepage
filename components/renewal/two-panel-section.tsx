@@ -29,8 +29,8 @@ export default function TwoPanelSection() {
             index === 0 ? "-mb-2 lg:mb-0" : "-mt-2 lg:mt-0"
           }`}
         >
-          <Image src={panel.image} alt="" fill className="-z-10 object-cover object-center" sizes="(min-width:1024px) 50vw, 100vw" />
-          <div className="absolute inset-0 z-0 bg-black/70" />
+          <Image src={panel.image} alt="" fill className="object-cover object-center" sizes="(min-width:1024px) 50vw, 100vw" />
+          <div className="absolute inset-0 bg-black/70" />
           <div className="relative z-10 max-w-md">
             <h3 className="gb-font break-keep text-2xl font-bold leading-snug lg:text-[28px]">{panel.title}</h3>
             <p className="gb-font mt-6 break-keep text-[13px] leading-[1.9] text-white/75 lg:text-[15px]">

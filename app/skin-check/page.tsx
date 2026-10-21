@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SkinCheckQuiz from "@/components/renewal/skin-check-quiz";
 import SkinPhotoGallery from "@/components/renewal/skin-photo-gallery";
+import { siteEvents } from "@/lib/events";
 
 const siteUrl = "https://anseong365.com";
 
@@ -40,7 +41,7 @@ export default function SkinCheckPage() {
         </div>
 
         <div className="mt-3 sm:mt-14">
-          <SkinCheckQuiz />
+          <SkinCheckQuiz events={siteEvents} />
         </div>
 
         <section id="photos" className="mt-20 scroll-mt-24 sm:mt-28">
