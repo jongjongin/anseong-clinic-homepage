@@ -179,11 +179,6 @@ export default function RootLayout({
         </Script>
         <JsonLd data={clinicStructuredData} />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
-        />
-        <link rel="stylesheet" href="/assets/fonts/serif-fonts.css" />
       </head>
       <body className="font-pretendard bg-white text-zinc-900">
         <noscript>
