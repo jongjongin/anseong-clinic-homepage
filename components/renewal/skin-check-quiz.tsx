@@ -456,7 +456,7 @@ function ResultCard({
         onClick={() => {
           const target = document.getElementById("photos");
           if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-          else window.location.href = "/skin-check#photos";
+          else window.location.hash = "photos";
         }}
         className="group mt-3 flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-[#e2e2e2] bg-white px-5 py-4 text-[15px] font-bold text-[#171717] transition hover:border-teal-700 hover:text-teal-700"
       >
