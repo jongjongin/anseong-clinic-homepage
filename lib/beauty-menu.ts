@@ -64,6 +64,7 @@ export const beautyMenuCategories: BeautyMenuCategory[] = [
         note: "개수 무제한 · 리터치 1회 무료 · 2회차부터 반값",
         prices: [
           { label: "얼굴 전체", price: "220,000원" },
+          { label: "목만", price: "220,000원" },
           { label: "얼굴 + 목", price: "330,000원" },
           { label: "겨드랑이", price: "220,000원" },
           { label: "가슴~골반", price: "440,000원" },

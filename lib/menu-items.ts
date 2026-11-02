@@ -248,6 +248,7 @@ export const menuItems: MenuItem[] = [
     priceFrom: 220000,
     options: [
       { label: "얼굴 전체", price: 220000, note: "개수 무제한" },
+      { label: "목만", price: 220000, note: "개수 무제한" },
       { label: "얼굴 + 목", price: 330000, note: "개수 무제한" },
       { label: "겨드랑이", price: 220000 },
       { label: "가슴~골반", price: 440000 },
